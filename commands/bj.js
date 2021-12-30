@@ -1,11 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-    let users = [
-        "Pocket",
-        "T-Shirt",
-        "Zero's Databse",
-        "Street"
-    ];
     let amount2 = Math.floor(Math.random() * 200)/100;
     let amount3 = args[0]
     let amount5="0"
