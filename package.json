@@ -1,28 +1,29 @@
 {
-  "name": "hello-node",
-  "version": "0.0.1",
-  "description": "A simple Node app built on fastify, instantly up and running.",
-  "main": "server.js",
+  "name": "EconomyBot",
+  "version": "1.0.0",
+  "description": "Economy bot created with quick.eco package in discord.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
+  "author": "Zero",
+  "license": "Nginx",
+  "keywords": [
+    "discord",
+    "Easy",
+    "Economy",
+    "bot",
+    "discord.js",
+    "discordjs"
+  ],
   "dependencies": {
-    "fastify": "^3.25.0",
-    "fastify-formbody": "^5.2.0",
-    "fastify-static": "^4.5.0",
-    "handlebars": "^4.7.7",
-    "point-of-view": "^4.16.0"
+    "discord.js": "^12.5.3",
+    "quick.eco": "^2.0.3"
   },
   "engines": {
     "node": "12.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-hello-node"
-  },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+    "url": "https://github.com/ZeroDiscord/EconomyBot"
+  }
 }

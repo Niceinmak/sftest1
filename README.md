@@ -1,42 +1,41 @@
-# Hello Node!
+# Welcome To EconomyBot <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
+## This EconomyBot was written by 0_0#6666
+### Language : JavaScript/NodeJS (Core Lang : EN)
+##### Library : Discord.js
+###### Framework used : quick.eco by Snowflake Development
 
-This project includes a Node.js server script and a web page that connects to it. The front-end page presents a form the visitor can use to submit a color name, sending the submitted value to the back-end API running on the server. The server returns info to the page that allows it to update the display with the chosen color. 🎨
+##### IN BOTCONFIG.JSON DO NOT CHANGE ANY VARIABLE THE CountChannel var is for if you want to set a channel to count for users if not just leave it blank AND EVERYTHING ELSE IS SELF EPLAINATORY JUST CHANGE THE VALUES INSIDE "" TO MAKE YOUR BOT FUNCTION PROPERLY!
+# Links
+- 🔗 [Youtube Channel](https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ)
+- [Support Server Link](https://discord.gg/ARu4hr6hJw)
+# Copyright 
+Copyright 2020 © All RIghts are Reserved | If you are using any part of code please give me credits for the same. Thanks
 
-[Node.js](https://nodejs.org/en/about/) is a popular runtime that lets you run server-side JavaScript. This project uses the [Fastify](https://www.fastify.io/) framework and explores basic templating with [Handlebars](https://handlebarsjs.com/).
+# License
+**nginx 2021 all rights reserved**
 
-## Prerequisites
+# Features
+- Shop
+- Customisable Daily, weekly , search , crime and beg commands (earning)
+- Balance
+- Leaderboard
+- CodeFactor : Easily usable 
+## Contribute 
+### Feel free to contribute to the repository by forking it and submitting a pull request we would love to have you as a contributor! You mst read through the nginx code of conduct and the (Included) license carefully before submitting a pull request.
+#### Node Version Requirement
+``12.x or higher``
 
-You'll get best use out of this project if you're familiar with basic JavaScript. If you've written JavaScript for client-side web pages this is a little different because it uses server-side JS, but the syntax is the same!
+**NOTE FOR GLITCH HOSTERS 
+`` THIS BOT DOES NOT DIE IT SENDS A HEARTBEAT (PING) EVERY 5 MINS TO THE GLITCH PROJECT SO THAT YOUR PROJECT STAYS ALIVE IF IT DOES NOT WORK FOR YOU THEN 
+DM ME FOR A SCRIPT THAT PREVENTS THIS JOIN THE SERVER ABOVE AND DM  ME @0_0#6666 THIS MIGHT GET YOUR PROJECT SUSPENDED BUT YOU CAN ALWAYS
+MAKE A NEW ONE USING MY TUTORIAL :D``**
+``IT WORKS ON REPL.IT PRETTY FINE ITS BEEN TESTED ALREADY``
 
-## What's in this project?
+# Host On Repl.it
+[![Use on Repl.it](https://repl.it/badge/github/ZeroDiscord/EconomyBot)](https://repl.it/github/ZeroDiscord/EconomyBot)
+# Host On Glitch 
+[Click Here to Host On Glitch](https://glitch.com/edit/#!/import/git?url=https://github.com/ZeroDiscord/EconomyBot/)
 
-← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
-
-← `public/style.css`: The styling rules for the pages in your site.
-
-← `server.js`: The **Node.js** server script for your new site. The JavaScript defines the endpoints in the site back-end, one to return the homepage and one to update with the submitted color. Each one sends data to a Handlebars template which builds these parameter values into the web page the visitor sees.
-
-← `package.json`: The NPM packages for your project's dependencies.
-
-← `src/`: This folder holds the site template along with some basic data files.
-
-← `src/pages/index.hbs`: This is the main page template for your site. The template receives parameters from the server script, which it includes in the page HTML. The page sends the user submitted color value in the body of a request, or as a query parameter to choose a random color.
-
-← `src/colors.json`: A collection of CSS color names. We use this in the server script to pick a random color, and to match searches against color names.
-
-← `src/seo.json`: When you're ready to share your new site or add a custom domain, change SEO/meta settings in here.
-
-## Try this next 🏗️
-
-Take a look in `TODO.md` for next steps you can try out in your new site!
-
-___Want a minimal version of this project to build your own Node.js app? Check out [Blank Node](https://glitch.com/edit/#!/remix/glitch-blank-node)!___
-
-![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
-
-## You built this with Glitch!
-
-[Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites.
-
-- Need more help? [Check out our Help Center](https://help.glitch.com/) for answers to any common questions.
-- Ready to make it official? [Become a paid Glitch member](https://glitch.com/pricing) to boost your app with private sharing, more storage and memory, domains and more.
+# Dependencies 
+- *Discord.js v12*
+- *quick.eco (has a Dev dependency of quick.db and better-sqlite3*)
