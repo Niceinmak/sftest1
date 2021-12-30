@@ -7,9 +7,10 @@ exports.execute = async (client, message, args) => {
     let amount5 = args[1]
     let yazitura= ""
     let authordata = client.eco.fetchMoney(message.author.id) 
-        let timecooldown = Math.floor(Math.random() * 200)+50;
-        let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
-  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+    let timecooldown = Math.floor(Math.random() * 200)+50;
+    let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
+    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+    const user = message.mentions.users.first() || message.member.user
     if (playtime.onCooldown) return message.reply(`**Biraz yavaş ol,${playtime.time.seconds} saniye daha bekle.**`);
   //--------------------------------------------
     if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Lütfen Sayı Giriniz`);
@@ -18,7 +19,8 @@ exports.execute = async (client, message, args) => {
     else
     {
              const embed = new MessageEmbed()
-            .setTitle("Pong!")
+            .setTitle(`${user.username}`)
+            .setAuthor(`${user.username}`, user.display)
             .addField("API Gecikmesi", `s`)
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
