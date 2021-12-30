@@ -28,13 +28,13 @@ exports.execute = async (client, message, args) => {
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
-   return message.channel.send({embed: embed}).then(embedMessage => {
+   return message.channel.send({embed: embed}).then(async msg => {
     embedMessage.react("👊");
     embedMessage.react("🛑");   
-     
+      
     
      embed.setAuthor(`sa`)
-     return msg.edit(embed)
+     return msg.edit(embed);
       
     
 });
