@@ -1,6 +1,6 @@
 module.exports = {
-    token: "OTI0MzExMDkyNDY4MDE1MTE2.YcctyQ.1N5i49yCDUn4aQRi9XqXwYUd",
-    prefix: "q ",
+    token: "OTI2MTczMzA3MDY4MzcwOTU0.Yc30Gw.SzhNg9TveO5LYl1aXqO7O07IxHw",
+    prefix: "c ",
     admins: [
         "405247101442719764"
 ],

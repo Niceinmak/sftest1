@@ -20,7 +20,6 @@ exports.execute = async (client, message, args) => {
      if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Lütfen Sayı Giriniz.`);
   else{
     if(amount3>authordata.amount || amount3<1) return message.channel.send(`** ⛔${message.author.tag} | ** Kendi bakiyenizden büyük ve 1'den küçük sayı giremessiniz.`);
-     if(amount3<authordata.amount) return message.channel.send(`** ⛔${message.author.tag} | ** Bu komut bakımda`); //bj'yi buga sokar
     if([Math.floor(amount2)]==0) 
     {
       azcok="En Az Atan"
