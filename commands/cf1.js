@@ -31,19 +31,17 @@ exports.execute = async (client, message, args) => {
    message.channel.send({embed: embed}).then(embedMessage => {
     embedMessage.react("👊");
     embedMessage.react("🛑");
-     client.on("messageReactionAdd", (reaction, user) => {
-
-    if (!reaction.emoji.name === "👊") return;
-
- 
-    if (reaction.message.id != "...") return;
-
-     return message.channel.send(embed).then(async msg => {
+     
+     
+     client.on('messageReactionAdd', (reaction, user) => {
+   if (reaction.emoji.name === "👊") {
+                  return message.channel.send(embed).then(async msg => {
      embed.setAuthor(`sa`)
      return msg.edit(embed)
       });
-
+   }
 });
+
 
 
      
