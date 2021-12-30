@@ -19,8 +19,9 @@ exports.execute = async (client, message, args) => {
     else
     {
              const embed = new MessageEmbed()
+             .setAuthor(`${user.username}, ${amount3} ile blackjack oynadı`, user.displayAvatarURL())
+            .setFooter(`Oyun devam ediyor`)
             .setTitle(`${user.username}`)
-            .setAuthor(`${user.username}`, user.display)
             .addField("API Gecikmesi", `s`)
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
