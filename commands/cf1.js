@@ -28,15 +28,26 @@ exports.execute = async (client, message, args) => {
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
-  return message.channel.send(embed).then(async msg => {
-      setTimeout(() => {
-             embed.setAuthor(`sa`)
-        return msg.edit(embed)
-              }, 1000);
+   message.channel.send({embed: embed}).then(embedMessage => {
+    embedMessage.react("👊");
+    embedMessage.react("🛑");
+     client.on("messageReactionAdd", (reaction, user) => {
+
+    if (!reaction.emoji.name === "👊") return;
+
+ 
+    if (reaction.message.id != "...") return;
+
+     return message.channel.send(embed).then(async msg => {
+     embed.setAuthor(`sa`)
+     return msg.edit(embed)
       });
 
-     
+});
 
+
+     
+});
     }
     
     }};
