@@ -18,6 +18,7 @@ exports.execute = async (client, message, args) => {
     if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
     else
     {
+      
              const embed = new MessageEmbed()
              .setAuthor(`${user.username}, ${amount3} ile blackjack oynadı`, user.displayAvatarURL())
             .setFooter(`Oyun devam ediyor`)
@@ -26,6 +27,7 @@ exports.execute = async (client, message, args) => {
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
+      message.react('<:blobreach:123456789012345678>');
      return message.channel.send(embed);
     }
     
