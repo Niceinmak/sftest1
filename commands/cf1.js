@@ -1,3 +1,4 @@
+
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 200)+50;
@@ -27,8 +28,11 @@ exports.execute = async (client, message, args) => {
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
-      message.react('<:blobreach:123456789012345678>');
-     return message.channel.send(embed);
+   message.channel.send({embed: embed}).then(embedMessage => {
+    embedMessage.react("👍");
+    embedMessage.react("👊");
+     
+});
     }
     
     }};
