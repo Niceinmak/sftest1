@@ -28,22 +28,19 @@ exports.execute = async (client, message, args) => {
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
-   message.channel.send({embed: embed}).then(embedMessage => {
+   return message.channel.send({embed: embed}).then(embedMessage => {
     embedMessage.react("👊");
-    embedMessage.react("🛑");
+    embedMessage.react("🛑");   
      
-     return message.channel.send(embed).then(async msg => {
+    
      embed.setAuthor(`sa`)
      return msg.edit(embed)
-      });
-
-
-
-     
-});
-    }
+      
     
-    }};
+});
+     
+    }
+    }  };
 
 exports.help = {
     name: "cf1",
