@@ -102,12 +102,15 @@ const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 collector.on("collect", (reaction, user) => {
   console.log("collected");
     embed.setAuthor(`the test`)
-          
-   amount += Math.floor(Math.random() * 14)
+    let amount4 = Math.floor(Math.random() * 14)      
+   amount += amount4
    amount2 += Math.floor(Math.random() * 14) 
   if(amount<21)
     {
-      else if()
+      if(amount>=17)
+        {
+          embed.addField(`**Kasa [${amount}+${amount4}]**        ${user1.username} [${amount2}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+        }
     }
   return msg.edit(embed);
 //write
