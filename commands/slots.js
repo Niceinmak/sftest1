@@ -1,9 +1,15 @@
 
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-    let amount = Math.floor(Math.random() * 200)+50;
-    let amount2 = Math.floor(Math.random() * 2);
-    let amount4 = Math.floor(Math.random() * 200)/100;
+        let jobs = [
+        "🏅",
+        "🏆",
+        "💶",
+    ];
+    let card1=""
+    let card2=""
+    let card3=""
+    let amount = Math.floor(Math.random() * 100);
     let amount3 = args[0]
     let authordata = client.eco.fetchMoney(message.author.id) 
     let timecooldown = Math.floor(Math.random() * 200)+50;
@@ -19,10 +25,8 @@ exports.execute = async (client, message, args) => {
     {
       
              const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, ${amount3} ile slots oynadı`, user1.displayAvatarURL())
+             .setAuthor(`${user1.username}, ${amount3} ile Slot oynadı`, user1.displayAvatarURL())
             .setFooter(`.`)
-            .setDescription('**SLOTS**')
-             .setDescription('**2**')
             .addField("Slot Oynanıyor","[]  []  []")
             .setColor("#7289DA")
             .setTimestamp();
@@ -31,12 +35,21 @@ exports.execute = async (client, message, args) => {
   // embed.setAuthor(`as`)
           embed.setFooter(`..`)
           return msg.edit(embed);
-                   }, 250);
+                   }, 500);
                 setTimeout(() => {
        //  embed.setAuthor(`sa`)
-          return msg.edit(embed);
           embed.setFooter(`...`)
-              }, 250);
+         return msg.edit(embed);
+              }, 1000);
+            setTimeout(() => {
+              if(amount>50)
+                {
+                  
+                }
+       //  embed.setAuthor(`sa`)
+          embed.setFooter(`.1.Sayı`)
+         return msg.edit(embed);
+              }, 1250);
         } );
     }
     }  };
