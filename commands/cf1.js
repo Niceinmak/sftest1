@@ -31,24 +31,19 @@ exports.execute = async (client, message, args) => {
               return message.channel.send(embed).then(async msg => {
           msg.react("👊")
           msg.react("🛑")  
+
           //embed.setAuthor(`sa`)
           //return msg.edit(embed);
-      return message.channel.send("a")
         } );
-     
-const filter = (reaction, user) => {
-	return reaction.emoji.name === '👊' && user.id === message.author.id;
-};
+      
 
-const collector = message.createReactionCollector({ filter, time: 15000 });
+              return message.edit(embed).then(async msg => {
+         // msg.react("👊")
+          //msg.react("🛑")  
 
-collector.on('collect', (reaction, user) => {
-	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-});
-
-collector.on('end', collected => {
-	console.log(`Collected ${collected.size} items`);
-});
+          embed.setAuthor(`sa`)
+          return msg.edit(embed);
+        } );
     }
     }  };
 
