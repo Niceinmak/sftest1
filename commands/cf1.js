@@ -107,11 +107,18 @@ collector.on("collect", (reaction, user) => {
     let amount4 = Math.floor(Math.random() * 14)      
    amount += amount4
    amount2 += Math.floor(Math.random() * 14) 
+  let caseamount=0
+  if(amount4>10 && amount4<14)
+    {
+      caseamount=namescards[Math.floor(Math.random() * namescards.length)]
+    }
   if(amount<21)
     {
       if(amount>=17)
         {
-          embed.setField(`**Kasa [${amount}+${amount4}]**        ${user1.username} [${amount2}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+          
+          
+          embed.setField(`**Kasa [${amount}+${amount4}]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
         }
     }
   return msg.edit(embed);
