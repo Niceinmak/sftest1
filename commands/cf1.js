@@ -45,13 +45,39 @@ exports.execute = async (client, message, args) => {
                };
             if(amount==11)
                {
-                 embed.addField(`**Kasa [${acards}+?]**        ${user1.username} [20]`,`** Kasa **${acards} **       ${user1.username} 5`)
+                     if(amount2<10)
+                   {
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${acards} **       ${user1.username} ${amount2}`)
+                   }
+                 if(amount2==11)
+                   {
+                     amount2=10
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${acards} **       ${user1.username} ${acards}`)
+                   }
+                 if(amount2>11)
+                   {
+                     amount2=10
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${acards} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+                   }
                };
      if(amount>11)
                {
                  amount=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}       ${user1.username} 5`)
-               };
+                                      if(amount2<10)
+                   {
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${amount2}`)
+                   }
+                 if(amount2==11)
+                   {
+                     amount2=10
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${acards}`)
+                   }
+                 if(amount2>11)
+                   {
+                     amount2=10
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+                   }
+                  };
     
             embed.setFooter(`Oyun devam ediyor`)
             .setColor("#7289DA")
