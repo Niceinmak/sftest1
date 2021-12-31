@@ -2,6 +2,8 @@
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 14);
+  let amount2 = Math.floor(Math.random() * 14);
+   let acards= "A"
     let amount3 = args[0]
     let yazitura= ""
     let authordata = client.eco.fetchMoney(message.author.id) 
@@ -25,8 +27,13 @@ exports.execute = async (client, message, args) => {
                };
             if(amount==11)
                {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} 5`)
+                 embed.addField(`**Kasa [${acards}+?]**        ${user1.username} [20]`,`** Kasa `${acards} `       ${user1.username} 5`)
                };
+     if(amount>11)
+               {
+                 embed.addField(`**Kasa [${acards}+?]**        ${user1.username} [20]`,`** Kasa `${acards} `       ${user1.username} 5`)
+               };
+    
             embed.setFooter(`Oyun devam ediyor`)
             .setColor("#7289DA")
             .setTimestamp();
