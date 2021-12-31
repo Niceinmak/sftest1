@@ -30,19 +30,42 @@ exports.execute = async (client, message, args) => {
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
           msg.react("👊")
-          msg.react("🛑")  
-      await msg.react('✅')
-      const filter = (reaction, user) => {
-           return //YOUR FILTER HERE;
-      };
+        //  msg.react("")  
+          msg.react("🛑");
 
-      const collector = message.createReactionCollector(filter, { time: 15000 });
+const filter = (reaction, user) => {
+	return reaction.emoji.name === '👊' && user.id === message.author.id;
+};
+const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
-      collector.on('collect', (reaction, reactionCollector) => {
-            embed.setAuthor(`sa`)
+collector.on("collect", (reaction, user) => {
+  console.log("collected");
+    embed.setAuthor(`the test`)
           return msg.edit(embed);
-      });
-        
+//write
+})
+
+collector.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+                
+   const filter2 = (reaction, user) => {
+	return reaction.emoji.name === '🛑' && user.id === message.author.id;
+};
+const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
+
+collector2.on("collect", (reaction, user) => {
+  console.log("collected");
+    embed.setAuthor(`the testa`)
+          return msg.edit(embed);
+//write
+})
+
+collector.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
         } );
       
 
