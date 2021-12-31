@@ -33,10 +33,10 @@ exports.execute = async (client, message, args) => {
           msg.react("🛑")  
           //embed.setAuthor(`sa`)
           //return msg.edit(embed);
-      
+      return message.channel.send("a")
         } );
-      
-         const filter = (reaction, user) => {
+     
+const filter = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 
