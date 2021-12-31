@@ -1,11 +1,8 @@
 
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-    let amount = Math.floor(Math.random() * 200)+50;
-    let amount2 = Math.floor(Math.random() * 2);
-    let amount4 = Math.floor(Math.random() * 200)/100;
+    let amount = Math.floor(Math.random() * 14);
     let amount3 = args[0]
-    let amount5 = args[1]
     let yazitura= ""
     let authordata = client.eco.fetchMoney(message.author.id) 
     let timecooldown = Math.floor(Math.random() * 200)+50;
@@ -22,8 +19,15 @@ exports.execute = async (client, message, args) => {
       
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
-            .addField(`**Kasa [3+?]**        ${user1.username} [20]`,`** Kasa 2 **       ${user1.username} 5`)
-            .setFooter(`Oyun devam ediyor`)
+             if(amount<10)
+               {
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} 5`)
+               };
+            if(amount==11)
+               {
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} 5`)
+               };
+            embed.setFooter(`Oyun devam ediyor`)
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
