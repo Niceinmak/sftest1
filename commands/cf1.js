@@ -1,6 +1,4 @@
 //Casino-styled blackjack card-game against the computer
-
-var rand = require("../random");
 var Command = require("../command");
 var Interface = require("../interface");
 var Profile = require("./profile").Profile;
@@ -38,8 +36,9 @@ function Card(value) {
 }
 
 function randCard() {
-    var randCardInt = rand.num(1, 20);
-    var randSuit = rand.num(0, 3);
+    var randCardInt = Math.floor(Math.random() * 21)
+    if(randCardInt==0) randCardInt=1;
+    var randSuit = Math.floor(Math.random() * 4)
     var suites = [":spades:", ":hearts:", ":diamonds:", ":clubs:"];
     var fullCollection = ["A", "A", "2", "2", "3", "4", "5", "6", "7", "8", "9", "9", "9", "9", "10", "J", "J", "Q", "Q", "K", "K"];
         
@@ -201,11 +200,11 @@ var blackjack = {
 
 module.exports = new Command("blackjack", (message, args) => {
 
-    blackjack.start(args, message);
+    
 
-}, false, false, "Starts a blackjack card game against the bot; get a higher total to earn your bet, or a total of 21 for double your bet.").attachArguments([
-    {
-        name: "bet",
-        optional: false
-    }
-])
+},
+module.exports.help = {
+    name: "cf1",
+    aliases: [],
+    usage: "cf1"
+}
