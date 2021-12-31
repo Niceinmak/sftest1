@@ -1,8 +1,13 @@
 
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-    let amount = Math.floor(Math.random() * 14);
+    let amount = Math.floor(Math.random() * 25);
   let amount2 = Math.floor(Math.random() * 14);
+        let namescards = [
+        "Q",
+        "J",
+        "K",
+    ];
    let acards= "A"
     let amount3 = args[0]
     let yazitura= ""
@@ -27,11 +32,12 @@ exports.execute = async (client, message, args) => {
                };
             if(amount==11)
                {
-                 embed.addField(`**Kasa [${acards}+?]**        ${user1.username} [20]`,`** Kasa `${acards} `       ${user1.username} 5`)
+                 embed.addField(`**Kasa [${acards}+?]**        ${user1.username} [20]`,`** Kasa **${acards} **       ${user1.username} 5`)
                };
      if(amount>11)
                {
-                 embed.addField(`**Kasa [${acards}+?]**        ${user1.username} [20]`,`** Kasa `${acards} `       ${user1.username} 5`)
+                 amount=10
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}       ${user1.username} 5`)
                };
     
             embed.setFooter(`Oyun devam ediyor`)
