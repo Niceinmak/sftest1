@@ -19,22 +19,24 @@ exports.execute = async (client, message, args) => {
     {
       
              const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
-            .setFooter(`Oyun devam ediyor`)
-            .setTitle(`${user1.username}`)
-            .addField("API Gecikmesi", `s`)
-            .addField("Client Gecikmesi", `ms`)
+             .setAuthor(`${user1.username}, ${amount3} ile slots oynadı`, user1.displayAvatarURL())
+            .setFooter(`.`)
+            .setDescription('**SLOTS**')
+             .setDescription('**2**')
+            .addField("Slot Oynanıyor","[]  []  []")
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
                 setTimeout(() => {
-   embed.setAuthor(`as`)
+  // embed.setAuthor(`as`)
+          embed.setFooter(`..`)
           return msg.edit(embed);
-                   }, 1000);
+                   }, 250);
                 setTimeout(() => {
-         embed.setAuthor(`sa`)
+       //  embed.setAuthor(`sa`)
           return msg.edit(embed);
-              }, 1000);
+          embed.setFooter(`...`)
+              }, 250);
         } );
     }
     }  };
