@@ -1,7 +1,7 @@
 
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-    let amount = Math.floor(Math.random() * 25);
+    let amount = Math.floor(Math.random() * 14);
   let amount2 = Math.floor(Math.random() * 14);
   let amount4 = Math.floor(Math.random() * 2);
         let namescards = [
@@ -102,7 +102,10 @@ const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 collector.on("collect", (reaction, user) => {
   console.log("collected");
     embed.setAuthor(`the test`)
-          return msg.edit(embed);
+          
+   amount += Math.floor(Math.random() * 14)
+   amount2 += Math.floor(Math.random() * 14)
+  return msg.edit(embed);
 //write
 })
 
