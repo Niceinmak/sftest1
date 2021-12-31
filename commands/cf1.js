@@ -5,6 +5,8 @@ exports.execute = async (client, message, args) => {
   let amount2 = Math.floor(Math.random() * 11);
   let amount5 = Math.floor(Math.random() * 12);
   let amount4 = Math.floor(Math.random() * 2);
+  let totalcash=0
+  let totalcash2=0
         let namescards = [
         "Q",
         "J",
@@ -34,6 +36,8 @@ exports.execute = async (client, message, args) => {
                  if(amount2<10)
                    {
                  embed.addField(`**Kasa [${amount}+?]**        ${user1.username} ${amount2+amount5}`,`** Kasa ${amount} **       ${user1.username} ${amount2},${amount5}`)
+                     totalcash=amount2+amount5
+                     totalcash2=amount
                    }
                  if(amount2==11)
                    {
@@ -41,11 +45,15 @@ exports.execute = async (client, message, args) => {
                      if(amount4==0) amount2=10;
                      if(amount4==0) amount2=1;
                  embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]*`,`** Kasa ${amount} **       ${user1.username} ${acards},${amount5}`)
+                     totalcash=amount2+amount5
+                     totalcash2=amount
                    }
                  if(amount2>11)
                    {
                      amount2=10
                  embed.addField(`**Kasa [${amount}+?]**        ${user1.username} ${amount2+amount5}`,`** Kasa ${amount} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]},${amount5} `)
+                   totalcash=amount2+amount5
+                     totalcash2=amount
                    }
                };
             if(amount==11)
@@ -53,6 +61,8 @@ exports.execute = async (client, message, args) => {
                      if(amount2<10)
                    {
                  embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${acards} **       ${user1.username} ${amount2},${amount5}`)
+                  totalcash=amount2+amount5
+                     totalcash2=amount
                    }
                  if(amount2==11)
                    {
@@ -60,11 +70,15 @@ exports.execute = async (client, message, args) => {
                      if(amount4==0) amount2=10;
                      if(amount4==0) amount2=1;
                  embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${acards} **       ${user1.username} ${acards},${amount5}`)
+                   totalcash=amount2+amount5
+                     totalcash2=amount
                    }
                  if(amount2>11)
                    {
                      amount2=10
                  embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${acards} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]},${amount5} `)
+                   totalcash=amount2+amount5
+                     totalcash2=amount
                    }
                };
      if(amount>11)
@@ -116,9 +130,12 @@ collector.on("collect", (reaction, user) => {
     {
       if(amount>=17)
         {
+            if(amount4>10 && amount4<14)
+    {
+      embed.setField(`**Kasa [${amount+caseamount}]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+    }
           
-          
-          embed.setField(`**Kasa [${amount}+${amount4}]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+          embed.setField(`**Kasa [${amount+amount4}]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
         }
     }
   return msg.edit(embed);
