@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 25);
   let amount2 = Math.floor(Math.random() * 14);
+  let amount4 = Math.floor(Math.random() * 2);
         let namescards = [
         "Q",
         "J",
@@ -30,34 +31,38 @@ exports.execute = async (client, message, args) => {
                {
                  if(amount2<10)
                    {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} ${amount2}`)
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} ${amount2}`,`** Kasa ${amount} **       ${user1.username} ${amount2}`)
                    }
                  if(amount2==11)
                    {
                      amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} ${acards}`)
+                     if(amount4==0) amount2=10;
+                     if(amount4==0) amount2=1;
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]*`,`** Kasa ${amount} **       ${user1.username} ${acards}`)
                    }
                  if(amount2>11)
                    {
                      amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} ${amount2}`,`** Kasa ${amount} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
                    }
                };
             if(amount==11)
                {
                      if(amount2<10)
                    {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${acards} **       ${user1.username} ${amount2}`)
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]`,`** Kasa ${acards} **       ${user1.username} ${amount2}`)
                    }
                  if(amount2==11)
                    {
                      amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${acards} **       ${user1.username} ${acards}`)
+                     if(amount4==0) amount2=10;
+                     if(amount4==0) amount2=1;
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]`,`** Kasa ${acards} **       ${user1.username} ${acards}`)
                    }
                  if(amount2>11)
                    {
                      amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${acards} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]`,`** Kasa ${acards} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
                    }
                };
      if(amount>11)
@@ -65,17 +70,19 @@ exports.execute = async (client, message, args) => {
                  amount=10
                                       if(amount2<10)
                    {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${amount2}`)
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${amount2}`)
                    }
                  if(amount2==11)
                    {
                      amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${acards}`)
+                     if(amount4==0) amount2=10;
+                     if(amount4==0) amount2=1;
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${acards}`)
                    }
                  if(amount2>11)
                    {
                      amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
                    }
                   };
     
