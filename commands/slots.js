@@ -42,19 +42,12 @@ exports.execute = async (client, message, args) => {
          return msg.edit(embed);
               }, 1000);
             setTimeout(() => {
-              if(amount>50)
-                {
-                  card1="💯"
-                }
-              else
-              {
-                card1=`${emojies[Math.floor(Math.random() * emojies.length)]}`
-              }
+
               embed.setField("Slot Oynanıyor",`[${card1} ]  [ ]  [ ]`)
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`.1.Sayı`)
+          embed.setFooter(`1.Sayı`)
          return msg.edit(embed);
-              }, 1250);
+              }, 2000);
         } );
     }
     }  };
