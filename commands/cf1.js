@@ -28,17 +28,27 @@ exports.execute = async (client, message, args) => {
             .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
-   return message.channel.send({embed: embed}).then(async msg => {
-    embedMessage.react("👊");
-    embedMessage.react("🛑");   
+              return message.channel.send(embed).then(async msg => {
+          msg.react("👊")
+          msg.react("🛑")  
+          //embed.setAuthor(`sa`)
+          //return msg.edit(embed);
       
-    
-     embed.setAuthor(`sa`)
-     return msg.edit(embed);
+        } );
       
-    
+         const filter = (reaction, user) => {
+	return reaction.emoji.name === '👊' && user.id === message.author.id;
+};
+
+const collector = message.createReactionCollector({ filter, time: 15000 });
+
+collector.on('collect', (reaction, user) => {
+	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
 });
-     
+
+collector.on('end', collected => {
+	console.log(`Collected ${collected.size} items`);
+});
     }
     }  };
 
