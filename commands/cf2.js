@@ -86,5 +86,5 @@ console.log("not collected");
 exports.help = {
     name: "cf2",
     aliases: ["coinflip","yazıtura"],
-    usage: "cf2 <yazı,tura> <miktar>"
+    usage: "cf2 <yazı,tura> <reaction command>"
 }

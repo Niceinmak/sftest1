@@ -193,5 +193,5 @@ console.log("not collected");
 exports.help = {
     name: "cf1",
     aliases: ["coinflip","yazıtura"],
-    usage: "cf1 <yazı,tura> <miktar>"
+    usage: "cf1 <bj>"
 }
