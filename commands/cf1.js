@@ -1,193 +1,211 @@
+//Casino-styled blackjack card-game against the computer
 
-const { MessageEmbed } = require("discord.js");
-exports.execute = async (client, message, args) => {
-    let amount = Math.floor(Math.random() * 14);
-  let amount2 = Math.floor(Math.random() * 11);
-  let amount5 = Math.floor(Math.random() * 12);
-  let amount4 = Math.floor(Math.random() * 2);
-  let totalcash=0
-  let totalcash2=0
-        let namescards = [
-        "Q",
-        "J",
-        "K",
-    ];
-   let acards= "A"
-    let amount3 = args[0]
-    let yazitura= ""
-    let authordata = client.eco.fetchMoney(message.author.id) 
-    let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
-    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
-    const user1 = message.mentions.users.first() || message.member.user
-    if (playtime.onCooldown) return message.reply(`**Biraz yavaş ol,${playtime.time.seconds} saniye daha bekle.**`);
-  //--------------------------------------------
-    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Lütfen Sayı Giriniz`);
-  else{
-    if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
-    else
-    {
-      if(amount2==0) amount2=1;
-      if(amount5==0) amount5=1;
-             const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
-             if(amount<10)
-               {
-                 if(amount2<10)
-                   {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} ${amount2+amount5}`,`** Kasa ${amount} **       ${user1.username} ${amount2},${amount5}`)
-                     totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                 if(amount2==11)
-                   {
-                     amount2=10
-                     if(amount4==0) amount2=10;
-                     if(amount4==0) amount2=1;
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]*`,`** Kasa ${amount} **       ${user1.username} ${acards},${amount5}`)
-                     totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                 if(amount2>11)
-                   {
-                     amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} ${amount2+amount5}`,`** Kasa ${amount} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]},${amount5} `)
-                   totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-               };
-            if(amount==11)
-               {
-                     if(amount2<10)
-                   {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${acards} **       ${user1.username} ${amount2},${amount5}`)
-                  totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                 if(amount2==11)
-                   {
-                     amount2=10
-                     if(amount4==0) amount2=10;
-                     if(amount4==0) amount2=1;
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${acards} **       ${user1.username} ${acards},${amount5}`)
-                   totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                 if(amount2>11)
-                   {
-                     amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${acards} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]},${amount5} `)
-                   totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-               };
-            if(amount>11)
-               {
-                 amount=10
-                   if(amount2<10)
-                   {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${amount2},${amount5}`)
-                   totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                 if(amount2==11)
-                   {
-                     amount2=10
-                     if(amount4==0) amount2=10;
-                     if(amount4==0) amount2=1;
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${acards},${amount5}`)
-                totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                 if(amount2>11)
-                   {
-                     amount2=10
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [${amount2+amount5}]`,`** Kasa ${namescards[Math.floor(Math.random() * namescards.length)]}  **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]},${amount5} `)
-                 totalcash=amount2+amount5
-                     totalcash2=amount
-                   }
-                  };
-    
-            embed.setFooter(`Oyun devam ediyor`)
-            .setColor("#7289DA")
-            .setTimestamp();
-              return message.channel.send(embed).then(async msg => {
-          msg.react("👊")
-        //  msg.react("")  
-          msg.react("🛑");
+var rand = require("../random");
+var Command = require("../command");
+var Interface = require("../interface");
+var Profile = require("./profile").Profile;
+var settings = require("../settings");
 
-const filter = (reaction, user) => {
-	return reaction.emoji.name === '👊' && user.id === message.author.id;
-};
-const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
-
-collector.on("collect", (reaction, user) => {
-  console.log("collected");
-    embed.setAuthor(`the test`)
-    let amount4 = Math.floor(Math.random() * 14)    
-     let amount6 = Math.floor(Math.random() * 14)  
-   amount2 += Math.floor(Math.random() * 14) 
-  let caseamount=0
-  if(amount4>10 && amount4<14)
-    {
-      caseamount=namescards[Math.floor(Math.random() * namescards.length)]
+function ToInteger(card) {
+    if (card == "A") {
+        return 11;
     }
-  if(amount<21)
-    {
-      if(amount>=17)
-        {
-            if(amount4>10 && amount4<14)
-    {
-      embed.setField(`**Kasa [${totalcash2+caseamount}]**        ${user1.username} [${totalcash+amount6}]`,`** Kasa ${totalcash},${caseamount} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+    else if (card == "base") {
+        return 0;
     }
-          
-          embed.setField(`**Kasa [${totalcash2+amount4}]**        ${user1.username} [${totalcash+amount6}]`,`** Kasa ${totalcash2},${amount4} **       ${user1.username} ${namescards[Math.floor(Math.random() * namescards.length)]} `)
+    else if (card == "J" || card == "Q" || card == "K") {
+        return 10;
+    }
+    else {
+        return Number(card);
+    }
+}
+
+function aceCheck(value, total) {
+    if (total + value > 21 && value == 11) {
+        return 1;
+    }
+    else {
+        return value;
+    }
+}
+
+function Card(value) {
+    this.toInteger = ToInteger(value[0]);
+    this.val = value[0];
+    this.suite = value[1];
+    //Card object initialized
+}
+
+function randCard() {
+    var randCardInt = rand.num(1, 20);
+    var randSuit = rand.num(0, 3);
+    var suites = [":spades:", ":hearts:", ":diamonds:", ":clubs:"];
+    var fullCollection = ["A", "A", "2", "2", "3", "4", "5", "6", "7", "8", "9", "9", "9", "9", "10", "J", "J", "Q", "Q", "K", "K"];
+        
+    //Higher chances of getting certain cards
+        
+    return [fullCollection[randCardInt - 1], suites[randSuit]];
+}
+
+function arrCardCalc(arr) {
+    var sum = 0;
+    var iterations = 0;
+    for (var x in arr) {
+        sum += arr[iterations].toInteger;
+        iterations += 1;
+    }
+    return [sum, iterations];
+}
+
+function userHit(cardsObj, message) {
+    var user = message.author;
+
+    var card = new Card(randCard());
+    var total = arrCardCalc(cardsObj.userTotal);
+    var newTotal = total[0] + aceCheck(card.toInteger, total[0]);
+
+    var profile = new Profile(message);
+
+    var bet = Number(cardsObj.bet);
+    message.channel.send(`${user.username} drew ${card.val + " " + card.suite}`);
+
+    if (newTotal > 21) {
+        //User busted - end game (loss)
+        profile.add(0 - bet);
+        message.channel.send(`${user.username} busted; Elisif wins, **${user.username} loses**.`);
+    }
+    else if (newTotal == 21 && total[1] == 1) {
+        //User blackjack - end game (win)
+        profile.add(bet * 2);
+        message.channel.send(`${user.username} has blackjack; **${user.username} wins, doubled the winning amount**!`);
+    }
+    else {
+        //User can continue hitting
+        cardsObj.userTotal.push(card);
+
+        new Interface.Interface(message, `${user.username}, hit or stand?\nType \`hit\` or \`stand\`.`, (collected, question) => {
+
+            if (collected.content.toLowerCase() == "hit") {
+                userHit(cardsObj, message)
+            }
+            else if (collected.content.toLowerCase() == "stand") {
+                userStand(cardsObj, message);
+            }
+
+        });
+    }
+
+}
+
+function compHit(cardsObj, message, profile) {
+    var user = message.author;
+
+    var card = new Card(randCard());
+    var userTotal = arrCardCalc(cardsObj.userTotal);
+    var compTotal = arrCardCalc(cardsObj.compTotal);
+    var newTotal = compTotal[0] + aceCheck(card.toInteger, compTotal[0]);
+
+    var bet = Number(cardsObj.bet);
+    message.channel.send(`Elisif drew ${card.val + " " + card.suite}`);
+
+    if (newTotal > 21) {
+        //Computer busted - end game (user win)
+        profile.add(bet);
+        message.channel.send(`Elisif busted; **${user.username} wins**!`);
+    }
+    else if (newTotal >= 17) {
+        //Computer stands
+        if (newTotal == 21 && compTotal[1] == 1) {
+            //Computer has blackjack
+            profile.add(0 - bet);
+            message.channel.send(`Elisif has blackjack; Sif wins, **${user.username} loses**.`);
+        }
+        else if (newTotal > userTotal[0]) {
+            //Computer has larger number - end game (user loss)
+            profile.add(0 - bet);
+            message.channel.send(`Elisif stands with ${newTotal}; Sif wins, **${user.username} loses**.`);
+        }
+        else if (newTotal == userTotal[0]) {
+            //It's a tie
+            message.channel.send(`Elisif stands with ${newTotal}; **It's a tie**.`);
+        }
+        else {
+            //Computer has smaller number - end game (user win)
+            profile.add(bet);
+            message.channel.send(`Elisif stands with ${newTotal}; **${user.username} wins**!`);
         }
     }
-  return msg.edit(embed);
-//write
-})
+    else {
+        //Computer continues hitting
+        cardsObj.compTotal.push(card);
 
-collector.on("end", (reaction, user) => {
-console.log("not collected");
-//write
-})
-                
-   const filter2 = (reaction, user) => {
-	return reaction.emoji.name === '🛑' && user.id === message.author.id;
-};
-const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
-
-collector2.on("collect", (reaction, user) => {
-  console.log("collected");
-    embed.setAuthor(`the testa`)
-          return msg.edit(embed);
-//write
-})
-
-collector.on("end", (reaction, user) => {
-console.log("not collected");
-//write
-})
-        } );
-      
-
-      
-      
-      
-      
-        message.channel.send(embed).then(async msg => {
-         // msg.react("👊")
-          //msg.react("🛑")  
-
-          embed.setAuthor(`as`)
-          return msg.edit(embed);
-        } );
+        setTimeout(() => {
+            compHit(cardsObj, message, profile);
+        }, 1500);
     }
-    }  };
-
-exports.help = {
-    name: "cf1",
-    aliases: ["coinflip","yazıtura"],
-    usage: "cf1 <yazı,tura> <miktar>"
 }
+
+function createCardCollection(bet) {
+    var cardsObj = {
+        userTotal: [],
+        compTotal: [],
+        bet: bet
+    }
+    var userBase = new Card(randCard());
+    var compBase = new Card(["base", "base"]);
+    cardsObj.userTotal.push(userBase);
+    cardsObj.compTotal.push(compBase);
+    return cardsObj;
+}
+
+function startGame(args, message) {
+    var profile = new Profile(message);
+    var bal = profile.getBal();
+
+    var prefix = settings.get(message.guild.id, "prefix");
+
+    if (args[0] && !isNaN(args[0]) && (Number(args[0]) <= Number(bal))) {
+
+        var cardsObj = createCardCollection(args[0]);
+        var starterCard = cardsObj.userTotal[0];
+        message.channel.send(`${message.author.username} started a new blackjack game with $${args[0]}.\n${message.author.username} has ${starterCard.val + " " + starterCard.suite}.`);
+    
+        new Interface.Interface(message, "Type `hit` or `stand` to continue.", (collected, question) => {
+
+            if (collected.content.toLowerCase() == "hit") {
+                userHit(cardsObj, message)
+            }
+            else if (collected.content.toLowerCase() == "stand") {
+                userStand(cardsObj, message);
+            }
+
+        });
+
+    }
+    else {
+        message.channel.send(`Please specify a valid bet that is less than or equal to your current balance.\nEx: \`${prefix}blackjack 500\` starts a game with $500 at stake.`);
+    }
+}
+
+function userStand(cardsObj, message) {
+    message.channel.send(`${message.author} stands with: ${arrCardCalc(cardsObj.userTotal)[0]}.`);
+    var profile = new Profile(message);
+    return compHit(cardsObj, message, profile);
+}
+
+
+var blackjack = {
+    start: startGame
+}
+
+module.exports = new Command("blackjack", (message, args) => {
+
+    blackjack.start(args, message);
+
+}, false, false, "Starts a blackjack card game against the bot; get a higher total to earn your bet, or a total of 21 for double your bet.").attachArguments([
+    {
+        name: "bet",
+        optional: false
+    }
+])
