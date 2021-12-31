@@ -106,6 +106,9 @@ collector.on("collect", (reaction, user) => {
    amount += Math.floor(Math.random() * 14)
    amount2 += Math.floor(Math.random() * 14) 
   if(amount<21)
+    {
+      else if()
+    }
   return msg.edit(embed);
 //write
 })
