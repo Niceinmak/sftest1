@@ -31,17 +31,30 @@ exports.execute = async (client, message, args) => {
               return message.channel.send(embed).then(async msg => {
           msg.react("👊")
           msg.react("🛑")  
+      await msg.react('✅')
+      const filter = (reaction, user) => {
+           return //YOUR FILTER HERE;
+      };
 
-          //embed.setAuthor(`sa`)
-          //return msg.edit(embed);
+      const collector = message.createReactionCollector(filter, { time: 15000 });
+
+      collector.on('collect', (reaction, reactionCollector) => {
+            embed.setAuthor(`sa`)
+          return msg.edit(embed);
+      });
+        
         } );
       
 
-              return message.edit(embed).then(async msg => {
+      
+      
+      
+      
+        message.channel.send(embed).then(async msg => {
          // msg.react("👊")
           //msg.react("🛑")  
 
-          embed.setAuthor(`sa`)
+          embed.setAuthor(`as`)
           return msg.edit(embed);
         } );
     }
