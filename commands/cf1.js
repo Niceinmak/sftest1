@@ -28,7 +28,15 @@ exports.execute = async (client, message, args) => {
              .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
              if(amount<10)
                {
-                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} 5`)
+                 if(amount2<10)
+                   {
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} ${amount2}`)
+                   }
+                 if(amount2==11)
+                   {
+                     amount2=10
+                 embed.addField(`**Kasa [${amount}+?]**        ${user1.username} [20]`,`** Kasa ${amount} **       ${user1.username} ${acards}`)
+                   }
                };
             if(amount==11)
                {
