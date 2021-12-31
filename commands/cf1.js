@@ -22,10 +22,8 @@ exports.execute = async (client, message, args) => {
       
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
+            .addField(`**Kasa [3+?]**        ${user1.username} [20]`,`** Kasa 2 **       ${user1.username} 5`)
             .setFooter(`Oyun devam ediyor`)
-            .setTitle(`${user1.username}`)
-            .addField("API Gecikmesi", `s`)
-            .addField("Client Gecikmesi", `ms`)
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
