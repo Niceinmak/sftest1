@@ -1,7 +1,7 @@
 
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-        let jobs = [
+        let emojies = [
         "🏅",
         "🏆",
         "💶",
@@ -27,7 +27,7 @@ exports.execute = async (client, message, args) => {
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, ${amount3} ile Slot oynadı`, user1.displayAvatarURL())
             .setFooter(`.`)
-            .addField("Slot Oynanıyor","[]  []  []")
+            .addField("Slot Oynanıyor",`[ ]  [ ]  [ ]`)
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
@@ -44,8 +44,13 @@ exports.execute = async (client, message, args) => {
             setTimeout(() => {
               if(amount>50)
                 {
-                  
+                  card1="💯"
                 }
+              else
+              {
+                card1=`${emojies[Math.floor(Math.random() * emojies.length)]}`
+              }
+              embed.setField("Slot Oynanıyor",`[${card1} ]  [ ]  [ ]`)
        //  embed.setAuthor(`sa`)
           embed.setFooter(`.1.Sayı`)
          return msg.edit(embed);
