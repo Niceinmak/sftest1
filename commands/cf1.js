@@ -104,7 +104,8 @@ collector.on("collect", (reaction, user) => {
     embed.setAuthor(`the test`)
           
    amount += Math.floor(Math.random() * 14)
-   amount2 += Math.floor(Math.random() * 14)
+   amount2 += Math.floor(Math.random() * 14) 
+  if(amount<21)
   return msg.edit(embed);
 //write
 })
