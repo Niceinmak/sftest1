@@ -5,6 +5,7 @@ exports.execute = async (client, message, args) => {
   let amount = args[1]
   if (!amount || isNaN(amount)) return message.channel.send('Lütfen geçerli bir miktar giriniz') 
   if(authordata.amount < amount) return message.channel.send('Görünüşe göre senin o kadar paran yok') 
+  if(message.author.id==member.id) return message.channel.send("You **can't** send money to yourself :D")
   await client.eco.transfer(message.author.id, member.id, amount) 
   return message.channel.send(`Gönderme işlemi başarılı **${amount}**💶 parayı ** ${member.user.tag}** kişisine gönderdin.`)
 }
