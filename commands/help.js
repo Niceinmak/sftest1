@@ -10,9 +10,14 @@ exports.execute = async (client, message, args) => {
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-    client.commands.forEach(cmd => {
+  let economyhelp=""
+ /*   client.commands.forEach(cmd => {
         embed.addField(`${cmd.help.name}`, `Komut: ${cmd.help.aliases.join(", ") || "None"}\nKullanım: \`${client.prefix}${cmd.help.usage}\``, true);
+    }); */
+  client.commands.forEach(cmd => {
+        economyhelp+=`**Name:**${cmd.help.name} `;
     });
+  embed.addField(economyhelp)
     return message.channel.send(embed);
 }
 
