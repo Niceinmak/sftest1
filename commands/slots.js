@@ -41,11 +41,8 @@ exports.execute = async (client, message, args) => {
           embed.setFooter(`...`)
          return msg.edit(embed);
               }, 1000);
-           setTimeout(() => {
-       //      embed.fields = null
-       //      return msg.edit(embed);
-              }, 1250);
             setTimeout(() => {
+             embed.fields = [];
               if(amount>=50)
                 {
                   card1="💯"
@@ -55,11 +52,60 @@ exports.execute = async (client, message, args) => {
                 card1=`${emojies[Math.floor(Math.random() * emojies.length)]}`
               }
               
-              embed.addField("Slot Oynanıyor",`[${card1} ]  [ ]  [ ]`)
+              embed.addField("Slot Oynanıyor",`[${card1}]  [ ]  [ ]`)
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`.1.Sayı`)
+          embed.setFooter(`1.Sayı`)
          return msg.edit(embed);
               }, 2000);
+          setTimeout(() => {
+            let amount = Math.floor(Math.random() * 100);
+             embed.fields = [];
+              if(amount>=50)
+                {
+                  card2="💯"
+                }
+              else
+              {
+                card2=`${emojies[Math.floor(Math.random() * emojies.length)]}`
+              }
+              
+              embed.addField("Slot Oynanıyor",`[${card1}]  [${card2}]  [ ]`)
+       //  embed.setAuthor(`sa`)
+          embed.setFooter(`2.Sayı`)
+         return msg.edit(embed);
+              }, 3000);
+           setTimeout(() => {
+            let amount = Math.floor(Math.random() * 100);
+             embed.fields = [];
+              if(amount>=50)
+                {
+                  card3="💯"
+                }
+              else
+              {
+                card3=`${emojies[Math.floor(Math.random() * emojies.length)]}`
+              }
+              
+              embed.addField("Slot Oynanıyor",`[${card1}]  [${card2}]  [${card3}]`)
+       //  embed.setAuthor(`sa`)
+          embed.setFooter(`3.Sayı`)
+         return msg.edit(embed);
+              }, 4000);
+           setTimeout(() => {
+              if(card1==card2===card3)
+                {
+                  embed.addField("Oyun bitti","**Tebrikler,kazandın**")
+                }
+              else
+              {
+               embed.addField("Oyun bitti","**Maalesef kaybettin**")
+              }
+              
+              
+       //  embed.setAuthor(`sa`)
+          embed.setFooter(`Oyun Bitti`)
+         return msg.edit(embed);
+              }, 4000);
         } );
     }
     }  };
