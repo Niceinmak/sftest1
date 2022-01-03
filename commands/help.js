@@ -18,11 +18,8 @@ exports.execute = async (client, message, args) => {
         embed.addField(`${cmd.help.name}`, `Komut: ${cmd.help.aliases.join(", ") || "None"}\nKullanım: \`${client.prefix}${cmd.help.usage}\``, true);
     }); */
   client.commands.forEach(cmd => {
-        economyname+=`${cmd.help.name}`
-        economyname+=`${cmd.help.aliases.join(", ") || "None"}`
-        economyname+=`${client.prefix}${cmd.help.usage}`
-    });
-  embed.addField(economyhelp)
+        embed.addField(`\`${client.prefix}${cmd.help.usage}\``);
+    }); 
     return message.channel.send(embed);
 }
 
