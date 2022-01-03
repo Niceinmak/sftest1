@@ -2,10 +2,10 @@ const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
-        .setAuthor("Komutlar")
-        .setTitle("Sofait Bot Komutları")
+        .setAuthor("Commands")
+        .setTitle("Sofait Bot Commands")
      //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
-        .setDescription(`Komut Sayısı: ${client.commands.size}`)
+        .setDescription(`Total Commands: ${client.commands.size}`)
         .setColor("BLURPLE")
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
@@ -25,7 +25,7 @@ exports.execute = async (client, message, args) => {
     economyname+=` \`${cmd.help.name}\` `
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(`**Economy💰**\n${economyname}`);
+  embed.setDescription(`**For more information about commands** \`q help <command>\`\n\n**Economy💰**\n${economyname}`);
     return message.channel.send(embed);
     }
   else
@@ -47,8 +47,14 @@ exports.execute = async (client, message, args) => {
         }
       if(counter>0)
         {
-         let cmddata=client.commands.get(client.aliases.get(argString[i].commandName))
-        embed.setDescription(`${client.prefix}${cmddata}`);
+          let cmdcounter=0
+          client.commands.forEach(cmd => {
+            if(counter==cmdcounter+1)
+              {
+                embed.setDescription(`\`${client.prefix}${cmd.help.usage}\``);
+              }
+        cmdcounter++
+    });
         }
       else
         {
