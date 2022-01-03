@@ -43,7 +43,7 @@ exports.execute = async (client, message, args) => {
               }, 1000);
             setTimeout(() => {
              embed.fields = [];
-              if(amount>=50)
+              if(amount>=40)
                 {
                   card1="💯"
                 }
@@ -60,7 +60,7 @@ exports.execute = async (client, message, args) => {
           setTimeout(() => {
             let amount = Math.floor(Math.random() * 100);
              embed.fields = [];
-              if(amount>=50)
+              if(amount>=40)
                 {
                   card2="💯"
                 }
@@ -92,13 +92,15 @@ exports.execute = async (client, message, args) => {
          return msg.edit(embed);
               }, 4000);
            setTimeout(() => {
-              if(card1==card2===card3)
+              if(card1==card2 && card1==card3 && card2==card3)
                 {
-                  embed.addField("Oyun bitti","**Tebrikler,kazandın**")
+                  let data = client.eco.addMoney(message.author.id, parseInt(amount3*3));
+                  embed.addField("Oyun bitti",`**Tebrikler,${amount3*3}💶 kazandın**`)
                 }
               else
               {
-               embed.addField("Oyun bitti","**Maalesef kaybettin**")
+                let data = client.eco.removeMoney(message.author.id, parseInt(amount3));
+               embed.addField("Oyun bitti",`**Maalesef ${amount3}💶 kaybettin**`)
               }
               
               
