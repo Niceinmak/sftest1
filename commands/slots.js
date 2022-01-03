@@ -40,8 +40,11 @@ exports.execute = async (client, message, args) => {
        //  embed.setAuthor(`sa`)
           embed.setFooter(`...`)
          return msg.edit(embed);
-                  embed.fields = null
               }, 1000);
+           setTimeout(() => {
+       //      embed.fields = null
+       //      return msg.edit(embed);
+              }, 1250);
             setTimeout(() => {
               if(amount>=50)
                 {
@@ -63,6 +66,6 @@ exports.execute = async (client, message, args) => {
 
 exports.help = {
     name: "slots",
-    aliases: ["coinflip","yazıtura"],
+    aliases: ["slots"],
     usage: "slots <miktar>"
 }
