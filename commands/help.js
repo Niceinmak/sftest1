@@ -37,7 +37,8 @@ exports.execute = async (client, message, args) => {
     }); 
   var argString = economyname.substring(1).split(' ');
       let counter=0
-      for (let i = 0; i < client.commands.size; i++) {
+      for (var i = 0; i <= client.commands.size; i++) {
+        embed.addField(argString[i])
       if(amount3==argString[i])
       {
         counter++
@@ -45,7 +46,7 @@ exports.execute = async (client, message, args) => {
         }
       if(counter>0)
         {
-        embed.setDescription(`**Economy💰**\n${economyname},${counter}`);
+        embed.setDescription(`**Economy💰**\n${economyname},`);
         }
           
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
