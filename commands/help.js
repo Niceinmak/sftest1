@@ -33,13 +33,13 @@ exports.execute = async (client, message, args) => {
 
         client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
-    economyname+=` \`${cmd.help.name}\` `
+    economyname+=` ${cmd.help.name}`
     }); 
   var argString = economyname.substring(1).split(' ');
       let counter=0
       let count=""
       for (var i = 0; i <= client.commands.size; i++) {
-        count+=`${amount3},${}`
+        count+=argString[i]
       if(amount3==argString[i])
       {
         counter++
@@ -49,7 +49,10 @@ exports.execute = async (client, message, args) => {
         {
         embed.setDescription(`**Economy💰**\n${economyname},`);
         }
-          embed.addField(`${count}`)
+      else
+        {
+          embed.setDescription(`The command you were looking for was not found`);
+        }
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
       
       return message.channel.send(embed);
