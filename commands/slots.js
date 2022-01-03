@@ -16,18 +16,18 @@ exports.execute = async (client, message, args) => {
     let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
     let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
     const user1 = message.mentions.users.first() || message.member.user
-    if (playtime.onCooldown) return message.reply(`**Biraz yavaş ol,${playtime.time.seconds} saniye daha bekle.**`);
+    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
   //--------------------------------------------
-    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Lütfen Sayı Giriniz`);
+    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
   else{
-    if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
+    if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
     else
     {
       
              const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, ${amount3} ile Slot oynadı`, user1.displayAvatarURL())
+             .setAuthor(`${user1.username},Played Slots With ${amount3}💶`, user1.displayAvatarURL())
             .setFooter(`.`)
-            .addField("Slot Oynanıyor",`[ ]  [ ]  [ ]`)
+            .addField("Played Slots",`[ ]  [ ]  [ ]`)
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
@@ -43,7 +43,7 @@ exports.execute = async (client, message, args) => {
               }, 1000);
             setTimeout(() => {
              embed.fields = [];
-              if(amount>=40)
+              if(amount>=45)
                 {
                   card1="💯"
                 }
@@ -52,15 +52,15 @@ exports.execute = async (client, message, args) => {
                 card1=`${emojies[Math.floor(Math.random() * emojies.length)]}`
               }
               
-              embed.addField("Slot Oynanıyor",`[${card1}]  [ ]  [ ]`)
+              embed.addField("Played Slots",`[${card1}]  [ ]  [ ]`)
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`1.Sayı`)
+          embed.setFooter(`Number 1`)
          return msg.edit(embed);
               }, 2000);
           setTimeout(() => {
             let amount = Math.floor(Math.random() * 100);
              embed.fields = [];
-              if(amount>=40)
+              if(amount>=45)
                 {
                   card2="💯"
                 }
@@ -69,9 +69,9 @@ exports.execute = async (client, message, args) => {
                 card2=`${emojies[Math.floor(Math.random() * emojies.length)]}`
               }
               
-              embed.addField("Slot Oynanıyor",`[${card1}]  [${card2}]  [ ]`)
+              embed.addField("Played Slots",`[${card1}]  [${card2}]  [ ]`)
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`2.Sayı`)
+          embed.setFooter(`Number 2`)
          return msg.edit(embed);
               }, 3000);
            setTimeout(() => {
@@ -86,26 +86,26 @@ exports.execute = async (client, message, args) => {
                 card3=`${emojies[Math.floor(Math.random() * emojies.length)]}`
               }
               
-              embed.addField("Slot Oynanıyor",`[${card1}]  [${card2}]  [${card3}]`)
+              embed.addField("Played Slots",`[${card1}]  [${card2}]  [${card3}]`)
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`3.Sayı`)
+          embed.setFooter(`Number 3`)
          return msg.edit(embed);
               }, 4000);
            setTimeout(() => {
               if(card1==card2 && card1==card3 && card2==card3)
                 {
                   let data = client.eco.addMoney(message.author.id, parseInt(amount3*3));
-                  embed.addField("Oyun bitti",`**Tebrikler,${amount3*3}💶 kazandın**`)
+                  embed.addField("Game Finished",`**Congrulations,you win ${amount3*3}💶**`)
                 }
               else
               {
                 let data = client.eco.removeMoney(message.author.id, parseInt(amount3));
-               embed.addField("Oyun bitti",`**Maalesef ${amount3}💶 kaybettin**`)
+               embed.addField("Game Finished",`**Sorry,you lost ${amount3}💶**`)
               }
               
               
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`Oyun Bitti`)
+          embed.setFooter(`Game Finished`)
          return msg.edit(embed);
               }, 4000);
         } );
@@ -114,6 +114,6 @@ exports.execute = async (client, message, args) => {
 
 exports.help = {
     name: "slots",
-    aliases: ["slots"],
-    usage: "slots <miktar>"
+    aliases: ["slot"],
+    usage: "slots <amount>"
 }
