@@ -42,12 +42,12 @@ exports.execute = async (client, message, args) => {
         count+=argString[i]
       if(amount3==argString[i])
       {
-        counter++
+        embed.setDescription(`${client.prefix}${argString[i].help.usage}`);
        } 
         }
       if(counter>0)
         {
-        embed.setDescription(`${client.prefix}${amount3.help.usage}`);
+        
         }
       else
         {
