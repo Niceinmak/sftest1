@@ -47,7 +47,7 @@ exports.execute = async (client, message, args) => {
         }
       if(counter>0)
         {
-        embed.setDescription(`**Economy💰**\n${economyname},`);
+        embed.setDescription(`${client.prefix}${amount3.help.usage}`);
         }
       else
         {
