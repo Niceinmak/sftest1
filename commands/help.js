@@ -1,7 +1,22 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
-    const embed = new MessageEmbed()
+ /*   const embed = new MessageEmbed()
+        .setAuthor("Commands")
+        .setTitle("Sofait Bot Commands")
+     //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
+        .setDescription(`Total Commands: ${client.commands.size}`)
+        .setColor("BLURPLE")
+        .setTimestamp()
+        .setThumbnail(client.user.displayAvatarURL)
+        .setFooter(message.author.tag, message.author.displayAvatarURL);
+    client.commands.forEach(cmd => {
+        embed.addField(`${cmd.help.name}`, `Aliases: ${cmd.help.aliases.join(", ") || "None"}\nUsage: \`${client.prefix}${cmd.help.usage}\``, true);
+    });
+    return message.channel.send(embed); */
+  
+  //------------------------------------------------------------------------------------------------------------
+      const embed = new MessageEmbed()
         .setAuthor("Commands")
         .setTitle("Sofait Bot Commands")
      //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
@@ -25,7 +40,7 @@ exports.execute = async (client, message, args) => {
     economyname+=` \`${cmd.help.name}\` `
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(`**For more information about commands** \`q help <command>\`\n\n**Economy💰**\n${economyname}`);
+  embed.setDescription(`**For more information about commands** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}`);
     return message.channel.send(embed);
     }
   else
@@ -37,21 +52,24 @@ exports.execute = async (client, message, args) => {
     }); 
   var argString = economyname.substring(1).split(' ');
       let counter=0
+      let counter2=0
       let count=""
-      for (var i = 0; i <= client.commands.size; i++) {
+      for (var i = 0; i < client.commands.size; i++) {
         count+=argString[i]
       if(amount3==argString[i])
       {
         counter++
+        break;
        } 
+        counter2++
         }
       if(counter>0)
         {
           let cmdcounter=0
           client.commands.forEach(cmd => {
-            if(counter==cmdcounter+1)
+            if(counter2==cmdcounter)
               {
-                embed.setDescription(`\`${client.prefix}${cmd.help.usage}\``);
+                embed.setDescription(`**Usage:**\`${client.prefix}${cmd.help.usage}\`\n**Aliases:**\`${cmd.help.aliases.join(", ") || "None"}\``);
               }
         cmdcounter++
     });
