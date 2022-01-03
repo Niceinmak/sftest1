@@ -23,17 +23,34 @@ exports.execute = async (client, message, args) => {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
     economyname+=` \`${cmd.help.name}\` `
-    economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
+  //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
   embed.setDescription(`**Economy💰**\n${economyname}`);
     return message.channel.send(embed);
     }
   else
     {
+
         client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
     economyname+=` \`${cmd.help.name}\` `
     }); 
+  var argString = economyname.substring(1).split(' ');
+      let counter=0
+      for (let i = 0; i < client.commands.size; i++) {
+      if(amount3==argString[i])
+      {
+        counter++
+       } 
+        }
+      if(counter>0)
+        {
+        embed.setDescription(`**Economy💰**\n${economyname},${counter}`);
+        }
+          
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+      
+      return message.channel.send(embed);
     }
 }
 
