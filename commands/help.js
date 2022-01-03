@@ -18,8 +18,10 @@ exports.execute = async (client, message, args) => {
         embed.addField(`${cmd.help.name}`, `Komut: ${cmd.help.aliases.join(", ") || "None"}\nKullanım: \`${client.prefix}${cmd.help.usage}\``, true);
     }); */
   client.commands.forEach(cmd => {
-        embed.addField(`\`${client.prefix}${cmd.help.usage}\``);
+     //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
+    economyfull+=`\`${client.prefix}${cmd.help.usage}\``
     }); 
+  embed.setDescription(economyfull);
     return message.channel.send(embed);
 }
 
