@@ -14,15 +14,27 @@ exports.execute = async (client, message, args) => {
   let economyaliases=""
   let economyusage=""
   let economyfull=""
+  let amount3 = args[0]
  /*   client.commands.forEach(cmd => {
         embed.addField(`${cmd.help.name}`, `Komut: ${cmd.help.aliases.join(", ") || "None"}\nKullanım: \`${client.prefix}${cmd.help.usage}\``, true);
     }); */
+  if(amount3==null)
+    {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
-    economyfull+=`\`${client.prefix}${cmd.help.usage}\``
+    economyname+=` \`${cmd.help.name}\` `
+    economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(economyfull);
+  embed.setDescription(`**Economy💰**\n${economyname}`);
     return message.channel.send(embed);
+    }
+  else
+    {
+        client.commands.forEach(cmd => {
+     //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
+    economyname+=` \`${cmd.help.name}\` `
+    }); 
+    }
 }
 
 exports.help = {
