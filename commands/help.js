@@ -41,17 +41,17 @@ exports.execute = async (client, message, args) => {
       {
         economyname+=` \`${cmd.help.name}\` ` 
       }
-    else if(cmd.help.name=="addmoney" && cmd.help.name=="setmoney")
+    else if(cmd.help.name!="addmoney" && cmd.help.name!="setmoney")
       {
-        onlyadminsname+=` \`${cmd.help.name}\` ` 
+        utilityname+=` \`${cmd.help.name}\` ` 
       }
     else
       {
-       utilityname+=` \`${cmd.help.name}\` ` 
+       onlyadminsname+=` \`${cmd.help.name}\` ` 
       }
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}\n\n**Only Admins **🚫\n${onlyadminsname}\n\n**Utility**🔧\n${utilityname}`);
+  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}\n\n**Only Admins **🚫\nasdasdda${onlyadminsname}\n\n**Utility**🔧\n${utilityname}`);
     return message.channel.send(embed);
     }
   else
