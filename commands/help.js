@@ -40,7 +40,7 @@ exports.execute = async (client, message, args) => {
     economyname+=` \`${cmd.help.name}\` `
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(`**For more information about commands** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}`);
+  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}`);
     return message.channel.send(embed);
     }
   else
