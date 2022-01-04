@@ -37,17 +37,17 @@ exports.execute = async (client, message, args) => {
     {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
-    if(cmd.help.name!="prefix" && cmd.help.name!="ping" && cmd.help.name!="uptime")
+    if(cmd.help.name=="prefix" && cmd.help.name=="ping" && cmd.help.name=="uptime")
       {
         economyname+=` \`${cmd.help.name}\` ` 
       }
-    else if(cmd.help.name!="addmoney" && cmd.help.name!="setmoney")
+    else if(cmd.help.name=="addmoney")
       {
-        utilityname+=` \`${cmd.help.name}\` ` 
+        onlyadminsname+=` \`${cmd.help.name}\` ` 
       }
     else
       {
-       onlyadminsname+=` \`${cmd.help.name}\` ` 
+       utilityname+=` \`${cmd.help.name}\` ` 
       }
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
