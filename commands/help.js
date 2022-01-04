@@ -37,21 +37,21 @@ exports.execute = async (client, message, args) => {
     {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
-    if(cmd.help.name=="prefix" && cmd.help.name=="ping" && cmd.help.name=="uptime")
+    if(cmd.help.name=="prefix" || cmd.help.name=="ping" || cmd.help.name=="uptime")
       {
-        economyname+=` \`${cmd.help.name}\` ` 
+        utilityname+=` \`${cmd.help.name}\` ` 
       }
-    else if(cmd.help.name=="addmoney")
+    else if(cmd.help.name=="addmoney" || cmd.help.name=="setmoney")
       {
         onlyadminsname+=` \`${cmd.help.name}\` ` 
       }
     else
       {
-       utilityname+=` \`${cmd.help.name}\` ` 
+       economyname+=` \`${cmd.help.name}\` ` 
       }
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}\n\n**Only Admins **🚫\nasdasdda${onlyadminsname}\n\n**Utility**🔧\n${utilityname}`);
+  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}\n\n**Only Admins **🚫\n${onlyadminsname}\n\n**Utility**🔧\n${utilityname}`);
     return message.channel.send(embed);
     }
   else
