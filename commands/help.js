@@ -27,8 +27,7 @@ exports.execute = async (client, message, args) => {
         .setFooter(message.author.tag, message.author.displayAvatarURL);
   let economyname=""
   let economyaliases=""
-  let economyusage=""
-  let economyfull=""
+  let utilityname=""
   let amount3 = args[0]
  /*   client.commands.forEach(cmd => {
         embed.addField(`${cmd.help.name}`, `Komut: ${cmd.help.aliases.join(", ") || "None"}\nKullanım: \`${client.prefix}${cmd.help.usage}\``, true);
@@ -37,10 +36,17 @@ exports.execute = async (client, message, args) => {
     {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
-    economyname+=` \`${cmd.help.name}\` `
+    if(cmd!="prefix")
+      {
+        economyname+=` \`${cmd.help.name}\` ` 
+      }
+    else
+      {
+       utilityname+=` \`${cmd.help.name}\` ` 
+      }
   //  economyusage+=` \`${client.prefix}${cmd.help.usage}\` `
     }); 
-  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}`);
+  embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix} help <command>\`\n\n**Economy💰**\n${economyname}\n\n**Utility**🔧\n${utilityname}`);
     return message.channel.send(embed);
     }
   else
