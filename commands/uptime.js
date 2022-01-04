@@ -8,7 +8,7 @@ let hours = Math.floor(totalSeconds / 3600);
 totalSeconds %= 3600;
 let minutes = Math.floor(totalSeconds / 60);
 let seconds = Math.floor(totalSeconds % 60);
-    return message.channel.send(`bot running time 1 hour 3 hours 5 seconds`);
+    return message.channel.send(`** ⛔${message.author.tag} | Bot Running Time \`${days} hour ${hours} hours ${minutes} minutes  ${seconds} seconds**`);
 }
 
 exports.help = {
