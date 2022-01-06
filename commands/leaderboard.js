@@ -11,7 +11,7 @@ exports.execute = async (client, message, args) => {
         .setThumbnail(client.users.cache.get(leaderboard[0].id) ? client.users.cache.get(leaderboard[0].id).displayAvatarURL : "https://cdn.discordapp.com/avatars/603948445362946084/a_f61398e073d78ae104e32b0517c891c3.gif")
         .setTimestamp();
     leaderboard.forEach(u => {
-        embed.addField(`${u.position}. ${client.users.cache.get(u.id) ? client.users.cache.get(u.id).tag : `${client.users.cache.get(u.name)}`}`, `${u.money} 💸`);
+        embed.addField(`${u.position}. ${client.users.cache.get(u.id) ? client.users.cache.get(u.id).tag : "Unknown#0000"}`, `${u.money} 💸`);
     });
     return message.channel.send(embed);
 }
