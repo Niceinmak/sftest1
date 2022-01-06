@@ -3,8 +3,8 @@ const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
   let data=message.client.guilds.cache.map((g) => g.memberCount).reduce((a, c) => a + c)
     const embed = new MessageEmbed()
-        .setAuthor("Commands")
-        .setTitle("Sofait Bot Commands")
+        .setAuthor("Privacy Policy")
+        .setTitle("EcoVerse Privacy Policy")
      //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
         .setDescription(`**What information is stored?**
 If you have any money, your user ID is stored. Your user ID can be stored multiple times for money..
@@ -23,9 +23,9 @@ You can come to our discord server to learn more: https://discord.gg/2n9Zg9BGgY
 If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGgY
 
 
-Note: We reserve the right to change this without notifying our users.
+*Note: We reserve the right to change this without notifying our users.*
 
-This policy was last updated January 6th, 2022.`)
+\`This policy was last updated January 6th, 2022.\``)
         .setColor("BLURPLE")
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)

@@ -18,7 +18,7 @@ exports.execute = async (client, message, args) => {
   //------------------------------------------------------------------------------------------------------------
       const embed = new MessageEmbed()
         .setAuthor("Commands")
-        .setTitle("Sofait Bot Commands")
+        .setTitle("EcoVerse Bot Commands")
      //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
         .setDescription(`Total Commands: ${client.commands.size}`)
         .setColor("BLURPLE")
@@ -29,6 +29,18 @@ exports.execute = async (client, message, args) => {
   let economyaliases=""
   let utilityname=""
   let onlyadminsname=""
+  let utilitycommands = [
+        "prefix",
+        "ping",
+        "uptime",
+        "privacy"
+    ];
+  let onlyadminscommands = [
+        "prefix",
+        "ping",
+        "uptime",
+        "privacy"
+    ];
   let amount3 = args[0]
  /*   client.commands.forEach(cmd => {
         embed.addField(`${cmd.help.name}`, `Komut: ${cmd.help.aliases.join(", ") || "None"}\nKullanım: \`${client.prefix}${cmd.help.usage}\``, true);
@@ -37,6 +49,12 @@ exports.execute = async (client, message, args) => {
     {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
+    for (var i = 0; i < utilitycommands.lenght; i++) {
+      if(cmd.help.name=="prefix")
+      {
+        utilityname+=` \`${cmd.help.name}\` ` 
+      }
+    }
     if(cmd.help.name=="prefix" || cmd.help.name=="ping" || cmd.help.name=="uptime")
       {
         utilityname+=` \`${cmd.help.name}\` ` 
