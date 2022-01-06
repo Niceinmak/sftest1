@@ -19,7 +19,7 @@ exports.execute = async (client, message, args) => {
       const embed = new MessageEmbed()
         .setAuthor("Commands")
         .setTitle("EcoVerse Bot Commands")
-     //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
+        .setURL("https://discord.com/oauth2/authorize?client_id=924311092468015116&scope=bot&permissions=0")
         .setDescription(`Total Commands: ${client.commands.size}`)
         .setColor("BLURPLE")
         .setTimestamp()
@@ -36,10 +36,8 @@ exports.execute = async (client, message, args) => {
         "privacy"
     ];
   let onlyadminscommands = [
-        "prefix",
-        "ping",
-        "uptime",
-        "privacy"
+        "addmoney",
+        "setmoney"
     ];
   let amount3 = args[0]
  /*   client.commands.forEach(cmd => {
@@ -49,20 +47,22 @@ exports.execute = async (client, message, args) => {
     {
   client.commands.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
+    let count=0
     for (var i = 0; i < utilitycommands.length; i++) {
-     
-        utilityname+=` \`${cmd.help.name}\` ` 
-      
-    }
-   /* if(cmd.help.name=="prefix" || cmd.help.name=="ping" || cmd.help.name=="uptime")
+     if(cmd.help.name==utilitycommands[i])
       {
         utilityname+=` \`${cmd.help.name}\` ` 
-      } */
-     if(cmd.help.name=="addmoney" || cmd.help.name=="setmoney")
+        count++;
+      }
+    }
+     for (var i = 0; i < onlyadminscommands.length; i++) {
+     if(cmd.help.name==onlyadminscommands[i])
       {
         onlyadminsname+=` \`${cmd.help.name}\` ` 
+        count++;
       }
-    else
+    }
+    if(count==0)
       {
        economyname+=` \`${cmd.help.name}\` ` 
       }
