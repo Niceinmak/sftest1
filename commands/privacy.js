@@ -1,10 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { MessageActionRow, MessageButton } = require('discord.js');
 exports.execute = async (client, message, args) => {
-const button = new MessageButton()
-         .setLabel("test")
-         .setStyle("green")
-         .setID("btn1")
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
         .setTitle("EcoVerse Privacy Policy")
@@ -33,7 +29,7 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-    return message.channel.send(embed,button);
+   await message.reply({ content: 'Pong!', components: [row]});
 }
 
 exports.help = {
