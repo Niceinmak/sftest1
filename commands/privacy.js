@@ -1,5 +1,5 @@
-const { MessageEmbed } = require("discord.js");
 const { MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -29,6 +29,15 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
+  
+  
+  const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId('primary')
+					.setLabel('Primary')
+					.setStyle('PRIMARY'),
+			);
    await message.reply({ content: 'Pong!', components: [row]});
 }
 
