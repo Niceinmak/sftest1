@@ -30,7 +30,6 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
   
-  
   const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
