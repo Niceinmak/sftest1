@@ -1,7 +1,6 @@
-const { MessageEmbed } = require("discord.js");
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed,MessageActionRow, MessageButton  } = require("discord.js");
 exports.execute = async (client, message, args) => {
-   	const row = new MessageActionRow()
+	const row = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
 					.setCustomId('primary')
