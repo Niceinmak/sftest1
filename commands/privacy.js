@@ -1,12 +1,10 @@
-const { MessageEmbed,MessageActionRow, MessageButton  } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const { MessageActionRow, MessageButton } = require('discord.js');
 exports.execute = async (client, message, args) => {
-	const row = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('primary')
-					.setLabel('Primary')
-					.setStyle('PRIMARY'),
-			);
+const button = new MessageButton()
+         .setLabel("test")
+         .setStyle("green")
+         .setID("btn1")
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
         .setTitle("EcoVerse Privacy Policy")
@@ -35,7 +33,7 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-    return message.channel.send(embed,row);
+    return message.channel.send(embed,button);
 }
 
 exports.help = {
