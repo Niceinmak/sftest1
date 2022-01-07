@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-
+const { MessageActionRow, MessageButton } = require('discord.js');
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -21,15 +21,22 @@ You can come to our discord server to learn more: https://discord.gg/2n9Zg9BGgY
 **How to Remove your data.**
 If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGgY
 
-
 *Note: We reserve the right to change this without notifying our users.*
 
+*From the moment you add this bot to the server, you are deemed to have accepted the privacy policy .*
 \`This policy was last updated January 6th, 2022.\``)
         .setColor("BLURPLE")
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-    return message.channel.send(embed);
+  const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId('primary')
+					.setLabel('I agree')
+					.setStyle('PRIMARY'),
+			);
+   await message.channel.send({ephemeral: true, embeds: [embed], components: [row] });
   /*
     FARKLI KOMUTLAR DİZİNİ
 
