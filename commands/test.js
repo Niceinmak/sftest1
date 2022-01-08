@@ -1,10 +1,17 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
-  let data=message.client.guilds.cache.map((g) => g.memberCount).reduce((a, c) => a + c)
-    const embed = new MessageEmbed()
-        .setTitle(`${message.client.guilds.cache.map((g) => g.memberCount).reduce((a, c) => a + c)}`)
-    return message.channel.send(embed);
+      const { MessageEmbed } = require('discord.js')
+ const embed = new MessageEmbed()
+ .setColor("RED")
+    .setTitle('Botu Ekle')
+    .setDescription("**Maximus Bot [Ekle](https://discord.com/oauth2/authorize?client_id=837264993131954217&scope=bot&permissions=8)**")
+  .setFooter(`*                                           ${client.user.username} | © 2021                                                    *`)
+ .setImage("https://cdn.discordapp.com/attachments/852867627688919060/879312111694663680/unknown.png")
+
+ 
+
+    message.channel.send({ embeds: [embed] })
   /*
     FARKLI KOMUTLAR DİZİNİ
 

@@ -17,6 +17,7 @@
     "discordjs"
   ],
   "dependencies": {
+    "discord-buttons": "^4.0.0-deprecated",
     "discord.js": "^13.5.1",
     "quick.eco": "^2.0.3"
   },
