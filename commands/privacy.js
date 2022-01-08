@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const { MessageButton } = require('discord-buttons') // npm i discord-buttons
+const disbut = require('discord-buttons');
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -29,7 +29,7 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-  let button = new MessageButton()
+  let button = new disbut.MessageButton()
   .setStyle('red')
   .setLabel('My First Button!') 
   .setID('click_to_function') 
@@ -37,11 +37,11 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
   
  message.channel.send({ buttons: [button], embed: embed }).then(message => { // Send Embed And Buttons
                 const filter = (button) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
-                const collector = message.channel.createButtonCollector(filter, { time: 30000 }) // 30 Seconds To Click
-                collector.on('collect', async button => {
-                  message.channel.send(`${button.id}`)
+                const collector = message.createButtonCollector(filter, { time: 5000 }) // 30 Seconds To Click
+                collector.on('collect', async b => {
+                  message.channel.send(`${b.id}`)
                 })
-
+ collector.on('end', collected => console.log(`Collected ${collected.size} items`));
             })
   /*
     FARKLI KOMUTLAR DİZİNİ
