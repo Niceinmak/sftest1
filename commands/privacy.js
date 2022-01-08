@@ -31,7 +31,9 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
   let buttonagree = new MessageButton()
-  .setStyle('red')
+  .setStyle('1')
+  // .setStyle('red')
+  // .setStyle('blue')
   .setLabel('I Agree!') 
   .setID('1') 
   .setDisabled(false);
@@ -43,19 +45,19 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
   
  message.channel.send({ buttons: [buttonagree, buttonurl], embed: embed }).then(message => { // Send Embed And Buttons
                 const filter = (button) => button.clicker.user.id === userid // To Check If User Who Clicked Button Is Same As Who Used Command
-                const collector = message.createButtonCollector(filter, { time: 5000 }) // 30 Seconds To Click
+                const collector = message.createButtonCollector(filter, { time: 300000 }) // 30 Seconds To Click
                 collector.on('collect', async button => {
                   if(button.id === '1') { // If User Click Yes Button
                        button.defer()
                   buttonagree.setDisabled(true);
-                    embed.setAuthor("**Thanks**")
+                    embed.setAuthor("Thanks")
                   embed.setDescription("**You have accepted the privacy policy!**");
                   message.edit({ buttons: [buttonagree, buttonurl], embed: embed })
                   
                     }
                   
                 })
- collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+ //collector.on('end', collected => console.log(`Collected ${collected.size} items`));
             })
   /*
     FARKLI KOMUTLAR DİZİNİ
