@@ -38,9 +38,8 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
  message.channel.send({ buttons: [button], embed: embed }).then(message => { // Send Embed And Buttons
                 const filter = (button) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
                 const collector = message.createButtonCollector(filter, { time: 30000 }) // 30 Seconds To Click
-                   message.channel.send(`${message.author.id},${button.clicker.user.id}`)
                 collector.on('collect', async b => {
-                  message.channel.send("tm")
+                  message.channel.send(`${b.id}`)
                 })
 
             })
