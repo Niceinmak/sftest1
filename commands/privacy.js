@@ -41,8 +41,7 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
   .setDisabled(false);
   
  message.channel.send({ buttons: [button, button1], embed: embed }).then(message => { // Send Embed And Buttons
-                 message.channel.send(`${button.clicker.user.id}`)
-                const filter = (buttons) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
+                function filter(b){  console.log(`Collected ${b.clicker.user.id} items${message.author.id}`)} // To Check If User Who Clicked Button Is Same As Who Used Command
                 const collector = message.createButtonCollector(filter, { time: 10000 }) // 30 Seconds To Click
                 collector.on('collect', async b => {
                   message.channel.send(`${b.id}`)
