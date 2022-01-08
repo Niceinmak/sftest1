@@ -19,8 +19,6 @@ const client = new Client({
     Intents.FLAGS.DIRECT_MESSAGE_TYPING
   ]
 });
-const disbut = require('discord-buttons');
-disbut(client);
 const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
