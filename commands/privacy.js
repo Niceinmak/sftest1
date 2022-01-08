@@ -35,13 +35,14 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
   .setID('1') 
   .setDisabled(false);
     let button1 = new MessageButton()
-  .setStyle('gray')
-  .setLabel('My First Button!') 
-  .setID('2') 
+  .setStyle('url')
+    .setURL("https://discord.gg/2n9Zg9BGgY")
+  .setLabel('Support Server') 
   .setDisabled(false);
   
  message.channel.send({ buttons: [button, button1], embed: embed }).then(message => { // Send Embed And Buttons
-                const filter = (button) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
+                 message.channel.send(`${button.clicker.user.id}`)
+                const filter = (buttons) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
                 const collector = message.createButtonCollector(filter, { time: 10000 }) // 30 Seconds To Click
                 collector.on('collect', async b => {
                   message.channel.send(`${b.id}`)
