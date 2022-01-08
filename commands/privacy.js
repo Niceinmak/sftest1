@@ -13,7 +13,7 @@ Money data, market data, user id and similar things are stored on our servers.
 Badge data is publically available. All other data is only available to Quacky Administrators.
 
 **Third Party Data Sharing**
-Money data is public. All other data is only available to Quacky Administrators..
+Money data is public. All other data is only available to EcoVerse Administrators..
 
 **Questions and Concerns.**
 You can come to our discord server to learn more: https://discord.gg/2n9Zg9BGgY
@@ -34,26 +34,13 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
   .setLabel('My First Button!') 
   .setID('click_to_function') 
   .setDisabled(false);
-  message.channel.send({
-	button: button,
-  	embed: embed
-})
+  
  message.channel.send({ buttons: [button], embed: embed }).then(message => { // Send Embed And Buttons
-                const filter = (button) => button.clicker.user.id === member.id // To Check If User Who Clicked Button Is Same As Who Used Command
+                const filter = (button) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
                 const collector = message.createButtonCollector(filter, { time: 30000 }) // 30 Seconds To Click
-
+                   message.channel.send(`${message.author.id},${button.clicker.user.id}`)
                 collector.on('collect', async b => {
-                    b.defer()
-                    if(b.id === 'yes') { // If User Click Yes Button
-                        member.setNickname(name)
-                        b.channel.send(`Successfully Chnaged NickName To **${name}**`)
-                        db.set(`name-time_${message.guild.id}_${member.id}`, Date.now())
-                        collector.stop()
-                    } else if(b.id === 'no') { // If User Click No Button
-                        b.channel.send(`Request Cancelled`)
-                        db.set(`name-time_${message.guild.id}_${member.id}`, Date.now())
-                        collector.stop()
-                    }
+                  message.channel.send("tm")
                 })
 
             })
