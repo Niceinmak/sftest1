@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const disbut = require('discord-buttons');
+const { MessageButton } = require('discord-buttons')
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -29,15 +29,20 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-  let button = new disbut.MessageButton()
+  let button = new MessageButton()
   .setStyle('red')
   .setLabel('My First Button!') 
-  .setID('click_to_function') 
+  .setID('1') 
+  .setDisabled(false);
+    let button1 = new MessageButton()
+  .setStyle('gray')
+  .setLabel('My First Button!') 
+  .setID('2') 
   .setDisabled(false);
   
- message.channel.send({ buttons: [button], embed: embed }).then(message => { // Send Embed And Buttons
+ message.channel.send({ buttons: [button, button1], embed: embed }).then(message => { // Send Embed And Buttons
                 const filter = (button) => button.clicker.user.id === message.author.id // To Check If User Who Clicked Button Is Same As Who Used Command
-                const collector = message.createButtonCollector(filter, { time: 5000 }) // 30 Seconds To Click
+                const collector = message.createButtonCollector(filter, { time: 10000 }) // 30 Seconds To Click
                 collector.on('collect', async b => {
                   message.channel.send(`${b.id}`)
                 })
