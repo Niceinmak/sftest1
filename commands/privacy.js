@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-//const { MessageButton } = require('discord-buttons')
+const { MessageButton } = require('discord-buttons')
 exports.execute = async (client, message, args) => {
   let userid=message.author.id
     const embed = new MessageEmbed()
@@ -49,7 +49,7 @@ As soon as you add the bot to the server, you are deemed to have accepted the pr
                 const collector = message.createButtonCollector(filter, { time: 300000 }) // 30 Seconds To Click
                 collector.on('collect', async button => {
                   if(button.id === '1') { // If User Click Yes Button
-                       button.defer()
+                   button.reply.defer()
                   buttonagree.setDisabled(true);
                     embed.setAuthor("Thanks")
                   embed.setDescription("**You have accepted the privacy policy!**");
