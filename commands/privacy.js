@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-
+const disbut = require('discord-buttons');
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -29,7 +29,15 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-    return message.channel.send(embed,button);
+  let button = new disbut.MessageButton()
+  .setStyle('red')
+  .setLabel('My First Button!') 
+  .setID('click_to_function') 
+  .setDisabled(false);
+  message.channel.send({
+	button: button,
+  	embed: embed
+})
   /*
     FARKLI KOMUTLAR DİZİNİ
 
