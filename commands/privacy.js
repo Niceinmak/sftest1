@@ -1,6 +1,7 @@
 const { MessageActionRow, MessageButton } = require('discord.js');
 const { MessageEmbed } = require("discord.js");
-const disbut = require('discord-buttons');
+//const disbut = require('discord-buttons');
+//const easyButtons = require("dceasybuttons");
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -30,18 +31,10 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-  
-let button = new disbut.MessageButton()
-  .setStyle('red') //default: blurple
-  .setLabel('My First Button!') //default: NO_LABEL_PROVIDED
-  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-   await message.reply(embed,button);
+
+
+   await message.reply(embed);
 }
-   ButtonCallback.onClick((event) => {
-      event.defer();
-      myButton.setLabel(`${++number}`)
-      event.message.edit("Count Up +1", myButton);
-    });
 exports.help = {
     name: "privacy",
     aliases: [],
