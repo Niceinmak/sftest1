@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { MessageButton } = require('discord-buttons')
 exports.execute = async (client, message, args) => {
+  let userid=message.author.id
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
         .setTitle("EcoVerse Privacy Policy")
@@ -41,10 +42,11 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
   .setDisabled(false);
   
  message.channel.send({ buttons: [button, button1], embed: embed }).then(message => { // Send Embed And Buttons
-                function filter(b){  console.log(`Collected ${b.clicker.user.id} items${message.author.id}`)} // To Check If User Who Clicked Button Is Same As Who Used Command
-                const collector = message.createButtonCollector(filter, { time: 10000 }) // 30 Seconds To Click
-                collector.on('collect', async b => {
-                  message.channel.send(`${b.id}`)
+                const filter = (button) => button.clicker.user.id === userid // To Check If User Who Clicked Button Is Same As Who Used Command
+                const collector = message.createButtonCollector(filter, { time: 5000 }) // 30 Seconds To Click
+                collector.on('collect', async button => {
+                  message.channel.send(`test`)
+                  
                 })
  collector.on('end', collected => console.log(`Collected ${collected.size} items`));
             })
