@@ -17,11 +17,12 @@
     "discordjs"
   ],
   "dependencies": {
-    "discord.js": "^13.5.1",
-    "quick.eco": "^6.0.0"
+    "discord-buttons": "^4.0.0-deprecated",
+    "discord.js": "^12.5.3",
+    "quick.eco": "^2.0.3"
   },
   "engines": {
-    "node": "16.6"
+    "node": "12.x"
   },
   "repository": {
     "url": "https://github.com/ZeroDiscord/EconomyBot"
