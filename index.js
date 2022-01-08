@@ -3,7 +3,6 @@ const Discord = require("discord.js");
 const Eco = require("quick.eco");
 const disbut = require('discord-buttons');
 disbut(client);
-const easyButtons = require("dceasybuttons");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
