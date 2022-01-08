@@ -1,14 +1,7 @@
-const { MessageActionRow, MessageButton } = require('discord.js');
 const { MessageEmbed } = require("discord.js");
-const disbut = require('discord-buttons');
-exports.execute = async (client, message, args) => {
-  let button = new disbut.MessageButton()
-  .setStyle('red')
-  .setLabel('My First Button!') 
-  .setID('click_to_function') 
-  .setDisabled();
 
-const embed = new MessageEmbed()
+exports.execute = async (client, message, args) => {
+    const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
         .setTitle("EcoVerse Privacy Policy")
      //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
@@ -28,22 +21,44 @@ You can come to our discord server to learn more: https://discord.gg/2n9Zg9BGgY
 **How to Remove your data.**
 If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGgY
 
+
 *Note: We reserve the right to change this without notifying our users.*
 
-*From the moment you add this bot to the server, you are deemed to have accepted the privacy policy .*
 \`This policy was last updated January 6th, 2022.\``)
         .setColor("BLURPLE")
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-  
+    return message.channel.send(embed,button);
+  /*
+    FARKLI KOMUTLAR DİZİNİ
 
-message.channel.send(button);
-  await message.reply({ content: embed, components: [button] });
+
+exports.execute = async (client, message, args) => {
+    let users = [
+        "Pocket",
+        "T-Shirt",
+        "Zero's Databse",
+        "Street"
+    ];
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount2 = Math.floor(Math.random() * 200)/100;
+    let amount3 = args[0]
+    let beg = await client.eco.beg(client.ecoAddUser, amount, { canLose: false, cooldown: 1, customName: "search" });
+    let beg2 = await client.eco.beg(client.ecoAddUser, amount2, { canLose: false, cooldown: 1, customName: "search" });
+    if (beg.onCooldown) return message.reply(`Come back after ${beg.time.minutes} minutes & ${beg.time.seconds} seconds.`);
+    return message.reply(`**${message.author.tag} | ** **${[Math.floor(beg2.amount)]}** Paranı **2'ye** **${amount}** katladın ve **${amount3}** 💸 Kazandın!. \n Şuanki Paran:**${beg.after}** 💸.`);
+       let data2= client.eco.removeMoney(message.author.id, parseInt(kullaniciveri));
+       let data2= client.eco.removeMoney(client.ecoAddUser, parseInt(kullaniciveri));    
+       let data2= client.eco.addMoney(message.author.id, parseInt(kullaniciveri));
+       let data2= client.eco.addMoney(client.ecoAddUser, parseInt(kullaniciveri));        
+       let data2= client.eco.setMoney(message.author.id, parseInt(kullaniciveri));
+        let data2= client.eco.setMoney(client.ecoAddUser, parseInt(kullaniciveri));           
+---------------------------------------------------------------------------------------*/
 }
 
 exports.help = {
     name: "privacy",
-    aliases: [],
+    aliases: ["PRIVACY"],
     usage: `privacy`
 }
