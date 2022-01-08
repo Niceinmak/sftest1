@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton } = require('discord.js');
 const { MessageEmbed } = require("discord.js");
-const disbut = require('discord.js-buttons')(client);
+const disbut = require('discord-buttons');
 exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setAuthor("Privacy Policy")
@@ -35,10 +35,13 @@ let button = new disbut.MessageButton()
   .setStyle('red') //default: blurple
   .setLabel('My First Button!') //default: NO_LABEL_PROVIDED
   .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-  .setDisabled(); //disables the button | default: false
    await message.reply(embed,button);
 }
-
+   ButtonCallback.onClick((event) => {
+      event.defer();
+      myButton.setLabel(`${++number}`)
+      event.message.edit("Count Up +1", myButton);
+    });
 exports.help = {
     name: "privacy",
     aliases: [],
