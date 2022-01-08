@@ -30,22 +30,29 @@ If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGg
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
         .setFooter(message.author.tag, message.author.displayAvatarURL);
-  let button = new MessageButton()
+  let buttonagree = new MessageButton()
   .setStyle('red')
-  .setLabel('My First Button!') 
+  .setLabel('I Agree!') 
   .setID('1') 
   .setDisabled(false);
-    let button1 = new MessageButton()
+    let buttonurl = new MessageButton()
   .setStyle('url')
     .setURL("https://discord.gg/2n9Zg9BGgY")
   .setLabel('Support Server') 
   .setDisabled(false);
   
- message.channel.send({ buttons: [button, button1], embed: embed }).then(message => { // Send Embed And Buttons
+ message.channel.send({ buttons: [buttonagree, buttonurl], embed: embed }).then(message => { // Send Embed And Buttons
                 const filter = (button) => button.clicker.user.id === userid // To Check If User Who Clicked Button Is Same As Who Used Command
                 const collector = message.createButtonCollector(filter, { time: 5000 }) // 30 Seconds To Click
                 collector.on('collect', async button => {
-                  message.channel.send(`test`)
+                  if(button.id === '1') { // If User Click Yes Button
+                       button.defer()
+                  buttonagree.setDisabled(true);
+                    embed.setAuthor("**Thanks**")
+                  embed.setDescription("**You have accepted the privacy policy!**");
+                  message.edit({ buttons: [buttonagree, buttonurl], embed: embed })
+                  
+                    }
                   
                 })
  collector.on('end', collected => console.log(`Collected ${collected.size} items`));
