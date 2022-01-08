@@ -23,7 +23,8 @@ You can come to our discord server to learn more: https://discord.gg/2n9Zg9BGgY
 If you wish to delete your data, please contact us: https://discord.gg/2n9Zg9BGgY
 
 
-*Note: We reserve the right to change this without notifying our users.*
+*Note: We reserve the right to change this without notifying our users.
+As soon as you add the bot to the server, you are deemed to have accepted the privacy policy*
 
 \`This policy was last updated January 6th, 2022.\``)
         .setColor("BLURPLE")
