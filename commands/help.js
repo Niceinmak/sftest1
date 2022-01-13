@@ -29,11 +29,22 @@ exports.execute = async (client, message, args) => {
   let economyaliases=""
   let utilityname=""
   let onlyadminsname=""
+    let games = [
+        "cf",
+        "rob",
+        "beg",
+        "daily",
+        "spin",
+        "search",
+        "slots",
+        "weekly"
+    ];
   let utilitycommands = [
         "prefix",
         "ping",
         "uptime",
-        "privacy"
+        "privacy",
+        "supportserver"
     ];
   let onlyadminscommands = [
         "addmoney",
@@ -114,6 +125,6 @@ exports.execute = async (client, message, args) => {
 
 exports.help = {
     name: "help",
-    aliases: ["h"],
+    aliases: ["h","HELP"],
     usage: `help`
 }
