@@ -43,7 +43,7 @@ exports.execute = async (client, message, args) => {
               }, 1000);
             setTimeout(() => {
              embed.fields = [];
-              if(amount>=45)
+              if(amount>=35)
                 {
                   card1="💯"
                 }
@@ -60,7 +60,7 @@ exports.execute = async (client, message, args) => {
           setTimeout(() => {
             let amount = Math.floor(Math.random() * 100);
              embed.fields = [];
-              if(amount>=45)
+              if(amount>=35)
                 {
                   card2="💯"
                 }
@@ -77,7 +77,7 @@ exports.execute = async (client, message, args) => {
            setTimeout(() => {
             let amount = Math.floor(Math.random() * 100);
              embed.fields = [];
-              if(amount>=50)
+              if(amount>=40)
                 {
                   card3="💯"
                 }
