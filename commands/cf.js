@@ -8,8 +8,8 @@ exports.execute = async (client, message, args) => {
     let authordata = client.eco.fetchMoney(message.author.id) 
         let timecooldown = Math.floor(Math.random() * 200)+50;
         let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
-  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
         if (amount3=="tails" || amount3=="heads")
  {  if(amount5=="all") amount5=authordata.amount;
     else if (!amount5 || isNaN(amount5)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
