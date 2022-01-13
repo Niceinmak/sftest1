@@ -17,9 +17,9 @@ exports.execute = async (client, message, args) => {
         let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{ canLose: true, cooldown: 5000, customName: "search" });
   let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+      if(userdata=="all") userdata=authordata.amount;
      if (!userdata || isNaN(userdata)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
   else{
-    
     if(userdata>authordata.amount || userdata<1) return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
     if(amount3!="green" && amount3!="red" && amount3!="blue") message.channel.send(`** ⛔${message.author.tag} | You chose the **wrong card** :c`);
     if((amount3)=="green") 
