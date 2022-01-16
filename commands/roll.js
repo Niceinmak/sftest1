@@ -29,41 +29,20 @@ exports.execute = async (client, message, args) => {
     if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
     else
     {
-      
-             const embed = new MessageEmbed()
-             .setAuthor(`${user1.username},Played Slots With ${amount3}💶`, user1.displayAvatarURL())
-            .setFooter(`.`)
-            .addField("Niceinmak played roll",`[ ]  [ ]  [ ]`)
-            .setColor("#7289DA")
-            .setTimestamp();
                message.channel.send(`Niceinmak played roll \nNumber on the dice:`).then(async msg => {
                 setTimeout(() => {
   // embed.setAuthor(`as`)
-          embed.setFooter(`..`)
-          return msg.edit(embed);
+          msg.edit(`Niceinmak played roll \nNumber on the dice:.`)
                    }, 500);
                 setTimeout(() => {
        //  embed.setAuthor(`sa`)
-          embed.setFooter(`...`)
-         return msg.edit(embed);
+          msg.edit(`Niceinmak played roll \nNumber on the dice:..`)
               }, 1000);
             setTimeout(() => {
-             embed.fields = [];
-              if(amount>=35)
-                {
-                  card1="💯"
-                }
-              else
-              {
-                card1=`${emojies[Math.floor(Math.random() * emojies.length)]}`
-              }
-              
-              embed.addField("Played Slots",`[${card1}]  [ ]  [ ]`)
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Number 1`)
-         return msg.edit(embed);
+             msg.edit(`Niceinmak played roll \nNumber on the dice:...`)
               }, 2000);
           setTimeout(() => {
+            let randomnumber=Math.floor(Math.random())
             let amount = Math.floor(Math.random() * 100);
              embed.fields = [];
               if(amount>=35)
