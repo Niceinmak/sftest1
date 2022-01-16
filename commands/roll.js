@@ -14,6 +14,7 @@ exports.execute = async (client, message, args) => {
     let card3=""
     let amount = Math.floor(Math.random() * 100);
     let amount3 = args[0]
+    let amount4 = args[1]
     let authordata = client.eco.fetchMoney(message.author.id) 
     let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
@@ -30,6 +31,7 @@ exports.execute = async (client, message, args) => {
     else
     {
                message.channel.send(`Niceinmak played roll \nNumber on the dice:`).then(async msg => {
+                 let randomnumber=numbers[Math.floor(Math.random() * numbers.length)]
                 setTimeout(() => {
   // embed.setAuthor(`as`)
           msg.edit(`Niceinmak played roll \nNumber on the dice:.`)
@@ -42,63 +44,26 @@ exports.execute = async (client, message, args) => {
              msg.edit(`Niceinmak played roll \nNumber on the dice:...`)
               }, 2000);
           setTimeout(() => {
-            let randomnumber=Math.floor(Math.random())
-            let amount = Math.floor(Math.random() * 100);
-             embed.fields = [];
-              if(amount>=35)
-                {
-                  card2="💯"
-                }
-              else
-              {
-                card2=`${emojies[Math.floor(Math.random() * emojies.length)]}`
-              }
-              
-              embed.addField("Played Slots",`[${card1}]  [${card2}]  [ ]`)
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Number 2`)
-         return msg.edit(embed);
+            msg.edit(`Niceinmak played roll \nNumber on the dice:${randomnumber}`)
               }, 3000);
            setTimeout(() => {
-            let amount = Math.floor(Math.random() * 100);
-             embed.fields = [];
-              if(amount>=40)
+             if(amount3==randomnumber)
                 {
-                  card3="💯"
+                  msg.edit(`Niceinmak played roll \nNumber on the dice:${randomnumber}\nCongrulations,You Win ${amount4*3}💶!`)
+                  let data = client.eco.addMoney(message.author.id, parseInt(amount4*3));
                 }
-              else
-              {
-                card3=`${emojies[Math.floor(Math.random() * emojies.length)]}`
-              }
-              
-              embed.addField("Played Slots",`[${card1}]  [${card2}]  [${card3}]`)
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Number 3`)
-         return msg.edit(embed);
-              }, 4000);
-           setTimeout(() => {
-              if(card1==card2 && card1==card3 && card2==card3)
-                {
-                  let data = client.eco.addMoney(message.author.id, parseInt(amount3*3));
-                  embed.addField("Game Finished",`**Congrulations,you win ${amount3*3}💶**`)
-                }
-              else
-              {
-                let data = client.eco.removeMoney(message.author.id, parseInt(amount3));
-               embed.addField("Game Finished",`**Sorry,you lost ${amount3}💶**`)
-              }
-              
-              
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Game Finished`)
-         return msg.edit(embed);
+             else
+               {
+                 let data = client.eco.removeMoney(message.author.id, parseInt(amount4));
+                 msg.edit(`Niceinmak played roll \nNumber on the dice:${randomnumber}\nSorry,you lost ${amount4}💶`)
+               }
               }, 4000);
         } );
     }
     }  };
 
 exports.help = {
-    name: "slots",
-    aliases: ["slot"],
-    usage: "slots <amount>"
+    name: "roll",
+    aliases: ["ROLL"],
+    usage: "roll <1,2,3,4,5,6> <amount>"
 }
