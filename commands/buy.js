@@ -22,13 +22,10 @@ exports.execute = async (client, message, args) => {
   if(count<1) return message.reply(`**Unutma,1'den az eşya alamassın.**`);
   let buy = client.eco.removeMoney(message.author.id, hasItem.cost*count);
   let itemStruct = {
-    name: item.toLowerCase(),
+    name: (item.toLowerCase()),
     prize: hasItem.cost
   };
-  while(count2<=count){
  client.db.push(`items_${message.author.id}`, itemStruct);
-    count2++;
-  }
   return message.channel.send(
     `**${message.author.tag} | ${count2-1} tane ${item} aldın.\n Toplam ${hasItem.cost*(count2-1)}💶 tuttu.**`
   );
