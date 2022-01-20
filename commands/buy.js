@@ -2,37 +2,48 @@ const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
   let userBalance = client.eco.fetchMoney(message.author.id);
+        let timecooldown = Math.floor(Math.random() * 200)+50;
+        let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
+    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   if (userBalance.amount < 1)
-    return message.channel.send(`**${message.author.tag} | Paran kalmamış :c.**`);
+    return message.channel.send(`**${message.author.tag} | You don't have enough money :c.**`);
   let item = args[0];
   let count = args[1];
   let count2=1;
   if(count==null) count=1;
-  if (!item) return message.channel.send(`**${message.author.tag} | Neyi satın almak istiyorsun?**`);
+  
+ if (count>100) return message.channel.send(`**\`${message.author.tag}\` | You cannot get more than 100 crates at a time.**`);
+  if (!item) return message.channel.send(`**${message.author.tag} | What are you trying to buy?**`);
   let hasItem = client.shop[item];
   if (!hasItem || hasItem == undefined)
-    return message.channel.send(`**${message.author.tag} | Böyle bir eşya bulamadım**`);
+    return message.channel.send(`**${message.author.tag} | That item doesnt exists lol**`);
    if (!count || isNaN(count))
-    return message.channel.send(`**${message.author.tag} | Yazdığınız miktar sayı değil**`);
+    return message.channel.send(`**${message.author.tag} | The amount you type is not a number**`);
   let isBalanceEnough = userBalance.amount >= hasItem.cost*count;
   if (!isBalanceEnough)
     {
-    return message.channel.send(`**${message.author.tag} | Bu eşyayı alabilmek için ${hasItem.cost*count}💶 ihtiyacın var.Şuanki paran ${userBalance.amount}💶**`);
+      let hasitemformat=String(hasItem.cost*count).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+      let userbalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+    return message.channel.send(`**${message.author.tag} | Your balance is insufficient. You need ${hasitemformat}💶 to buy this item.Your current money ${userbalanceformat}💶**`);
     }
-  if(count<1) return message.reply(`**Unutma,1'den az eşya alamassın.**`);
+  if(count<1) return message.reply(`**Remember, you cannot get less than 1 item.**`);
   let buy = client.eco.removeMoney(message.author.id, hasItem.cost*count);
   let itemStruct = {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
- let test=(client.db.push(`items_${message.author.id}`, itemStruct))*count;
+  for (count2 = 1; count2 <= count; count2++) {
+  client.db.push(`items_${message.author.id}`, itemStruct);
+}
+  let hasitemformat2=String(hasItem.cost*(count2-1)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   return message.channel.send(
-    `**${message.author.tag} | ${count2-1} tane ${item} aldın.\n Toplam ${hasItem.cost*(count2-1)}💶 tuttu.**`
+    `**${message.author.tag} | You purchased ${item} x${count2-1} for ${hasitemformat2}💶**`
   );
 };
 
 exports.help = {
   name: "buy",
-  aliases: [],
+  aliases: ["BUY"],
   usage: `buy <item>`
 };
