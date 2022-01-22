@@ -38,7 +38,8 @@ exports.execute = async (client, message, args) => {
         "spin",
         "search",
         "slots",
-        "weekly"
+        "weekly",
+        "roll"
     ];
   let utilitycommands = [
         "prefix",
@@ -49,7 +50,9 @@ exports.execute = async (client, message, args) => {
     ];
   let onlyadminscommands = [
         "addmoney",
-        "setmoney"
+        "removemoney",
+        "setmoney",
+        "test"
     ];
   let amount3 = args[0]
  /*   client.commands.forEach(cmd => {
