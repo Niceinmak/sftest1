@@ -1,16 +1,19 @@
 const Discord = require("discord.js");
 const client = new Discord.Client()
 const { MessageEmbed } = require("discord.js");
-const express = require('express')
-const Topgg = require('@top-gg/sdk')
-const app = express() // Your express app
-const webhook = new Topgg.Webhook('topggauth123') 
+const dbots = require("discord.dbl");
+const dbl = new dbots("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNDMxMTA5MjQ2ODAxNTExNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQyOTYzMTY0fQ.ulBEV8WgG5MnBenmEJfuI4lcz0MiUYE6cS4npI7HiJk", client, { autoPost: 900001 });
 exports.execute = async (client, message, args) => {
-app.post('/dblwebhook', webhook.listener(vote => {
-  // vote is your vote object
-  console.log(vote.user) // 221221226561929217
-})) // attach the middleware
-
+  dbl.postStats(); 
+  // console.log("Server count posted")
+  
+  let hasVote = await dbl.hasVoted("766192311004037120");
+  if(hasVote === true) {
+    console.log("Voted")
+  } else {
+    console.log("Vote please.")
+  }
+  
     /*
     FARKLI KOMUTLAR DİZİNİ
 

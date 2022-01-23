@@ -17,7 +17,6 @@
     "discordjs"
   ],
   "dependencies": {
-    "@top-gg/sdk": "^3.1.3",
     "discord-buttons": "^4.0.0-deprecated",
     "discord.js": "^12.5.3",
     "quick.eco": "^2.0.3"
