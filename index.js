@@ -23,11 +23,12 @@ client.shop = {
 };
 const fs = require("fs");
 client.on('ready', async () => {
-  dbl.Webhook("https://sftest.glitch.me/vote") //No need to put any thing in this brackets!
+  dbl.Webhook("https://top.gg/bot/924311092468015116/vote") //No need to put any thing in this brackets!
 })
-dbl.on("voted", voter => {
-  console.log(`A user with ID: ${voter.id} (${voter.username} has voted me!`)
+dbl.on("posted", () => {
+  console.log("Posted Stats!")
 })
+
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(f => {
