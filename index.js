@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({ disableMentions: 'everyone' });
 const dbots = require("discord.dbl");
-const dbl = new dbots("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNDMxMTA5MjQ2ODAxNTExNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQyOTYzMTY0fQ.ulBEV8WgG5MnBenmEJfuI4lcz0MiUYE6cS4npI7HiJk", client, { autoPost: 900001 }); //Time in milliseconds, must be greater than 15 minutes!
+const dbl = new dbots("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNDMxMTA5MjQ2ODAxNTExNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQyOTYzMTY0fQ.ulBEV8WgG5MnBenmEJfuI4lcz0MiUYE6cS4npI7HiJk", client, { autoPost: 900001, auth: "AuthKey" }); //Time in milliseconds, must be greater than 15 minutes!
 const disbut = require('discord-buttons');
 disbut(client);
 const Eco = require("quick.eco");
@@ -22,11 +22,9 @@ client.shop = {
   }
 };
 const fs = require("fs");
-client.on("ready", async () => {
-  dbl.postStats(); //=> Note: You can only use this package for discord.js use
-  // Must have a package named node-fetch and express
-  // console.log("Server count posted")
-  })
+client.on('ready', async () => {
+  dbl.Webhook("https://sftest.glitch.me/vote") //No need to put any thing in this brackets!
+})
 dbl.on("voted", voter => {
   console.log(`A user with ID: ${voter.id} (${voter.username} has voted me!`)
 })
