@@ -28,6 +28,9 @@ client.on("ready", async () => {
   // Must have a package named node-fetch and express
   // console.log("Server count posted")
   })
+dbl.on("voted", voter => {
+  console.log(`A user with ID: ${voter.id} (${voter.username} has voted me!`)
+})
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(f => {

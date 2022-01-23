@@ -5,9 +5,16 @@ const dbots = require("discord.dbl");
 const dbl = new dbots("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNDMxMTA5MjQ2ODAxNTExNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQyOTYwNzk5fQ.BfR0ku4nkuShZ18qcQrGHhJPiKfmIKKLCeMkKKy4yZI", client, { autoPost: 900001 });
 
 exports.execute = async (client, message, args) => {
-    const embed = new MessageEmbed()
-        .setTitle(`Test Successful!`)
-    return message.channel.send(embed);
+      dbl.postStats();
+  // console.log("Server count posted")
+  
+  let hasVote = await dbl.hasVoted("766192311004037120");
+  if(hasVote === true) {
+    console.log("Voted")
+  } else {
+    console.log("Vote please.")
+  }
+  
     /*
     FARKLI KOMUTLAR DİZİNİ
 
