@@ -7,24 +7,24 @@ const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 module.exports.execute = async (client, message, args) => {
   let user = message.mentions.users.first() || message.author;
     
-  const timeout = 5000;
+  const timeout = 86400000;
   const cooldown = await db.fetch(`cooldown_Command-Name_${message.author.id}`);
-    let amount = Math.floor(Math.random() * 2000) + 100;
+    let amount = Math.floor(Math.random() * 5000) + 300;
     let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
-		message.channel.send(`1 gün bekle`);
+		message.reply(`**Wait ${time} to vote again**`);
 	} else {
       dbl.hasVoted(message.author.id).then(voted => {
     if (voted){
      client.eco.addMoney(message.author.id, parseInt(amount));
       let userBalance = client.eco.fetchMoney(user.id);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-       message.reply(`Bu gün **${amountformat}** 💸topladın  ${userBalanceformat}`);
+       message.reply(`**You have won ${amountformat}💶 by voting!**`);
       db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
     }
     else if (!voted){
-       return message.reply(`oyla knk`);
+       return message.reply(`**Please rate the bot at \`https://top.gg/bot/924311092468015116/vote\`**`);
     }
       
 		
