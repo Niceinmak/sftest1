@@ -9,11 +9,11 @@ const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 module.exports.execute = async (client, message, args) => {
   let user = message.mentions.users.first() || message.author;
     
-  const timeout = 5000;
+  const timeout = 86400000;
   const cooldown = await db.fetch(`cooldown_Command-Name_${message.author.id}`);
     let amount = Math.floor(Math.random() * 5000) + 300;
     let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-      dbl.hasVoted(message.author.id).then(voted => {
+      dbl.hasVoted("message.author.id").then(voted => {
     if (voted){
         	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
@@ -29,7 +29,10 @@ module.exports.execute = async (client, message, args) => {
          const embed = new MessageEmbed()
         .setTitle("EcoVerse Vote")
      //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
-        .setDescription(`**Please rate the bot at \`https://top.gg/bot/924311092468015116/vote\`**`)
+        .setDescription(`
+       ** ☑| Your daily vote is available!
+         :diamond_shape_with_a_dot_inside: | You can vote every 12 hours!
+        Please rate the bot at \`https://top.gg/bot/924311092468015116/vote\`**`)
         .setColor("BLURPLE")
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
