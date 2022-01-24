@@ -13,7 +13,7 @@ module.exports.execute = async (client, message, args) => {
   const cooldown = await db.fetch(`cooldown_Command-Name_${message.author.id}`);
     let amount = Math.floor(Math.random() * 5000) + 300;
     let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-      dbl.hasVoted("message.author.id").then(voted => {
+      dbl.hasVoted(message.author.id).then(voted => {
     if (voted){
         	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
@@ -45,22 +45,6 @@ module.exports.execute = async (client, message, args) => {
 		
 })
 };
-     /*  if (addMoney.onCooldown) 
-      {
-      return message.reply(`Bugünkü paranı topladın.Lütfen ${addMoney.time.hours} saat, ${addMoney.time.minutes} dakika & ${addMoney.time.seconds} saniye sonra tekrar gel.`);
-      }
-  else 
-    {
-      dbl.hasVoted(message.author.id).then(voted => {
-    if (voted){
-      return message.reply(`Bu gün **${addMoney.amount}** 💸topladın.Toplam paran **${addMoney.after}** 💸oldu!`);
-    }
-    else if (!voted){
-       return message.reply(`oyla knk`);
-    }
-})
-    
-    } */
 
 module.exports.help = {
     name: "vote",
