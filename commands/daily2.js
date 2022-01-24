@@ -11,12 +11,12 @@ module.exports.execute = async (client, message, args) => {
   const cooldown = await db.fetch(`cooldown_Command-Name_${message.author.id}`);
     let amount = Math.floor(Math.random() * 5000) + 300;
     let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-  	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
-		const time = ms(timeout - (Date.now() - cooldown));
-		message.reply(`**Wait ${time} to vote again**`);
-	} else {
       dbl.hasVoted(message.author.id).then(voted => {
     if (voted){
+        	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+		return message.reply(`**Wait ${time} to vote again**`);
+	}
      client.eco.addMoney(message.author.id, parseInt(amount));
       let userBalance = client.eco.fetchMoney(user.id);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
@@ -29,7 +29,6 @@ module.exports.execute = async (client, message, args) => {
       
 		
 })
-  }
 };
      /*  if (addMoney.onCooldown) 
       {
