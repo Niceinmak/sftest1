@@ -49,7 +49,7 @@ module.exports.execute = async (client, message, args) => {
     } */
 
 module.exports.help = {
-    name: "daily2",
-    aliases: [],
-    usage: "daily2"
+    name: "vote",
+    aliases: ["VOTE"],
+    usage: "vote"
 }
