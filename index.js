@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({ disableMentions: 'everyone' });
-const dbots = require("discord.dbl");
-const dbl = new dbots("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNDMxMTA5MjQ2ODAxNTExNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQyOTYzMTY0fQ.ulBEV8WgG5MnBenmEJfuI4lcz0MiUYE6cS4npI7HiJk", client, { autoPost: 900001, auth: "AuthKey" }); //Time in milliseconds, must be greater than 15 minutes!
+const DBL = require('dblapi.js');
 const disbut = require('discord-buttons');
 disbut(client);
 const Eco = require("quick.eco");
@@ -22,12 +21,20 @@ client.shop = {
   }
 };
 const fs = require("fs");
-client.on('ready', async () => {
-  dbl.Webhook("https://top.gg/bot/924311092468015116/vote") //No need to put any thing in this brackets!
-})
-dbl.on("posted", () => {
-  console.log("Posted Stats!")
-})
+const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
+dbl.webhook.on('ready', hook => {
+  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
+});
+dbl.webhook.on('vote', vote => {
+  const channel = client.channels.cache.get(process.env.POST_CHANNEL)
+  const embed = new Discord.MessageEmbed()
+  .setTitle("__Thanks for votting me:-__")
+  .setDescription(`༺═──────────────────────═༻\n⭐ **Voted By:-**\n<@${vote.user}>\n\n🔗 **Vote Link:-**\n${process.env.VOTE_LINK}\n\n💖 **You can vote again in 12hour!** 💖\n༺═──────────────────────═༻`)
+  .setImage(process.env.IMAGE_LINK)
+  .setFooter("❤Your vote means a lot!❤")
+  .setColor("GREEN")
+  channel.send(embed)
+});
 
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
