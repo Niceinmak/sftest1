@@ -4,16 +4,17 @@ const { MessageEmbed } = require("discord.js");
 const DBL = require("dblapi.js");
 const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 exports.execute = async (client, message, args) => {
- 
-
-dbl.hasVoted(message.author.id).then(voted => {
-    if (voted){
-       message.channel.send("asd")
-    }
-    else if (!voted){
-        message.channel.send("HAS NOT VOTED MESSAGE")
-    }
-})
+  const embed = new Discord.MessageEmbed()
+  .setTitle(`${message.author.name} voted for EcoVerse!`)
+  .setDescription(`──────────────────────────
+  **Voted By:User
+  Vote Link:\n${process.env.VOTE_LINK}
+  Wait 12 Hours to vote again!**
+  ──────────────────────────`)
+  .setImage(process.env.IMAGE_LINK)
+  .setFooter("❤Your vote means a lot!❤")
+  .setColor("GREEN")
+  message.channel.send(embed)
   
     /*
     FARKLI KOMUTLAR DİZİNİ
