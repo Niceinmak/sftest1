@@ -8,10 +8,10 @@ exports.execute = async (client, message, args) => {
   const embed = new Discord.MessageEmbed()
   .setTitle(`${message.author.name} voted for EcoVerse!`)
   .setDescription(`──────────────────────────
-  **Thanks for voting!
-  Voted By:User
-  Vote Link:\n${process.env.VOTE_LINK}
-  Wait 12 Hours to vote again!**
+  **:tada: Thanks for voting!
+  :sparkles: Voted By:User
+  :diamond_shape_with_a_dot_inside: Wait 12 Hours to vote again!
+  🔗You can vote by clicking the button below!**
   ──────────────────────────`)
   .setImage(process.env.IMAGE_LINK)
   .setFooter("Thanks for voting!")
