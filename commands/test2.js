@@ -2,19 +2,30 @@ const Discord = require("discord.js");
 const client = new Discord.Client()
 const { MessageEmbed } = require("discord.js");
 const DBL = require("dblapi.js");
+const { MessageButton } = require('discord-buttons')
 const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 exports.execute = async (client, message, args) => {
   const embed = new Discord.MessageEmbed()
   .setTitle(`${message.author.name} voted for EcoVerse!`)
   .setDescription(`──────────────────────────
-  **Voted By:User
+  **Thanks for voting!
+  Voted By:User
   Vote Link:\n${process.env.VOTE_LINK}
   Wait 12 Hours to vote again!**
   ──────────────────────────`)
   .setImage(process.env.IMAGE_LINK)
-  .setFooter("❤Your vote means a lot!❤")
+  .setFooter("Thanks for voting!")
   .setColor("GREEN")
-  message.channel.send(embed)
+  let buttonurl = new MessageButton()
+  .setStyle('url')
+    .setURL(process.env.VOTE_LINK)
+  .setLabel('Vote') 
+  let website = new MessageButton()
+  .setStyle('url')
+    .setURL("http://ecoverse.ml/")
+  .setLabel(`Go to website`) 
+  .setDisabled(false);
+  message.channel.send({ buttons: [buttonurl, website], embed: embed })
   
     /*
     FARKLI KOMUTLAR DİZİNİ
