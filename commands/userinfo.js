@@ -1,11 +1,23 @@
+const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-
+const client = new Discord.Client()
+let db = require('quick.db');
+const DBL = require("dblapi.js");
+const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 exports.execute = async (client, message, args) => {
   const user = message.mentions.users.first() || message.author;
   let userBalance = client.eco.fetchMoney(user.id);
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let itemsname=``
+  let votedtext=``
+  dbl.hasVoted(user.id).then(voted => {
+    if (voted){
+      votedtext=`${user.username} vote available :ballot_box_with_check: `
+    }
+    else if (!voted){
+      votedtext=`**${user.username} has voted today**`
+    }
    const x = client.db.get(`items_${user.id}`);
   if (!x) {
     items=0
@@ -31,6 +43,7 @@ const Embed1 = new MessageEmbed()
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
 		{ name: '**Items**', value: `${itemsname}` },
+    { name: '**test**', value: `${votedtext}` },
 		{ name: '\u200B', value: '\u200B' },
 		{ name: 'Inline field title', value: 'Some value here', inline: true },
 		{ name: 'Inline field title', value: 'Some value here', inline: true },
