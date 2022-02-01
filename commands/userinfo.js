@@ -10,7 +10,7 @@ exports.execute = async (client, message, args) => {
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let itemsname=``
-  let votedtext=``
+  let votedtext=`none`
   dbl.hasVoted(user.id).then(voted => {
     if (voted){
       votedtext=`${user.username} vote available :ballot_box_with_check: `
@@ -18,9 +18,11 @@ exports.execute = async (client, message, args) => {
     else if (!voted){
       votedtext=`**${user.username} has voted today**`
     }
+    })
    const x = client.db.get(`items_${user.id}`);
   if (!x) {
     items=0
+    itemsname+=`None`
   }
   else 
     {
@@ -43,7 +45,7 @@ const Embed1 = new MessageEmbed()
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
 		{ name: '**Items**', value: `${itemsname}` },
-    { name: '**test**', value: `${votedtext}` },
+    { name: '**Items**', value: `${votedtext}` },
 		{ name: '\u200B', value: '\u200B' },
 		{ name: 'Inline field title', value: 'Some value here', inline: true },
 		{ name: 'Inline field title', value: 'Some value here', inline: true },
