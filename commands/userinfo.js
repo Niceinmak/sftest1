@@ -1,9 +1,11 @@
 const { MessageEmbed } = require("discord.js");
+const moment = require("moment");
 exports.execute = async (client, message, args) => {
   const user = message.mentions.users.first() || message.author;
   let userBalance = client.eco.fetchMoney(user.id);
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
+  let created=moment(new Date(user.user.createdTimestamp)).format("DD/MM/YYY @ h:mm:ss a")
   let admin=``
   if (!client.config.admins.includes(message.author.id)) admin=`No`
   else admin=`Yes`
@@ -35,10 +37,10 @@ const Embed1 = new MessageEmbed()
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
 		{ name: '**Items**', value: `${itemsname}` },
 		{ name: '\u200B', value: '\u200B' },
-		{ name: 'Inline field title', value: 'Some value here', inline: true },
-		{ name: 'Inline field title', value: 'Some value here', inline: true },
+		{ name: 'User ID', value: user.id, inline: true },
+    { name: 'Created Account', value: created, inline: true },
+    { name: 'Admin?', value: admin, inline: true },
 	)
-	.addField('Inline field title', 'Some value here', true)
 	.setImage()
 	.setTimestamp()
 	.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });

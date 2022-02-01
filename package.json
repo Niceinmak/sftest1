@@ -22,6 +22,7 @@
     "discord-buttons": "^4.0.0-deprecated",
     "discord.dbl": "^1.2.5",
     "discord.js": "^12.5.3",
+    "moment": "^2.29.1",
     "ms": "^2.1.3",
     "quick.db": "^7.1.3",
     "quick.eco": "^2.0.3"
