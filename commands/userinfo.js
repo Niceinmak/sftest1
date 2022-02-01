@@ -11,14 +11,13 @@ exports.execute = async (client, message, args) => {
   let items=0
   let itemsname=``
   let votedtext=`none`
-  dbl.hasVoted(user.id).then(voted => {
+   dbl.hasVoted(message.author.id).then(voted => {
     if (voted){
-      votedtext=`${user.username} vote available :ballot_box_with_check: `
+       votedtext=`${user.username} vote available :ballot_box_with_check: `
     }
     else if (!voted){
-      votedtext=`**${user.username} has voted today**`
-    }
-    })
+     votedtext=`**${user.username} has voted today**`
+    }})
    const x = client.db.get(`items_${user.id}`);
   if (!x) {
     items=0
