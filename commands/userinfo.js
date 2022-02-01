@@ -7,7 +7,7 @@ exports.execute = async (client, message, args) => {
 const Embed1 = new MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle(user.username)
-	.setDescription(`**Total Cash:**`)
+	.setDescription(`**Total Cash: ${userBalanceformat}\nTotal Item: **`)
 	.setThumbnail(message.author.displayAvatarURL({ format: 'png' }))
 	.addFields(
 		{ name: 'Regular field title', value: 'Some value here' },
