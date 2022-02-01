@@ -18,7 +18,9 @@ exports.execute = async (client, message, args) => {
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
     items++
-   itemsname+=Name: ${k} Amount: **${arrayToObject[k]}**
+  );
+      const result2 = Object.keys(arrayToObject).map(k =>
+    itemsname+=`Name: **${k}** Amount: **${arrayToObject[k]}**\n`
   );
       }
 const Embed1 = new MessageEmbed()
@@ -27,7 +29,8 @@ const Embed1 = new MessageEmbed()
 	.setDescription(`**Total Cash\n${userBalanceformat}💶\n\nTotal Item:${items} **`)
 	.setThumbnail(message.author.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Regular field title', value: 'Some value here' },
+    { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
+		{ name: '**Items**', value: `${itemsname}` },
 		{ name: '\u200B', value: '\u200B' },
 		{ name: 'Inline field title', value: 'Some value here', inline: true },
 		{ name: 'Inline field title', value: 'Some value here', inline: true },
