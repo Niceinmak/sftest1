@@ -7,8 +7,8 @@ exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setTitle(`**🏦 BANK 🏦**`)
         .addField(`Bank Balance`, `**${userBalanceformat}**💶`)
-        .addField(`Position`, userBalance.position)
-        .addField(`Position`)
+        .addField(`Bank Position`, userBalance.position)
+        .addField(`Usage`,`Deposit \`${client.prefix} deposit\` \nWithdraw \`${client.prefix} withdraw\``)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
