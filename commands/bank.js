@@ -5,10 +5,10 @@ exports.execute = async (client, message, args) => {
     let userBalance = client.eco.fetchMoney(`${message.author.id}1`);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     const embed = new MessageEmbed()
-        .setTitle(`Balance`)
-        .addField(`User`, `<@${userBalance.user}>`)
-        .addField(`Balance`, `**${userBalanceformat}**💶`)
+        .setTitle(`**🏦 BANK 🏦**`)
+        .addField(`Bank Balance`, `**${userBalanceformat}**💶`)
         .addField(`Position`, userBalance.position)
+        .addField(`Position`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
