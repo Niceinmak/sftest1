@@ -6,7 +6,7 @@ exports.execute = async (client, message, args) => {
   client.eco.removeMoney(message.author.id, parseInt(amount));
   client.eco.addMoney(`${message.author.id}1`, parseInt(amount));
   let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-  return message.channel.send(`You have successfully transferred 💶**${amountformat}** to ** ${message.author.tag}**.`)
+  return message.channel.send(`You have successfully deposit 💶**${amountformat}** to **🏦BANK**.`)
 }
 exports.help = {
   name: "deposit",
