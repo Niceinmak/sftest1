@@ -60,6 +60,7 @@ exports.execute = async (client, message, args) => {
         "addmoney",
         "removemoney",
         "setmoney",
+        "addcase",
         "test"
     ];
   let amount3 = args[0]
