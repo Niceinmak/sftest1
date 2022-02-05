@@ -30,6 +30,12 @@ exports.execute = async (client, message, args) => {
   let utilityname=""
   let onlyadminsname=""
   let gamesname=""
+  let bankname=""
+  let bankcommands = [
+        "bank",
+        "deposit",
+        "withdraw",
+    ];
     let gamescommands = [
         "cf",
         "rob",
@@ -45,7 +51,9 @@ exports.execute = async (client, message, args) => {
         "prefix",
         "ping",
         "uptime",
-        "privacy",
+        "termsofservice",
+        "website",
+        "userinfo",
         "supportserver"
     ];
   let onlyadminscommands = [
@@ -67,6 +75,13 @@ exports.execute = async (client, message, args) => {
      if(cmd.help.name==utilitycommands[i])
       {
         utilityname+=` \`${cmd.help.name}\` ` 
+        count++;
+      }
+    }
+    for (var i = 0; i < bankcommands.length; i++) {
+     if(cmd.help.name==bankcommands[i])
+      {
+        bankname+=` \`${cmd.help.name}\` ` 
         count++;
       }
     }
@@ -93,6 +108,8 @@ exports.execute = async (client, message, args) => {
   embed.setDescription(`Here is the list of commands!\n**For more info on a specific command, use** \`${client.prefix}help <command>\`
   
   **Games**💵\n${gamesname}   
+  
+  **Bank**🏦\n${bankname}   
   
   **Economy💰**\n${economyname}
   
