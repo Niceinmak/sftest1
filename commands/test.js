@@ -9,7 +9,9 @@ exports.execute = async (client, message, args) => {
     ];
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
-  message.channel.send("<:test:940198357492695100>");
+    const embed = new MessageEmbed()
+        .setTitle(`Test`)
+  message.channel.send(embed);
     /*
     FARKLI KOMUTLAR DİZİNİ
 
