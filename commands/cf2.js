@@ -1,12 +1,6 @@
 
 const { MessageEmbed } = require("discord.js");
-exports.execute = async (client, message, args) => {
-    let amount = Math.floor(Math.random() * 200)+50;
-    let amount2 = Math.floor(Math.random() * 2);
-    let amount4 = Math.floor(Math.random() * 200)/100;
-    let amount3 = args[0]
-    let amount5 = args[1]
-            let namescards = [
+   let namescards = [
         "hf",
         "d",
         "s",
@@ -15,9 +9,15 @@ exports.execute = async (client, message, args) => {
         "h",
         "c",
     ];
+let namescardslist=""
+exports.execute = async (client, message, args) => {
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount2 = Math.floor(Math.random() * 2);
+    let amount4 = Math.floor(Math.random() * 200)/100;
+    let amount3 = args[0]
+    let amount5 = args[1]
     let yazitura= ""
     let authordata = client.eco.fetchMoney(message.author.id) 
-    let count = Math.floor(Math.random() * 10);
     let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
     let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
@@ -35,8 +35,8 @@ exports.execute = async (client, message, args) => {
             .setFooter(`Oyun devam ediyor`)
             .setTitle(`${user1.username}`)
             .addFields(
-    { name: 'Dealer \`[3+?]\`', value: namescards[Math.floor(Math.random() * namescards.length)], inline: true },
-    { name: `${user1.username} \`[17]\``, value: namescards[Math.floor(Math.random() * namescards.length)], inline: true },
+    { name: 'Dealer \`[3+?]\`', value: drawCard(), inline: true },
+    { name: `${user1.username} \`[17]\``, value: drawCard(), inline: true },
 	)
             .setColor("#7289DA")
             .setTimestamp();
@@ -96,8 +96,7 @@ exports.help = {
 }
 
 function drawCard() {
-    icons = ['♥️','♠️','♦️','♣️']
-    suite = _.random(0,3);
-    card = _.random(0,12);
-    return [require('../enum/cards')['cardDeck'][suite][card] , icons[suite]];
+   let count = Math.floor(Math.random() * 10);
+  namescardslist+=`\`${count}${namescards[Math.floor(Math.random() * namescards.length)]},\``
+    return [namescardslist];
 }
