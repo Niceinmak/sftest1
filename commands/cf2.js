@@ -9,13 +9,13 @@ const { MessageEmbed } = require("discord.js");
         "h",
         "c",
     ];
- let dealerpoint=""
- let userpoint=""
+ var dealerpoint=""
+ var userpoint=""
 let namescardslistu=""
 let namescardslistd=""
 exports.execute = async (client, message, args) => {
- dealerpoint=""
- userpoint=""
+ dealerpoint=0
+ userpoint=0
 namescardslistu=""
 namescardslistd=""
     let amount = Math.floor(Math.random() * 200)+50;
@@ -128,10 +128,11 @@ exports.help = {
 
 function drawCard(who) {
    let count = Math.floor(Math.random() * 10);
+  if(count==0) count=1
   if(who=="d")
     {
     namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
-    dealerpoint=dealerpoint+count
+    dealerpoint+=count
       return [` [${dealerpoint}+?] \`${namescardslistd}\``];
     }
   if(who=="u")
