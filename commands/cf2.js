@@ -67,12 +67,6 @@ console.log("not collected");
 //write
 })
         } );
-      
-
-      
-      
-      
-      
         message.channel.send(embed).then(async msg => {
          // msg.react("👊")
           //msg.react("🛑")  
