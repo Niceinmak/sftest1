@@ -14,6 +14,10 @@ const { MessageEmbed } = require("discord.js");
 let namescardslistu=""
 let namescardslistd=""
 exports.execute = async (client, message, args) => {
+ dealerpoint=""
+ userpoint=""
+namescardslistu=""
+namescardslistd=""
     let amount = Math.floor(Math.random() * 200)+50;
     let amount2 = Math.floor(Math.random() * 2);
     let amount4 = Math.floor(Math.random() * 200)/100;
@@ -32,12 +36,12 @@ exports.execute = async (client, message, args) => {
     if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
     else
     {
-      let dealerd=drawCard("d")
+      let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let agr1d=argString[0]
   let agr2d=argString[1]
-  let dealeru=drawCard("u")
+  let dealeru=`${drawCard("u")}`
   var argString2 = dealeru.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let agr1u=argString2[0]
@@ -64,9 +68,24 @@ const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
   console.log("collected");
-    embed.setAuthor(`the test`)
+   let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1d=argString[0]
+  let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+    embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+	)
           return msg.edit(embed);
 //write
+  
 })
 
 collector.on("end", (reaction, user) => {
@@ -112,14 +131,14 @@ function drawCard(who) {
   if(who=="d")
     {
     namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
-    dealerpoint+=count
-      return [`[${dealerpoint}+?] \`${namescardslistd}\``];
+    dealerpoint=dealerpoint+count
+      return [` [${dealerpoint}+?] \`${namescardslistd}\``];
     }
   if(who=="u")
     {
     namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
     userpoint+=count
-      return [` [${userpoint}] ${namescardslistu}`];
+      return [` [${userpoint}] \`${namescardslistu}\``];
     }
     
 }
