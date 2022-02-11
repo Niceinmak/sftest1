@@ -32,7 +32,10 @@ exports.execute = async (client, message, args) => {
     if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
     else
     {
-      
+      var argString = itemname.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1=argString[0]
+  let agr2=argString[1]
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
             .setFooter(`Oyun devam ediyor`)
@@ -104,13 +107,13 @@ function drawCard(who) {
     {
     namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
     dealerpoint+=count
-      return [`\`${namescardslistd}\``];
+      return [`[${dealerpoint}+?] \`${namescardslistd}\``];
     }
   if(who=="u")
     {
     namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
     userpoint+=count
-      return [`\`${namescardslistu}\``];
+      return [`[${userpoint}] \`${namescardslistu}\``];
     }
     
 }
