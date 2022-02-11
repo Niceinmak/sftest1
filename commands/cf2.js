@@ -24,8 +24,10 @@ exports.execute = async (client, message, args) => {
              .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
             .setFooter(`Oyun devam ediyor`)
             .setTitle(`${user1.username}`)
-            .addField("API Gecikmesi", `s`)
-            .addField("Client Gecikmesi", `ms`)
+            .addFields(
+    { name: 'Dealer \`3+?\`', value: 1, inline: true },
+    { name: `${user1.username} \``, value: 1, inline: true },
+	)
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
