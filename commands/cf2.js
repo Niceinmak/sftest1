@@ -32,17 +32,23 @@ exports.execute = async (client, message, args) => {
     if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
     else
     {
-      var argString = itemname.substring(1).split(' ');
+      let dealerd=drawCard("d")
+      var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1=argString[0]
-  let agr2=argString[1]
+  let agr1d=argString[0]
+  let agr2d=argString[1]
+  let dealeru=drawCard("u")
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
             .setFooter(`Oyun devam ediyor`)
             .setTitle(`${user1.username}`)
             .addFields(
-    { name: 'Dealer \`[3+?]\`', value: drawCard("d"), inline: true },
-    { name: `${user1.username} \`[17]\``, value: drawCard("u"), inline: true },
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
             .setColor("#7289DA")
             .setTimestamp();
@@ -113,7 +119,7 @@ function drawCard(who) {
     {
     namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
     userpoint+=count
-      return [`[${userpoint}] \`${namescardslistu}\``];
+      return [` [${userpoint}] ${namescardslistu}`];
     }
     
 }
