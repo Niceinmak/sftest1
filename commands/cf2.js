@@ -9,7 +9,10 @@ const { MessageEmbed } = require("discord.js");
         "h",
         "c",
     ];
-let namescardslist=""
+ let dealerpoint=""
+ let userpoint=""
+let namescardslistu=""
+let namescardslistd=""
 exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 200)+50;
     let amount2 = Math.floor(Math.random() * 2);
@@ -35,8 +38,8 @@ exports.execute = async (client, message, args) => {
             .setFooter(`Oyun devam ediyor`)
             .setTitle(`${user1.username}`)
             .addFields(
-    { name: 'Dealer \`[3+?]\`', value: drawCard(), inline: true },
-    { name: `${user1.username} \`[17]\``, value: drawCard(), inline: true },
+    { name: 'Dealer \`[3+?]\`', value: drawCard("d"), inline: true },
+    { name: `${user1.username} \`[17]\``, value: drawCard("u"), inline: true },
 	)
             .setColor("#7289DA")
             .setTimestamp();
@@ -95,8 +98,19 @@ exports.help = {
     usage: "cf2 <yazı,tura> <reaction command>"
 }
 
-function drawCard() {
+function drawCard(who) {
    let count = Math.floor(Math.random() * 10);
-  namescardslist+=`\`${count}${namescards[Math.floor(Math.random() * namescards.length)]},\``
-    return [namescardslist];
+  if(who=="d")
+    {
+    namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+    dealerpoint+=count
+      return [`\`${namescardslistd}\``];
+    }
+  if(who=="u")
+    {
+    namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+    userpoint+=count
+      return [`\`${namescardslistu}\``];
+    }
+    
 }
