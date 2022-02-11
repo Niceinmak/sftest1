@@ -6,8 +6,18 @@ exports.execute = async (client, message, args) => {
     let amount4 = Math.floor(Math.random() * 200)/100;
     let amount3 = args[0]
     let amount5 = args[1]
+            let namescards = [
+        "hf",
+        "d",
+        "s",
+        "ds",
+        "df",
+        "h",
+        "c",
+    ];
     let yazitura= ""
     let authordata = client.eco.fetchMoney(message.author.id) 
+    let count = Math.floor(Math.random() * 10);
     let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
     let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
@@ -25,8 +35,8 @@ exports.execute = async (client, message, args) => {
             .setFooter(`Oyun devam ediyor`)
             .setTitle(`${user1.username}`)
             .addFields(
-    { name: 'Dealer \`3+?\`', value: 1, inline: true },
-    { name: `${user1.username} \``, value: 1, inline: true },
+    { name: 'Dealer \`[3+?]\`', value: namescards[Math.floor(Math.random() * namescards.length)], inline: true },
+    { name: `${user1.username} \`[17]\``, value: namescards[Math.floor(Math.random() * namescards.length)], inline: true },
 	)
             .setColor("#7289DA")
             .setTimestamp();
@@ -83,4 +93,11 @@ exports.help = {
     name: "cf2",
     aliases: ["coinflip","yazıtura"],
     usage: "cf2 <yazı,tura> <reaction command>"
+}
+
+function drawCard() {
+    icons = ['♥️','♠️','♦️','♣️']
+    suite = _.random(0,3);
+    card = _.random(0,12);
+    return [require('../enum/cards')['cardDeck'][suite][card] , icons[suite]];
 }
