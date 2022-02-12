@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client({ disableMentions: 'everyone' });
 const DBL = require('dblapi.js');
 const disbut = require('discord-buttons');
-const blackjack = require("discord-blackjack")
 disbut(client);
 const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
