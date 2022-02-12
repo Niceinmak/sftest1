@@ -67,6 +67,7 @@ const filter = (reaction, user) => {
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
+  reaction.users.remove(user.id);
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -92,30 +93,38 @@ collector.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
-                
-   const filter2 = (reaction, user) => {
-	return reaction.emoji.name === '🛑' && user.id === message.author.id;
+                const filter2 = (reaction, user) => {
+	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
 collector2.on("collect", (reaction, user) => {
+  reaction.users.remove(user.id);
   console.log("collected");
-    embed.setAuthor(`the testa`)
+   let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1d=argString[0]
+  let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+    embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+	)
           return msg.edit(embed);
 //write
+  
 })
 
-collector.on("end", (reaction, user) => {
+collector2.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
-        } );
-        message.channel.send(embed).then(async msg => {
-         // msg.react("👊")
-          //msg.react("🛑")  
-
-          embed.setAuthor(`as`)
-          return msg.edit(embed);
         } );
     }
     }  };
