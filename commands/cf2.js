@@ -75,7 +75,8 @@ collector.on("collect", (reaction, user) => {
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr2d=argString[1]
+  //let agr1d=argString[0]
+  //let agr2d=argString[1]
   let dealeru=`${drawCard("u")}`
   var argString2 = dealeru.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
@@ -111,7 +112,8 @@ collector2.on("collect", (reaction, user) => {
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr2d=argString[1]
+   //let agr1d=argString[0]
+  //let agr2d=argString[1]
   let dealeru=`${drawCard("u")}`
   var argString2 = dealeru.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
@@ -143,6 +145,7 @@ exports.help = {
 function drawCard(who) {
    let count = Math.floor(Math.random() * 10);
   if(count==0) count=1
+  if(count<5) count=7
   if(who=="d")
     {
     namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
