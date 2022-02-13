@@ -60,8 +60,9 @@ namescardslistd=""
           msg.react("👊")
         //  msg.react("")  
           msg.react("🛑");
-
-const filter = (reaction, user) => {
+setTimeout(function(){ 
+   
+  const filter = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
@@ -93,6 +94,11 @@ collector.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
+  
+  
+}, 3000);
+
+                
                 const filter2 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
@@ -120,7 +126,6 @@ collector2.on("collect", (reaction, user) => {
 //write
   
 })
-
 collector2.on("end", (reaction, user) => {
 console.log("not collected");
 //write
