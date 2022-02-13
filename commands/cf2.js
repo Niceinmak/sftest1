@@ -10,12 +10,14 @@ const { MessageEmbed } = require("discord.js");
         "c",
     ];
  var dealerpoint=""
+ var dealerpointtemp=""
  var userpoint=""
 let namescardslistu=""
 let namescardslistd=""
 exports.execute = async (client, message, args) => {
  dealerpoint=0
  userpoint=0
+  dealerpointtemp=0
 namescardslistu=""
 namescardslistd=""
     let amount = Math.floor(Math.random() * 200)+50;
