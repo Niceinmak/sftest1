@@ -72,18 +72,7 @@ const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 collector.on("collect", (reaction, user) => {
 reaction.users.remove(user.id);
 startbj()
-//write
-  
-})
-
-collector.on("end", (reaction, user) => {
-console.log("not collected");
-//write
-})
-  
-  
-                
-                const filter2 = (reaction, user) => {
+                  const filter2 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
@@ -91,15 +80,7 @@ const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 collector2.on("collect", (reaction, user) => {
 reaction.users.remove(user.id);
 startbj()
-//write
-  
-})
-collector2.on("end", (reaction, user) => {
-console.log("not collected");
-//write
-})
-                
-     const filter3 = (reaction, user) => {
+       const filter3 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
@@ -114,10 +95,30 @@ collector3.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
+
+    
+//write
+  
+//write
+  
+})
+    collector2.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+
+collector.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+  
+  
+                
+
+})
+            
+
                   function startbj(){
-                    if(temp==0)
-                      {
-                    setTimeout(function(){ 
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -137,8 +138,7 @@ console.log("not collected");
           return msg.edit(embed);
         temp++
                       console.log("t")
- }, 2000);
-  }}
+}
        } );
     }
     
