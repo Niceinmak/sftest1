@@ -1,6 +1,8 @@
 
 const { MessageEmbed } = require("discord.js");
-   let namescards = [
+let namescardslistd=""
+exports.execute = async (client, message, args) => {
+     let namescards = [
         "hf",
         "d",
         "s",
@@ -13,8 +15,6 @@ const { MessageEmbed } = require("discord.js");
  var dealerpointtemp=""
  var userpoint=""
 let namescardslistu=""
-let namescardslistd=""
-exports.execute = async (client, message, args) => {
  dealerpoint=0
  userpoint=0
   dealerpointtemp=0
@@ -70,7 +70,7 @@ setTimeout(function(){
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-  reaction.users.remove(user.id);
+  //reaction.users.remove(user.id);
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -134,14 +134,7 @@ console.log("not collected");
 })
         } );
     }
-    }  };
-
-exports.help = {
-    name: "cf2",
-    aliases: ["coinflip","yazıtura"],
-    usage: "cf2 <yazı,tura> <reaction command>"
-}
-
+    } 
 function drawCard(who) {
    let count = Math.floor(Math.random() * 10);
   if(count==0) count=1
@@ -160,3 +153,11 @@ function drawCard(who) {
     }
     
 }
+};
+
+exports.help = {
+    name: "cf2",
+    aliases: ["coinflip","yazıtura"],
+    usage: "cf2 <yazı,tura> <reaction command>"
+}
+
