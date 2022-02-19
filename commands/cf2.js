@@ -61,16 +61,14 @@ namescardslistd=""
           msg.react("👊")
         //  msg.react("")  
           msg.react("🛑");
-   
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-  setTimeout(function(){
+   message.reactions.removeAll()
     reaction.users.remove(user.id);
-}, 2000);
   
   console.log("collected");
    let dealerd=`${drawCard("d")}`
