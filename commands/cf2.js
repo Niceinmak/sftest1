@@ -2,6 +2,7 @@
 const { MessageEmbed } = require("discord.js");
 let namescardslistd=""
 exports.execute = async (client, message, args) => {
+  let temp=0;
      let namescards = [
         "hf",
         "d",
@@ -114,6 +115,9 @@ console.log("not collected");
 //write
 })
                   function startbj(){
+                    if(temp==0)
+                      {
+                    setTimeout(function(){ 
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -131,7 +135,10 @@ console.log("not collected");
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
           return msg.edit(embed);
-  }
+        temp++
+                      console.log("t")
+ }, 2000);
+  }}
        } );
     }
     
