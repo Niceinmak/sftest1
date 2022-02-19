@@ -67,28 +67,15 @@ namescardslistd=""
   .setID('1') 
   .setDisabled(false);
               return message.channel.send({ buttons: [buttonagree], embed: embed }).then(async msg => {
-                const filter = (button) => button.clicker.user.id === userid // To Check If User Who Clicked Button Is Same As Who Used Command
-                console.log(button.clicker.user.id)
+               const filter = (button) => button.clicker.user.id === userid // To Check If User Who Clicked Button Is Same As Who Used Command
+               console.log(userid)
                 const collector = message.createButtonCollector(filter, { time: 300000 }) // 30 Seconds To Click
                 collector.on('collect', async button => {
-                  console.log("collected");
-   let dealerd=`${drawCard("d")}`
-      var argString = dealerd.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  //let agr1d=argString[0]
-  //let agr2d=argString[1]
-  let dealeru=`${drawCard("u")}`
-  var argString2 = dealeru.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1u=argString2[0]
-  let agr2u=argString2[1]
-    embed.fields = [];
-  embed.addFields(
-    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
-	)
-  
-	 return msg.edit(embed);
+                   button.reply.defer()
+                  buttonagree.setDisabled(true);
+                    embed.setAuthor("Thanks")
+                  embed.setDescription("**You have accepted the privacy policy!**");
+                  message.edit({ buttons: [buttonagree], embed: embed })
                   
                 })
        } );
