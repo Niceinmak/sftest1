@@ -90,12 +90,17 @@ collector.on("collect", (reaction, user) => {
 	)
           return msg.edit(embed);
 //write
-  
+   for (;;) {
+    if(reaction.emoji.name === '👊' && user.id != message.author.id){
+      console.log("t")
+      break
+    }}
 })
 
 collector.on("end", (reaction, user) => {
 console.log("not collected");
 //write
+ 
 })
   
   
