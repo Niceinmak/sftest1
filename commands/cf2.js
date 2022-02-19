@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 let namescardslistd=""
 exports.execute = async (client, message, args) => {
@@ -69,10 +68,7 @@ namescardslistd=""
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-  setTimeout(function(){
     reaction.users.remove(user.id);
-}, 2000);
-  
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -93,7 +89,9 @@ collector.on("collect", (reaction, user) => {
 //write
   
 })
-
+client.on('messageReactionRemove', (reaction, user) => {
+	console.log('Reaction removed; current count:', reaction.count);
+});
 collector.on("end", (reaction, user) => {
 console.log("not collected");
 //write
@@ -107,9 +105,7 @@ console.log("not collected");
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
 collector2.on("collect", (reaction, user) => {
-  setTimeout(function(){
     reaction.users.remove(user.id);
-}, 2000);
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -195,4 +191,3 @@ exports.help = {
     aliases: ["coinflip","yazıtura"],
     usage: "cf2 <yazı,tura> <reaction command>"
 }
-
