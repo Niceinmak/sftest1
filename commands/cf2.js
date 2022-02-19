@@ -62,7 +62,6 @@ namescardslistd=""
           msg.react("👊")
         //  msg.react("")  
           msg.react("🛑");
-setTimeout(function(){ 
    
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
@@ -70,6 +69,10 @@ setTimeout(function(){
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
+  setTimeout(function(){
+    reaction.users.remove(user.id);
+}, 2000);
+  
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -97,8 +100,6 @@ console.log("not collected");
 })
   
   
-}, 10);
-setTimeout(function(){ 
                 
                 const filter2 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
@@ -106,7 +107,9 @@ setTimeout(function(){
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
 collector2.on("collect", (reaction, user) => {
-  //reaction.users.remove(user.id);
+  setTimeout(function(){
+    reaction.users.remove(user.id);
+}, 2000);
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -131,8 +134,6 @@ collector2.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
-}, 20);
-   setTimeout(function(){ 
                 
      const filter3 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
@@ -140,7 +141,8 @@ console.log("not collected");
 const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
 
 collector3.on("collect", (reaction, user) => {
-  //reaction.users.remove(user.id);
+    reaction.users.remove(user.id);
+
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -165,8 +167,7 @@ collector3.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
-}, 30);
-        } );
+       } );
     }
     } 
 function drawCard(who) {
