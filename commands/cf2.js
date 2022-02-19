@@ -70,7 +70,7 @@ setTimeout(function(){
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-  msg.clearReactions()
+  message.reactions.removeAll();
   //reaction.users.remove(user.id);
   console.log("collected");
    let dealerd=`${drawCard("d")}`
