@@ -25,6 +25,8 @@ namescardslistd=""
     let amount3 = args[0]
     let amount5 = args[1]
     let yazitura= ""
+    let pulldown=0
+    let pulldowncontrol=0
     let authordata = client.eco.fetchMoney(message.author.id) 
     let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
@@ -68,7 +70,6 @@ namescardslistd=""
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-    reaction.users.remove(user.id);
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -90,7 +91,11 @@ collector.on("collect", (reaction, user) => {
   
 })
 client.on('messageReactionRemove', (reaction, user) => {
-	console.log('Reaction removed; current count:', reaction.count);
+  if(pulldowncontrol==0){
+	pulldown++
+    pulldowncontrol=1
+  console.log('Reaction removed; current count:', reaction.count, pulldown);
+    }
 });
 collector.on("end", (reaction, user) => {
 console.log("not collected");
@@ -105,7 +110,8 @@ console.log("not collected");
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
 collector2.on("collect", (reaction, user) => {
-    reaction.users.remove(user.id);
+  if(pulldown==1)
+    {
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -123,6 +129,7 @@ collector2.on("collect", (reaction, user) => {
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
           return msg.edit(embed);
+}
 //write
   
 })
@@ -137,8 +144,8 @@ console.log("not collected");
 const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
 
 collector3.on("collect", (reaction, user) => {
-    reaction.users.remove(user.id);
-
+if(pulldown==2)
+    {
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
@@ -157,7 +164,7 @@ collector3.on("collect", (reaction, user) => {
 	)
           return msg.edit(embed);
 //write
-  
+  }
 })
 collector3.on("end", (reaction, user) => {
 console.log("not collected");
