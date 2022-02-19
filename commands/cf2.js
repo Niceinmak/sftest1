@@ -70,7 +70,6 @@ setTimeout(function(){
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-  message.reactions.removeAll()
   console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
