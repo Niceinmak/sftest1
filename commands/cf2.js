@@ -97,8 +97,8 @@ console.log("not collected");
 })
   
   
-}, 3000);
-
+}, 10);
+setTimeout(function(){ 
                 
                 const filter2 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
@@ -131,6 +131,41 @@ collector2.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
+}, 20);
+   setTimeout(function(){ 
+                
+     const filter3 = (reaction, user) => {
+	return reaction.emoji.name === '👊' && user.id === message.author.id;
+};
+const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
+
+collector3.on("collect", (reaction, user) => {
+  //reaction.users.remove(user.id);
+  console.log("collected");
+   let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+   //let agr1d=argString[0]
+  //let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+    embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+	)
+          return msg.edit(embed);
+//write
+  
+})
+collector3.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+}, 30);
         } );
     }
     } 
