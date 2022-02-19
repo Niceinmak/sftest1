@@ -61,11 +61,12 @@ namescardslistd=""
           msg.react("👊")
         //  msg.react("")  
           msg.react("🛑");
+               
   const filter = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
-
+ setTimeout(() => {
 collector.on("collect", (reaction, user) => {
    message.reactions.removeAll()
     reaction.users.remove(user.id);
@@ -86,13 +87,12 @@ collector.on("collect", (reaction, user) => {
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
-          return msg.edit(embed);
+  
+	 return msg.edit(embed);
+
+         
 //write
-   for (;;) {
-    if(reaction.emoji.name === '👊' && user.id != message.author.id){
-      console.log("t")
-      break
-    }}
+
 })
 
 collector.on("end", (reaction, user) => {
@@ -100,7 +100,7 @@ console.log("not collected");
 //write
  
 })
-  
+  }, 10000); 
   
                 
                 const filter2 = (reaction, user) => {
