@@ -73,7 +73,7 @@ collector.on("collect", (reaction, user) => {
      reaction.users.remove(user.id);
 startbj()
                   const filter2 = (reaction, user) => {
-	return reaction.emoji.name === '👊' && user.id === message.author.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
 };
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
@@ -82,7 +82,7 @@ collector2.on("collect", (reaction, user) => {
     reaction.users.remove(user.id);
 startbj()
        const filter3 = (reaction, user) => {
-	return reaction.emoji.name === '👊' && user.id === message.author.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
 };
 const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
 
@@ -93,9 +93,21 @@ startbj()
   }
   else
     {
-      if (reaction.emoji.name === '🛑') {
+         console.log("t")
+    if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
-      console.log("t")
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: agr2u, inline: true },
+	)
+      return msg.edit(embed);
+     
     }
     }
 //write
@@ -105,16 +117,24 @@ collector3.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
-        collector2.on("end", (reaction, user) => {
-console.log("not collected");
-//write
-})
   }
 else
   {
+     console.log("t")
     if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
-      console.log("t")
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: agr2u, inline: true },
+	)
+      return msg.edit(embed);
+     
     }
    
   }
@@ -125,7 +145,10 @@ else
 //write
   
 })
-
+    collector2.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
 
 collector.on("end", (reaction, user) => {
 console.log("not collected");
@@ -134,9 +157,21 @@ console.log("not collected");
    }
 else
   {
-   if (reaction.emoji.name === '🛑') {
-       reaction.users.remove(user.id);
       console.log("t")
+    if (reaction.emoji.name === '🛑') {
+       reaction.users.remove(user.id);
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: agr2u, inline: true },
+	)
+      return msg.edit(embed);
+     
     }
   }
   
@@ -145,7 +180,9 @@ else
 
 })
             
-
+function stopbj(){
+  return [` [${dealerpoint}+?] \`${userpoint}\``]
+}
                   function startbj(){
   console.log("collected");
    let dealerd=`${drawCard("d")}`
