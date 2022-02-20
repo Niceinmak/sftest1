@@ -96,7 +96,6 @@ startbj()
   }
   else
     {
-     console.log("t")
     if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
@@ -111,6 +110,16 @@ startbj()
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
+      if(userpoint>dealerpoint)
+        {
+         embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+        }
+      else
+        {
+           embed.setAuthor(`You Lose`) 
+          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+        }
       return msg.edit(embed);
      
     }
@@ -125,7 +134,6 @@ console.log("not collected");
   }
 else
   {
-    console.log("t")
     if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
@@ -140,6 +148,16 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
+      if(userpoint>dealerpoint)
+        {
+         embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+        }
+      else
+        {
+           embed.setAuthor(`You Lose`) 
+          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+        }
       return msg.edit(embed);
      
     }
@@ -164,7 +182,6 @@ console.log("not collected");
    }
 else
   {
-      console.log("t")
     if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
@@ -179,9 +196,27 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-      if(userpoint<dealerpoint)
+      if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Lose`)  
+         embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+        }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+        }
+      else
+        {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+            }
+          else
+            {
+           embed.setAuthor(`You Lose`) 
+          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+            }
         }
       return msg.edit(embed);
      
