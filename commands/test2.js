@@ -11,7 +11,7 @@ exports.execute = async (client, message, args) => {
     let amount3 = args[0]
     btcValue().then(value => {
       let value1=value
-      value1 = value1.toString().substring(1);
+      value1 = value1.toString().slice(0,3);
     console.log('$' + value1);
     // => e.g. $11048
 });
