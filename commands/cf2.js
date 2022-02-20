@@ -60,12 +60,11 @@ namescardslistd=""
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send(embed).then(async msg => {
-          msg.react("👊")
+	  msg.react("👊")
         //  msg.react("")  
-          msg.react("🛑");
-   
+          msg.react("🛑")
   const filter = (reaction, user) => {
-	return reaction.emoji.name === '👊' || reaction.emoji.name === '🛑' && user.id === message.author.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
@@ -89,9 +88,16 @@ const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
 
 collector3.on("collect", (reaction, user) => {
   if (reaction.emoji.name === '👊') {
+     reaction.users.remove(user.id);
 startbj()
   }
-  
+  else
+    {
+      if (reaction.emoji.name === '🛑') {
+       reaction.users.remove(user.id);
+      console.log("t")
+    }
+    }
 //write
   
 })
@@ -100,7 +106,14 @@ console.log("not collected");
 //write
 })
   }
-
+else
+  {
+    if (reaction.emoji.name === '🛑') {
+       reaction.users.remove(user.id);
+      console.log("t")
+    }
+   
+  }
 
     
 //write
@@ -118,7 +131,13 @@ console.log("not collected");
 //write
 })
    }
-
+else
+  {
+   if (reaction.emoji.name === '🛑') {
+       reaction.users.remove(user.id);
+      console.log("t")
+    }
+  }
   
   
                 
