@@ -283,11 +283,14 @@ function stopbj(){
   let agr2u=argString2[1]
   if(userpoint<=21)
     {
-      embed.fields = [];
+      if(userpoint<=17){
+           embed.fields = [];
   embed.addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
+      }
+   
     }
    else
       {
