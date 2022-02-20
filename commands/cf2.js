@@ -189,6 +189,8 @@ else
 function stopbj(){
   return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
 }
+                
+                
                   function startbj(){
   console.log("collected");
    let dealerd=`${drawCard("d")}`
@@ -201,14 +203,33 @@ function stopbj(){
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let agr1u=argString2[0]
   let agr2u=argString2[1]
-    embed.fields = [];
+  if(userpoint<=21)
+    {
+      embed.fields = [];
   embed.addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
+    }
+   else
+      {
+             embed.setAuthor(`You Lose`)      
+            let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
+	)
+     }
+    
           return msg.edit(embed);
         temp++
-                      console.log("t")
 }
        } );
     }
