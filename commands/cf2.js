@@ -93,7 +93,7 @@ startbj()
   }
   else
     {
-         console.log("t")
+     console.log("t")
     if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
@@ -101,10 +101,12 @@ startbj()
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let dpoint=argString[0]
   let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
   embed.fields = [];
   embed.addFields(
-    { name: `Dealer \`${dpoint}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${upoint}\``, value: agr2u, inline: true },
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
       return msg.edit(embed);
      
@@ -120,7 +122,7 @@ console.log("not collected");
   }
 else
   {
-     console.log("t")
+    console.log("t")
     if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
@@ -128,10 +130,12 @@ else
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let dpoint=argString[0]
   let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
   embed.fields = [];
   embed.addFields(
-    { name: `Dealer \`${dpoint}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${upoint}\``, value: agr2u, inline: true },
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
       return msg.edit(embed);
      
@@ -165,10 +169,12 @@ else
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let dpoint=argString[0]
   let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
   embed.fields = [];
   embed.addFields(
-    { name: `Dealer \`${dpoint}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${upoint}\``, value: agr2u, inline: true },
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
       return msg.edit(embed);
      
@@ -181,7 +187,7 @@ else
 })
             
 function stopbj(){
-  return [` [${dealerpoint}+?] \`${userpoint}\``]
+  return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
 }
                   function startbj(){
   console.log("collected");
