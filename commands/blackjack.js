@@ -12,6 +12,7 @@ exports.execute = async (client, message, args) => {
         "h",
         "c",
     ];
+  let randomcounter=0
  var dealerpoint=""
  var dealerpointtemp=""
  var userpoint=""
@@ -43,6 +44,7 @@ namescardslistd=""
     {
       let messageid=message.author.id
       if(amount3>50000)amount3=50000
+      drawCard("u")
       let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
@@ -63,6 +65,7 @@ namescardslistd=""
 	)
             .setColor("#7289DA")
             .setTimestamp();
+      drawCard("d")
               return message.channel.send(embed).then(async msg => {
 	  msg.react("👊")
         //  msg.react("")  
@@ -145,7 +148,6 @@ startbj()
   
 })
 collector3.on("end", (reaction, user) => {
-console.log("not collected");
 //write
 })
   }
@@ -191,7 +193,6 @@ else
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
-      console.log(messageid)
       return msg.edit(embed);
      
     }
@@ -204,12 +205,10 @@ else
   
 })
     collector2.on("end", (reaction, user) => {
-console.log("not collected");
 //write
 })
 
 collector.on("end", (reaction, user) => {
-console.log("not collected");
 //write
 })
    }
@@ -272,7 +271,6 @@ function stopbj(){
                 
                 
                   function startbj(){
-  console.log("collected");
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
@@ -319,9 +317,18 @@ function stopbj(){
     } 
 
 function drawCard(who) {
-   let count = Math.floor(Math.random() * 12);
+  let count = Math.floor(Math.random() * 10);
+  if(randomcounter<2)
+    {
+     if(count==0) count=1
+      randomcounter++
+    }
+  else
+    {
   if(count==0) count=1
-  if(count<5) count=7
+  if(count<5) count=5
+    }
+  
   if(who=="d")
     {
     namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
