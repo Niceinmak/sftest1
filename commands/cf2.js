@@ -96,7 +96,7 @@ startbj()
   }
   else
     {
-    if (reaction.emoji.name === '🛑') {
+      if (reaction.emoji.name === '🛑') {
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
       var argString = points.substring(1).split(' ');
@@ -115,10 +115,22 @@ startbj()
          embed.setAuthor(`You Win!`) 
           let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
         }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+        }
       else
         {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+            }
+          else
+            {
            embed.setAuthor(`You Lose`) 
           let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+            }
         }
       return msg.edit(embed);
      
@@ -153,15 +165,26 @@ else
          embed.setAuthor(`You Win!`) 
           let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
         }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+        }
       else
         {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+            }
+          else
+            {
            embed.setAuthor(`You Lose`) 
           let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+            }
         }
       return msg.edit(embed);
      
     }
-   
   }
 
     
@@ -183,6 +206,7 @@ console.log("not collected");
 else
   {
     if (reaction.emoji.name === '🛑') {
+      drawCard("d")
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
       var argString = points.substring(1).split(' ');
@@ -280,7 +304,7 @@ function stopbj(){
     } 
 
 function drawCard(who) {
-   let count = Math.floor(Math.random() * 10);
+   let count = Math.floor(Math.random() * 12);
   if(count==0) count=1
   if(count<5) count=7
   if(who=="d")

@@ -1,101 +1,331 @@
+
 const { MessageEmbed } = require("discord.js");
+let namescardslistd=""
 exports.execute = async (client, message, args) => {
-    let amount2 = Math.floor(Math.random() * 200)/100;
+  let temp=0;
+     let namescards = [
+        "hf",
+        "d",
+        "s",
+        "ds",
+        "df",
+        "h",
+        "c",
+    ];
+ var dealerpoint=""
+ var dealerpointtemp=""
+ var userpoint=""
+let namescardslistu=""
+ dealerpoint=0
+ userpoint=0
+  dealerpointtemp=0
+namescardslistu=""
+namescardslistd=""
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount2 = Math.floor(Math.random() * 2);
+    let amount4 = Math.floor(Math.random() * 200)/100;
     let amount3 = args[0]
-    let amount5="0"
-    let amount = Math.floor(Math.random() * amount3);
-    let azcok=""
-    let amountfinish= 0
+    let amount5 = args[1]
+    let yazitura= ""
     let authordata = client.eco.fetchMoney(message.author.id) 
     let timecooldown = Math.floor(Math.random() * 200)+50;
-        let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{ canLose: true, cooldown: 5000, customName: "search" });
-  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
-    if (playtime.onCooldown) return message.reply(`**Biraz yavaş ol,${playtime.time.seconds} saniye daha bekle.**`);
-     if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Lütfen Sayı Giriniz.`);
+    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
+    const user1 = message.mentions.users.first() || message.member.user
+    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+  //--------------------------------------------
+  if(amount3=="all") amount3=authordata.amount;
+  if(amount3=="half") amount3=authordata.amount/2;
+    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Lütfen Sayı Giriniz`);
   else{
-    if(amount3>authordata.amount || amount3<1) return message.channel.send(`** ⛔${message.author.tag} | ** Kendi bakiyenizden büyük ve 1'den küçük sayı giremessiniz.`);
-    if([Math.floor(amount2)]==0) 
-    {
-      azcok="En Az Atan"
-      amount5="0"
-    }
+    if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** Girdiğiniz miktar paranızdan fazla veya 1'den az olamaz`);
     else
+    {
+      if(amount3>50000)amount3=50000
+      let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1d=argString[0]
+  let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+             const embed = new MessageEmbed()
+             .setAuthor(`${user1.username}, ${amount3} ile blackjack oynadı`, user1.displayAvatarURL())
+            .setFooter(`Oyun devam ediyor`)
+            .setTitle(`${user1.username}`)
+            .addFields(
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+	)
+            .setColor("#7289DA")
+            .setTimestamp();
+              return message.channel.send(embed).then(async msg => {
+	  msg.react("👊")
+        //  msg.react("")  
+          msg.react("🛑")
+  const filter = (reaction, user) => {
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
+};
+const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
+
+collector.on("collect", (reaction, user) => {
+   if (reaction.emoji.name === '👊') {
+     reaction.users.remove(user.id);
+startbj()
+                  const filter2 = (reaction, user) => {
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
+};
+const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
+
+collector2.on("collect", (reaction, user) => {
+  if (reaction.emoji.name === '👊') {
+    reaction.users.remove(user.id);
+startbj()
+       const filter3 = (reaction, user) => {
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
+};
+const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
+
+collector3.on("collect", (reaction, user) => {
+  if (reaction.emoji.name === '👊') {
+     reaction.users.remove(user.id);
+startbj()
+  }
+  else
+    {
+      if (reaction.emoji.name === '🛑') {
+       reaction.users.remove(user.id);
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
+	)
+      if(userpoint>dealerpoint)
+        {
+         embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+        }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+        }
+      else
+        {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+            }
+          else
+            {
+           embed.setAuthor(`You Lose`) 
+          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+            }
+        }
+      return msg.edit(embed);
+     
+    }
+    }
+//write
+  
+})
+collector3.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+  }
+else
+  {
+    if (reaction.emoji.name === '🛑') {
+       reaction.users.remove(user.id);
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
+	)
+      if(userpoint>dealerpoint)
+        {
+         embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+        }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+        }
+      else
+        {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+            }
+          else
+            {
+           embed.setAuthor(`You Lose`) 
+          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+            }
+        }
+      return msg.edit(embed);
+     
+    }
+  }
+
+    
+//write
+  
+//write
+  
+})
+    collector2.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+
+collector.on("end", (reaction, user) => {
+console.log("not collected");
+//write
+})
+   }
+else
+  {
+    if (reaction.emoji.name === '🛑') {
+      drawCard("d")
+       reaction.users.remove(user.id);
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
+	)
+      if(userpoint>dealerpoint)
+        {
+         embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+        }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+        }
+      else
+        {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
+            }
+          else
+            {
+           embed.setAuthor(`You Lose`) 
+          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+            }
+        }
+      return msg.edit(embed);
+     
+    }
+  }
+  
+  
+                
+
+})
+            
+function stopbj(){
+  return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
+}
+                
+                
+                  function startbj(){
+  console.log("collected");
+   let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+   //let agr1d=argString[0]
+  //let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+  if(userpoint<=21)
+    {
+      embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+	)
+    }
+   else
       {
-      azcok="En Çok Atan"
-        amount5="1"
-      }
-        const embed = new MessageEmbed()
-  .setTitle(`**${message.author.tag} | ${amount3} İle Blackjack Oynadı!**`)
-  .setColor("GRAY")
-  .setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧`)
-  .setDescription(`**🃏${message.author.tag}= *${amount3}*💶  \n 🃏Rakip= *Bekleniyor*💶 **`)
-  if(amount5==0){
-  return message.channel.send(embed).then(async msg => {
-      setTimeout(() => {
-         embed.setDescription(`**🃏${message.author.tag}= *${amount3}*💶  \n 🃏Rakip= ${amount}💶 **`)
-        return msg.edit(embed)
-        }, 1000);
-    setTimeout(() => {
-      let amount4 = Math.floor(Math.random() * amount3);
-      let amountfinish= Math.floor(amount+amount4)
-         embed.setDescription(`**🃏${message.author.tag}= *${amount3}*💶  \n 🃏Rakip= ${amountfinish}💶 **`)
-        if(amountfinish==amount3) {
-                  embed.setColor("YELLOW")
-            embed.setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧, Rakip Kazandı :(`)
-          }
-          else if(amountfinish<amount3)
-        {
-          embed.setColor("RED")
-          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
-          embed.setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧, Rakip Kazandı :(`)
-        }
-      else
-        {
-          embed.setColor("GREEN")
-          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
-          embed.setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧, Tebrikler ,Kazandın!`)
-        }
+        let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
+             embed.setAuthor(`You Lose`)      
+            let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
+	)
+     }
     
-        return msg.edit(embed)
-        }, 2000);
-          });
-  }
-  if(amount5==1){
-  return message.channel.send(embed).then(async msg => {
-      setTimeout(() => {
-         embed.setDescription(`**🃏${message.author.tag}= *${amount3}*💶  \n 🃏Rakip= ${amount}💶 **`)
-        return msg.edit(embed)
-        }, 1000);
-    setTimeout(() => {
-      let amount4 = Math.floor(Math.random() * amount3);
-      let amountfinish= Math.floor(amount+amount4)
-         embed.setDescription(`**🃏${message.author.tag}= *${amount3}*💶  \n 🃏Rakip= ${amountfinish}💶 **`)
-        if(amountfinish==amount3) {
-                  embed.setColor("YELLOW")
-            embed.setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧, Rakip Kazandı :(`)
-          }
-          else if(amountfinish>amount3)
-        {
-          embed.setColor("RED")
-          let data2= client.eco.removeMoney(message.author.id, parseInt(amount3));
-          embed.setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧, Rakip Kazandı :(`)
-        }
-      else
-        {
-          embed.setColor("GREEN")
-          let data2= client.eco.addMoney(message.author.id, parseInt(amount3));
-          embed.setFooter(`${azcok} 𝙆𝙖𝙯𝙖𝙣ı𝙧, Tebrikler ,Kazandın!`)
-        }
+          return msg.edit(embed);
+        temp++
+}
+       } );
+    }
     
-        return msg.edit(embed)
-        }, 2000);
-          });
-  }
-  }
+    } 
+
+function drawCard(who) {
+   let count = Math.floor(Math.random() * 12);
+  if(count==0) count=1
+  if(count<5) count=7
+  if(who=="d")
+    {
+    namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+    dealerpoint+=count
+      return [` [${dealerpoint}+?] \`${namescardslistd}\``];
+    }
+  if(who=="u")
+    {
+    namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+    userpoint+=count
+      return [` [${userpoint}] \`${namescardslistu}\``];
+    }
+    
+}
 };
 
 exports.help = {
     name: "bj",
-    aliases: [],
-    usage: "bj <amount>"
+    aliases: ["blackjack","BL"],
+    usage: "cf2 <yazı,tura> <reaction command>"
 }
+
