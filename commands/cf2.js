@@ -65,12 +65,13 @@ namescardslistd=""
           msg.react("🛑");
    
   const filter = (reaction, user) => {
-	return reaction.emoji.name === '👊' && user.id === message.author.id;
+	return reaction.emoji.name === '👊' || reaction.emoji.name === '🛑' && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
-reaction.users.remove(user.id);
+   if (reaction.emoji.name === '👊') {
+     reaction.users.remove(user.id);
 startbj()
                   const filter2 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
@@ -78,7 +79,8 @@ startbj()
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
 collector2.on("collect", (reaction, user) => {
-reaction.users.remove(user.id);
+  if (reaction.emoji.name === '👊') {
+    reaction.users.remove(user.id);
 startbj()
        const filter3 = (reaction, user) => {
 	return reaction.emoji.name === '👊' && user.id === message.author.id;
@@ -86,8 +88,10 @@ startbj()
 const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
 
 collector3.on("collect", (reaction, user) => {
-   reaction.users.remove(user.id);
+  if (reaction.emoji.name === '👊') {
 startbj()
+  }
+  
 //write
   
 })
@@ -95,6 +99,8 @@ collector3.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
+  }
+
 
     
 //write
@@ -111,6 +117,8 @@ collector.on("end", (reaction, user) => {
 console.log("not collected");
 //write
 })
+   }
+
   
   
                 
