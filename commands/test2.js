@@ -1,32 +1,23 @@
-const Discord = require("discord.js");
-const client = new Discord.Client()
 const { MessageEmbed } = require("discord.js");
-const DBL = require("dblapi.js");
-const { MessageButton } = require('discord-buttons')
-const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
+const btcValue = require('btc-value');
 exports.execute = async (client, message, args) => {
-  const embed = new Discord.MessageEmbed()
-  .setTitle(`${message.author.name} voted for EcoVerse!`)
-  .setDescription(`──────────────────────────
-  **:tada: Thanks for voting!
-  :sparkles: Voted By:User
-  :diamond_shape_with_a_dot_inside: Wait 12 Hours to vote again!
-  🔗You can vote by clicking the button below!**
-  ──────────────────────────`)
-  .setImage(process.env.IMAGE_LINK)
-  .setFooter("Thanks for voting!")
-  .setColor("GREEN")
-  let buttonurl = new MessageButton()
-  .setStyle('url')
-    .setURL(process.env.VOTE_LINK)
-  .setLabel('Vote') 
-  let website = new MessageButton()
-  .setStyle('url')
-    .setURL("http://ecoverse.ml/")
-  .setLabel(`Go to website`) 
-  .setDisabled(false);
-  message.channel.send({ buttons: [buttonurl, website], embed: embed })
-  
+  let users = [
+        "Pocket",
+        "T-Shirt",
+        "Zero's Databse",
+        "Street"
+    ];
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount3 = args[0]
+    btcValue().then(value => {
+      let value1=value
+      value1 = value1.toString().substring(1);
+    console.log('$' + value1);
+    // => e.g. $11048
+});
+    const embed = new MessageEmbed()
+        .setTitle(`Test`)
+  message.channel.send(embed);
     /*
     FARKLI KOMUTLAR DİZİNİ
 
