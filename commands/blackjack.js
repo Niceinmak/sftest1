@@ -281,7 +281,7 @@ function stopbj(){
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let agr1u=argString2[0]
   let agr2u=argString2[1]
-  if(userpoint<=21)
+  if(userpoint<=21 && userpoint<=16)
     {
       if(userpoint<=17){
            embed.fields = [];
