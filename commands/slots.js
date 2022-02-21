@@ -12,9 +12,9 @@ exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 100);
     let amount3 = args[0]
     let authordata = client.eco.fetchMoney(message.author.id) 
+    const user1 = message.mentions.users.first() || message.member.user
     let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
-    const user1 = message.mentions.users.first() || message.member.user
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   //--------------------------------------------
