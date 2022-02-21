@@ -6,10 +6,9 @@ value = value.toString().slice(0,3);
   let amount = args[0]
   if(amount=="all") amount=authordata.amount
   if(amount=="half") amount=authordata.amount/2
-  if (!amount || isNaN(amount) || amount<1) return message.reply(`**Please enter a valid amount to buy**`) 
-  if(authordata.amount < amount*value) return message.reply(`**Looks like you don\'t have that much money,You need to have ${amount*value}💶 to do this operation.**`) 
-  client.eco.removeMoney(message.author.id, parseInt(amount*value));
-  client.eco.addMoney(`${message.author.id}11`, parseInt(amount));
+  if (!amount || isNaN(amount) || amount<1) return message.reply(`**Please enter a valid amount to sell**`)
+  client.eco.removeMoney(`${message.author.id}11`, parseInt(amount));
+  client.eco.addMoney(message.author.id, parseInt(amount*value));
   let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   return message.channel.send(`**Transaction successful! You bought ${amountformat} EcoCoin🌿.**`)
 });
