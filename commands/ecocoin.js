@@ -21,7 +21,7 @@ exports.execute = async (client, message, args) => {
   
 
 btcValue.getPercentageChangeLastDay().then(percentage => {
-  embed.addField(`**Percentage compared to last day:**`,percentage.toString().slice(0,3) + '%')
+  embed.addField(`**Percentage compared to last day:**`,`**%${percentage.toString().slice(0,5)}**`)
 
   embed.addField(`\`Note\` **This coin can only be used in-game.**`,`**Cannot be bought and sold in real life**`)
   message.channel.send(embed);
