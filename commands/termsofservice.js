@@ -12,7 +12,7 @@ If you have any money, your user ID is stored. Your user ID can be stored multip
 Money data, market data, user id and similar things are stored on our servers.
 
 **Who gets this data?**
-Badge data is publically available. All other data is only available to Quacky Administrators.
+Badge data is publically available. All other data is only available to EcoVerse Administrators.
 
 **Third Party Data Sharing**
 Money data is public. All other data is only available to EcoVerse Administrators..
@@ -38,7 +38,9 @@ These terms of service enable the use of the EcoVerse bot and access to its serv
 The bot may receive this information, including your EcoVerse profile picture, username, your id and avatar. Everything you post or otherwise make available on our Services (commands) is referred to as "User Content".
 You reserve all rights to and are solely responsible for any user content you submit to EcoVerse.
  
- 
+**EcoCoin and Other Money Services**
+The money in the game cannot be used in the real world, this is also the case with EcoCoin. In no way, these coins or EcoCoins can be sold or bought for real world money.
+
 **How Long Do We Store Your Content?**
 We keep all data and information until you come to the help server and ask for your account to be closed. You consent to use your content as long as you use it under normal conditions and to change the amount of money you use in games within the bot and derivative works.
 
