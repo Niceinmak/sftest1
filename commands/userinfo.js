@@ -1,6 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 const moment = require("moment");
 exports.execute = async (client, message, args) => {
+  let timecooldown = Math.floor(Math.random() * 200)+50;
+    let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 10000});
+    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+   let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+  //--------------------------------------------
   const user = message.mentions.users.first() || message.author;
   let userBalance = client.eco.fetchMoney(user.id);
   let bankBalance = client.eco.fetchMoney(`${message.author.id}10`);
