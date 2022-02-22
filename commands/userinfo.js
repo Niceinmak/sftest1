@@ -16,7 +16,7 @@ exports.execute = async (client, message, args) => {
   let ecoBalanceformat=String(ecoBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
-  let joined=moment(new Date(user.joinedAt)).format("DD/MM/YY")
+  let joined=moment((user.joinedAt)).format("DD/MM/YY:hh:mm")
   let admin=``
   if (!client.config.admins.includes(user.id)) admin=`No`
   else admin=`Yes`
@@ -45,7 +45,7 @@ exports.execute = async (client, message, args) => {
 const Embed1 = new MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle(user.username)
-	.setDescription(`**Discord Tag: ${user.user.tag}\nNow Total Cash: ${allBalanceformat}💶\nJoined Server: ${joined}**`)
+	.setDescription(`**Discord Tag: ${user.tag}\nNow Total Cash: ${allBalanceformat}💶\nJoined Server: ${joined}**`)
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
