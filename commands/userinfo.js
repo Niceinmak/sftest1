@@ -3,7 +3,11 @@ const moment = require("moment");
 exports.execute = async (client, message, args) => {
   const user = message.mentions.users.first() || message.author;
   let userBalance = client.eco.fetchMoney(user.id);
+  let bankBalance = client.eco.fetchMoney(`${message.author.id}10`);
+  let ecoBalance = client.eco.fetchMoney(`${message.author.id}11`);
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+  let bankBalanceformat=String(bankBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+  let ecoBalanceformat=String(ecoBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
   let admin=``
@@ -35,6 +39,10 @@ const Embed1 = new MessageEmbed()
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
+    { name: '**Bank**', value: `**User: ${user.username}\nMoney: ${bankBalanceformat}💶\nPosition: ${userBalance.position}**` },
+    { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
+    { name: '**Bank**', value: `${bankBalanceformat}` },
+    { name: '**EcoCoin**', value: `${ecoBalanceformat}` },
 		{ name: '**Items**', value: `${itemsname}` },
 		{ name: '\u200B', value: '\u200B' },
 		{ name: 'User ID', value: user.id, inline: true },
