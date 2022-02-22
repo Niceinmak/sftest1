@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const btcValue = require('btc-value');
 const moment = require("moment");
 exports.execute = async (client, message, args) => {
   let timecooldown = Math.floor(Math.random() * 200)+50;
@@ -15,6 +16,7 @@ exports.execute = async (client, message, args) => {
   let ecoBalanceformat=String(ecoBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
+  let joined=moment(new Date(user.joinedAt)).format("DD/MM/YY")
   let admin=``
   if (!client.config.admins.includes(user.id)) admin=`No`
   else admin=`Yes`
@@ -37,10 +39,13 @@ exports.execute = async (client, message, args) => {
     itemsname+=`Name: **${k}** Amount: **${arrayToObject[k]}**\n`
   );
       }
+  btcValue().then(value => {
+    value=value.toString().slice(0,3);
+    let allBalanceformat=String(userBalance.amount+bankBalance.amount+(ecoBalance.amount*value)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
 const Embed1 = new MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle(user.username)
-	.setDescription(`**Total Cash\n${userBalanceformat}💶\nT\nTotal Item:${items}**`)
+	.setDescription(`**Discord Tag: ${user.user.tag}\nNow Total Cash: ${allBalanceformat}💶\nJoined Server: ${joined}**`)
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
@@ -54,7 +59,7 @@ const Embed1 = new MessageEmbed()
 	)
 
 message.channel.send(Embed1);
-  
+  });
 }
 
 exports.help = {
