@@ -7,16 +7,17 @@ exports.execute = async (client, message, args) => {
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   //--------------------------------------------
+  let userguild = message.guild.member(message.mentions.users.first() || message.author)
   const user = message.mentions.users.first() || message.author;
   let userBalance = client.eco.fetchMoney(user.id);
-  let bankBalance = client.eco.fetchMoney(`${message.author.id}10`);
-  let ecoBalance = client.eco.fetchMoney(`${message.author.id}11`);
+  let bankBalance = client.eco.fetchMoney(`${user.id}10`);
+  let ecoBalance = client.eco.fetchMoney(`${user.id}11`);
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let bankBalanceformat=String(bankBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let ecoBalanceformat=String(ecoBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
-  let joined=moment((user.joinedAt)).format("DD/MM/YY:hh:mm")
+  let joined=moment.utc(userguild.joinedAt).format('DD/MM/YY')
   let admin=``
   if (!client.config.admins.includes(user.id)) admin=`No`
   else admin=`Yes`
