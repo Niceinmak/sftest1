@@ -39,10 +39,8 @@ const Embed1 = new MessageEmbed()
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
-    { name: '**Bank**', value: `**User: ${user.username}\nMoney: ${bankBalanceformat}💶\nPosition: ${userBalance.position}**` },
-    { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
-    { name: '**Bank**', value: `${bankBalanceformat}` },
-    { name: '**EcoCoin**', value: `${ecoBalanceformat}` },
+    { name: '**Bank**', value: `**User: ${user.username}\nMoney: ${bankBalanceformat}🏦\nPosition: ${bankBalance.position}**` },
+    { name: '**EcoCoin**', value: `**User: ${user.username}\nMoney: ${ecoBalanceformat}🌿\nPosition: ${ecoBalance.position}**` },
 		{ name: '**Items**', value: `${itemsname}` },
 		{ name: '\u200B', value: '\u200B' },
 		{ name: 'User ID', value: user.id, inline: true },
