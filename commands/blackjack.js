@@ -252,6 +252,7 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
+          if(userpoint>)
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
