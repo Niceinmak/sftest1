@@ -128,6 +128,14 @@ startbj()
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
+         if(userpoint>21 & dealerpoint>21)
+            {
+              embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+            }
+          else
+            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -154,6 +162,7 @@ startbj()
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+              }
       return msg.edit(embed);
      
     }
@@ -186,6 +195,14 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
+         if(userpoint>21 & dealerpoint>21)
+            {
+              embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+            }
+          else
+            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -212,6 +229,7 @@ else
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+              }
       return msg.edit(embed);
      
     }
@@ -252,7 +270,14 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-          if(userpoint>)
+          if(userpoint>21 & dealerpoint>21)
+            {
+              embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+            }
+          else
+            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -279,6 +304,7 @@ else
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+              }
       return msg.edit(embed);
      
     }
@@ -329,6 +355,14 @@ function stopbj(){
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
+           if(userpoint>21 & dealerpoint>21)
+            {
+              embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+            }
+          else
+            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -337,6 +371,7 @@ function stopbj(){
         }
       else if(userpoint==dealerpoint)
         {
+          embed.setFooter(`You both bust!`)
           embed.setFooter(`You both bust!`)
         }
       else
@@ -354,6 +389,7 @@ function stopbj(){
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+              }
       return msg.edit(embed);
         }
    
