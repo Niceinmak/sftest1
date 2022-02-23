@@ -65,7 +65,6 @@ namescardslistd=""
 	)
             .setColor("#7289DA")
             .setTimestamp();
-      drawCard("d")
               return message.channel.send(embed).then(async msg => {
 	  msg.react("👊")
         //  msg.react("")  
@@ -128,15 +127,21 @@ startbj()
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-         if(userpoint>21 & dealerpoint>21)
-            {
-              embed.setAuthor(`You Lose`) 
+   if(userpoint>21 && dealerpoint>21)
+     {
+       embed.setAuthor(`You Lose`) 
               embed.setFooter(`You lose ${amount3}`)
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-            }
+     }
+    else if(userpoint>21 && dealerpoint<=21)
+      {
+        embed.setAuthor(`You Win!`) 
+          embed.setFooter(`You win ${amount3}`)
+          let data2= client.eco.addMoney(messageid, parseInt(amount3));
+      }
           else
             {
-   if(userpoint>dealerpoint)
+              if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
           embed.setFooter(`You win ${amount3}`)
@@ -162,7 +167,8 @@ startbj()
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
-              }
+            }
+   
       return msg.edit(embed);
      
     }
@@ -195,14 +201,6 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-         if(userpoint>21 & dealerpoint>21)
-            {
-              embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-            }
-          else
-            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -229,7 +227,6 @@ else
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
-              }
       return msg.edit(embed);
      
     }
@@ -270,14 +267,6 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-          if(userpoint>21 & dealerpoint>21)
-            {
-              embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-            }
-          else
-            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -304,7 +293,6 @@ else
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
-              }
       return msg.edit(embed);
      
     }
@@ -317,6 +305,18 @@ else
 })
             
 function stopbj(){
+  if(dealerpoint<17)
+    {
+      for(; ;)
+        {
+          drawCard("d")
+         if(dealerpoint>=17)
+           {
+             break
+           }
+        }
+      
+    }
   return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
 }
                 
@@ -332,18 +332,17 @@ function stopbj(){
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let agr1u=argString2[0]
   let agr2u=argString2[1]
-  if(userpoint<=21 && dealerpoint<=17)
+  if(userpoint<21)
     {
-      if(dealerpoint<=17){
-           embed.fields = [];
+                embed.fields = [];
   embed.addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
-      }
-      else
-        {
-          let points=`${stopbj()}`
+    }
+     else
+    {
+         let points=`${stopbj()}`
       var argString = points.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
   let dpoint=argString[0]
@@ -355,14 +354,6 @@ function stopbj(){
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-           if(userpoint>21 & dealerpoint>21)
-            {
-              embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-            }
-          else
-            {
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
@@ -389,46 +380,8 @@ function stopbj(){
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
-              }
-      return msg.edit(embed);
-        }
-   
-    }
-   else
-      {
-        if(userpoint<dealerpoint && dealerpoint>21 && userpoint<=21)
-          {
-            embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
-          let data2= client.eco.addMoney(messageid, parseInt(amount3));
-          }
-        else
-          {
-            if(userpoint==dealerpoint)
-              {
-                embed.setFooter(`You both bust!`)
-              }
-            else
-              {
-                let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-        embed.setFooter(`You lose ${amount3}`)
-             embed.setAuthor(`You Lose`)      
-              }
-          }
-        temp++
-            let points=`${stopbj()}`
-      var argString = points.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let dpoint=argString[0]
-  let upoint=argString[1]
-  let dcard=argString[2]
-  let ucard=argString[3]
-  embed.fields = [];
-  embed.addFields(
-    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
-    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
-	)
      }
+ 
     
           return msg.edit(embed);
 }
