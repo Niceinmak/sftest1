@@ -37,27 +37,34 @@ exports.execute = async (client, message, args) => {
   .setLabel('I Agree!') 
   .setID('1') 
   .setDisabled(false);
-    let buttonurl = new MessageButton()
-  .setStyle('url')
-    .setURL("https://discord.gg/2n9Zg9BGgY")
-  .setLabel('Support Server') 
+        let buttondeny= new MessageButton()
+  .setStyle('1')
+  // .setStyle('red')
+  // .setStyle('blue')
+  .setLabel('I Deny!') 
+  .setID('2') 
   .setDisabled(false);
-   let buttonurl2 = new MessageButton()
-  .setStyle('url')
-    .setURL("http://ecoverse.ml/")
-  .setLabel('Go to Website') 
-  .setDisabled(false);
- message.channel.send({ buttons: [buttonagree, buttonurl, buttonurl2], embed: embed }).then(message => { // Send Embed And Buttons
-                const filter = (button) => button.clicker.user.id === userid // To Check If User Who Clicked Button Is Same As Who Used Command
-                const collector = message.createButtonCollector(filter, { time: 300000 }) // 30 Seconds To Click
+        const channel = client.channels.cache.get(process.env.REQUEST_CHANNEL)
+ channel.send({ buttons: [buttonagree, buttondeny], embed: embed }).then(message => { // Send Embed And Buttons
+                const filter = (button) => button.clicker.user.id === "405247101442719764" // To Check If User Who Clicked Button Is Same As Who Used Command
+                const collector = message.createButtonCollector(filter, { time: 600000 }) // 30 Seconds To Click
                 collector.on('collect', async button => {
                   if(button.id === '1') { // If User Click Yes Button
                    button.reply.defer()
                   buttonagree.setDisabled(true);
-                    embed.setAuthor("Thanks")
-                  embed.setDescription("**You have accepted the Terms Of Use & Privacy Policy!**");
-                  message.edit({ buttons: [buttonagree, buttonurl, buttonurl2], embed: embed })
-                  
+                    buttondeny.setDisabled(true);
+                  message.edit({ buttons: [buttonagree, buttondeny], embed: embed })
+                  let data = client.eco.addMoney(user.id, parseInt(amount));
+                    let dataformat=String(data.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+                    const embed1 = new MessageEmbed()
+        .setTitle(`Money Added!`)
+        .addField(`User`, `<@${data.user}>`)
+        .addField(`Balance Given`, `**${dataformat}** 💶`)
+        .addField(`Total Amount`, `**${data.after}**`)
+        .setColor("RANDOM")
+        .setThumbnail(user.displayAvatarURL)
+        .setTimestamp();
+    return message.channel.send(embed1);
                     }
                   
                 })
