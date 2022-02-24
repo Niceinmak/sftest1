@@ -27,6 +27,7 @@ exports.execute = async (client, message, args) => {
         .setTitle(`AddMoney Request`)
         .addField(`User`, `${message.author.tag} (${message.author.id})`)
         .addField(`To`, `${user.tag} (${user.id})`)
+        .addField(`Amount`, `${amount}`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
