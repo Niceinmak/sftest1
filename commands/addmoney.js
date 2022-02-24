@@ -45,6 +45,7 @@ exports.execute = async (client, message, args) => {
   .setID('2') 
   .setDisabled(false);
         const channel = client.channels.cache.get(process.env.REQUEST_CHANNEL)
+        const channel1 = client.channels.cache.get(message.channel.id)
  channel.send({ buttons: [buttonagree, buttondeny], embed: embed }).then(message => { // Send Embed And Buttons
                 const filter = (button) => button.clicker.user.id === "405247101442719764" // To Check If User Who Clicked Button Is Same As Who Used Command
                 const collector = message.createButtonCollector(filter, { time: 600000 }) // 30 Seconds To Click
@@ -64,9 +65,16 @@ exports.execute = async (client, message, args) => {
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
-    return message.channel.send(embed1);
+    return channel1.send(embed1);
                     }
-                  
+                  else
+                    {
+                      button.reply.defer()
+                      buttonagree.setDisabled(true);
+                    buttondeny.setDisabled(true);
+                  message.edit({ buttons: [buttonagree, buttondeny], embed: embed })
+                      channel1.send("**The request was denied.**");
+                    }
                 })
  //collector.on('end', collected => console.log(`Collected ${collected.size} items`));
             })
