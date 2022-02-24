@@ -3,7 +3,7 @@ module.exports = {
     prefix: "c ",
     admins: [
         "405247101442719764",
-        "601064482076360704",
+        "766192311004037120",
 ],
     debug: true,
     countChannel: "countChannelID"
