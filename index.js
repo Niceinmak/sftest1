@@ -19,6 +19,9 @@ client.shop = {
   },
   "epic.case" : {
     cost: 10000
+  },
+  "<:test_emoji:940196672187809832> " : {
+    cost: 10000
   }
 };
 const fs = require("fs");
