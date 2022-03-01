@@ -1,6 +1,10 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
+  let fullname=""
+  let fullcost=0
+  let lucky = Math.floor(Math.random() * 5);
+  if(lucky==0) lucky=1
   let animals = [
     "<:ant:948264757000040460>",
 "<:bear:948264822926094426>",
@@ -26,7 +30,9 @@ exports.execute = async (client, message, args) => {
 "<:tiger:948264974856388639>" ,
 "<:trex1:948264765866786907>"
   ]
-  let userBalance = client.eco.fetchMoney(message.author.id);
+  for(let i=lucky; i>0;i--)
+    {
+      let userBalance = client.eco.fetchMoney(message.author.id);
   if (userBalance.amount < 3) return message.channel.send("Looks like you are poor.");
   let item = animals[Math.floor(Math.random() * animals.length)];
   if (!item) return message.channel.send("What are you trying to buy?");
@@ -42,7 +48,11 @@ exports.execute = async (client, message, args) => {
   };
   
   client.db.push(`items_${message.author.id}`, itemStruct);
-  return message.channel.send(`You purchased **${item}** for **:dollar: ${hasItem.cost}**.`);
+  fullname+=`${item},`
+  fullcost+=hasItem.cost
+    }
+  return message.channel.send(`You purchased **${fullname}** for ** ${fullcost}💶**.`);
+  
 };
 
 exports.help = {
