@@ -33,7 +33,7 @@ exports.execute = async (client, message, args) => {
   for(let i=lucky; i>0;i--)
     {
       let userBalance = client.eco.fetchMoney(message.author.id);
-  if (userBalance.amount < 3) return message.channel.send("Looks like you are poor.");
+  if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶**.`);
   let item = animals[Math.floor(Math.random() * animals.length)];
   if (!item) return message.channel.send("What are you trying to buy?");
   let hasItem = client.shop[item];
@@ -51,7 +51,7 @@ exports.execute = async (client, message, args) => {
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
-  return message.channel.send(`You purchased **${fullname}** for ** ${fullcost}💶**.`);
+  return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶**.`);
   
 };
 
