@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
-  let common1=``
+  let common=``
   const embed = new MessageEmbed()
     .setAuthor(`Inventory of ${message.author.tag}`, message.guild.iconURL)
     .setColor("RANDOM")
@@ -15,11 +15,11 @@ exports.execute = async (client, message, args) => {
     return itemsobj;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
-    common1+=`${arrayToObject[k]}`
+    common+=`${arrayToObject[k]}`
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-  const common="sa"
-embed.setDescription(`${common},${common.lenght}`)
+  const lenght=common.lenght
+embed.setDescription(`${common},${lenght}`)
   return message.channel.send(embed);
 };
 exports.help = {
