@@ -5,19 +5,21 @@ exports.execute = async (client, message, args) => {
   let content = "";
   
   for (var i in items) {
-    content += `${items[i]} - 💶 ${client.shop[items[i]].cost}\n`
+    if(items[i]=="epic.case" || items[i]=="rare.case" || items[i]=="common.case")
+      {
+    content += `${items[i]} - 💶 **${ String(client.shop[items[i]].cost).replace(/(.)(?=(\d{3})+$)/g,'$1,')}**\n`
+      }
   }
-  
   let embed = new MessageEmbed()
-  .setTitle("Mağaza")
+  .setTitle("Store")
   .setDescription(content)
   .setColor("BLURPLE")
-  .setFooter("Eşya almak için q buy <isim> <miktar>")
+  .setFooter("Do :q buy <item> <quantity> to purchase the item.")
   return message.channel.send(embed);
 };
 
 exports.help = {
   name: "shop",
-  aliases: [],
+  aliases: ["SHOP"],
   usage: `shop`
 };

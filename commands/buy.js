@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
   let userBalance = client.eco.fetchMoney(message.author.id);
         let timecooldown = Math.floor(Math.random() * 200)+50;
-        let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
+        let playtime = client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
   let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   if (userBalance.amount < 1)
@@ -12,7 +12,7 @@ exports.execute = async (client, message, args) => {
   let count = args[1];
   let count2=1;
   if(count==null) count=1;
-  
+  if(item!="epic.case" || item!="rare.case" || item!="common.case" ) return message.channel.send(`**${message.author.tag} | What are you trying to buy?**`);
  if (count>100) return message.channel.send(`**\`${message.author.tag}\` | You cannot get more than 100 crates at a time.**`);
   if (!item) return message.channel.send(`**${message.author.tag} | What are you trying to buy?**`);
   let hasItem = client.shop[item];
@@ -33,9 +33,10 @@ exports.execute = async (client, message, args) => {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
-  for (count2 = 1; count2 <= count; count2++) {
-  client.db.push(`items_${message.author.id}`, itemStruct);
-}
+  while(count2<=count){
+ client.db.push(`items_${message.author.id}`, itemStruct);
+    count2++;
+  }
   let hasitemformat2=String(hasItem.cost*(count2-1)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   return message.channel.send(
     `**${message.author.tag} | You purchased ${item} x${count2-1} for ${hasitemformat2}💶**`
