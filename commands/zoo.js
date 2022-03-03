@@ -16,11 +16,13 @@ exports.execute = async (client, message, args) => {
     return itemsobj;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
-    common+=`${arrayToObject[k]}`
+    common+=`${k} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
+  var args = common.split(' ');
+  //common=common.substr(4)
   let lenght1=anyLength(common)
-embed.setDescription(`${common},${lenght1}`)
+embed.setDescription(`${args[0]},${lenght1}`)
   return message.channel.send(embed);
 };
 exports.help = {
