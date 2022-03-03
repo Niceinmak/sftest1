@@ -1,3 +1,4 @@
+import stringLength from 'string-length';
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
   let common=``
@@ -18,7 +19,7 @@ exports.execute = async (client, message, args) => {
     common+=`${arrayToObject[k]}`
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-  const lenght=common.lenght
+  let lenght=common.lenght
 embed.setDescription(`${common},${lenght}`)
   return message.channel.send(embed);
 };
