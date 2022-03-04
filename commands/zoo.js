@@ -27,9 +27,11 @@ exports.execute = async (client, message, args) => {
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   let lenght1=anyLength(common)
-  var args = common.split(' ');
-  let argslenght=anyLenght(args)
-  for (var i = 0; i < commonanimals.length; i++) {
+  var args = common.split(' ')
+  let argslenght=anyLength(args)
+  
+  for(var j=0;j<argslenght;j++){
+   for (var i = 0; i < commonanimals.length; i++) {
     var args = common.split(' ');
      if(args[0]==commonanimals[i])
       {
@@ -37,7 +39,9 @@ exports.execute = async (client, message, args) => {
         commonname+=`${args[0]} `
         common=common.substr(lenght1+1)
       }
-    }
+    } 
+  }
+  
   
   //common=common.substr(4)
 embed.setDescription(`<:common:949006743428542545>${common},${commonname}`)
