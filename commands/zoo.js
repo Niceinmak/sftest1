@@ -31,9 +31,9 @@ exports.execute = async (client, message, args) => {
   let argslenght=anyLength(args)
   
   for(var j=0;j<argslenght;j++){
-   for (var i = 0; i < commonanimals.length; i++) {
     var args = common.split(' ');
-     if(args[0]==commonanimals[i])
+   for (var i = 0; i < commonanimals.length; i++) {
+     if(args[j]==commonanimals[i])
       {
         let lenght1=anyLength(args[0])
         commonname+=`${args[0]} `
