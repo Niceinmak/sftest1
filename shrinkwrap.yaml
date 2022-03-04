@@ -1,15 +1,18 @@
 dependencies:
   '@top-gg/sdk': 3.1.3
+  any-length: 1.0.0
   btc-value: 4.0.0
   dblapi.js: 2.4.1
   discord-blackjack: 4.0.0
   discord-buttons: 4.0.0-deprecated
   discord.dbl: 1.2.5
   discord.js: 12.5.3
+  js-length: 1.0.22
   moment: 2.29.1
   ms: 2.1.3
   quick.db: 7.1.3
   quick.eco: 2.0.4
+  string-length: 5.0.1
 packages:
   /@discordjs/builders/0.11.0:
     dependencies:
@@ -125,6 +128,16 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==
+  /ansi-regex/6.0.1:
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==
+  /any-length/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-PdLaNZSw2NVhpUdhR62zoTtqd/+vpXqAn4RKZJL8SCfb83NCeQ1Ir+kjoD2XxX/TS9wUY7qrCDroe1N1/uQ5RA==
   /aproba/1.2.0:
     dev: false
     resolution:
@@ -220,6 +233,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-Oj3cAGPCqOZX7Rz64Uny2GYAZNliQSqfbePrgAQ1wKAihYmCUnraBtJtKcGR4xz7wF+LoJC+ssFZvv5BgF9Igg==
+  /char-regex/2.0.1:
+    dev: false
+    engines:
+      node: '>=12.20'
+    resolution:
+      integrity: sha512-oSvEeo6ZUD7NepqAat3RqoucZ5SeqLJgOvVIwkafu6IP3V0pO38s/ypdVUmDDK6qIIHNlYHJAKX9E7R7HoKElw==
   /chownr/1.1.4:
     dev: false
     resolution:
@@ -656,6 +675,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
+  /js-length/1.0.22:
+    dev: false
+    resolution:
+      integrity: sha512-TxOjIV1fGb2Oa/8kqgHIzOTMCp80abLlbk6hjTsH4hE2b+y1yB2p156DHTIbnogSnRu08CW/zm7qec+od9IQZg==
   /json-buffer/3.0.0:
     dev: false
     resolution:
@@ -1065,6 +1088,15 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+  /string-length/5.0.1:
+    dependencies:
+      char-regex: 2.0.1
+      strip-ansi: 7.0.1
+    dev: false
+    engines:
+      node: '>=12.20'
+    resolution:
+      integrity: sha512-9Ep08KAMUn0OadnVaBuRdE2l615CQ508kr0XMadjClfYpdCyvrbFp6Taebo8yyxokQ4viUd/xPPUA4FGgUa0ow==
   /string-width/1.0.2:
     dependencies:
       code-point-at: 1.1.0
@@ -1113,6 +1145,14 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  /strip-ansi/7.0.1:
+    dependencies:
+      ansi-regex: 6.0.1
+    dev: false
+    engines:
+      node: '>=12'
+    resolution:
+      integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==
   /strip-json-comments/2.0.1:
     dev: false
     engines:
@@ -1265,13 +1305,16 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@top-gg/sdk': ^3.1.3
+  any-length: ^1.0.0
   btc-value: ^4.0.0
   dblapi.js: ^2.4.1
   discord-blackjack: ^4.0.0
   discord-buttons: ^4.0.0-deprecated
   discord.dbl: ^1.2.5
   discord.js: ^12.5.3
+  js-length: ^1.0.22
   moment: ^2.29.1
   ms: ^2.1.3
   quick.db: ^7.1.3
   quick.eco: ^2.0.3
+  string-length: ^5.0.1

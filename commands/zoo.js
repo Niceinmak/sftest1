@@ -1,6 +1,10 @@
 const anyLength = require('any-length');
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
+  let commonname=""
+  let commonanimals = [
+        "<:god:948265037313757184>",
+    ];
   let common=``
   const embed = new MessageEmbed()
     .setAuthor(`Inventory of ${message.author.tag}`, message.guild.iconURL)
@@ -19,10 +23,18 @@ exports.execute = async (client, message, args) => {
     common+=`${k} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-  var args = common.split(' ');
+  for (var i = 0; i < commonanimals.length; i++) {
+    var args = common.split(' ');
+     if(args[0]==commonanimals[i])
+      {
+        let lenght1=anyLength(args[0])
+        commonname+=`${args[0]} `
+        common=common.substr(lenght1)
+      }
+    }
+  
   //common=common.substr(4)
-  let lenght1=anyLength(common)
-embed.setDescription(`${args[0]},${lenght1}`)
+embed.setDescription(`${common},${commonname}`)
   return message.channel.send(embed);
 };
 exports.help = {
