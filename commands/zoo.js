@@ -26,6 +26,9 @@ exports.execute = async (client, message, args) => {
     common+=`${k} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
+  let lenght1=anyLength(common)
+  var args = common.split(' ');
+  let argslenght=anyLenght(args)
   for (var i = 0; i < commonanimals.length; i++) {
     var args = common.split(' ');
      if(args[0]==commonanimals[i])
