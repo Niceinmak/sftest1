@@ -8,7 +8,7 @@ exports.execute = async (client, message, args) => {
         "<:fox:948265002492624976>",
         "<:bison:948264912818429962>",
     ];
-  let common=``
+  let all=``
   const embed = new MessageEmbed()
     .setAuthor(`Inventory of ${message.author.tag}`, message.guild.iconURL)
     .setColor("RANDOM")
@@ -23,17 +23,17 @@ exports.execute = async (client, message, args) => {
     return itemsobj;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
-    common+=`${k} `
+    all+=`${k} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-  let lenght1=anyLength(common)
-  var args = common.split(' ')
+  let lenght1=anyLength(all)
+  var args = all.split(' ')
   let argslenght=(anyLength(args))-1
   let t=``
   for(var j=0;j<argslenght;j++){
    
     t=args[j]
-    var args = common.split(' ');
+    var args = all.split(' ');
    for (var i = 0; i < commonanimals.length; i++) {
      if(args[j]==commonanimals[i])
       {
