@@ -4,6 +4,9 @@ exports.execute = async (client, message, args) => {
   let commonname=""
   let commonanimals = [
         "<:god:948265037313757184>",
+        "<:cat1:948265025850724372>",
+        "<:fox:948265002492624976>",
+        "<:bison:948264912818429962>",
     ];
   let common=``
   const embed = new MessageEmbed()
@@ -29,12 +32,12 @@ exports.execute = async (client, message, args) => {
       {
         let lenght1=anyLength(args[0])
         commonname+=`${args[0]} `
-        common=common.substr(lenght1)
+        common=common.substr(lenght1+1)
       }
     }
   
   //common=common.substr(4)
-embed.setDescription(`${common},${commonname}`)
+embed.setDescription(`<:common:949006743428542545>${common},${commonname}`)
   return message.channel.send(embed);
 };
 exports.help = {
