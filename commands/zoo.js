@@ -30,24 +30,23 @@ exports.execute = async (client, message, args) => {
   var args = common.split(' ')
   let argslenght=(anyLength(args))-1
   let t=``
-  for(var j=0;j<argslenght-1;j++){
-    var args = common.split(' ')
-  let argslenght=(anyLength(args))-1
-    t=args[j-1]
+  for(var j=0;j<argslenght;j++){
+   
+    t=args[j]
     var args = common.split(' ');
    for (var i = 0; i < commonanimals.length; i++) {
-     if(args[j-1]==commonanimals[i])
+     if(args[j]==commonanimals[i])
       {
-        let lenght1=anyLength(args[0])
-        commonname+=`${args[0]} `
-        common=common.substr(lenght1+1)
+        
+        commonname+=`${args[j]} `
       }
     } 
   }
   
   
   //common=common.substr(4)
-embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
+//embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
+  embed.setDescription(`<:common:949006743428542545>${commonname}`)
   return message.channel.send(embed);
 };
 exports.help = {
