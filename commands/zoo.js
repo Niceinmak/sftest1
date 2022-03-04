@@ -28,12 +28,15 @@ exports.execute = async (client, message, args) => {
   );
   let lenght1=anyLength(common)
   var args = common.split(' ')
-  let argslenght=anyLength(args)
-  
-  for(var j=0;j<argslenght;j++){
+  let argslenght=(anyLength(args))-1
+  let t=``
+  for(var j=0;j<argslenght-1;j++){
+    var args = common.split(' ')
+  let argslenght=(anyLength(args))-1
+    t=args[j-1]
     var args = common.split(' ');
    for (var i = 0; i < commonanimals.length; i++) {
-     if(args[j]==commonanimals[i])
+     if(args[j-1]==commonanimals[i])
       {
         let lenght1=anyLength(args[0])
         commonname+=`${args[0]} `
@@ -44,7 +47,7 @@ exports.execute = async (client, message, args) => {
   
   
   //common=common.substr(4)
-embed.setDescription(`<:common:949006743428542545>${common},${commonname}`)
+embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
   return message.channel.send(embed);
 };
 exports.help = {
