@@ -1,10 +1,16 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
+  let timecooldown = Math.floor(Math.random() * 200)+50;
+    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
+    const user1 = message.member.user
+    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   let xp=0
   let fullname=""
   let fullcost=0
   let lucky = Math.floor(Math.random() * 5);
+      let userBalance = client.eco.fetchMoney(message.author.id);
   if(lucky==0) lucky=1
   let commonanimals = [
         "<:god:948265037313757184>",
@@ -37,7 +43,7 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  if (userBalance.amount < 3) return message.channel.send(`You have too little money**.`);
+  if (userBalance.amount < 3) return message.channel.send(`**You have too little money.**`);
   for(let i=lucky; i>0;i--)
     {
   let lucky1 = Math.floor(Math.random() * 100);
@@ -46,8 +52,8 @@ exports.execute = async (client, message, args) => {
       let rarexp = Math.floor(Math.random() * 1000);
       let epicxp = Math.floor(Math.random() * 5000);
       let legendaryxp = Math.floor(Math.random() * 10000);
-      let userBalance = client.eco.fetchMoney(message.author.id);
-  if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶**.`);
+  if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶
+Gained ${xp}xp!**.`);
       let item = ""
       if(lucky1<55)
         {
