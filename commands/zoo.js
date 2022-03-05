@@ -112,7 +112,7 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁹⁺"
           }
-        commonname+=`${args[j]} ${tempnumber}  `
+        commonname+=`${args[j]} ${tempnumber} `
         commoncount++
       }
     } 
@@ -269,6 +269,7 @@ exports.execute = async (client, message, args) => {
             tempnumber="⁹⁺"
           }
         epicname+=`${args[j]} ${tempnumber} `
+        epiccount++
       }
     }
     for (var i = 0; i < legendaryanimals.length; i++) {
@@ -320,19 +321,41 @@ exports.execute = async (client, message, args) => {
             tempnumber="⁹⁺"
           }
         legendaryname+=`${args[j]} ${tempnumber} `
+        legendarycount++
       }
     } 
     if(j+1==argslenght){
           if(commoncount!=5){
             for(i=commoncount;i<5;i++){
-              commonname+=`<:none:949563964843499520> `
+              commonname+=`<:none:949563964843499520> ⁰ `
             }
           }
         }
     if(j+1==argslenght){
-          if(commoncount!=5){
-            for(i=commoncount;i<5;i++){
-              commonname+=`<:none:949563964843499520> `
+          if(uncommoncount!=5){
+            for(i=uncommoncount;i<5;i++){
+              uncommonname+=`<:none:949563964843499520> ⁰ `
+            }
+          }
+        }
+    if(j+1==argslenght){
+          if(rarecount!=5){
+            for(i=rarecount;i<5;i++){
+              rarename+=`<:none:949563964843499520> ⁰ `
+            }
+          }
+        }
+    if(j+1==argslenght){
+          if(epiccount!=5){
+            for(i=epiccount;i<5;i++){
+              epicname+=`<:none:949563964843499520> ⁰ `
+            }
+          }
+        }
+    if(j+1==argslenght){
+          if(legendarycount!=5){
+            for(i=legendarycount;i<5;i++){
+              legendaryname+=`<:none:949563964843499520> ⁰ `
             }
           }
         }
