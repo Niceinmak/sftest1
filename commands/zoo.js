@@ -44,7 +44,7 @@ exports.execute = async (client, message, args) => {
         "<:ant:948264757000040460>",
     ];
   let all=``
-  const x = client.db.get(`items_${message.author.id}`);
+  const x = client.db.get(`animals_${message.author.id}`);
   if (!x) {
     return message.channel.send(`No Items Found To Display :c`);
   }
