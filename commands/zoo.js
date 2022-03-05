@@ -1,6 +1,7 @@
 const anyLength = require('any-length');
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
+  let user =message.author;
   let commonname=""
   let commonanimals = [
         "<:god:948265037313757184>",
@@ -106,35 +107,211 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁹⁺"
           }
-        commonname+=`${args[j]} **${tempnumber}**  `
+        commonname+=`${args[j]} ${tempnumber}  `
       }
     } 
     for (var i = 0; i < uncommonanimals.length; i++) {
      if(args[j]==uncommonanimals[i])
       {
-        
-        uncommonname+=`${args[j]} `
+        let tempnumber=""
+        if(args[j+1]=="0")
+          {
+            tempnumber="⁰"
+          }
+        else if(args[j+1]=="1")
+          {
+            tempnumber="¹"
+          }
+        else if(args[j+1]=="2")
+          {
+            tempnumber="²"
+          }
+        else if(args[j+1]=="3")
+          {
+            tempnumber="³"
+          }
+        else if(args[j+1]=="4")
+          {
+            tempnumber="⁴"
+          }
+        else if(args[j+1]=="5")
+          {
+            tempnumber="⁵"
+          }
+        else if(args[j+1]=="6")
+          {
+            tempnumber="⁶"
+          }
+        else if(args[j+1]=="7")
+          {
+            tempnumber="⁷"
+          }
+        else if(args[j+1]=="8")
+          {
+            tempnumber="⁸"
+          }
+        else if(args[j+1]=="9")
+          {
+            tempnumber="⁹"
+          }
+        else
+          {
+            tempnumber="⁹⁺"
+          }
+        uncommonname+=`${args[j]} ${tempnumber} `
       }
     } 
     for (var i = 0; i < rareanimals.length; i++) {
      if(args[j]==rareanimals[i])
       {
-        
-        rarename+=`${args[j]} `
+        let tempnumber=""
+        if(args[j+1]=="0")
+          {
+            tempnumber="⁰"
+          }
+        else if(args[j+1]=="1")
+          {
+            tempnumber="¹"
+          }
+        else if(args[j+1]=="2")
+          {
+            tempnumber="²"
+          }
+        else if(args[j+1]=="3")
+          {
+            tempnumber="³"
+          }
+        else if(args[j+1]=="4")
+          {
+            tempnumber="⁴"
+          }
+        else if(args[j+1]=="5")
+          {
+            tempnumber="⁵"
+          }
+        else if(args[j+1]=="6")
+          {
+            tempnumber="⁶"
+          }
+        else if(args[j+1]=="7")
+          {
+            tempnumber="⁷"
+          }
+        else if(args[j+1]=="8")
+          {
+            tempnumber="⁸"
+          }
+        else if(args[j+1]=="9")
+          {
+            tempnumber="⁹"
+          }
+        else
+          {
+            tempnumber="⁹⁺"
+          }
+        rarename+=`${args[j]} ${tempnumber} `
       }
     } 
     for (var i = 0; i < epicanimals.length; i++) {
      if(args[j]==epicanimals[i])
       {
-        
-        epicname+=`${args[j]} `
+        let tempnumber=""
+        if(args[j+1]=="0")
+          {
+            tempnumber="⁰"
+          }
+        else if(args[j+1]=="1")
+          {
+            tempnumber="¹"
+          }
+        else if(args[j+1]=="2")
+          {
+            tempnumber="²"
+          }
+        else if(args[j+1]=="3")
+          {
+            tempnumber="³"
+          }
+        else if(args[j+1]=="4")
+          {
+            tempnumber="⁴"
+          }
+        else if(args[j+1]=="5")
+          {
+            tempnumber="⁵"
+          }
+        else if(args[j+1]=="6")
+          {
+            tempnumber="⁶"
+          }
+        else if(args[j+1]=="7")
+          {
+            tempnumber="⁷"
+          }
+        else if(args[j+1]=="8")
+          {
+            tempnumber="⁸"
+          }
+        else if(args[j+1]=="9")
+          {
+            tempnumber="⁹"
+          }
+        else
+          {
+            tempnumber="⁹⁺"
+          }
+        epicname+=`${args[j]} ${tempnumber} `
       }
     }
     for (var i = 0; i < legendaryanimals.length; i++) {
      if(args[j]==legendaryanimals[i])
       {
-        
-        legendaryname+=`${args[j]} `
+        let tempnumber=""
+        if(args[j+1]=="0")
+          {
+            tempnumber="⁰"
+          }
+        else if(args[j+1]=="1")
+          {
+            tempnumber="¹"
+          }
+        else if(args[j+1]=="2")
+          {
+            tempnumber="²"
+          }
+        else if(args[j+1]=="3")
+          {
+            tempnumber="³"
+          }
+        else if(args[j+1]=="4")
+          {
+            tempnumber="⁴"
+          }
+        else if(args[j+1]=="5")
+          {
+            tempnumber="⁵"
+          }
+        else if(args[j+1]=="6")
+          {
+            tempnumber="⁶"
+          }
+        else if(args[j+1]=="7")
+          {
+            tempnumber="⁷"
+          }
+        else if(args[j+1]=="8")
+          {
+            tempnumber="⁸"
+          }
+        else if(args[j+1]=="9")
+          {
+            tempnumber="⁹"
+          }
+        else
+          {
+            tempnumber="⁹⁺"
+          }
+        legendaryname+=`${args[j]} ${tempnumber} `
       }
     } 
   }
@@ -142,15 +319,15 @@ exports.execute = async (client, message, args) => {
   
   //common=common.substr(4)
 //embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
-  message.channel.send(`
-<:common:949006743428542545>${commonname}
-<:uncommon:949006765696098345>${uncommonname}
-<:rare:949006777519837225>${rarename}
-<:epic:949006791201652827>${epicname}
-<:legendary:949006805646864404>${legendaryname}
+  message.channel.send(`**🌿 🌱${user.username}'s Zoo🌿 🌱
+<:common:949006743428542545> ${commonname}
+<:uncommon:949006765696098345> ${uncommonname}
+<:rare:949006777519837225> ${rarename}
+<:epic:949006791201652827> ${epicname}
+<:legendary:949006805646864404> ${legendaryname}
   
   ${all}
-  `)
+  **`)
 };
 exports.help = {
   name: "zoo",
