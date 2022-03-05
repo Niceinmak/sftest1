@@ -38,11 +38,6 @@ exports.execute = async (client, message, args) => {
         "<:ant:948264757000040460>",
     ];
   let all=``
-  const embed = new MessageEmbed()
-    .setAuthor(`Inventory of ${message.author.tag}`, message.guild.iconURL)
-    .setColor("RANDOM")
-    .setThumbnail()
-    .setTimestamp();
   const x = client.db.get(`items_${message.author.id}`);
   if (!x) {
     return message.channel.send(`No Items Found To Display :c`);
@@ -52,7 +47,7 @@ exports.execute = async (client, message, args) => {
     return itemsobj;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
-    all+=`${k} `
+    all+=`${k} ${arrayToObject[k]} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   let lenght1=anyLength(all)
@@ -66,8 +61,52 @@ exports.execute = async (client, message, args) => {
    for (var i = 0; i < commonanimals.length; i++) {
      if(args[j]==commonanimals[i])
       {
-        
-        commonname+=`${args[j]} `
+        let tempnumber=""
+        if(args[j+1]=="0")
+          {
+            tempnumber="⁰"
+          }
+        else if(args[j+1]=="1")
+          {
+            tempnumber="¹"
+          }
+        else if(args[j+1]=="2")
+          {
+            tempnumber="²"
+          }
+        else if(args[j+1]=="3")
+          {
+            tempnumber="³"
+          }
+        else if(args[j+1]=="4")
+          {
+            tempnumber="⁴"
+          }
+        else if(args[j+1]=="5")
+          {
+            tempnumber="⁵"
+          }
+        else if(args[j+1]=="6")
+          {
+            tempnumber="⁶"
+          }
+        else if(args[j+1]=="7")
+          {
+            tempnumber="⁷"
+          }
+        else if(args[j+1]=="8")
+          {
+            tempnumber="⁸"
+          }
+        else if(args[j+1]=="9")
+          {
+            tempnumber="⁹"
+          }
+        else
+          {
+            tempnumber="⁹⁺"
+          }
+        commonname+=`${args[j]} **${tempnumber}**  `
       }
     } 
     for (var i = 0; i < uncommonanimals.length; i++) {
@@ -103,14 +142,15 @@ exports.execute = async (client, message, args) => {
   
   //common=common.substr(4)
 //embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
-  embed.setDescription(`
-  <:common:949006743428542545>${commonname}
-  <:uncommon:949006765696098345>${uncommonname}
-  <:rare:949006777519837225>${rarename}
-  <:epic:949006791201652827>${epicname}
-  <:legendary:949006805646864404>${legendaryname}
+  message.channel.send(`
+<:common:949006743428542545>${commonname}
+<:uncommon:949006765696098345>${uncommonname}
+<:rare:949006777519837225>${rarename}
+<:epic:949006791201652827>${epicname}
+<:legendary:949006805646864404>${legendaryname}
+  
+  ${all}
   `)
-  return message.channel.send(embed);
 };
 exports.help = {
   name: "zoo",
