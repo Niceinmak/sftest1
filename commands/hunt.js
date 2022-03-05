@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
+  let xp=0
   let fullname=""
   let fullcost=0
   let lucky = Math.floor(Math.random() * 5);
@@ -39,27 +40,42 @@ exports.execute = async (client, message, args) => {
   for(let i=lucky; i>0;i--)
     {
   let lucky1 = Math.floor(Math.random() * 100);
+      let commonxp = Math.floor(Math.random() * 100);
+      let uncommonxp = Math.floor(Math.random() * 500);
+      let rarexp = Math.floor(Math.random() * 1000);
+      let epicxp = Math.floor(Math.random() * 5000);
+      let legendaryxp = Math.floor(Math.random() * 10000);
       let userBalance = client.eco.fetchMoney(message.author.id);
   if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶**.`);
       let item = ""
       if(lucky1<55)
         {
+          client.eco.addMoney(`${message.author.id}12`, parseInt(commonxp));
+          xp+=commonxp
   item = commonanimals[Math.floor(Math.random() * commonanimals.length)];
         }
       else if(lucky1<65)
         {
+          client.eco.addMoney(`${message.author.id}12`, parseInt(uncommonxp));
+          xp+=uncommonxp
   item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
         }
       else if(lucky1<75)
         {
+          client.eco.addMoney(`${message.author.id}12`, parseInt(rarexp));
+          xp+=rarexp
   item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
         }
       else if(lucky1<85)
         {
+          client.eco.addMoney(`${message.author.id}12`, parseInt(epicxp));
+          xp+=epicxp
   item = epicanimals[Math.floor(Math.random() * epicanimals.length)];
         }
       else
         {
+          client.eco.addMoney(`${message.author.id}12`, parseInt(legendaryxp));
+          xp+=legendaryxp
          item = legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]; 
         }
   if (!item) return message.channel.send("What are you trying to buy?");
@@ -78,7 +94,8 @@ exports.execute = async (client, message, args) => {
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
-  return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶**.`);
+  return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶
+Gained ${xp}xp!**.`);
   
 };
 

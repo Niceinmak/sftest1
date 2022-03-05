@@ -1,6 +1,8 @@
 const anyLength = require('any-length');
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
+  let userBalance = client.eco.fetchMoney(`${message.author.id}12`);
+  let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let user =message.author;
   let commoncount=0
   let commonname=""
@@ -371,8 +373,7 @@ exports.execute = async (client, message, args) => {
 <:epic:949006791201652827> ${epicname}
 <:legendary:949006805646864404> ${legendaryname}
   
-  ${all}
-  **`)
+Zoo Point:\`${userBalanceformat}\`**`)
 };
 exports.help = {
   name: "zoo",
