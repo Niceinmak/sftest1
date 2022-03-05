@@ -8,6 +8,35 @@ exports.execute = async (client, message, args) => {
         "<:fox:948265002492624976>",
         "<:bison:948264912818429962>",
     ];
+  let uncommonname=""
+  let uncommonanimals = [
+        "<:tiger:948264974856388639>",
+        "<:leopard:948264964597121146>",
+        "<:horse:948264952198746112>",
+    ];
+  let rarename=""
+  let rareanimals = [
+        "<:deer:948264928387674213>",
+        "<:ox:948264893629480981>",
+        "<:pig:948264880417439804>",
+        "<:goat:948264872850886687>",
+    ];
+  let epicname=""
+  let epicanimals = [
+        "<:llama:948264865552818196>",
+        "<:mouse:948264854551162910>",
+        "<:rabbit:948264845520801882>",
+        "<:koala:948264836322721862>",
+        "<:bear:948264822926094426>",
+    ];
+  let legendaryname=""
+  let legendaryanimals = [
+        "<:bird:948264810980732988>",
+        "<:penguin:948264801698717728>",
+        "<:dodo:948264775639519232>",
+        "<:trex1:948264765866786907>",
+        "<:ant:948264757000040460>",
+    ];
   let all=``
   const embed = new MessageEmbed()
     .setAuthor(`Inventory of ${message.author.tag}`, message.guild.iconURL)
@@ -41,12 +70,46 @@ exports.execute = async (client, message, args) => {
         commonname+=`${args[j]} `
       }
     } 
+    for (var i = 0; i < uncommonanimals.length; i++) {
+     if(args[j]==uncommonanimals[i])
+      {
+        
+        uncommonname+=`${args[j]} `
+      }
+    } 
+    for (var i = 0; i < rareanimals.length; i++) {
+     if(args[j]==rareanimals[i])
+      {
+        
+        rarename+=`${args[j]} `
+      }
+    } 
+    for (var i = 0; i < epicanimals.length; i++) {
+     if(args[j]==epicanimals[i])
+      {
+        
+        epicname+=`${args[j]} `
+      }
+    }
+    for (var i = 0; i < legendaryanimals.length; i++) {
+     if(args[j]==legendaryanimals[i])
+      {
+        
+        legendaryname+=`${args[j]} `
+      }
+    } 
   }
   
   
   //common=common.substr(4)
 //embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
-  embed.setDescription(`<:common:949006743428542545>${commonname}`)
+  embed.setDescription(`
+  <:common:949006743428542545>${commonname}
+  <:uncommon:949006765696098345>${uncommonname}
+  <:rare:949006777519837225>${rarename}
+  <:epic:949006791201652827>${epicname}
+  <:legendary:949006805646864404>${legendaryname}
+  `)
   return message.channel.send(embed);
 };
 exports.help = {
