@@ -37,6 +37,7 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
+  if (userBalance.amount < 3) return message.channel.send(`You have too little money**.`);
   for(let i=lucky; i>0;i--)
     {
   let lucky1 = Math.floor(Math.random() * 100);

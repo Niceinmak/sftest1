@@ -48,7 +48,7 @@ exports.execute = async (client, message, args) => {
   let all=``
   const x = client.db.get(`animals_${message.author.id}`);
   if (!x) {
-    return message.channel.send(`No Items Found To Display :c`);
+    return message.channel.send(`No Animals Found To Display :c`);
   }
   const arrayToObject = x.reduce((itemsobj, x) => {
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
