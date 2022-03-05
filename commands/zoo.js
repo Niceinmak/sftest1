@@ -2,6 +2,7 @@ const anyLength = require('any-length');
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
   let user =message.author;
+  let commoncount=0
   let commonname=""
   let commonanimals = [
         "<:god:948265037313757184>",
@@ -9,12 +10,14 @@ exports.execute = async (client, message, args) => {
         "<:fox:948265002492624976>",
         "<:bison:948264912818429962>",
     ];
+  let uncommoncount=0
   let uncommonname=""
   let uncommonanimals = [
         "<:tiger:948264974856388639>",
         "<:leopard:948264964597121146>",
         "<:horse:948264952198746112>",
     ];
+  let rarecount=0
   let rarename=""
   let rareanimals = [
         "<:deer:948264928387674213>",
@@ -22,6 +25,7 @@ exports.execute = async (client, message, args) => {
         "<:pig:948264880417439804>",
         "<:goat:948264872850886687>",
     ];
+  let epiccount=0
   let epicname=""
   let epicanimals = [
         "<:llama:948264865552818196>",
@@ -30,6 +34,7 @@ exports.execute = async (client, message, args) => {
         "<:koala:948264836322721862>",
         "<:bear:948264822926094426>",
     ];
+  let legendarycount=0
   let legendaryname=""
   let legendaryanimals = [
         "<:bird:948264810980732988>",
@@ -108,6 +113,7 @@ exports.execute = async (client, message, args) => {
             tempnumber="⁹⁺"
           }
         commonname+=`${args[j]} ${tempnumber}  `
+        commoncount++
       }
     } 
     for (var i = 0; i < uncommonanimals.length; i++) {
@@ -159,6 +165,7 @@ exports.execute = async (client, message, args) => {
             tempnumber="⁹⁺"
           }
         uncommonname+=`${args[j]} ${tempnumber} `
+        uncommoncount++
       }
     } 
     for (var i = 0; i < rareanimals.length; i++) {
@@ -210,6 +217,7 @@ exports.execute = async (client, message, args) => {
             tempnumber="⁹⁺"
           }
         rarename+=`${args[j]} ${tempnumber} `
+        rarecount++
       }
     } 
     for (var i = 0; i < epicanimals.length; i++) {
@@ -314,6 +322,20 @@ exports.execute = async (client, message, args) => {
         legendaryname+=`${args[j]} ${tempnumber} `
       }
     } 
+    if(j+1==argslenght){
+          if(commoncount!=5){
+            for(i=commoncount;i<5;i++){
+              commonname+=`<:none:949563964843499520> `
+            }
+          }
+        }
+    if(j+1==argslenght){
+          if(commoncount!=5){
+            for(i=commoncount;i<5;i++){
+              commonname+=`<:none:949563964843499520> `
+            }
+          }
+        }
   }
   
   
