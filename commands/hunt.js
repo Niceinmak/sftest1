@@ -54,6 +54,14 @@ exports.execute = async (client, message, args) => {
         {
   item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
         }
+      else if(lucky1<85)
+        {
+  item = epicanimals[Math.floor(Math.random() * epicanimals.length)];
+        }
+      else
+        {
+         item = legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]; 
+        }
   if (!item) return message.channel.send("What are you trying to buy?");
   let hasItem = client.shop[item];
   if (!hasItem || hasItem == undefined) return message.reply("That item doesnt exists lol");

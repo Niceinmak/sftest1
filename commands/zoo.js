@@ -70,43 +70,43 @@ exports.execute = async (client, message, args) => {
         let tempnumber=""
         if(args[j+1]=="0")
           {
-            tempnumber="⁰"
+            tempnumber="⁰⁰"
           }
         else if(args[j+1]=="1")
           {
-            tempnumber="¹"
+            tempnumber="⁰¹"
           }
         else if(args[j+1]=="2")
           {
-            tempnumber="²"
+            tempnumber="⁰²"
           }
         else if(args[j+1]=="3")
           {
-            tempnumber="³"
+            tempnumber="⁰³"
           }
         else if(args[j+1]=="4")
           {
-            tempnumber="⁴"
+            tempnumber="⁰⁴"
           }
         else if(args[j+1]=="5")
           {
-            tempnumber="⁵"
+            tempnumber="⁰⁵"
           }
         else if(args[j+1]=="6")
           {
-            tempnumber="⁶"
+            tempnumber="⁰⁶"
           }
         else if(args[j+1]=="7")
           {
-            tempnumber="⁷"
+            tempnumber="⁰⁷"
           }
         else if(args[j+1]=="8")
           {
-            tempnumber="⁸"
+            tempnumber="⁰⁸"
           }
         else if(args[j+1]=="9")
           {
-            tempnumber="⁹"
+            tempnumber="⁰⁹"
           }
         else
           {
@@ -122,43 +122,43 @@ exports.execute = async (client, message, args) => {
         let tempnumber=""
         if(args[j+1]=="0")
           {
-            tempnumber="⁰"
+            tempnumber="⁰⁰"
           }
         else if(args[j+1]=="1")
           {
-            tempnumber="¹"
+            tempnumber="⁰¹"
           }
         else if(args[j+1]=="2")
           {
-            tempnumber="²"
+            tempnumber="⁰²"
           }
         else if(args[j+1]=="3")
           {
-            tempnumber="³"
+            tempnumber="⁰³"
           }
         else if(args[j+1]=="4")
           {
-            tempnumber="⁴"
+            tempnumber="⁰⁴"
           }
         else if(args[j+1]=="5")
           {
-            tempnumber="⁵"
+            tempnumber="⁰⁵"
           }
         else if(args[j+1]=="6")
           {
-            tempnumber="⁶"
+            tempnumber="⁰⁶"
           }
         else if(args[j+1]=="7")
           {
-            tempnumber="⁷"
+            tempnumber="⁰⁷"
           }
         else if(args[j+1]=="8")
           {
-            tempnumber="⁸"
+            tempnumber="⁰⁸"
           }
         else if(args[j+1]=="9")
           {
-            tempnumber="⁹"
+            tempnumber="⁰⁹"
           }
         else
           {
@@ -174,43 +174,43 @@ exports.execute = async (client, message, args) => {
         let tempnumber=""
         if(args[j+1]=="0")
           {
-            tempnumber="⁰"
+            tempnumber="⁰⁰"
           }
         else if(args[j+1]=="1")
           {
-            tempnumber="¹"
+            tempnumber="⁰¹"
           }
         else if(args[j+1]=="2")
           {
-            tempnumber="²"
+            tempnumber="⁰²"
           }
         else if(args[j+1]=="3")
           {
-            tempnumber="³"
+            tempnumber="⁰³"
           }
         else if(args[j+1]=="4")
           {
-            tempnumber="⁴"
+            tempnumber="⁰⁴"
           }
         else if(args[j+1]=="5")
           {
-            tempnumber="⁵"
+            tempnumber="⁰⁵"
           }
         else if(args[j+1]=="6")
           {
-            tempnumber="⁶"
+            tempnumber="⁰⁶"
           }
         else if(args[j+1]=="7")
           {
-            tempnumber="⁷"
+            tempnumber="⁰⁷"
           }
         else if(args[j+1]=="8")
           {
-            tempnumber="⁸"
+            tempnumber="⁰⁸"
           }
         else if(args[j+1]=="9")
           {
-            tempnumber="⁹"
+            tempnumber="⁰⁹"
           }
         else
           {
@@ -226,43 +226,43 @@ exports.execute = async (client, message, args) => {
         let tempnumber=""
         if(args[j+1]=="0")
           {
-            tempnumber="⁰"
+            tempnumber="⁰⁰"
           }
         else if(args[j+1]=="1")
           {
-            tempnumber="¹"
+            tempnumber="⁰¹"
           }
         else if(args[j+1]=="2")
           {
-            tempnumber="²"
+            tempnumber="⁰²"
           }
         else if(args[j+1]=="3")
           {
-            tempnumber="³"
+            tempnumber="⁰³"
           }
         else if(args[j+1]=="4")
           {
-            tempnumber="⁴"
+            tempnumber="⁰⁴"
           }
         else if(args[j+1]=="5")
           {
-            tempnumber="⁵"
+            tempnumber="⁰⁵"
           }
         else if(args[j+1]=="6")
           {
-            tempnumber="⁶"
+            tempnumber="⁰⁶"
           }
         else if(args[j+1]=="7")
           {
-            tempnumber="⁷"
+            tempnumber="⁰⁷"
           }
         else if(args[j+1]=="8")
           {
-            tempnumber="⁸"
+            tempnumber="⁰⁸"
           }
         else if(args[j+1]=="9")
           {
-            tempnumber="⁹"
+            tempnumber="⁰⁹"
           }
         else
           {
@@ -278,43 +278,43 @@ exports.execute = async (client, message, args) => {
         let tempnumber=""
         if(args[j+1]=="0")
           {
-            tempnumber="⁰"
+            tempnumber="⁰⁰"
           }
         else if(args[j+1]=="1")
           {
-            tempnumber="¹"
+            tempnumber="⁰¹"
           }
         else if(args[j+1]=="2")
           {
-            tempnumber="²"
+            tempnumber="⁰²"
           }
         else if(args[j+1]=="3")
           {
-            tempnumber="³"
+            tempnumber="⁰³"
           }
         else if(args[j+1]=="4")
           {
-            tempnumber="⁴"
+            tempnumber="⁰⁴"
           }
         else if(args[j+1]=="5")
           {
-            tempnumber="⁵"
+            tempnumber="⁰⁵"
           }
         else if(args[j+1]=="6")
           {
-            tempnumber="⁶"
+            tempnumber="⁰⁶"
           }
         else if(args[j+1]=="7")
           {
-            tempnumber="⁷"
+            tempnumber="⁰⁷"
           }
         else if(args[j+1]=="8")
           {
-            tempnumber="⁸"
+            tempnumber="⁰⁸"
           }
         else if(args[j+1]=="9")
           {
-            tempnumber="⁹"
+            tempnumber="⁰⁹"
           }
         else
           {
@@ -327,35 +327,35 @@ exports.execute = async (client, message, args) => {
     if(j+1==argslenght){
           if(commoncount!=5){
             for(i=commoncount;i<5;i++){
-              commonname+=`<:none:949563964843499520> ⁰ `
+              commonname+=`<:none:949563964843499520> ⁰⁰ `
             }
           }
         }
     if(j+1==argslenght){
           if(uncommoncount!=5){
             for(i=uncommoncount;i<5;i++){
-              uncommonname+=`<:none:949563964843499520> ⁰ `
+              uncommonname+=`<:none:949563964843499520> ⁰⁰ `
             }
           }
         }
     if(j+1==argslenght){
           if(rarecount!=5){
             for(i=rarecount;i<5;i++){
-              rarename+=`<:none:949563964843499520> ⁰ `
+              rarename+=`<:none:949563964843499520> ⁰⁰ `
             }
           }
         }
     if(j+1==argslenght){
           if(epiccount!=5){
             for(i=epiccount;i<5;i++){
-              epicname+=`<:none:949563964843499520> ⁰ `
+              epicname+=`<:none:949563964843499520> ⁰⁰ `
             }
           }
         }
     if(j+1==argslenght){
           if(legendarycount!=5){
             for(i=legendarycount;i<5;i++){
-              legendaryname+=`<:none:949563964843499520> ⁰ `
+              legendaryname+=`<:none:949563964843499520> ⁰⁰ `
             }
           }
         }
