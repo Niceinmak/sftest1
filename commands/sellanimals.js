@@ -40,8 +40,13 @@ exports.execute = async (client, message, args) => {
     if (!x) {
     return message.channel.send(`${message.author.tag} | Animals not found`);
   }
+  let tempcount=0
+  let count=0
   const arrayToObject = x.reduce((itemStruct, x) => {
+    if(x.name==item) count=tempcount
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    console.log(x.name,itemStruct[x.name])
+    tempcount+=x.prize
     return itemStruct;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
@@ -53,8 +58,9 @@ exports.execute = async (client, message, args) => {
 //  console.log(arrayToObject.slice(0).join(' '))
   client.db.set(`animals_${message.author.id}`, x)
   var keyToDelete = '<:cat1:948265025850724372>';
-  x.splice(1,1);
+  //x.splice(1,1);
   console.log(x)
+  console.log(count)
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     //console.log(itemname)
