@@ -37,12 +37,11 @@ exports.execute = async (client, message, args) => {
     ];
   let xp=0
   var word = new Boolean(false)
-  
-      let commonxp = Math.floor(Math.random() * 100);
-      let uncommonxp = Math.floor(Math.random() * 500);
-      let rarexp = Math.floor(Math.random() * 1000);
-      let epicxp = Math.floor(Math.random() * 5000);
-      let legendaryxp = Math.floor(Math.random() * 10000);
+  let commonxp = Math.floor(Math.random() * 100) + 1;
+  let uncommonxp = Math.floor(Math.random() * 500) + 1;
+  let rarexp = Math.floor(Math.random() * 1000) + 1;
+  let epicxp = Math.floor(Math.random() * 5000) + 1;
+  let legendaryxp = Math.floor(Math.random() * 10000) + 1;
   for(let i=0;i<commonanimals.lenght;i++)
     {
       if(item==commonanimals[i])
@@ -53,34 +52,35 @@ exports.execute = async (client, message, args) => {
     }
   for(let i=0;i<uncommonanimals.lenght;i++)
     {
+      console.log("T")
       if(item==uncommonanimals[i])
         {
           word=true
-          xp+=commonxp
+          xp+=uncommonxp
         }
     }
   for(let i=0;i<rareanimals.lenght;i++)
     {
-      if(item==commonanimals[i])
+      if(item==rareanimals[i])
         {
           word=true
-          xp+=commonxp
+          xp+=rarexp
         }
     }
   for(let i=0;i<epicanimals.lenght;i++)
     {
-      if(item==commonanimals[i])
+      if(item==epicanimals[i])
         {
           word=true
-          xp+=commonxp
+          xp+=epicxp
         }
     }
   for(let i=0;i<legendaryanimals.lenght;i++)
     {
-      if(item==commonanimals[i])
+      if(item==legendaryanimals[i])
         {
           word=true
-          xp+=commonxp
+          xp+=legendaryxp
         }
     }
   let test=""
@@ -93,7 +93,6 @@ exports.execute = async (client, message, args) => {
   const arrayToObject = x.reduce((itemStruct, x) => {
     if(x.name==item) count=tempcount
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
-    console.log(x.name,itemStruct[x.name])
     tempcount++
     return itemStruct;
   }, {});
@@ -105,14 +104,13 @@ exports.execute = async (client, message, args) => {
 //  console.log(arrayToObject.slice(0).join(' '))
   
   x.splice(count,1);
-  console.log(x)
-  console.log(count)
   client.db.set(`animals_${message.author.id}`, x)
   var keyToDelete = '<:cat1:948265025850724372>';
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
-    //console.log(itemname)
-  message.channel.send(`The sale was successful!`);
+    console.log(xp)
+    //client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
+  message.channel.send(`**The sale was successful!\nXP earned:${xp}**`);
   
 }
 
