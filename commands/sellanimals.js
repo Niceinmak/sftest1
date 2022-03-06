@@ -35,7 +35,23 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  if(item=="gorillae") item=
+   if(item=="god") item="<:god:948265037313757184>"
+   if(item=="cat" || item=="cat1") item="<:cat1:948265025850724372>"
+   if(item=="fox-1" || item=="fox1" || item=="fox") item="<:fox:948265002492624976>"
+   if(item=="bison-1" || item=="bison1" || item=="bison") item="<:bison:948264912818429962>"
+   if(item=="tiger-1" || item=="tiger1" || item=="tiger") item="<:tiger:948264974856388639>"
+   if(item=="leopard-1" || item=="leopard1" || item=="leopard") item="<:leopard:948264964597121146>"
+   if(item=="horse-1" || item=="horse1" || item=="horse") item="<:horse:948264952198746112>"
+   if(item=="deer-1" || item=="deer1" || item=="deer") item="<:deer:948264928387674213>"
+   if(item=="ox-1" || item=="ox1" || item=="ox") item="<:ox:948264893629480981>"
+   if(item=="pig-1" || item=="pig1" || item=="pig") item="<:pig:948264880417439804>"
+   if(item=="goat-1" || item=="goat1" || item=="goat") item="<:god:948265037313757184>"
+   if(item=="llama-1" || item=="llama1" || item=="llama") item="<:llama:948264865552818196>"
+   if(item=="mouse-1" || item=="mouse1" || item=="mouse") item="<:mouse:948264854551162910>"
+   if(item=="rabbit-1" || item=="rabbit1" || item=="rabbit") item="<:rabbit:948264845520801882>"
+   if(item=="koala-1" || item=="koala1") item="<:god:948265037313757184>"
+   if(item=="god") item="<:god:948265037313757184>"
+   if(item=="god") item="<:god:948265037313757184>"
   let xp=0
   let earnmoney=0
   var word = new Boolean(false)
