@@ -40,18 +40,18 @@ exports.execute = async (client, message, args) => {
     if (!x) {
     return message.channel.send(`${message.author.tag} | Animals not found`);
   }
-  const arrayToObject = x.reduce((itemStruct, x) => {
-    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+  const arrayToObject = x.reduce((itemStruct) => {
+    itemStruct = (itemStruct || 0) + 1;
     return itemStruct;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
        itemname+=k+" "+arrayToObject[k]+" "
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
   );
-  
+  console.log(x)
   console.log(arrayToObject)  
 //  console.log(arrayToObject.slice(0).join(' '))
-  client.db.delete(`animals_${message.author.id}`)
+  client.db.set(`animals_${message.author.id}`, x)
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     //console.log(itemname)

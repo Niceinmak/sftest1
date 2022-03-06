@@ -8,6 +8,7 @@ exports.execute = async (client, message, args) => {
         "Street"
     ];
     let amount = Math.floor(Math.random() * 200)+50;
+  client.db.delete(`animals_${message.author.id}`)
     let amount3 = args[0]
     const embed = new MessageEmbed()
         .setTitle(`Test`)
