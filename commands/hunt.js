@@ -73,7 +73,7 @@ Gained ${xp}xp!**.`);
           xp+=rarexp
   item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
         }
-      else if(lucky1<85)
+      else if(lucky1<90)
         {
           client.eco.addMoney(`${message.author.id}12`, parseInt(epicxp));
           xp+=epicxp

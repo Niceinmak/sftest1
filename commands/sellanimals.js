@@ -35,6 +35,7 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
+  if(item=="gorilla") item=
   let xp=0
   let earnmoney=0
   var word = new Boolean(false)
