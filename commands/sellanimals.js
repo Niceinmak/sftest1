@@ -49,7 +49,7 @@ exports.execute = async (client, message, args) => {
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
   );
   
-  console.log(arrayToObject)
+  console.log(arrayToObject)  
 //  console.log(arrayToObject.slice(0).join(' '))
   client.db.delete(`animals_${message.author.id}`)
     let amount = Math.floor(Math.random() * 200)+50;
