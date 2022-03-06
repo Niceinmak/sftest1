@@ -56,7 +56,7 @@ exports.execute = async (client, message, args) => {
   var argString = x.toString().substring(1).split(",");
 //  console.log(arrayToObject.slice(0).join(' '))
   
-  x.splice(count,count);
+  x.splice(count,1);
   console.log(x)
   console.log(count)
   client.db.set(`animals_${message.author.id}`, x)
