@@ -35,7 +35,7 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  
+  let test=""
   const x = client.db.get(`animals_${message.author.id}`);
     if (!x) {
     return message.channel.send(`${message.author.tag} | Animals not found`);
@@ -48,7 +48,9 @@ exports.execute = async (client, message, args) => {
        itemname+=k+" "+arrayToObject[k]+" "
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
   );
-  var args = arrayToObject.split(',')
+  
+  console.log(arrayToObject.toString())
+  var args = arrayToObject.toString().split(',')
   console.log(args[0])
 //  console.log(arrayToObject.slice(0).join(' '))
  // client.db.set(`items_${message.author.id}`,arrayToObject)
