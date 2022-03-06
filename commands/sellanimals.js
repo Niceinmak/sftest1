@@ -56,13 +56,14 @@ exports.execute = async (client, message, args) => {
   if(item=="dodo-1" || item=="dodo1" || item=="dodo") item="<:dodo:948264775639519232>"
   if(item=="trex-1" || item=="trex1" || item=="trex") item="<:trex1:948264765866786907>"
   if(item=="ant-1" || item=="ant1" || item=="ant") item="<:ant:948264757000040460>"
-  if(item=="")
+  console.log(item)
+  if(!item)
     {
     const embed = new MessageEmbed()
         .setTitle(`Animal Sell`)
-        .setDescription()
+        .setDescription(`**Usage: \`q sellanimal <animal name>\`\nHover over the emoji to find the name of the animal.**`)
   .setThumbnail("https://i.imgur.com/r8EFIV8.png")
-  message.channel.send(embed);
+  return message.channel.send(embed);
     }
   let xp=0
   let earnmoney=0
@@ -89,7 +90,6 @@ exports.execute = async (client, message, args) => {
     }
   for(let i=0;i<uncommonanimals.length;i++)
     {
-      console.log("T")
       if(item==uncommonanimals[i])
         {
           word=true
@@ -158,7 +158,6 @@ exports.execute = async (client, message, args) => {
   var keyToDelete = '<:cat1:948265025850724372>';
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
-    console.log(xp)
     client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
   client.eco.addMoney(message.author.id, parseInt(xp));
   message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
