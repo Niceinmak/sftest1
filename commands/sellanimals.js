@@ -42,46 +42,10 @@ exports.execute = async (client, message, args) => {
   let rarexp = Math.floor(Math.random() * 1000) + 1;
   let epicxp = Math.floor(Math.random() * 5000) + 1;
   let legendaryxp = Math.floor(Math.random() * 10000) + 1;
-  for(let i=0;i<commonanimals.lenght;i++)
+  console.log("t")
+  for(var i=0;i<commonanimals.lenght;i++)
     {
-      if(item==commonanimals[i])
-        {
-          word=true
-          xp+=commonxp
-        }
-    }
-  for(let i=0;i<uncommonanimals.lenght;i++)
-    {
-      console.log("T")
-      if(item==uncommonanimals[i])
-        {
-          word=true
-          xp+=uncommonxp
-        }
-    }
-  for(let i=0;i<rareanimals.lenght;i++)
-    {
-      if(item==rareanimals[i])
-        {
-          word=true
-          xp+=rarexp
-        }
-    }
-  for(let i=0;i<epicanimals.lenght;i++)
-    {
-      if(item==epicanimals[i])
-        {
-          word=true
-          xp+=epicxp
-        }
-    }
-  for(let i=0;i<legendaryanimals.lenght;i++)
-    {
-      if(item==legendaryanimals[i])
-        {
-          word=true
-          xp+=legendaryxp
-        }
+      console.log("t")
     }
   let test=""
   let x = client.db.get(`animals_${message.author.id}`);
