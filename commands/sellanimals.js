@@ -52,8 +52,8 @@ exports.execute = async (client, message, args) => {
   console.log(arrayToObject)  
 //  console.log(arrayToObject.slice(0).join(' '))
   client.db.set(`animals_${message.author.id}`, x)
-  var keyToDelete = "{ name: '<:god:948265037313757184>', prize: 3 }";
-  delete x[1];
+  var keyToDelete = '<:cat1:948265025850724372>';
+  x.splice(1,1);
   console.log(x)
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
