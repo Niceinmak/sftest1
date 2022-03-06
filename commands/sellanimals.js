@@ -35,7 +35,7 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  for(let i=0;i<commonanimals;i++)
+  for(let i=0;i<commonanimals.lenght;i++)
     {
       
     }
