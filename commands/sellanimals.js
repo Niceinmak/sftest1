@@ -42,7 +42,7 @@ exports.execute = async (client, message, args) => {
   }
   const arrayToObject = x.reduce((itemStruct, x) => {
     console.log(x)
-    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    itemStruct+= x;
     return itemStruct;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
