@@ -36,17 +36,65 @@ exports.execute = async (client, message, args) => {
         "<:ant:948264757000040460>",
     ];
   let xp=0
+  let earnmoney=0
   var word = new Boolean(false)
   let commonxp = Math.floor(Math.random() * 100) + 1;
   let uncommonxp = Math.floor(Math.random() * 500) + 1;
   let rarexp = Math.floor(Math.random() * 1000) + 1;
   let epicxp = Math.floor(Math.random() * 5000) + 1;
   let legendaryxp = Math.floor(Math.random() * 10000) + 1;
-  console.log("t")
-  for(var i=0;i<commonanimals.lenght;i++)
+  let commonmoney = Math.floor(Math.random() * 50) + 1;
+  let uncommonmoney = Math.floor(Math.random() * 100) + 1;
+  let raremoney = Math.floor(Math.random() * 500) + 1;
+  let epicmoney = Math.floor(Math.random() * 1000) + 1;
+  let legendarymoney = Math.floor(Math.random() * 10000) + 1;
+  for(let i=0;i<commonanimals.length;i++)
     {
-      console.log("t")
+      if(item==commonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+          earnmoney+=commonmoney
+        }
     }
+  for(let i=0;i<uncommonanimals.length;i++)
+    {
+      console.log("T")
+      if(item==uncommonanimals[i])
+        {
+          word=true
+          xp+=uncommonxp
+          earnmoney+=uncommonmoney
+        }
+    }
+  for(let i=0;i<rareanimals.length;i++)
+    {
+      if(item==rareanimals[i])
+        {
+          word=true
+          xp+=rarexp
+          earnmoney+=raremoney
+        }
+    }
+  for(let i=0;i<epicanimals.length;i++)
+    {
+      if(item==epicanimals[i])
+        {
+          word=true
+          xp+=epicxp
+          earnmoney+=epicmoney
+        }
+    }
+  for(let i=0;i<legendaryanimals.length;i++)
+    {
+      if(item==legendaryanimals[i])
+        {
+          word=true
+          xp+=legendaryxp
+          earnmoney+=legendarymoney
+        }
+    }
+  if(xp==0) return message.channel.send(`**${message.author.tag} | Animals not found**`);
   let test=""
   let x = client.db.get(`animals_${message.author.id}`);
     if (!x) {
@@ -73,8 +121,9 @@ exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     console.log(xp)
-    //client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
-  message.channel.send(`**The sale was successful!\nXP earned:${xp}**`);
+    client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
+  client.eco.addMoney(message.author.id, parseInt(xp));
+  message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
   
 }
 

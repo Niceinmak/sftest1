@@ -368,7 +368,7 @@ exports.execute = async (client, message, args) => {
         }
   }
   
-  console.log(arrayToObject)
+  
   //common=common.substr(4)
 //embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
   message.channel.send(`**🌿 🌱${user.username}'s Zoo🌿 🌱
