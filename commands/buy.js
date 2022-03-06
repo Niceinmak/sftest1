@@ -37,6 +37,7 @@ exports.execute = async (client, message, args) => {
  client.db.push(`items_${message.author.id}`, itemStruct);
     count2++;
   }
+  console.log(itemStruct,)
   let hasitemformat2=String(hasItem.cost*(count2-1)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   return message.channel.send(
     `**${message.author.tag} | You purchased ${item} x${count2-1} for ${hasitemformat2}💶**`

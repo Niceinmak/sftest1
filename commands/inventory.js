@@ -16,7 +16,7 @@ exports.execute = async (client, message, args) => {
   const result = Object.keys(arrayToObject).map(k =>
     embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-
+console.log(arrayToObject)
   return message.channel.send(embed);
 };
 exports.help = {
