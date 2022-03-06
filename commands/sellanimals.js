@@ -40,13 +40,26 @@ exports.execute = async (client, message, args) => {
     if (!x) {
     return message.channel.send(`${message.author.tag} | Animals not found`);
   }
+  let tempcount3=0
+  let tempcount2=0
   let tempcount=0
   let count=0
   const arrayToObject = x.reduce((itemStruct, x) => {
     if(x.name==item) count=tempcount
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     console.log(x.name,itemStruct[x.name])
-    tempcount+=x.prize
+    tempcount3=x.prize
+    tempcount2++
+    if(tempcount3==1)
+      {
+    tempcount2=1
+      }
+    
+      if(tempcount3==tempcount2)
+        {
+          count++
+        }
+    console.log(tempcount3,tempcount2)
     return itemStruct;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
