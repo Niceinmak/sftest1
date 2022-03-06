@@ -40,26 +40,13 @@ exports.execute = async (client, message, args) => {
     if (!x) {
     return message.channel.send(`${message.author.tag} | Animals not found`);
   }
-  let tempcount3=0
-  let tempcount2=0
   let tempcount=0
   let count=0
   const arrayToObject = x.reduce((itemStruct, x) => {
     if(x.name==item) count=tempcount
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     console.log(x.name,itemStruct[x.name])
-    tempcount3=x.prize
-    tempcount2++
-    if(tempcount3==1)
-      {
-    tempcount2=1
-      }
-    
-      if(tempcount3==tempcount2)
-        {
-          count++
-        }
-    console.log(tempcount3,tempcount2)
+    tempcount++
     return itemStruct;
   }, {});
   const result = Object.keys(arrayToObject).map(k =>
@@ -67,13 +54,13 @@ exports.execute = async (client, message, args) => {
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
   );
   var argString = x.toString().substring(1).split(",");
-  console.log(arrayToObject)  
 //  console.log(arrayToObject.slice(0).join(' '))
-  client.db.set(`animals_${message.author.id}`, x)
-  var keyToDelete = '<:cat1:948265025850724372>';
-  //x.splice(1,1);
+  
+  x.splice(count,count);
   console.log(x)
   console.log(count)
+  client.db.set(`animals_${message.author.id}`, x)
+  var keyToDelete = '<:cat1:948265025850724372>';
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     //console.log(itemname)
