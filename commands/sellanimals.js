@@ -48,8 +48,8 @@ exports.execute = async (client, message, args) => {
        itemname+=k+" "+arrayToObject[k]+" "
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
   );
-  
-  console.log(arrayToObject.splice(1, 1))
+  console.log(arrayToObject.shift())
+//  console.log(arrayToObject.slice(0).join(' '))
  // client.db.set(`items_${message.author.id}`,arrayToObject)
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
