@@ -41,9 +41,10 @@ exports.execute = async (client, message, args) => {
     return message.channel.send(`${message.author.tag} | Animals not found`);
   }
   const arrayToObject = x.reduce((itemStruct, x) => {
+    var argString = x.substring(1).split("'");
+    console.log(argString[0])
     if(itemStruct[x.name]!="<:koala:948264836322721862>")
       {
-        console.log(itemStruct[x.name])
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
       }
     return itemStruct;
