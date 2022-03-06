@@ -38,6 +38,7 @@ exports.execute = async (client, message, args) => {
   let xp=0
   let earnmoney=0
   var word = new Boolean(false)
+  var animal = new Boolean(false)
   let commonxp = Math.floor(Math.random() * 100) + 1;
   let uncommonxp = Math.floor(Math.random() * 500) + 1;
   let rarexp = Math.floor(Math.random() * 1000) + 1;
@@ -103,11 +104,19 @@ exports.execute = async (client, message, args) => {
   let tempcount=0
   let count=0
   const arrayToObject = x.reduce((itemStruct, x) => {
-    if(x.name==item) count=tempcount
+    if(x.name==item)
+      {
+      count=tempcount
+      animal=true
+      }
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     tempcount++
     return itemStruct;
   }, {});
+  if(animal==false)
+    {
+      return message.channel.send(`**${message.author.tag} | Animals not found**`);
+    }
   const result = Object.keys(arrayToObject).map(k =>
        itemname+=k+" "+arrayToObject[k]+" "
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
