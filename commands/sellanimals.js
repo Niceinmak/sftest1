@@ -35,9 +35,53 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
+  let xp=0
+  var word = new Boolean(false)
+  
+      let commonxp = Math.floor(Math.random() * 100);
+      let uncommonxp = Math.floor(Math.random() * 500);
+      let rarexp = Math.floor(Math.random() * 1000);
+      let epicxp = Math.floor(Math.random() * 5000);
+      let legendaryxp = Math.floor(Math.random() * 10000);
   for(let i=0;i<commonanimals.lenght;i++)
     {
-      
+      if(item==commonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+        }
+    }
+  for(let i=0;i<uncommonanimals.lenght;i++)
+    {
+      if(item==uncommonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+        }
+    }
+  for(let i=0;i<rareanimals.lenght;i++)
+    {
+      if(item==commonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+        }
+    }
+  for(let i=0;i<epicanimals.lenght;i++)
+    {
+      if(item==commonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+        }
+    }
+  for(let i=0;i<legendaryanimals.lenght;i++)
+    {
+      if(item==commonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+        }
     }
   let test=""
   let x = client.db.get(`animals_${message.author.id}`);
@@ -68,9 +112,7 @@ exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     //console.log(itemname)
-    const embed = new MessageEmbed()
-        .setTitle(`Test`)
-  message.channel.send(embed);
+  message.channel.send(`The sale was successful!`);
   
 }
 
