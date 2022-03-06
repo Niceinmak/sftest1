@@ -49,10 +49,12 @@ exports.execute = async (client, message, args) => {
   //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
   );
   var argString = x.toString().substring(1).split(",");
-  console.log(x)
   console.log(arrayToObject)  
 //  console.log(arrayToObject.slice(0).join(' '))
   client.db.set(`animals_${message.author.id}`, x)
+  var keyToDelete = "{ name: '<:god:948265037313757184>', prize: 3 }";
+  delete x[1];
+  console.log(x)
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     //console.log(itemname)
