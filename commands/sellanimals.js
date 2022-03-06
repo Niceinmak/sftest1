@@ -35,16 +35,6 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  const { Attachment, RichEmbed } = require('discord.js');
-  const attachment = new Attachment('https://puu.sh/DTwNj/a3f2281a71.gif', 'test.gif')
-  message.channel.send({
-  embed: {
-    description: "This is some text",
-    image: {
-      url: "attachment://twitter.png"
-    }
-  },
-});
    if(item=="god-1" || item=="god1" || item=="god") item="<:god:948265037313757184>"
    if(item=="cat" || item=="cat1") item="<:cat1:948265025850724372>"
    if(item=="fox-1" || item=="fox1" || item=="fox") item="<:fox:948265002492624976>"
@@ -66,6 +56,14 @@ exports.execute = async (client, message, args) => {
   if(item=="dodo-1" || item=="dodo1" || item=="dodo") item="<:dodo:948264775639519232>"
   if(item=="trex-1" || item=="trex1" || item=="trex") item="<:trex1:948264765866786907>"
   if(item=="ant-1" || item=="ant1" || item=="ant") item="<:ant:948264757000040460>"
+  if(item=="")
+    {
+    const embed = new MessageEmbed()
+        .setTitle(`Animal Sell`)
+        .setDescription()
+  .setThumbnail("https://i.imgur.com/r8EFIV8.png")
+  message.channel.send(embed);
+    }
   let xp=0
   let earnmoney=0
   var word = new Boolean(false)
