@@ -36,7 +36,8 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  let x = client.db.get(`teamanimal_${message.author.id}`);
+  let x = client.db.get(`animals_${message.author.id}`);
+  let x1 = client.db.get(`teamanimals_${message.author.id}`);
   if(event=="add")
     {
       if(item=="god-1" || item=="god1" || item=="god") item="<:god:948265037313757184>"
@@ -61,6 +62,7 @@ exports.execute = async (client, message, args) => {
   if(item=="trex-1" || item=="trex1" || item=="trex") item="<:trex1:948264765866786907>"
   if(item=="ant-1" || item=="ant1" || item=="ant") item="<:ant:948264757000040460>"
       var word = new Boolean(false)
+      var animal = new Boolean(false)
       for(let i=0;i<commonanimals.length;i++)
     {
       if(item==commonanimals[i])
@@ -100,6 +102,28 @@ exports.execute = async (client, message, args) => {
        {
          return message.channel.send(`**${message.author.tag} | Animals not found**`);
        }
+      let tempcount=0
+  let count=0
+  const arrayToObject = x.reduce((itemStruct, x) => {
+    if(x.name==item)
+      {
+      count=tempcount
+      animal=true
+      }
+    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    tempcount++
+    return itemStruct;
+  }, {});
+      if(animal==false)
+    {
+      return message.channel.send(`**${message.author.tag} | Animals not found**`);
+    }
+      var argString = x.toString().substring(1).split(",");
+//  console.log(arrayToObject.slice(0).join(' '))
+  
+  x.splice(count,1);
+  client.db.set(`animals_${message.author.id}`, x)
+  client.db.push(`teamanimals_${message.author.id}`, itemStruct);
     }
       if (!x) {
     const embed = new MessageEmbed()
@@ -107,27 +131,6 @@ exports.execute = async (client, message, args) => {
     .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
   return message.channel.send(embed);
   }
-  const arrayToObject = x.reduce((itemStruct, x) => {
-    if(x.name==item)
-      {
-    //  count=tempcount
-     // animal=true
-      }
-    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
-    //tempcount++
-    return itemStruct;
-  }, {});
-  const result = Object.keys(arrayToObject).map(k =>
-       itemname+=k+" "+arrayToObject[k]+" "
-  //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
-  );
-  var argString = x.toString().substring(1).split(",");
-//  console.log(arrayToObject.slice(0).join(' '))
-  
-  client.db.set(`animals_${message.author.id}`, x)
-  var keyToDelete = '<:cat1:948265025850724372>';
-    let amount = Math.floor(Math.random() * 200)+50;
-    let amount3 = args[0]
  //   client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
  // client.eco.addMoney(message.author.id, parseInt(xp));
  // message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
