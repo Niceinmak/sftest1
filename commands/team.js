@@ -232,9 +232,16 @@ exports.execute = async (client, message, args) => {
     {
       return message.channel.send(`**${message.author.tag} | Animals not found**`);
     }
+            let hasItem = client.shop[item];
+  if (!hasItem || hasItem == undefined) return message.reply("That item doesnt exists lol");
+  let itemStruct = {
+    name: item.toLowerCase(),
+    prize: hasItem.cost
+  };
       var argString = x1.toString().substring(1).split(",");
       x1.splice(count,1);
   client.db.set(`teamanimals_${message.author.id}`, x1)
+  client.db.push(`animals_${message.author.id}`, itemStruct);
       return message.channel.send(`**Removed**`);
     }
       if (!x) {
