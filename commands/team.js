@@ -222,7 +222,7 @@ exports.execute = async (client, message, args) => {
       count=tempcount2
       animal=true
       }
-    console.log(x1.name,item,tempcount2,count)
+    //console.log(x1.name,item,tempcount2,count)
     tempcount2++
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     tempcount++
@@ -275,46 +275,51 @@ exports.execute = async (client, message, args) => {
   );
   var argString = name.substring(1).split(' ');
   console.log(argString[0],argString[2],argString[4])
-  for(let j=0;j<4;j+=2)
+  const embed = new MessageEmbed()
+  for(let l=0;l<4;l+=2)
     {
+      
+      console.log(l,argString[l])
       for(let i=0;i<commonanimals.length;i++)
     {
-      if(item==commonanimals[i])
+      if(argString[l]==commonanimals[i])
         {
-          word=true
+          embed.addField(`Rarities: <:common:949006743428542545>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
         }
     }
   for(let i=0;i<uncommonanimals.length;i++)
     {
-      if(item==uncommonanimals[i])
+      if(argString[l]==uncommonanimals[i])
         {
-          word=true
+          embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
         }
     }
   for(let i=0;i<rareanimals.length;i++)
     {
-      if(item==rareanimals[i])
+      if(argString[l]==rareanimals[i])
         {
-          word=true
+         embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
         }
     }
   for(let i=0;i<epicanimals.length;i++)
     {
-      if(item==epicanimals[i])
+      if(argString[l]==epicanimals[i])
         {
-          word=true
+         embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
         }
     }
   for(let i=0;i<legendaryanimals.length;i++)
     {
-      if(item==legendaryanimals[i])
+      console.log(argString[l],legendaryanimals[i])
+      if(argString[l]==legendaryanimals[i])
         {
-          word=true
+          console.log("t")
+         embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
         }
     }
     }
-  //const embed = new MessageEmbed()
-  //return message.channel.send(embed);
+  
+  return message.channel.send(embed);
  //   client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
  // client.eco.addMoney(message.author.id, parseInt(xp));
  // message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
