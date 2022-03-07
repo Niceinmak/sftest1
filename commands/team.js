@@ -103,13 +103,15 @@ exports.execute = async (client, message, args) => {
          return message.channel.send(`**${message.author.tag} | Animals not found**`);
        }
       let tempcount=0
+      let tempcount2=0
   let count=0
   const arrayToObject = x.reduce((itemStruct, x) => {
     if(x.name==item)
       {
-      count=tempcount
+      count=tempcount2
       animal=true
       }
+    tempcount2++
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
@@ -123,7 +125,6 @@ exports.execute = async (client, message, args) => {
     return itemStruct;
   }, {});
         }
-      console.log(tempcount)
       if(tempcount==3)
         {
           return message.channel.send(`**No more animals can be added to the team.**`)
@@ -213,13 +214,16 @@ exports.execute = async (client, message, args) => {
     return message.channel.send(`${message.author.tag} | Animals not found`);
   }
       let tempcount=0
+      let tempcount2=0
   let count=0
   const arrayToObject = x1.reduce((itemStruct, x1) => {
     if(x1.name==item)
       {
-      count=tempcount
+      count=tempcount2
       animal=true
       }
+    console.log(x1.name,item,tempcount2,count)
+    tempcount2++
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     tempcount++
     return itemStruct;
