@@ -111,9 +111,19 @@ exports.execute = async (client, message, args) => {
       animal=true
       }
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    return itemStruct;
+  }, {});
+      if (!x1) {
+      }
+      else
+        {
+      const arrayToObject1 = x1.reduce((itemStruct, x1) => {
+    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     tempcount++
     return itemStruct;
   }, {});
+        }
+      console.log(tempcount)
       if(tempcount==3)
         {
           return message.channel.send(`**No more animals can be added to the team.**`)
@@ -134,6 +144,10 @@ exports.execute = async (client, message, args) => {
   client.db.set(`animals_${message.author.id}`, x)
   client.db.push(`teamanimals_${message.author.id}`, itemStruct);
   return message.channel.send("Added")
+    }
+  else if(event=="remove")
+    {
+      
     }
       if (!x) {
     const embed = new MessageEmbed()
