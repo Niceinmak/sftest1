@@ -114,16 +114,26 @@ exports.execute = async (client, message, args) => {
     tempcount++
     return itemStruct;
   }, {});
+      if(tempcount==3)
+        {
+          return message.channel.send(`**No more animals can be added to the team.**`)
+        }
       if(animal==false)
     {
       return message.channel.send(`**${message.author.tag} | Animals not found**`);
     }
       var argString = x.toString().substring(1).split(",");
 //  console.log(arrayToObject.slice(0).join(' '))
-  
+      let hasItem = client.shop[item];
+  if (!hasItem || hasItem == undefined) return message.reply("That item doesnt exists lol");
+  let itemStruct = {
+    name: item.toLowerCase(),
+    prize: hasItem.cost
+  };
   x.splice(count,1);
   client.db.set(`animals_${message.author.id}`, x)
   client.db.push(`teamanimals_${message.author.id}`, itemStruct);
+  return message.channel.send("Added")
     }
       if (!x) {
     const embed = new MessageEmbed()
@@ -131,6 +141,24 @@ exports.execute = async (client, message, args) => {
     .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
   return message.channel.send(embed);
   }
+    if (!x1) {
+    const embed = new MessageEmbed()
+        .setTitle(`Team No Found`)
+    .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
+  return message.channel.send(embed);
+  }
+  let tempcount=0
+  const arrayToObject = x1.reduce((itemsobj, x1) => {
+    itemsobj[x1.name] = (itemsobj[x1.name] || 0) + 1;
+    tempcount++
+    return itemsobj;
+  }, {});
+  console.log(tempcount)
+  const embed = new MessageEmbed()
+  const result = Object.keys(arrayToObject).map(k =>
+    embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
+  );
+  return message.channel.send(embed);
  //   client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
  // client.eco.addMoney(message.author.id, parseInt(xp));
  // message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
