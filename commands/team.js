@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
+  let user = message.author;
   let userBalance = client.eco.fetchMoney(message.author.id);
   let itemname=" "
   let event = args[0];
@@ -270,53 +271,48 @@ exports.execute = async (client, message, args) => {
   }
   let name=""
   const result = Object.keys(arrayToObject).map(k =>
-    name+=`${k} ${arrayToObject[k]} `
+    name+=` ${k} ${arrayToObject[k]} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   var argString = name.substring(1).split(' ');
   const embed = new MessageEmbed()
-  for(let l=0;l<5;l+=2)
+  .setTitle(`${user.username}'s Team`)
+  .setDescription(`**For all animals: \`q zoo\`**`)
+  for(let l=0;l<7;l+=3)
     {
       for(let i=0;i<commonanimals.length;i++)
     {
-      
-     console.log(argString[l],commonanimals[i])
       if(argString[l]==commonanimals[i])
         {
-          console.log("t")
-        }
-      if(argString[l]==commonanimals[i])
-        {
-          console.log("t")
-          embed.addField(`Rarities: <:common:949006743428542545>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
+          embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<uncommonanimals.length;i++)
     {
       if(argString[l]==uncommonanimals[i])
         {
-          embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
+          embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<rareanimals.length;i++)
     {
       if(argString[l]==rareanimals[i])
         {
-         embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
+         embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<epicanimals.length;i++)
     {
       if(argString[l]==epicanimals[i])
         {
-         embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
+         embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<legendaryanimals.length;i++)
     {
       if(argString[l]==legendaryanimals[i])
         {
-         embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
+         embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
     }
