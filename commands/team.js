@@ -144,7 +144,7 @@ exports.execute = async (client, message, args) => {
   x.splice(count,1);
   client.db.set(`animals_${message.author.id}`, x)
   client.db.push(`teamanimals_${message.author.id}`, itemStruct);
-  return message.channel.send("Added")
+  return message.channel.send("The animal has been added to the team!")
     }
   else if(event=="remove")
     {
@@ -242,7 +242,7 @@ exports.execute = async (client, message, args) => {
       x1.splice(count,1);
   client.db.set(`teamanimals_${message.author.id}`, x1)
   client.db.push(`animals_${message.author.id}`, itemStruct);
-      return message.channel.send(`**Removed**`);
+      return message.channel.send(`**The animal has been removed to the team!**`);
     }
       if (!x) {
     const embed = new MessageEmbed()
