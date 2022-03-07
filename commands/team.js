@@ -274,47 +274,49 @@ exports.execute = async (client, message, args) => {
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   var argString = name.substring(1).split(' ');
-  console.log(argString[0],argString[2],argString[4])
   const embed = new MessageEmbed()
-  for(let l=0;l<4;l+=2)
+  for(let l=0;l<5;l+=2)
     {
-      
-      console.log(l,argString[l])
       for(let i=0;i<commonanimals.length;i++)
     {
+      
+     console.log(argString[l],commonanimals[i])
       if(argString[l]==commonanimals[i])
         {
-          embed.addField(`Rarities: <:common:949006743428542545>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
+          console.log("t")
+        }
+      if(argString[l]==commonanimals[i])
+        {
+          console.log("t")
+          embed.addField(`Rarities: <:common:949006743428542545>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<uncommonanimals.length;i++)
     {
       if(argString[l]==uncommonanimals[i])
         {
-          embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
+          embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<rareanimals.length;i++)
     {
       if(argString[l]==rareanimals[i])
         {
-         embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
+         embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<epicanimals.length;i++)
     {
       if(argString[l]==epicanimals[i])
         {
-         embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
+         embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
   for(let i=0;i<legendaryanimals.length;i++)
     {
-      console.log(argString[l],legendaryanimals[i])
       if(argString[l]==legendaryanimals[i])
         {
-          console.log("t")
-         embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: \`${argString[i]}\` Quantity:\` ${argString[i+1]}\` `, false)
+         embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: \`${argString[l]}\` Quantity:\` ${argString[l+1]}\` `, false)
         }
     }
     }
