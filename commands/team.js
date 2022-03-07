@@ -268,11 +268,53 @@ exports.execute = async (client, message, args) => {
     .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
   return message.channel.send(embed);
   }
-  const embed = new MessageEmbed()
+  let name=""
   const result = Object.keys(arrayToObject).map(k =>
-    embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
+    name+=`${k} ${arrayToObject[k]} `
+    //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-  return message.channel.send(embed);
+  var argString = name.substring(1).split(' ');
+  console.log(argString[0],argString[2],argString[4])
+  for(let j=0;j<4;j+=2)
+    {
+      for(let i=0;i<commonanimals.length;i++)
+    {
+      if(item==commonanimals[i])
+        {
+          word=true
+        }
+    }
+  for(let i=0;i<uncommonanimals.length;i++)
+    {
+      if(item==uncommonanimals[i])
+        {
+          word=true
+        }
+    }
+  for(let i=0;i<rareanimals.length;i++)
+    {
+      if(item==rareanimals[i])
+        {
+          word=true
+        }
+    }
+  for(let i=0;i<epicanimals.length;i++)
+    {
+      if(item==epicanimals[i])
+        {
+          word=true
+        }
+    }
+  for(let i=0;i<legendaryanimals.length;i++)
+    {
+      if(item==legendaryanimals[i])
+        {
+          word=true
+        }
+    }
+    }
+  //const embed = new MessageEmbed()
+  //return message.channel.send(embed);
  //   client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
  // client.eco.addMoney(message.author.id, parseInt(xp));
  // message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
