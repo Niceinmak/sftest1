@@ -11,12 +11,12 @@ exports.execute = async (client, message, args) => {
 		return message.reply(`**Wait ${time} to message again**`);
 	}
   db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
-let data = await random.getMeme()
+let data = await random.getFact();
     message.channel.send(data)
 }
 
 exports.help = {
-    name: "randomeme",
-    aliases: ["RANDOMMEME"],
-    usage: `randommeme`
+    name: "randomfact",
+    aliases: ["RANDOMFACT"],
+    usage: `randomfact`
 }
