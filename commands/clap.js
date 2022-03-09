@@ -11,15 +11,15 @@ exports.execute = async (client, message, args) => {
 		const time = ms(timeout - (Date.now() - cooldown));
 		return message.reply(`**Wait ${time} to message again**`);
 	}
-  //db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
+  db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
 if (!args.length) {
-      return message.channel.send(`**Usage:\`${client.prefix}clap <msg>\`**`);
+      return message.channel.send(`**Usage:\`${client.prefix}clap <msg> <msg>\`**`);
     }
-  console.log(args.join(" ").replace(/ /g, " 👏 "))
+    message.channel.send(args.join(" ").replace(/ /g, " 👏 "));
 }
 
 exports.help = {
     name: "clap",
     aliases: ["CLAP"],
-    usage: `clap`
+    usage: `Add clap emoji between each word`
 }
