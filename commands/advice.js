@@ -16,7 +16,7 @@ let data = await random.getMeme()
 }
 
 exports.help = {
-    name: "randomeme",
-    aliases: ["RANDOMMEME"],
-    usage: `test`
+    name: "advice",
+    aliases: ["ADVICE"],
+    usage: `advice`
 }
