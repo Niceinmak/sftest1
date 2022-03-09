@@ -1,7 +1,6 @@
 const discord = require("discord.js")
 const client = new discord.Client()
-const { Random } = require("random-discord")
-const random = new Random();
+const random = require("something-random-on-discord").Random
 exports.execute = async (client, message, args) => {
 let data = await random.getMeme()
     message.channel.send(data)
