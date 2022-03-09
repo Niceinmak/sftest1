@@ -1,6 +1,11 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
+  let timecooldown = Math.floor(Math.random() * 200)+50;
+    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
+    const user1 = message.member.user
+   if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   let userBalance = client.eco.fetchMoney(message.author.id);
   let itemname=" "
   let item = args[0];
@@ -56,7 +61,6 @@ exports.execute = async (client, message, args) => {
   if(item=="dodo-1" || item=="dodo1" || item=="dodo") item="<:dodo:948264775639519232>"
   if(item=="trex-1" || item=="trex1" || item=="trex") item="<:trex1:948264765866786907>"
   if(item=="ant-1" || item=="ant1" || item=="ant") item="<:ant:948264757000040460>"
-  console.log(item)
   if(!item)
     {
     const embed = new MessageEmbed()
@@ -159,13 +163,13 @@ exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
-  client.eco.addMoney(message.author.id, parseInt(xp));
+  client.eco.addMoney(message.author.id, parseInt(earnmoney));
   message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
   
 }
 
 exports.help = {
     name: "sellanimals",
-    aliases: ["sellanimal","sellanimals"],
+    aliases: ["sellanimal","sellanimals","SELLANIMALS","SELLANIMAL"],
     usage: `sellanimals <animal>`
 }
