@@ -74,7 +74,15 @@ exports.execute = async (client, message, args) => {
    for (var i = 0; i < commonanimals.length; i++) {
      if(args[j]==commonanimals[i])
       {
-        let tempnumber=""
+        
+           let tempnumber=""
+        if(args[j+1]<10)
+          {
+        let arg1=args[j+1].substr(0,1);
+        let arg2=args[j+1].substr(1,2);
+        console.log(arg1,arg2,args[j+1]) 
+          }
+        
         if(args[j+1]=="0")
           {
             tempnumber="⁰⁰"
