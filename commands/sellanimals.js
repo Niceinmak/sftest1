@@ -93,8 +93,8 @@ exports.execute = async (client, message, args) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
-      let itemslenght=(anyLength(args))-1
-      console.log(items)
+      let itemslenght=(anyLength(items))-1
+      console.log(items.slice(0,itemslenght));
     }
   else
   {
