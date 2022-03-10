@@ -165,8 +165,6 @@ exports.execute = async (client, message, args) => {
   client.db.set(`animals_${message.author.id}`, x)
     let amount = Math.floor(Math.random() * 200)+50;
           console.log(argString[0])
-  client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
-  client.eco.addMoney(message.author.id, parseInt(earnmoney)); 
         }
       item="All Animals"
     }
@@ -251,10 +249,9 @@ exports.execute = async (client, message, args) => {
   var keyToDelete = '<:cat1:948265025850724372>';
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
+  }
     client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
   client.eco.addMoney(message.author.id, parseInt(earnmoney)); 
-  }
-
   message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
   
 }
