@@ -83,6 +83,7 @@ exports.execute = async (client, message, args) => {
   let raremoney = Math.floor(Math.random() * 500) + 1;
   let epicmoney = Math.floor(Math.random() * 1000) + 1;
   let legendarymoney = Math.floor(Math.random() * 10000) + 1;
+  let counter=0
   if(item=="all")
     {
       let x = client.db.get(`animals_${message.author.id}`);
@@ -90,10 +91,12 @@ exports.execute = async (client, message, args) => {
       let items=``
         const arrayToObject = x.reduce((itemStruct, x) => {
      items+=x.name+`\n`
+     counter++
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
       let itemslenght=(anyLength(items))-1
+      console.log(itemslenght,counter)
       console.log(items.slice(0,itemslenght));
     }
   else
