@@ -96,7 +96,8 @@ exports.execute = async (client, message, args) => {
     return itemStruct;
   }, {});
       let itemslenght=(anyLength(items))-1
-      var argString = itemslenght.substring(1).split(' ');
+      items="<"+items
+      var argString = items.slice(0,itemslenght).substring(1).split(' ');
       console.log(itemslenght[0],counter)
       console.log(items.slice(0,itemslenght));
       for(let i=0;i<counter;i++)
@@ -160,21 +161,14 @@ exports.execute = async (client, message, args) => {
     tempcount++
     return itemStruct;
   }, {});
-  const result = Object.keys(arrayToObject).map(k =>
-       itemname+=k+" "+arrayToObject[k]+" "
-  //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
-  );
-  var argString = x.toString().substring(1).split(",");
-//  console.log(arrayToObject.slice(0).join(' '))
-  
   x.splice(count,1);
   client.db.set(`animals_${message.author.id}`, x)
-  var keyToDelete = '<:cat1:948265025850724372>';
     let amount = Math.floor(Math.random() * 200)+50;
-    let amount3 = args[0]
-    client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
+          console.log(argString[0])
+  client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
   client.eco.addMoney(message.author.id, parseInt(earnmoney)); 
         }
+      item="All Animals"
     }
   else
   {
