@@ -76,13 +76,9 @@ exports.execute = async (client, message, args) => {
       {
         
            let tempnumber=""
-        if(args[j+1]<10)
-          {
-        let arg1=args[j+1].substr(0,1);
-        let arg2=args[j+1].substr(1,2);
-        console.log(arg1,arg2,args[j+1]) 
-          }
-        
+           if(args[j+1]<10)
+             {
+                       
         if(args[j+1]=="0")
           {
             tempnumber="⁰⁰"
@@ -119,9 +115,64 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁰⁸"
           }
-        else if(args[j+1]=="9")
+        else
           {
             tempnumber="⁰⁹"
+          }
+             }
+        else if(args[j+1]<100)
+          {
+        let arg1=args[j+1].substr(0,1);
+        let arg2=args[j+1].substr(1,2);
+            let argall = [
+            arg1,
+            arg2
+           ]
+            for(let i=0;i<2;i++)
+              {
+                
+        console.log(argall[i]) 
+            if(argall[i]=="0")
+          {
+            tempnumber+="⁰"
+          }
+        else if(argall[i]=="1")
+          {
+            tempnumber+="¹"
+          }
+        else if(argall[i]=="2")
+          {
+            tempnumber+="²"
+          }
+        else if(argall[i]=="3")
+          {
+            tempnumber+="³"
+          }
+        else if(argall[i]=="4")
+          {
+            tempnumber+="⁴"
+          }
+        else if(argall[i]=="5")
+          {
+            tempnumber+="⁵"
+          }
+        else if(argall[i]=="6")
+          {
+            tempnumber+="⁶"
+          }
+        else if(argall[i]=="7")
+          {
+            tempnumber+="⁷"
+          }
+        else if(argall[i]=="8")
+          {
+            tempnumber+="⁸"
+          }
+        else
+          {
+            tempnumber+="⁹"
+          }
+              }
           }
         else
           {
