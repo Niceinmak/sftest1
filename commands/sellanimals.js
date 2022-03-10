@@ -90,14 +90,91 @@ exports.execute = async (client, message, args) => {
       console.log("t")
       let items=``
         const arrayToObject = x.reduce((itemStruct, x) => {
-     items+=x.name+`\n`
+     items+=x.name+` `
      counter++
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
       let itemslenght=(anyLength(items))-1
-      console.log(itemslenght,counter)
+      var argString = itemslenght.substring(1).split(' ');
+      console.log(itemslenght[0],counter)
       console.log(items.slice(0,itemslenght));
+      for(let i=0;i<counter;i++)
+        {
+          
+          item=argString[i]
+          for(let i=0;i<commonanimals.length;i++)
+    {
+      if(item==commonanimals[i])
+        {
+          word=true
+          xp+=commonxp
+          earnmoney+=commonmoney
+        }
+    }
+  for(let i=0;i<uncommonanimals.length;i++)
+    {
+      if(item==uncommonanimals[i])
+        {
+          word=true
+          xp+=uncommonxp
+          earnmoney+=uncommonmoney
+        }
+    }
+  for(let i=0;i<rareanimals.length;i++)
+    {
+      if(item==rareanimals[i])
+        {
+          word=true
+          xp+=rarexp
+          earnmoney+=raremoney
+        }
+    }
+  for(let i=0;i<epicanimals.length;i++)
+    {
+      if(item==epicanimals[i])
+        {
+          word=true
+          xp+=epicxp
+          earnmoney+=epicmoney
+        }
+    }
+  for(let i=0;i<legendaryanimals.length;i++)
+    {
+      if(item==legendaryanimals[i])
+        {
+          word=true
+          xp+=legendaryxp
+          earnmoney+=legendarymoney
+        }
+    }
+  let tempcount=0
+  let count=0
+  const arrayToObject = x.reduce((itemStruct, x) => {
+    if(x.name==item)
+      {
+      count=tempcount
+      animal=true
+      }
+    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    tempcount++
+    return itemStruct;
+  }, {});
+  const result = Object.keys(arrayToObject).map(k =>
+       itemname+=k+" "+arrayToObject[k]+" "
+  //   message.channel.send(`**${k} Kasasını Sattın ve ${randomcash},${quantity*randomcash}💶 kazandın.${quantity}$,${count1},${itemname},,,${agr1},,,${agr2},,,${agr3}**`)
+  );
+  var argString = x.toString().substring(1).split(",");
+//  console.log(arrayToObject.slice(0).join(' '))
+  
+  x.splice(count,1);
+  client.db.set(`animals_${message.author.id}`, x)
+  var keyToDelete = '<:cat1:948265025850724372>';
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount3 = args[0]
+    client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
+  client.eco.addMoney(message.author.id, parseInt(earnmoney)); 
+        }
     }
   else
   {
