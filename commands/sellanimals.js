@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-
+const anyLength = require('any-length');
 exports.execute = async (client, message, args) => {
   let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
@@ -69,7 +69,7 @@ exports.execute = async (client, message, args) => {
   .setThumbnail("https://i.imgur.com/r8EFIV8.png")
   return message.channel.send(embed);
     }
-  let xp=0
+       let xp=0
   let earnmoney=0
   var word = new Boolean(false)
   var animal = new Boolean(false)
@@ -83,6 +83,21 @@ exports.execute = async (client, message, args) => {
   let raremoney = Math.floor(Math.random() * 500) + 1;
   let epicmoney = Math.floor(Math.random() * 1000) + 1;
   let legendarymoney = Math.floor(Math.random() * 10000) + 1;
+  if(item=="all")
+    {
+      let x = client.db.get(`animals_${message.author.id}`);
+      console.log("t")
+      let items=``
+        const arrayToObject = x.reduce((itemStruct, x) => {
+     items+=x.name+`\n`
+    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    return itemStruct;
+  }, {});
+      let itemslenght=(anyLength(args))-1
+      console.log(items)
+    }
+  else
+  {
   for(let i=0;i<commonanimals.length;i++)
     {
       if(item==commonanimals[i])
@@ -163,7 +178,9 @@ exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
     client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
-  client.eco.addMoney(message.author.id, parseInt(earnmoney));
+  client.eco.addMoney(message.author.id, parseInt(earnmoney)); 
+  }
+
   message.channel.send(`**The sale was successful!\nSold:${item}\nMoney earned:${earnmoney}\nXP earned:${xp}**`);
   
 }
