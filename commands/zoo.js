@@ -405,6 +405,7 @@ exports.execute = async (client, message, args) => {
     for (var i = 0; i < epicanimals.length; i++) {
      if(args[j]==epicanimals[i])
       {
+        zoopoint+=5000
         let tempnumber=""
            if(args[j+1]<10)
              {
@@ -514,6 +515,7 @@ exports.execute = async (client, message, args) => {
     for (var i = 0; i < legendaryanimals.length; i++) {
      if(args[j]==legendaryanimals[i])
       {
+        zoopoint+=10000
         let tempnumber=""
            if(args[j+1]<10)
              {
@@ -657,7 +659,7 @@ exports.execute = async (client, message, args) => {
         }
   }
   
-  
+  let userBalanceformat2=String(zoopoint).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   //common=common.substr(4)
 //embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
   message.channel.send(`**🌿 🌱${user.username}'s Zoo🌿 🌱
@@ -666,7 +668,8 @@ exports.execute = async (client, message, args) => {
 <:rare:949006777519837225> ${rarename}
 <:epic:949006791201652827> ${epicname}
 <:legendary:949006805646864404> ${legendaryname}
-  
+
+Zoo Point:\`${userBalanceformat2}\`
 XP Point:\`${userBalanceformat}\`**`)
 };
 exports.help = {
