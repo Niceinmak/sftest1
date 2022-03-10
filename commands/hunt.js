@@ -47,11 +47,11 @@ exports.execute = async (client, message, args) => {
   for(let i=lucky; i>0;i--)
     {
   let lucky1 = Math.floor(Math.random() * 100);
-      let commonxp = Math.floor(Math.random() * 100);
-      let uncommonxp = Math.floor(Math.random() * 500);
-      let rarexp = Math.floor(Math.random() * 1000);
-      let epicxp = Math.floor(Math.random() * 5000);
-      let legendaryxp = Math.floor(Math.random() * 10000);
+      let commonxp = Math.floor(Math.random() * 100)+1;
+      let uncommonxp = Math.floor(Math.random() * 500)+1;
+      let rarexp = Math.floor(Math.random() * 1000)+1;
+      let epicxp = Math.floor(Math.random() * 5000)+1;
+      let legendaryxp = Math.floor(Math.random() * 10000)+1;
   if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
       let item = ""

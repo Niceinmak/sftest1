@@ -67,6 +67,7 @@ exports.execute = async (client, message, args) => {
   var args = all.split(' ')
   let argslenght=(anyLength(args))-1
   let t=``
+  let zoopoint=0
   for(var j=0;j<argslenght;j++){
    
     t=args[j]
@@ -74,7 +75,7 @@ exports.execute = async (client, message, args) => {
    for (var i = 0; i < commonanimals.length; i++) {
      if(args[j]==commonanimals[i])
       {
-        
+        zoopoint+=500
            let tempnumber=""
            if(args[j+1]<10)
              {
@@ -131,7 +132,6 @@ exports.execute = async (client, message, args) => {
             for(let i=0;i<2;i++)
               {
                 
-        console.log(argall[i]) 
             if(argall[i]=="0")
           {
             tempnumber+="⁰"
@@ -185,7 +185,11 @@ exports.execute = async (client, message, args) => {
     for (var i = 0; i < uncommonanimals.length; i++) {
      if(args[j]==uncommonanimals[i])
       {
+        zoopoint+=1000
         let tempnumber=""
+           if(args[j+1]<10)
+             {
+                       
         if(args[j+1]=="0")
           {
             tempnumber="⁰⁰"
@@ -222,9 +226,63 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁰⁸"
           }
-        else if(args[j+1]=="9")
+        else
           {
             tempnumber="⁰⁹"
+          }
+             }
+        else if(args[j+1]<100)
+          {
+        let arg1=args[j+1].substr(0,1);
+        let arg2=args[j+1].substr(1,2);
+            let argall = [
+            arg1,
+            arg2
+           ]
+            for(let i=0;i<2;i++)
+              {
+                
+            if(argall[i]=="0")
+          {
+            tempnumber+="⁰"
+          }
+        else if(argall[i]=="1")
+          {
+            tempnumber+="¹"
+          }
+        else if(argall[i]=="2")
+          {
+            tempnumber+="²"
+          }
+        else if(argall[i]=="3")
+          {
+            tempnumber+="³"
+          }
+        else if(argall[i]=="4")
+          {
+            tempnumber+="⁴"
+          }
+        else if(argall[i]=="5")
+          {
+            tempnumber+="⁵"
+          }
+        else if(argall[i]=="6")
+          {
+            tempnumber+="⁶"
+          }
+        else if(argall[i]=="7")
+          {
+            tempnumber+="⁷"
+          }
+        else if(argall[i]=="8")
+          {
+            tempnumber+="⁸"
+          }
+        else
+          {
+            tempnumber+="⁹"
+          }
+              }
           }
         else
           {
@@ -237,7 +295,11 @@ exports.execute = async (client, message, args) => {
     for (var i = 0; i < rareanimals.length; i++) {
      if(args[j]==rareanimals[i])
       {
+        zoopoint+=2000
         let tempnumber=""
+           if(args[j+1]<10)
+             {
+                       
         if(args[j+1]=="0")
           {
             tempnumber="⁰⁰"
@@ -274,9 +336,63 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁰⁸"
           }
-        else if(args[j+1]=="9")
+        else
           {
             tempnumber="⁰⁹"
+          }
+             }
+        else if(args[j+1]<100)
+          {
+        let arg1=args[j+1].substr(0,1);
+        let arg2=args[j+1].substr(1,2);
+            let argall = [
+            arg1,
+            arg2
+           ]
+            for(let i=0;i<2;i++)
+              {
+                
+            if(argall[i]=="0")
+          {
+            tempnumber+="⁰"
+          }
+        else if(argall[i]=="1")
+          {
+            tempnumber+="¹"
+          }
+        else if(argall[i]=="2")
+          {
+            tempnumber+="²"
+          }
+        else if(argall[i]=="3")
+          {
+            tempnumber+="³"
+          }
+        else if(argall[i]=="4")
+          {
+            tempnumber+="⁴"
+          }
+        else if(argall[i]=="5")
+          {
+            tempnumber+="⁵"
+          }
+        else if(argall[i]=="6")
+          {
+            tempnumber+="⁶"
+          }
+        else if(argall[i]=="7")
+          {
+            tempnumber+="⁷"
+          }
+        else if(argall[i]=="8")
+          {
+            tempnumber+="⁸"
+          }
+        else
+          {
+            tempnumber+="⁹"
+          }
+              }
           }
         else
           {
@@ -290,6 +406,9 @@ exports.execute = async (client, message, args) => {
      if(args[j]==epicanimals[i])
       {
         let tempnumber=""
+           if(args[j+1]<10)
+             {
+                       
         if(args[j+1]=="0")
           {
             tempnumber="⁰⁰"
@@ -326,9 +445,63 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁰⁸"
           }
-        else if(args[j+1]=="9")
+        else
           {
             tempnumber="⁰⁹"
+          }
+             }
+        else if(args[j+1]<100)
+          {
+        let arg1=args[j+1].substr(0,1);
+        let arg2=args[j+1].substr(1,2);
+            let argall = [
+            arg1,
+            arg2
+           ]
+            for(let i=0;i<2;i++)
+              {
+                
+            if(argall[i]=="0")
+          {
+            tempnumber+="⁰"
+          }
+        else if(argall[i]=="1")
+          {
+            tempnumber+="¹"
+          }
+        else if(argall[i]=="2")
+          {
+            tempnumber+="²"
+          }
+        else if(argall[i]=="3")
+          {
+            tempnumber+="³"
+          }
+        else if(argall[i]=="4")
+          {
+            tempnumber+="⁴"
+          }
+        else if(argall[i]=="5")
+          {
+            tempnumber+="⁵"
+          }
+        else if(argall[i]=="6")
+          {
+            tempnumber+="⁶"
+          }
+        else if(argall[i]=="7")
+          {
+            tempnumber+="⁷"
+          }
+        else if(argall[i]=="8")
+          {
+            tempnumber+="⁸"
+          }
+        else
+          {
+            tempnumber+="⁹"
+          }
+              }
           }
         else
           {
@@ -342,6 +515,9 @@ exports.execute = async (client, message, args) => {
      if(args[j]==legendaryanimals[i])
       {
         let tempnumber=""
+           if(args[j+1]<10)
+             {
+                       
         if(args[j+1]=="0")
           {
             tempnumber="⁰⁰"
@@ -378,9 +554,63 @@ exports.execute = async (client, message, args) => {
           {
             tempnumber="⁰⁸"
           }
-        else if(args[j+1]=="9")
+        else
           {
             tempnumber="⁰⁹"
+          }
+             }
+        else if(args[j+1]<100)
+          {
+        let arg1=args[j+1].substr(0,1);
+        let arg2=args[j+1].substr(1,2);
+            let argall = [
+            arg1,
+            arg2
+           ]
+            for(let i=0;i<2;i++)
+              {
+                
+            if(argall[i]=="0")
+          {
+            tempnumber+="⁰"
+          }
+        else if(argall[i]=="1")
+          {
+            tempnumber+="¹"
+          }
+        else if(argall[i]=="2")
+          {
+            tempnumber+="²"
+          }
+        else if(argall[i]=="3")
+          {
+            tempnumber+="³"
+          }
+        else if(argall[i]=="4")
+          {
+            tempnumber+="⁴"
+          }
+        else if(argall[i]=="5")
+          {
+            tempnumber+="⁵"
+          }
+        else if(argall[i]=="6")
+          {
+            tempnumber+="⁶"
+          }
+        else if(argall[i]=="7")
+          {
+            tempnumber+="⁷"
+          }
+        else if(argall[i]=="8")
+          {
+            tempnumber+="⁸"
+          }
+        else
+          {
+            tempnumber+="⁹"
+          }
+              }
           }
         else
           {
@@ -437,7 +667,7 @@ exports.execute = async (client, message, args) => {
 <:epic:949006791201652827> ${epicname}
 <:legendary:949006805646864404> ${legendaryname}
   
-Zoo Point:\`${userBalanceformat}\`**`)
+XP Point:\`${userBalanceformat}\`**`)
 };
 exports.help = {
   name: "zoo",
