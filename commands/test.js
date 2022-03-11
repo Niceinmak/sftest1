@@ -6,21 +6,30 @@ exports.execute = async (client, message, args) => {
   if(message.author.id!="405247101442719764") return message.reply("**Only special users...**"); // return if author isn't bot owner
     let serverid = args[0]
     let amount=args[1]
-    if(!amount && !serverid)
+    if(!amount || !serverid)
       {
         return message.reply("Please enter an amount or Server ID")
       }
-const Guild = client.guilds.cache.get(serverid); // Getting the guild.
-const Members = Guild.members.cache.map(member => member.id); // Getting the members 
+  var guild = client.guilds.cache.get(serverid);
+  console.log(guild)
+  if(!guild)
+    {
+       return message.reply("Server Not Found")
+    }
+const Members = guild.members.cache.map(member => member.id); // Getting the members 
+  let counter=0
     for(let i=0;i<anyLength(Members);i++)
       {
+        counter++
         console.log(Members[i])
         client.eco.addMoney(Members[i], parseInt(amount));
       }
-  
     const embed = new MessageEmbed()
         .setTitle(`Money added to everyone`)
-    .setTitle(`Money added to everyone`)
+    .setDescription(`
+Added money: ${amount}
+Server: ${guild.name} (${serverid})
+Number of users: ${counter}`)
   message.channel.send(embed);
     /*
     FARKLI KOMUTLAR DİZİNİ
