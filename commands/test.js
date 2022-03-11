@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
+const anyLength = require('any-length');
 exports.execute = async (client, message, args) => {
   let users = [
         "Pocket",
@@ -12,6 +13,16 @@ exports.execute = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setTitle(`Test`)
   message.channel.send(embed);
+  client.guilds.cache.forEach(guild => {
+const Guild = client.guilds.cache.get(guild.id); // Getting the guild.
+const Members = Guild.members.cache.map(member => member.id); // Getting the members 
+    for(let i=0;i<Members.lenght;i++)
+      {
+        console.log("t")
+        console.log(Members[i])
+      }
+    console.log(Members,()
+})
     /*
     FARKLI KOMUTLAR DİZİNİ
 
