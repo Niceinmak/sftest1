@@ -2,27 +2,26 @@ const { MessageEmbed } = require("discord.js");
 
 const anyLength = require('any-length');
 exports.execute = async (client, message, args) => {
-  let users = [
-        "Pocket",
-        "T-Shirt",
-        "Zero's Databse",
-        "Street"
-    ];
-    let amount = Math.floor(Math.random() * 200)+50;
-    let amount3 = args[0]
-    const embed = new MessageEmbed()
-        .setTitle(`Test`)
-  message.channel.send(embed);
-  client.guilds.cache.forEach(guild => {
-const Guild = client.guilds.cache.get(guild.id); // Getting the guild.
-const Members = Guild.members.cache.map(member => member.id); // Getting the members 
-    for(let i=0;i<Members.lenght;i++)
+  if (!client.config.admins.includes(message.author.id)) return message.reply("**Only bot administrators are authorized to send and set money.**"); // return if author isn't bot owner
+  if(message.author.id!="405247101442719764") return message.reply("**Only special users...**"); // return if author isn't bot owner
+    let serverid = args[0]
+    let amount=args[1]
+    if(!amount && !serverid)
       {
-        console.log("t")
-        console.log(Members[i])
+        return message.reply("Please enter an amount or Server ID")
       }
-    console.log(Members,()
-})
+const Guild = client.guilds.cache.get(serverid); // Getting the guild.
+const Members = Guild.members.cache.map(member => member.id); // Getting the members 
+    for(let i=0;i<anyLength(Members);i++)
+      {
+        console.log(Members[i])
+        client.eco.addMoney(Members[i], parseInt(amount));
+      }
+  
+    const embed = new MessageEmbed()
+        .setTitle(`Money added to everyone`)
+    .setTitle(`Money added to everyone`)
+  message.channel.send(embed);
     /*
     FARKLI KOMUTLAR DİZİNİ
 
