@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { Client, Intents } = require('discord.js');
-
+const {REST}= require("discord.js/rest")
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
@@ -94,7 +94,6 @@ client.shop = {
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
-  const handler = new Handler(client, { guilds: ["925628280785231872"], commandFolder: "./commands/",commandType: "file" || "folder"});
   
   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
