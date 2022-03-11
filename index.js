@@ -1,6 +1,6 @@
+const { REST }= require("@discord/rest");
 const Discord = require("discord.js");
 const { Client, Intents } = require('discord.js');
-const {REST}= require("discord.js/rest")
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');

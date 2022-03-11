@@ -17,11 +17,13 @@
     "discordjs"
   ],
   "dependencies": {
+    "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
     "@top-gg/sdk": "^3.1.3",
     "any-length": "^1.0.0",
     "btc-value": "^4.0.0",
     "dblapi.js": "^2.4.1",
+    "discord-api-types": "^0.29.0",
     "discord-blackjack": "^4.0.0",
     "discord-slash-command-handler": "^3.1.7",
     "discord.dbl": "^1.2.5",
