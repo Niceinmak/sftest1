@@ -12,7 +12,7 @@ exports.execute = async (client, message, args) => {
     users.push("t")
     const embed = new MessageEmbed()
         .setTitle(`Test`)
-  message.channel.send(embed);
+  message.channel.send({ embeds: [embed] });
     /*
     FARKLI KOMUTLAR DİZİNİ
 

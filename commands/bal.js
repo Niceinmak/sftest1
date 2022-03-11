@@ -8,11 +8,11 @@ exports.execute = async (client, message, args) => {
         .setTitle(`Balance`)
         .addField(`User`, `<@${userBalance.user}>`)
         .addField(`Balance`, `**${userBalanceformat}**💶`)
-        .addField(`Position`, userBalance.position)
+        .addField(`Position`, `${userBalance.position}`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
-    return message.channel.send(embed);
+    return  message.channel.send({ embeds: [embed] });
 }
 
 exports.help = {
