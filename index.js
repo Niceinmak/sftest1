@@ -95,6 +95,7 @@ const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: p
 dbl.webhook.on('ready', hook => {
   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
+
 dbl.webhook.on('vote', vote => {
   const channel = client.channels.cache.get(process.env.POST_CHANNEL)
   const embed = new Discord.MessageEmbed()
@@ -115,7 +116,34 @@ fs.readdir("./events/", (err, files) => {
         client.on(eventName, event.bind(null, client));
     });
 });
-
+const guildID='925628280785231872'
+const guild=client.guilds.cache.get(guildID)
+let commands
+if(guild)
+  {
+    commands=guild.commands
+  }else
+    {
+      commands=client.commands
+    }
+commands.create({
+  name: 'add',
+  description: 'Adds two numbers',
+  options: [
+    {
+      name: 'number1',
+      description: 'The first number.',
+      required: true,
+      type: Discord.Constants.ApplicationCommandOptionTypes.NUMBER,
+    },
+    {
+      name: 'number2',
+      description: 'The second number.',
+      required: true,
+      type: Discord.Constants.ApplicationCommandOptionTypes.NUMBER,
+    },
+  ],
+})
 fs.readdir("./commands/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(f => {
