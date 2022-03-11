@@ -24,6 +24,7 @@
     "discord-blackjack": "^4.0.0",
     "discord-buttons": "^4.0.0-deprecated",
     "discord.dbl": "^1.2.5",
+    "discord.js": "^13.6.0",
     "figlet": "^1.5.2",
     "js-length": "^1.0.22",
     "moment": "^2.29.1",

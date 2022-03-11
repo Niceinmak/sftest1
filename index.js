@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({ disableMentions: 'everyone' });
+const { Client, Intents } = require('discord.js');
+
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 const disbut = require('discord-buttons');
@@ -95,6 +97,16 @@ const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: p
 dbl.webhook.on('ready', hook => {
   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
+const guildID='925628280785231872'
+const guild=client.guild.cache.get(guildID)
+let commands
+
+if(guild)
+  {
+    commands=guild.commands
+  } else {
+    commands=client.application.commands
+  }
 dbl.webhook.on('vote', vote => {
   const channel = client.channels.cache.get(process.env.POST_CHANNEL)
   const embed = new Discord.MessageEmbed()
