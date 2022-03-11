@@ -24,7 +24,6 @@
     "discord-blackjack": "^4.0.0",
     "discord-buttons": "^4.0.0-deprecated",
     "discord.dbl": "^1.2.5",
-    "discord.js": "^12.5.3",
     "figlet": "^1.5.2",
     "js-length": "^1.0.22",
     "moment": "^2.29.1",
@@ -36,7 +35,8 @@
     "string-length": "^5.0.1"
   },
   "engines": {
-    "node": "12.x"
+    "node": ">=16.0.0",
+    "npm": ">= 7.0.0"
   },
   "repository": {
     "url": "https://github.com/ZeroDiscord/EconomyBot"
