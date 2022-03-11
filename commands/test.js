@@ -1,35 +1,16 @@
 const { MessageEmbed } = require("discord.js");
 
-const anyLength = require('any-length');
 exports.execute = async (client, message, args) => {
-  if (!client.config.admins.includes(message.author.id)) return message.reply("**Only bot administrators are authorized to send and set money.**"); // return if author isn't bot owner
-  if(message.author.id!="405247101442719764") return message.reply("**Only special users...**"); // return if author isn't bot owner
-    let serverid = args[0]
-    let amount=args[1]
-    if(!amount || !serverid)
-      {
-        return message.reply("Please enter an amount or Server ID")
-      }
-  var guild = client.guilds.cache.get(serverid);
-  console.log(guild)
-  if(!guild)
-    {
-       return message.reply("Server Not Found")
-    }
-const Members = guild.members.cache.map(member => member.id); // Getting the members 
-  let counter=0
-    for(let i=0;i<anyLength(Members);i++)
-      {
-        counter++
-        console.log(Members[i])
-        client.eco.addMoney(Members[i], parseInt(amount));
-      }
+  let users = [
+        "Pocket",
+        "T-Shirt",
+        "Zero's Databse",
+        "Street"
+    ];
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount3 = args[0]
     const embed = new MessageEmbed()
-        .setTitle(`Money added to everyone`)
-    .setDescription(`
-Added money: ${amount}
-Server: ${guild.name} (${serverid})
-Number of users: ${counter}`)
+        .setTitle(`Test`)
   message.channel.send(embed);
     /*
     FARKLI KOMUTLAR DİZİNİ
