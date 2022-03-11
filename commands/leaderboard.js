@@ -14,6 +14,7 @@ exports.execute = async (client, message, args) => {
       let moneyformat=String(u.money).replace(/(.)(?=(\d{3})+$)/g,'$1,')
         embed.addField(`${u.position}. ${client.users.cache.get(u.id) ? client.users.cache.get(u.id).tag : "Unknown#0000"}`, `**${moneyformat}** 💶`);
     });
+  message.channel.send("\`\`\`sada\`\`\`")
     return message.channel.send(embed);
 }
 

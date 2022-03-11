@@ -9,6 +9,7 @@ exports.execute = async (client, message, args) => {
     ];
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
+    console.log(users[0],users[1])
     const embed = new MessageEmbed()
         .setTitle(`Test`)
   message.channel.send(embed);
