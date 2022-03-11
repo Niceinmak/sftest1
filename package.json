@@ -22,7 +22,6 @@
     "btc-value": "^4.0.0",
     "dblapi.js": "^2.4.1",
     "discord-blackjack": "^4.0.0",
-    "discord-buttons": "^4.0.0-deprecated",
     "discord.dbl": "^1.2.5",
     "discord.js": "^13.6.0",
     "figlet": "^1.5.2",

@@ -1,7 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const figlet = require("figlet");
 const discord = require("discord.js")
-const client = new discord.Client()
 const random = require("something-random-on-discord").Random
 let ms = require('ms')
 let db = require('quick.db');
