@@ -94,7 +94,8 @@ client.shop = {
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
-  const handler = new Handler(client, { guilds: ["guild id"], commandFolder: "/commands",commandType: "file" || "folder"});
+  const handler = new Handler(client, { guilds: ["925628280785231872"], commandFolder: "./commands/",commandType: "file" || "folder"});
+  
   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
 dbl.webhook.on('vote', vote => {
