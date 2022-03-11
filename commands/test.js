@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
-  let users = [
+  var users = [
         "Pocket",
         "T-Shirt",
         "Zero's Databse",
@@ -9,7 +9,9 @@ exports.execute = async (client, message, args) => {
     ];
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
-    console.log(users[0],users[1])
+    console.log(users)
+    users.push("t")
+  console.log(users)
     const embed = new MessageEmbed()
         .setTitle(`Test`)
   message.channel.send(embed);

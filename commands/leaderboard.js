@@ -1,7 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
-   
     let leaderboard = client.eco.leaderboard({ limit: 15, raw: false });
     if (!leaderboard || leaderboard.length < 1) return message.channel.send("❌ | Empty Leaderboard!");
     const embed = new MessageEmbed()
@@ -10,11 +9,14 @@ exports.execute = async (client, message, args) => {
         .setColor("RANDOM")
         .setThumbnail(client.users.cache.get(leaderboard[0].id) ? client.users.cache.get(leaderboard[0].id).displayAvatarURL : "https://cdn.discordapp.com/avatars/603948445362946084/a_f61398e073d78ae104e32b0517c891c3.gif")
         .setTimestamp();
+  let leader="\`\`\`| EcoVerse Top 15 Leaderboard |\nNote:Amounts of money here can be bank accounts or EcoCoins\n"
     leaderboard.forEach(u => {
       let moneyformat=String(u.money).replace(/(.)(?=(\d{3})+$)/g,'$1,')
         embed.addField(`${u.position}. ${client.users.cache.get(u.id) ? client.users.cache.get(u.id).tag : "Unknown#0000"}`, `**${moneyformat}** 💶`);
+      leader+=`${u.position}. ${client.users.cache.get(u.id) ? client.users.cache.get(u.id).tag : "Unknown#0000"} ${moneyformat}💶\n`
     });
-  message.channel.send("\`\`\`sada\`\`\`")
+  leader+="\`\`\`"
+  message.channel.send(leader)
     return message.channel.send(embed);
 }
 
