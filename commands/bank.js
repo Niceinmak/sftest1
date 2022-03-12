@@ -11,7 +11,7 @@ exports.execute = async (client, message, args) => {
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
-    return message.channel.send(embed);
+    return  message.channel.send({ embeds: [embed] });
 }
 
 exports.help = {

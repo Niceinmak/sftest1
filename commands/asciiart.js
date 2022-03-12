@@ -11,7 +11,7 @@ exports.execute = async (client, message, args) => {
 		const time = ms(timeout - (Date.now() - cooldown));
 		return message.reply(`**Wait ${time} to message again**`);
 	}
-  db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
+  //db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
     let text = args.join(" ");
    if (!text) {
       return message.channel.send(`\`Usage:${client.prefix}ascii <msg>\``);
@@ -23,9 +23,8 @@ exports.execute = async (client, message, args) => {
       );
     }
    figlet(text, function (err, data) {
-      message.channel.send(data, {
-        code: "AsciiArt",
-      });
+     data="```"+data+"```"
+     message.channel.send(`${data}`);
     });
   
 }

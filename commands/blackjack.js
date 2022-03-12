@@ -57,7 +57,9 @@ namescardslistd=""
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
-            .setFooter(`Game in progress`)
+            embed.setFooter({
+            text: "Game In Por"
+              })
             .setTitle(`${user1.username}`)
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
@@ -65,7 +67,7 @@ namescardslistd=""
 	)
             .setColor("#7289DA")
             .setTimestamp();
-              return message.channel.send(embed).then(async msg => {
+              return message.channel.send({ embeds: [embed] }).then(async msg => {
 	  msg.react("👊")
         //  msg.react("")  
           msg.react("🛑")

@@ -10,8 +10,8 @@ exports.execute = async (client, message, args) => {
 		const time = ms(timeout - (Date.now() - cooldown));
 		return message.reply(`**Wait ${time} to message again**`);
 	}
-  //db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
-const anime = randomanime.nsfw();
+  db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
+const anime = randomanime.anime();
     const embed = new discord.MessageEmbed().setImage(anime);
    message.channel.send({ embeds: [embed] });
 }
