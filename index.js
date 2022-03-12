@@ -1,8 +1,8 @@
 const fs = require("fs");
 const {Routes}=require("discord-api-types/v9");
 const Discord = require("discord.js");
-const { Client, Intents,Collection } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
+const { Client, Intents } = require('discord.js'); 
+const client = new Client({ intents:  [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 const Eco = require("quick.eco");

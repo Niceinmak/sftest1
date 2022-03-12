@@ -74,7 +74,7 @@ namescardslistd=""
   const filter = (reaction, user) => {
 	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
 };
-const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
+const collector = msg.createReactionCollector({ filter, time: 15000 });
 
 collector.on("collect", (reaction, user) => {
    if (reaction.emoji.name === '👊') {
