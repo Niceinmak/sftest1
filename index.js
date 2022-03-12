@@ -1,6 +1,8 @@
-const { REST }= require("@discord/rest");
+const { REST }= require("@discordjs/rest");
+const fs = require("fs");
+const {Route}=require("discord-api-types/v9");
 const Discord = require("discord.js");
-const { Client, Intents } = require('discord.js');
+const { Client, Intents,Collection } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
@@ -91,7 +93,15 @@ client.shop = {
     cost: 3
   },
 };
-const fs = require("fs");
+
+const commandFiles=fs.readdirSync("./commands/").filter(file => file.endsWith(".js"));
+const commands=[];
+client.commands=new Collection();
+for(const file of commandFiles)
+  {
+    const command=require(`./commands/${file}`)
+    commands.push(command.data.toJSON());
+  }
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   
