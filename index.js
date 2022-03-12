@@ -1,6 +1,6 @@
 const { REST }= require("@discordjs/rest");
 const fs = require("fs");
-const {Route}=require("discord-api-types/v9");
+const {Routes}=require("discord-api-types/v9");
 const Discord = require("discord.js");
 const { Client, Intents,Collection } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -108,6 +108,24 @@ client.once("ready",() => {
   const rest= new REST({
     version: "9"
   }).setToken(process.env.TOKEN);
+  (async () =>{
+    try {
+      if(process.env.ENV==="production"){
+        await rest.put(Routes.applicationCommand(CLIENT_ID),{
+          body: commands
+        })
+        console.log("Succesfuly registered")
+      } else {
+        await rest.put(Routes.applicationCommand(CLIENT_ID, process.env.GUILD_ID),{
+          body: commands
+        })
+        console.log("registered")
+      }
+    } catch(err){
+      if (err) console.error(err);
+    }
+    
+  })
   
 })
 
