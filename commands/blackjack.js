@@ -56,11 +56,10 @@ namescardslistd=""
   let agr1u=argString2[0]
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
             .setFooter({
             text: "Game In Progress"
               })
-            .setTitle(`${user1.username}`)
+            .setTitle(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
@@ -131,7 +130,7 @@ startbj()
 	)
    if(userpoint>21 && dealerpoint>21)
      {
-       embed.setAuthor(`You Lose`) 
+       //embed.setAuthor(`You Lose`) 
        embed.setFooter({
             text: `You lose ${amount3}`
               })
@@ -139,7 +138,7 @@ startbj()
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
-        embed.setAuthor(`You Win!`) 
+        //embed.setAuthor(`You Win!`) 
           embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -149,7 +148,7 @@ startbj()
             {
               if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Win!`) 
+         //embed.setAuthor(`You Win!`) 
           embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -165,7 +164,7 @@ startbj()
         {
           if(dealerpoint>21)
             {
-              embed.setAuthor(`You Win!`) 
+             // embed.setAuthor(`You Win!`) 
               embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -173,7 +172,7 @@ startbj()
             }
           else
             {
-           embed.setAuthor(`You Lose`) 
+         //  embed.setAuthor(`You Lose`) 
               embed.setFooter({
             text: `You lose ${amount3}`
               })
@@ -216,7 +215,7 @@ else
 	)
    if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Win!`) 
+        // embed.setAuthor(`You Win!`) 
           embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -232,15 +231,15 @@ else
         {
           if(dealerpoint>21)
             {
-              embed.setAuthor(`You Win!`) 
-              embed.setFooter({
+          //    embed.setAuthor(`You Win!`) 
+             embed.setFooter({
             text: `You win ${amount3}`
               })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-           embed.setAuthor(`You Lose`) 
+          // embed.setAuthor(`You Lose`) 
              embed.setFooter({
             text: `You lose ${amount3}`
               })
@@ -289,7 +288,7 @@ else
 	)
    if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Win!`) 
+        // embed.setAuthor(`You Win!`) 
           embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -305,7 +304,7 @@ else
         {
           if(dealerpoint>21)
             {
-              embed.setAuthor(`You Win!`) 
+          //    embed.setAuthor(`You Win!`) 
               embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -313,7 +312,7 @@ else
             }
           else
             {
-           embed.setAuthor(`You Lose`) 
+          // embed.setAuthor(`You Lose`) 
            embed.setFooter({
             text: `You lose ${amount3}`
               })
@@ -383,7 +382,7 @@ function stopbj(){
 	)
    if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Win!`) 
+       //  embed.setAuthor(`You Win!`) 
          embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -399,7 +398,7 @@ function stopbj(){
         {
           if(dealerpoint>21)
             {
-              embed.setAuthor(`You Win!`) 
+           //   embed.setAuthor(`You Win!`) 
             embed.setFooter({
             text: `You win ${amount3}`
               })
@@ -407,7 +406,7 @@ function stopbj(){
             }
           else
             {
-           embed.setAuthor(`You Lose`) 
+           //embed.setAuthor(`You Lose`) 
             embed.setFooter({
             text: `You lose ${amount3}`
               })
@@ -425,6 +424,7 @@ function stopbj(){
     } 
 
 function drawCard(who) {
+  console.log("t")
   let count = Math.floor(Math.random() * 10);
   if(randomcounter<2)
     {
