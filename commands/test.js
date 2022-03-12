@@ -15,9 +15,10 @@ exports.execute = async (client, message, args) => {
           // Have our bot guide the user by reacting with the correct reactions
           question.react('👍');
           question.react('👎');
-    
+    });
           // Set a filter to ONLY grab those reactions & discard the reactions from the bot
 const filter = (reaction, user) => {
+  console.log(reaction, user)
 	return reaction.emoji.name === '👍' && user.id === message.author.id;
 };
 
@@ -30,7 +31,7 @@ collector.on('collect', (reaction, user) => {
 collector.on('end', collected => {
 	console.log(`Collected ${collected.size} items`);
 });
-        });
+        
 
   
 }
