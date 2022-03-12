@@ -57,8 +57,8 @@ namescardslistd=""
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
              .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
-            embed.setFooter({
-            text: "Game In Por"
+            .setFooter({
+            text: "Game In Progress"
               })
             .setTitle(`${user1.username}`)
             .addFields(
@@ -132,13 +132,17 @@ startbj()
    if(userpoint>21 && dealerpoint>21)
      {
        embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+       embed.setFooter({
+            text: `You lose ${amount3}`
+              })
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
         embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+          embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
       }
           else
@@ -146,26 +150,33 @@ startbj()
               if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+          embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+          embed.setFooter({
+            text: `You both bust!`
+              })
         }
       else
         {
           if(dealerpoint>21)
             {
               embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
+              embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
            embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+              embed.setFooter({
+            text: `You lose ${amount3}`
+              })
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
@@ -206,26 +217,33 @@ else
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+          embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+          embed.setFooter({
+            text: `You both bust!`
+              })
         }
       else
         {
           if(dealerpoint>21)
             {
               embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
+              embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
            embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+             embed.setFooter({
+            text: `You lose ${amount3}`
+              })
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
@@ -272,26 +290,33 @@ else
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+          embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+       embed.setFooter({
+            text: `You both bust`
+              })
         }
       else
         {
           if(dealerpoint>21)
             {
               embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
+              embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
            embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+           embed.setFooter({
+            text: `You lose ${amount3}`
+              })
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
@@ -359,26 +384,33 @@ function stopbj(){
    if(userpoint>dealerpoint)
         {
          embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+         embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+       embed.setFooter({
+            text: `You both bust`
+              })
         }
       else
         {
           if(dealerpoint>21)
             {
               embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
+            embed.setFooter({
+            text: `You win ${amount3}`
+              })
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
            embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+            embed.setFooter({
+            text: `You lose ${amount3}`
+              })
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
