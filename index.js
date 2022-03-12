@@ -1,4 +1,3 @@
-const { REST }= require("@discordjs/rest");
 const fs = require("fs");
 const {Routes}=require("discord-api-types/v9");
 const Discord = require("discord.js");
@@ -93,43 +92,6 @@ client.shop = {
     cost: 3
   },
 };
-
-const commandFiles=fs.readdirSync("./fes/").filter(file => file.endsWith(".js"));
-const commands=[];
-client.commands=new Collection();
-for(const file of commandFiles)
-  {
-    const command=require(`./fes/${file}`)
-    commands.push(command.data.toJSON());
-    client.commands.set(command.data.name, command);
-  }
-client.once("ready",() => {
-  const CLIENT_ID=client.user.id;
-  const rest= new REST({
-    version: "9"
-  }).setToken(process.env.TOKEN);
-  (async () =>{
-    try {
-      if(process.env.ENV==="production"){
-        await rest.put(Routes.applicationCommands(CLIENT_ID),{
-          body: commands
-        })
-        console.log("Succesfuly registered")
-      } else {
-        await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID),{
-          body: commands
-        })
-        console.log("registered")
-      }
-    } catch(err){
-      if (err) console.error(err);
-    }
-    
-  })
-  
-})
-
-
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   

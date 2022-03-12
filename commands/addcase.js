@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+  const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
     if (!client.config.admins.includes(message.author.id)) return message.reply("**Only bot administrators are authorized to send and set money.**"); // return if author isn't bot owner
@@ -6,8 +6,8 @@ exports.execute = async (client, message, args) => {
    let user = message.mentions.users.first() || message.author;
     if (!user) return message.channel.send("Please specify a user!");
   let userBalance = client.eco.fetchMoney(message.author.id);
-  let item = args[1];
-  let count = args[2];
+  let item = args[0];
+  let count = args[1];
   let count2=1;
   if(count==null) count=1;
   if (!item) return message.channel.send(`**${message.author.tag} | What are you trying to buy?**`);

@@ -11,7 +11,7 @@ exports.execute = async (client, message, args) => {
 	}
   db.set(`cooldown_Command-Name_${message.author.id}`, Date.now());
 let data = await random.getMeme()
-    message.channel.send(data)
+  message.channel.send({ data: [data] });
 }
 
 exports.help = {
