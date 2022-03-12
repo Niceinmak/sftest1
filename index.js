@@ -100,8 +100,18 @@ client.commands=new Collection();
 for(const file of commandFiles)
   {
     const command=require(`./commands/${file}`)
-    commands.push(command.data.toJSON());
+    commands.push(command.data);
+    client.commands.set(command.help.name, command);
   }
+client.once("ready",() => {
+  const CLIENT_ID=client.user.id;
+  const rest= new REST({
+    version: "9"
+  }).setToken(process.env.TOKEN);
+  
+})
+
+
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   
