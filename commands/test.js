@@ -65,14 +65,7 @@ module.exports.help = {
 } */
   
 }
-module.exports={
-  data: new SlashCommandBuilder()
-  .setName("ping")
-  .setDescription("Pong!")
-async execute(interation){
-    interation.reply("Pong!");
-  }
-  }
+
 exports.help = {
     name: "test",
     aliases: ["t","TEST"],
