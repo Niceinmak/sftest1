@@ -18,8 +18,7 @@ exports.execute = async (client, message, args) => {
    
           // Set a filter to ONLY grab those reactions & discard the reactions from the bot
 const filter = (reaction, user) => {
-  console.log(reaction.emoji.name,user.id,message.author.id)
-	return (reaction.emoji.name === '👊' || reaction.emoji.name === '👎') && user.id === message.author.id;
+	return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
 };
 
 const collector = question.createReactionCollector({ filter, time: 60000 });
