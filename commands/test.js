@@ -65,12 +65,12 @@ namescardslistd=""
 	)
             .setColor("#7289DA")
             .setTimestamp();
-              return message.channel.send(embed).then(async msg => {
+              return message.channel.send({ embeds: [embed] }).then(async msg => {
 	  msg.react("👊")
         //  msg.react("")  
           msg.react("🛑")
                 const filter = (reaction, user) => {
-	return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+	return ['👊', '🛑'].includes(reaction.emoji.name) && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector({ filter, time: 60000 });
                 collector.on("collect", (reaction, user) => {
@@ -164,6 +164,8 @@ const collector = msg.createReactionCollector({ filter, time: 60000 });
   return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
 }
                   function startbj(){
+                    client.on("interactionCreate", (interaction) => {
+
    let dealerd=`${drawCard("d")}`
       var argString = dealerd.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
@@ -238,8 +240,9 @@ const collector = msg.createReactionCollector({ filter, time: 60000 });
             }
      }
  
-    
-          return msg.edit(embed);
+    console.log("a")
+          return interaction.update({ embeds: [embed] })
+})
 }
       } );
     }
