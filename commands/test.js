@@ -66,6 +66,10 @@ namescardslistd=""
             .setColor("#7289DA")
             .setTimestamp();
               return message.channel.send({ embeds: [embed] }).then(async msg => {
+                client.on("interactionCreate", (interaction) => {
+                  embed.setFooter("a")
+    interaction.update({ embeds: [embed] })
+})
 	  msg.react("👊")
         //  msg.react("")  
           msg.react("🛑")
