@@ -1,15 +1,90 @@
 const { MessageEmbed } = require("discord.js");
 const { SlashCommandBuilder }=require("@discordjs/builders");
 exports.execute = async (client, message, args) => {
-  var users = [
-        "Pocket",
-        "T-Shirt",
-        "Zero's Databse",
-        "Street"
+let namescardslistd=""
+  let temp=0;
+     let namescards = [
+        "hf",
+        "d",
+        "s",
+        "ds",
+        "df",
+        "h",
+        "c",
     ];
+  let randomcounter=0
+ var dealerpoint=""
+ var dealerpointtemp=""
+ var userpoint=""
+let namescardslistu=""
+ dealerpoint=0
+ userpoint=0
+  dealerpointtemp=0
+namescardslistu=""
+namescardslistd=""
     let amount = Math.floor(Math.random() * 200)+50;
+    let amount2 = Math.floor(Math.random() * 2);
+    let amount4 = Math.floor(Math.random() * 200)/100;
     let amount3 = args[0]
-    users.push("t")
+    let amount5 = args[1]
+    let yazitura= ""
+    let authordata = client.eco.fetchMoney(message.author.id) 
+    let timecooldown = Math.floor(Math.random() * 200)+50;
+    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
+    const user1 = message.member.user
+    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+  //--------------------------------------------
+  if(amount3=="all") amount3=authordata.amount;
+  if(amount3=="half") amount3=authordata.amount/2;
+    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
+  else{
+    if(amount3>authordata.amount || amount3<1) return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
+    else
+    {
+      let messageid=message.author.id
+      if(amount3>50000)amount3=50000
+      drawCard("u")
+      let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1d=argString[0]
+  let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+             const embed = new MessageEmbed()
+             .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
+            .setFooter(`Game in progress`)
+            .setTitle(`${user1.username}`)
+            .addFields(
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+	)
+            .setColor("#7289DA")
+            .setTimestamp();
+              return message.channel.send(embed).then(async msg => {
+	  msg.react("👊")
+        //  msg.react("")  
+          msg.react("🛑")
+                const filter = (reaction, user) => {
+	return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+};
+const collector = msg.createReactionCollector({ filter, time: 60000 });
+  collector.on("collect", (reaction, user) => {
+   if (reaction.emoji.name === '👊') {
+     if(temp==0)
+       {
+        reaction.users.remove(user.id);
+startbj() 
+       }
+   }
+                  
+      } );
+    }
+  }
        // Use a promise to wait for the question to reach Discord first
         message.channel.send('Which emoji do you prefer?').then((question) => {
           // Have our bot guide the user by reacting with the correct reactions
