@@ -73,19 +73,122 @@ namescardslistd=""
 	return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
 };
 const collector = msg.createReactionCollector({ filter, time: 60000 });
-  collector.on("collect", (reaction, user) => {
-   if (reaction.emoji.name === '👊') {
+                collector.on("collect", (reaction, user) => {
+                     if (reaction.emoji.name === '👊') {
      if(temp==0)
        {
         reaction.users.remove(user.id);
-startbj() 
-       }
-   }
-                  
+        startbj() 
+               }
+              }
+         else
+         {
+                  if (reaction.emoji.name === '🛑') {
+      if(temp==0)
+        {
+          
+      drawCard("d")
+       reaction.users.remove(user.id);
+      let points=`${stopbj()}`
+      var argString = points.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let dpoint=argString[0]
+  let upoint=argString[1]
+  let dcard=argString[2]
+  let ucard=argString[3]
+  embed.fields = [];
+  embed.addFields(
+    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
+    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
+	)
+   if(userpoint>21 && dealerpoint>21)
+     {
+      embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
+     }
+    else if(userpoint>21 && dealerpoint<=21)
+      {
+        embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+      }
+          else
+            {
+              if(userpoint>dealerpoint)
+        {
+         embed.setAuthor(`You Win!`) 
+          embed.setFooter(`You win ${amount3}`)
+          let data2= client.eco.addMoney(messageid, parseInt(amount3));
+        }
+      else if(userpoint==dealerpoint)
+        {
+          embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
+        }
+      else
+        {
+          if(dealerpoint>21)
+            {
+              embed.setAuthor(`You Win!`) 
+              embed.setFooter(`You win ${amount3}`)
+          let data2= client.eco.addMoney(messageid, parseInt(amount3));
+            }
+          else
+            {
+           embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+            }
+        }
+            }
+   
+      return msg.edit(embed);
+     
+    }
+        }          
+         }
+                });
+
       } );
     }
   }
-       // Use a promise to wait for the question to reach Discord first
+  function drawCard(who) {
+  let count = Math.floor(Math.random() * 10);
+  if(randomcounter<2)
+    {
+     if(count==0) count=1
+      randomcounter++
+    }
+  else
+    {
+  if(count==0) count=1
+  if(count<5) count=5
+    }
+  
+  if(who=="d")
+    {
+      if(randomcounter==2)
+        {
+        if(count<userpoint)
+    {
+     count=userpoint 
+      randomcounter++
+    }  
+        }
+      randomcounter++
+    namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+    dealerpoint+=count
+      return [` [${dealerpoint}+?] \`${namescardslistd}\``];
+    }
+  if(who=="u")
+    {
+    namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+    userpoint+=count
+      return [` [${userpoint}] \`${namescardslistu}\``];
+    }
+    
+}
+       /*// Use a promise to wait for the question to reach Discord first
         message.channel.send('Which emoji do you prefer?').then((question) => {
           // Have our bot guide the user by reacting with the correct reactions
           question.react('👍');
@@ -106,7 +209,7 @@ collector.on('collect', (reaction, user) => {
 collector.on('end', collected => {
 	console.log(`Collected ${collected.size} items`);
 });
-    });     
+    });     */
 
   
 }
