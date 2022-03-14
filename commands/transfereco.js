@@ -3,7 +3,7 @@ const { MessageButton } = require('discord-buttons')
 exports.execute = async (client, message, args) => {
   let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
   let authorid=message.author.id
-  let authordata = client.eco.fetchMoney(message.author.id) 
+  let authordata = client.eco.fetchMoney(`${message.author.id}11`);
   if (!member) return message.channel.send('Please mention the person or give their ID') 
   let amount = args[1]
   if (!amount || isNaN(amount)) return message.channel.send('Please enter a valid amount to transfer') 
