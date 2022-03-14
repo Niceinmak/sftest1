@@ -1,315 +1,67 @@
 const { MessageEmbed } = require("discord.js");
-const { SlashCommandBuilder }=require("@discordjs/builders");
+
 exports.execute = async (client, message, args) => {
-let namescardslistd=""
-  let temp=0;
-     let namescards = [
-        "hf",
-        "d",
-        "s",
-        "ds",
-        "df",
-        "h",
-        "c",
+  let users = [
+        "Pocket",
+        "T-Shirt",
+        "Zero's Databse",
+        "Street"
     ];
-  let randomcounter=0
- var dealerpoint=""
- var dealerpointtemp=""
- var userpoint=""
-let namescardslistu=""
- dealerpoint=0
- userpoint=0
-  dealerpointtemp=0
-namescardslistu=""
-namescardslistd=""
     let amount = Math.floor(Math.random() * 200)+50;
-    let amount2 = Math.floor(Math.random() * 2);
-    let amount4 = Math.floor(Math.random() * 200)/100;
     let amount3 = args[0]
-    let amount5 = args[1]
-    let yazitura= ""
-    let authordata = client.eco.fetchMoney(message.author.id) 
-    let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
-    const user1 = message.member.user
-    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
-    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
-  //--------------------------------------------
-  if(amount3=="all") amount3=authordata.amount;
-  if(amount3=="half") amount3=authordata.amount/2;
-    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
-  else{
-    if(amount3>authordata.amount || amount3<1) return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
-    else
-    {
-      let messageid=message.author.id
-      if(amount3>50000)amount3=50000
-      drawCard("u")
-      let dealerd=`${drawCard("d")}`
-      var argString = dealerd.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1d=argString[0]
-  let agr2d=argString[1]
-  let dealeru=`${drawCard("u")}`
-  var argString2 = dealeru.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1u=argString2[0]
-  let agr2u=argString2[1]
-             const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
-            .setFooter(`Game in progress`)
-            .setTitle(`${user1.username}`)
-            .addFields(
-    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
-	)
-            .setColor("#7289DA")
-            .setTimestamp();
-              return message.channel.send({ embeds: [embed] }).then(async msg => {
-                client.on("interactionCreate", (interaction) => {
-                  embed.setFooter("a")
-    interaction.update({ embeds: [embed] })
-})
-	  msg.react("👊")
-        //  msg.react("")  
-          msg.react("🛑")
-                const filter = (reaction, user) => {
-	return ['👊', '🛑'].includes(reaction.emoji.name) && user.id === message.author.id;
-};
-const collector = msg.createReactionCollector({ filter, time: 60000 });
-                collector.on("collect", (reaction, user) => {
-                     if (reaction.emoji.name === '👊') {
-     if(temp==0)
-       {
-        reaction.users.remove(user.id);
-        startbj() 
-               }
-              }
-         else
-         {
-                  if (reaction.emoji.name === '🛑') {
-      if(temp==0)
-        {
-          
-      drawCard("d")
-       reaction.users.remove(user.id);
-      let points=`${stopbj()}`
-      var argString = points.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let dpoint=argString[0]
-  let upoint=argString[1]
-  let dcard=argString[2]
-  let ucard=argString[3]
-  embed.fields = [];
-  embed.addFields(
-    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
-    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
-	)
-   if(userpoint>21 && dealerpoint>21)
-     {
-      embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
-     }
-    else if(userpoint>21 && dealerpoint<=21)
-      {
-        embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-      }
-          else
-            {
-              if(userpoint>dealerpoint)
-        {
-         embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
-          let data2= client.eco.addMoney(messageid, parseInt(amount3));
-        }
-      else if(userpoint==dealerpoint)
-        {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
-        }
-      else
-        {
-          if(dealerpoint>21)
-            {
-              embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
-          let data2= client.eco.addMoney(messageid, parseInt(amount3));
-            }
-          else
-            {
-           embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-            }
-        }
-            }
-   
-      return msg.edit(embed);
-     
-    }
-        }          
-         }
-                });
-                function stopbj(){
-  if(dealerpoint<17)
-    {
-      for(; ;)
-        {
-          drawCard("d")
-         if(dealerpoint>=17)
-           {
-             break
-           }
-        }
-      
-    }
-  return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
-}
-                  function startbj(){
-                    client.on("interactionCreate", (interaction) => {
+    const embed = new MessageEmbed()
+        .setTitle(`Test Successful!`)
+    return message.channel.send(embed);
+    /*
+    FARKLI KOMUTLAR DİZİNİ
 
-   let dealerd=`${drawCard("d")}`
-      var argString = dealerd.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-   //let agr1d=argString[0]
-  //let agr2d=argString[1]
-  let dealeru=`${drawCard("u")}`
-  var argString2 = dealeru.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1u=argString2[0]
-  let agr2u=argString2[1]
-  if(userpoint<21)
-    {
-                embed.fields = [];
-  embed.addFields(
-    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
-	)
-    }
-     else
-    {
-         let points=`${stopbj()}`
-      var argString = points.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let dpoint=argString[0]
-  let upoint=argString[1]
-  let dcard=argString[2]
-  let ucard=argString[3]
-  embed.fields = [];
-  embed.addFields(
-    { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
-    { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
-	)
-   if(userpoint>21 && dealerpoint>21)
-     {
-       embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
-     }
-    else if(userpoint>21 && dealerpoint<=21)
-      {
-        embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-      }
-          else
-            {
-              if(userpoint>dealerpoint)
-        {
-         embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
-          let data2= client.eco.addMoney(messageid, parseInt(amount3));
-        }
-      else if(userpoint==dealerpoint)
-        {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
-        }
-      else
-        {
-          if(dealerpoint>21)
-            {
-              embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
-          let data2= client.eco.addMoney(messageid, parseInt(amount3));
-            }
-          else
-            {
-           embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
-            }
-        }
-            }
-     }
- 
-    console.log("a")
-          return interaction.update({ embeds: [embed] })
-})
-}
-      } );
-    }
-  }
-  function drawCard(who) {
-  let count = Math.floor(Math.random() * 10);
-  if(randomcounter<2)
-    {
-     if(count==0) count=1
-      randomcounter++
-    }
-  else
-    {
-  if(count==0) count=1
-  if(count<5) count=5
-    }
+
+exports.execute = async (client, message, args) => {
+    let users = [
+        "Pocket",
+        "T-Shirt",
+        "Zero's Databse",
+        "Street"
+    ];
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount2 = Math.floor(Math.random() * 200)/100;
+    let amount3 = args[0]
+    let beg = await client.eco.beg(client.ecoAddUser, amount, { canLose: false, cooldown: 1, customName: "search" });
+    let beg2 = await client.eco.beg(client.ecoAddUser, amount2, { canLose: false, cooldown: 1, customName: "search" });
+    if (beg.onCooldown) return message.reply(`Come back after ${beg.time.minutes} minutes & ${beg.time.seconds} seconds.`);
+    return message.reply(`**${message.author.tag} | ** **${[Math.floor(beg2.amount)]}** Paranı **2'ye** **${amount}** katladın ve **${amount3}** 💸 Kazandın!. \n Şuanki Paran:**${beg.after}** 💸.`);
+       let data2= client.eco.removeMoney(message.author.id, parseInt(kullaniciveri));
+       let data2= client.eco.removeMoney(client.ecoAddUser, parseInt(kullaniciveri));    
+       let data2= client.eco.addMoney(message.author.id, parseInt(kullaniciveri));
+       let data2= client.eco.addMoney(client.ecoAddUser, parseInt(kullaniciveri));        
+       let data2= client.eco.setMoney(message.author.id, parseInt(kullaniciveri));
+        let data2= client.eco.setMoney(client.ecoAddUser, parseInt(kullaniciveri));           
+---------------------------------------------------------------------------------------*/
   
-  if(who=="d")
-    {
-      if(randomcounter==2)
-        {
-        if(count<userpoint)
-    {
-     count=userpoint 
-      randomcounter++
-    }  
-        }
-      randomcounter++
-    namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
-    dealerpoint+=count
-      return [` [${dealerpoint}+?] \`${namescardslistd}\``];
-    }
-  if(who=="u")
-    {
-    namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
-    userpoint+=count
-      return [` [${userpoint}] \`${namescardslistu}\``];
-    }
-    
-}
-       /*// Use a promise to wait for the question to reach Discord first
-        message.channel.send('Which emoji do you prefer?').then((question) => {
-          // Have our bot guide the user by reacting with the correct reactions
-          question.react('👍');
-          question.react('👎');
-   
-          // Set a filter to ONLY grab those reactions & discard the reactions from the bot
-const filter = (reaction, user) => {
-	return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+  
+  /*module.exports.execute = async (client, message, args) => {
+      let jobs = [
+        "Doktor",
+        "Pompacı",
+        "Diş hekimi",
+        "Müzisyen",
+        "Yayıncı",
+        "Youtuber",
+        "Yazılımcı",
+        "Tesisatçı",
+        "Döşemeci"
+    ];
+    let amount = Math.floor(Math.random() * 1500) + 1000;
+    let work = client.eco.work(message.author.id, amount);
+    if (work.onCooldown) return message.reply(`You are tired rn. Come back after **${work.time.minutes} minutes & ${work.time.seconds} seconds** to work again.`);
+    else return message.reply(`You worked as **${jobs[Math.floor(Math.random() * jobs.length)]}** and earned **${work.amount}** 💶. Now you have **${work.after}** 💶.`);
 };
 
-const collector = question.createReactionCollector({ filter, time: 60000 });
-
-collector.on('collect', (reaction, user) => {
-  reaction.users.remove(user.id);
-	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-});
-
-collector.on('end', collected => {
-	console.log(`Collected ${collected.size} items`);
-});
-    });     */
-
+module.exports.help = {
+    name: "work",
+    aliases: [],
+    usage: "work"
+} */
   
 }
 
