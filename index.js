@@ -7,8 +7,7 @@ const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 const Eco = require("quick.eco");
 const DiscordSlash=require("discord.js-slash-command");
-const client1=new Discord.Client();
-const slash=new DiscordSlash.Slash(client1);
+const slash=new DiscordSlash.Slash(client);
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
@@ -136,8 +135,8 @@ client.on("ready",()=>{
   mainCommand.setName("slashCommand");
   mainCommand.setDescription("Command Description");
   console.log(mainCommand)
-  slash.create(mainCommand,"925628280785231872");
-  slash.get(null, "925628280785231872").then((res)=>{
+  slash.create(mainCommand,"950068507121422457");
+  slash.get(null, "950068507121422457").then((res)=>{
     console.log(res);
   })
 })
