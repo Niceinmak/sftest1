@@ -7,6 +7,8 @@ const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 const Eco = require("quick.eco");
 const { Handler } = require('discord-slash-command-handler');
+const DiscordSlash=require("discord.js-slash-command");
+const slash=new DiscordSlash.Slash(client);
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
@@ -92,6 +94,15 @@ client.shop = {
     cost: 3
   },
 };
+client.on("ready",()=>{
+  let mainCommand= new DiscordSlash.CommandBuilder();
+  mainCommand.setName("slashCommand");
+  mainCommand.setDescription("Command Description");
+  slash.create(mainCommand,"925628280785231872");
+  slash.get(null,"925628280785231872").then((res)=>{
+    console.log(res);
+  })
+})
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   
