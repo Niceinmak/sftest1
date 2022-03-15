@@ -160,6 +160,7 @@ fs.readdir("./commands/", (_err, files) => {
     })), {
         debug: true
     });
+  
 });
 fs.readdir("./events/", (_err, files) => {
     files.forEach((file) => {
