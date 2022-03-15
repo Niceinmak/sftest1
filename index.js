@@ -99,7 +99,7 @@ client.on("ready",()=>{
   mainCommand.setName("slashCommand");
   mainCommand.setDescription("Command Description");
   slash.create(mainCommand,"925628280785231872");
-  slash.get(null,"925628280785231872").then((res)=>{
+  slash.get(null, "925628280785231872").then((res)=>{
     console.log(res);
   })
 })
