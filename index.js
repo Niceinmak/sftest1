@@ -101,7 +101,7 @@ const clientId = '123456789012345678';
 const guildId = '925628280785231872';
 for (const file of commandFiles) {
 	const command = require(`./cm1/${file}`);
-  console.log(command.data)
+  console.log(file)
 	commands.push(command.data.toJSON());
 }
 
