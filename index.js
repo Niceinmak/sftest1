@@ -1,6 +1,5 @@
 const fs = require("fs");
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
+const {Routes}=require("discord-api-types/v9");
 const Discord = require("discord.js");
 const { Client, Intents } = require('discord.js'); 
 const client = new Client({ intents:  [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
@@ -94,33 +93,6 @@ client.shop = {
     cost: 3
   },
 };
-
-const commands = [];
-const commandFiles = fs.readdirSync('./cm1').filter(file => file.endsWith('.js'));
-const clientId = '123456789012345678';
-const guildId = '925628280785231872';
-for (const file of commandFiles) {
-	const command = require(`./cm1/${file}`);
-  console.log(file)
-	commands.push(command.data.toJSON());
-}
-
-const rest = new REST({ version: '9' }).setToken(client.config.token);
-
-(async () => {
-	try {
-		console.log('Started refreshing application (/) commands.');
-
-		await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
-			{ body: commands },
-		);
-
-		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
-		console.error(error);
-	}
-})();
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   
@@ -158,5 +130,25 @@ fs.readdir("./commands/", (err, files) => {
         });
     });
 });
+client.on("ready",()=>{
+  let mainCommand= new DiscordSlash.CommandBuilder();
+  mainCommand.setName("slashCommand");
+  mainCommand.setDescription("Command Description");
+  console.log(mainCommand)
+  slash.create(mainCommand,"950068507121422457");
+  slash.get(null, "950068507121422457").then((res)=>{
+    console.log(res);
+  })
+})
+
+client.on("ready", () => {
+  let cmd = new DiscordSlash.CommandBuilder();
+cmd.setName("exCmdGuild");
+cmd.setDescription("exCmdGuild Desc");
+slash.create(cmd, "925628280785231872" /* Guild ID */);
+  slash.get(cmd, "925628280785231872").then((res) => {
+        console.log(res);
+    })
+})
 
 client.login(client.config.token);
