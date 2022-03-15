@@ -8,7 +8,8 @@ const DBL = require('dblapi.js');
 const Eco = require("quick.eco");
 const { Handler } = require('discord-slash-command-handler');
 const DiscordSlash=require("discord.js-slash-command");
-const slash=new DiscordSlash.Slash(client);
+const client1=new Discord.Client();
+const slash=new DiscordSlash.Slash(client1);
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
@@ -98,6 +99,7 @@ client.on("ready",()=>{
   let mainCommand= new DiscordSlash.CommandBuilder();
   mainCommand.setName("slashCommand");
   mainCommand.setDescription("Command Description");
+  console.log(mainCommand)
   slash.create(mainCommand,"925628280785231872");
   slash.get(null, "925628280785231872").then((res)=>{
     console.log(res);
