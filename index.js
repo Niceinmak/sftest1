@@ -101,7 +101,7 @@ client.shop = {
     cost: 3
   },
 };
-/*
+
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   
@@ -138,39 +138,5 @@ fs.readdir("./commands/", (err, files) => {
             client.aliases.set(alias, command.help.name);
         });
     });
-});*/
-const synchronizeSlashCommands = require('discord-sync-commands');
-client.commands = new Discord.Collection();
-fs.readdir("./commands/", (_err, files) => {
-    files.forEach((file) => {
-        if (!file.endsWith(".js")) return;
-        let props = require(`./commands/${file}`);
-        let commandName = file.split(".")[0];
-        client.commands.set(commandName, {
-            name: commandName,
-            ...props
-        });
-        console.log(`👌 Komut Yüklendi: ${commandName}`);
-    });
-    synchronizeSlashCommands(client, client.commands.map((c) => ({
-        name: c.name,
-        description: c.description,
-        options: c.options,
-        type: 'CHAT_INPUT'
-    })), {
-        debug: true
-    });
-  
 });
-fs.readdir("./events/", (_err, files) => {
-    files.forEach((file) => {
-        if (!file.endsWith(".js")) return;
-        const event = require(`./events/${file}`);
-        let eventName = file.split(".")[0];
-        console.log(`👌 Event yüklendi: ${eventName}`);
-        client.on(eventName, event.bind(null, client));
-        delete require.cache[require.resolve(`./events/${file}`)];
-    });
-});
-
 client.login(client.config.token);
