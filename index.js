@@ -6,7 +6,6 @@ const client = new Client({ intents:  [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 const Eco = require("quick.eco");
-const { Handler } = require('discord-slash-command-handler');
 const DiscordSlash=require("discord.js-slash-command");
 const client1=new Discord.Client();
 const slash=new DiscordSlash.Slash(client1);
@@ -95,16 +94,6 @@ client.shop = {
     cost: 3
   },
 };
-client.on("ready",()=>{
-  let mainCommand= new DiscordSlash.CommandBuilder();
-  mainCommand.setName("slashCommand");
-  mainCommand.setDescription("Command Description");
-  console.log(mainCommand)
-  slash.create(mainCommand,"925628280785231872");
-  slash.get(null, "925628280785231872").then((res)=>{
-    console.log(res);
-  })
-})
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   
@@ -142,6 +131,15 @@ fs.readdir("./commands/", (err, files) => {
         });
     });
 });
-
+client.on("ready",()=>{
+  let mainCommand= new DiscordSlash.CommandBuilder();
+  mainCommand.setName("slashCommand");
+  mainCommand.setDescription("Command Description");
+  console.log(mainCommand)
+  slash.create(mainCommand,"950068507121422457");
+  slash.get(null, "950068507121422457").then((res)=>{
+    console.log(res);
+  })
+})
 
 client.login(client.config.token);

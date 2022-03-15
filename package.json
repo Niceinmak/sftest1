@@ -24,7 +24,6 @@
     "btc-value": "^4.0.0",
     "dblapi.js": "^2.4.1",
     "discord-api-types": "^0.29.0",
-    "discord-slash-command-handler": "^3.1.7",
     "discord.dbl": "^1.2.5",
     "discord.js": "^12.5.3",
     "discord.js-slash-command": "^1.2.1",
