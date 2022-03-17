@@ -1,7 +1,7 @@
 const Discord = require("discord.js11");
 const discord = require("discord.js12");
 const { Client, Intents } = require('discord.js');
-const client = new discord.Client({
+const client = new Discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -142,7 +142,7 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-/*fs.readdir("./commands/", (err, files) => {
+fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
     if (!f.endsWith(".js")) return;
@@ -151,8 +151,9 @@ fs.readdir("./events/", (err, files) => {
     command.help.aliases.forEach((alias) => {
       client.aliases.set(alias, command.help.name);
     });
-  });*/
-const config = process.env;
+  });
+});
+/*const config = process.env;
 client.config = config;
 const synchronizeSlashCommands = require('discord-sync-commands');
 client.commands = new Discord.Collection();
@@ -175,5 +176,5 @@ fs.readdir("./commands-interactions/", (_err, files) => {
     })), {
         debug: true
     });
-});
+});*/
 client.login(process.env.TOKEN);
