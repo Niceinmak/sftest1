@@ -9,9 +9,6 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
-const config = process.env;
-client.config = config;
-//const synchronizeSlashCommands = require('discord-sync-commands');
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
@@ -144,4 +141,5 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
+
 client.login(process.env.TOKEN);
