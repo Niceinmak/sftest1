@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-const { MessageButton } = require('discord-buttons')
-const client = new Discord.Client()
+//const { MessageButton } = require('discord-buttons')
+//const client = new Discord.Client()
 let db = require('quick.db');
 const DBL = require("dblapi.js");
 let ms = require('ms')
-const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
+//const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 module.exports.execute = async (client, message, args) => {
   let user = message.mentions.users.first() || message.author;
     
