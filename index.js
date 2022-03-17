@@ -153,7 +153,7 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 const discord = require("discord.js12");
-const client = new discord.Client({
+client = new discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
