@@ -146,4 +146,26 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
+client.commands = new Discord.Collection();
+fs.readdir("./commands/", (_err, files) => {
+    files.forEach((file) => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, {
+            name: commandName,
+            ...props
+        });
+        console.log(`👌 Komut Yüklendi: ${commandName}`);
+    });
+    synchronizeSlashCommands(client, client.commands.map((c) => ({
+        name: c.name,
+        description: c.description,
+        options: c.options,
+        type: 'CHAT_INPUT'
+    })), {
+        debug: true
+    });
+});
+
 client.login(process.env.TOKEN);
