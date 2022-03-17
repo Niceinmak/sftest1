@@ -1,6 +1,20 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
+ /*   const embed = new MessageEmbed()
+        .setAuthor("Commands")
+        .setTitle("Sofait Bot Commands")
+     //   .setURL("https://www.youtube.com/channel/UCF9E-xef9jL9QgziZRDHKKQ")
+        .setDescription(`Total Commands: ${client.commands.size}`)
+        .setColor("BLURPLE")
+        .setTimestamp()
+        .setThumbnail(client.user.displayAvatarURL)
+        .setFooter(message.author.tag, message.author.displayAvatarURL);
+    client.commands.forEach(cmd => {
+        embed.addField(`${cmd.help.name}`, `Aliases: ${cmd.help.aliases.join(", ") || "None"}\nUsage: \`${client.prefix}${cmd.help.usage}\``, true);
+    });
+    return message.channel.send(embed); */
+  
   //------------------------------------------------------------------------------------------------------------
       const embed = new MessageEmbed()
         .setAuthor("Commands")
@@ -19,8 +33,10 @@ exports.execute = async (client, message, args) => {
   let bankname=""
   let animalsname=""
   let ecocoinname=""
+  let funname=""
   let ecocoincommands = [
         "ecocoin",
+        "transfereco",
         "ecoinv",
         "buyeco",
         "selleco",
@@ -32,7 +48,9 @@ exports.execute = async (client, message, args) => {
     ];
   let animalscommands = [
         "zoo",
+        "team",
         "hunt",
+        "sellanimals",
     ];
     let gamescommands = [
         "cf",
@@ -45,6 +63,18 @@ exports.execute = async (client, message, args) => {
         "slots",
         "weekly",
         "roll"
+    ];
+  let funcommands = [
+        "randommeme",
+        "advice",
+        "randomanime",
+        "randomfact",
+        "findnpm",
+        "asciiart",
+        "fakenitro",
+        "orangetext",
+        "kill",
+        "clap"
     ];
   let utilitycommands = [
         "prefix",
@@ -107,6 +137,13 @@ exports.execute = async (client, message, args) => {
         count++;
       }
     }
+    for (var i = 0; i < funcommands.length; i++) {
+     if(cmd.help.name==funcommands[i])
+      {
+         funname+=` \`${cmd.help.name}\` ` 
+        count++;
+      }
+    }
      for (var i = 0; i < onlyadminscommands.length; i++) {
      if(cmd.help.name==onlyadminscommands[i])
       {
@@ -126,11 +163,13 @@ exports.execute = async (client, message, args) => {
   
   **Bank**🏦\n${bankname}   
   
-  **Animals**:bat:\n${animalsname}   
+  **Animals**🐍\n${animalsname} 
   
-  **EcoCoin🌿**\n${ecocoinname}   
+  **EcoCoin**🌿\n${ecocoinname}   
   
-  **Economy💰**\n${economyname}
+  **Economy**💰\n${economyname}
+  
+  **Fun**🛹\n${funname}
   
   **Only Admins **🚫\n${onlyadminsname}
   
@@ -178,30 +217,7 @@ exports.execute = async (client, message, args) => {
       return message.channel.send(embed);
     }
 }
-const { MessageButton,MessageActionRow } = require('discord.js');
 
-module.exports = {
-    description: 'Yardım Menüsü',
-    run: async (client, interaction) => {
-        const embed = new MessageEmbed()
-        .setTitle('Gweep Creative Çekiliş Botu Yardım Menüsü')
-        .setDescription(`Botta (Slash) komutlar mevcuttur. Bu komutlar üzrinden işlemleirini yapabilirsiniz.`)
-        .addField('`/başlat`','Çekiliş Başlatır',false)
-        .addField('`/bitir`','Var olan çekilişi bitirir',false)
-        .addField('`/drop`','drop çekiliş başlatır',false)
-        .addField('`/yenile`','Sonlanmış çekilişin kazananını yeniden belirler',false)
-        .addField('`/durdur`','Devam eden çekilişi durdurur',false)
-        .addField('`/devam`','Durmuş çekilişi başlatır',false)
-        .setFooter(`Developed by Gweep Creative 💖`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
-    }
-};
 exports.help = {
     name: "help",
     aliases: ["HELP"],

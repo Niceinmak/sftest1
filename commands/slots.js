@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
         let emojies = [
@@ -12,13 +11,15 @@ exports.execute = async (client, message, args) => {
     let amount = Math.floor(Math.random() * 100);
     let amount3 = args[0]
     let authordata = client.eco.fetchMoney(message.author.id) 
-    const user1 = message.mentions.users.first() || message.member.user
     let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
+    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
+    const user1 = message.mentions.users.first() || message.member.user
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
   //--------------------------------------------
   if(amount3=="all") amount3=authordata.amount;
+  if(amount3=="half") amount3=authordata.amount/2 , amount3=parseInt(amount3);
+  if(amount3>50000) amount3=50000;
     if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
   else{
     if(amount3>authordata.amount || amount3<1)  return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
@@ -112,30 +113,7 @@ exports.execute = async (client, message, args) => {
         } );
     }
     }  };
-const { MessageButton,MessageActionRow } = require('discord.js');
 
-module.exports = {
-    description: 'Yardım Menüsü',
-    run: async (client, interaction) => {
-        const embed = new MessageEmbed()
-        .setTitle('Gweep Creative Çekiliş Botu Yardım Menüsü')
-        .setDescription(`Botta (Slash) komutlar mevcuttur. Bu komutlar üzrinden işlemleirini yapabilirsiniz.`)
-        .addField('`/başlat`','Çekiliş Başlatır',false)
-        .addField('`/bitir`','Var olan çekilişi bitirir',false)
-        .addField('`/drop`','drop çekiliş başlatır',false)
-        .addField('`/yenile`','Sonlanmış çekilişin kazananını yeniden belirler',false)
-        .addField('`/durdur`','Devam eden çekilişi durdurur',false)
-        .addField('`/devam`','Durmuş çekilişi başlatır',false)
-        .setFooter(`Developed by Gweep Creative 💖`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
-    }
-};
 exports.help = {
     name: "slots",
     aliases: ["slot"],

@@ -15,8 +15,8 @@ exports.execute = async (client, message, args) => {
     let authordata = client.eco.fetchMoney(message.author.id) 
     let timecooldown = Math.floor(Math.random() * 200)+50;
         let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{ canLose: true, cooldown: 5000, customName: "search" });
-  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
     if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+  let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
       if(userdata=="all") userdata=authordata.amount;
   if(userdata=="half") userdata=authordata.amount/2 , userdata=parseInt(userdata);
   if(userdata>50000) userdata=50000;
@@ -59,7 +59,7 @@ exports.execute = async (client, message, args) => {
            {
             if(amount4=="2")
                {
-                    let data2= client.eco.addMoney(message.author.id, parseInt(userdata*3));
+                    let data2= client.eco.addMoney(message.author.id, parseInt(userdata*2));
                  embed.setDescription(`**🟢 |Luck 42,5 , Earning:2X\n🔴 |Luck 42,5 , Earning:2X\n🔷 |Luck 15,0 , Earning:3X \n------------------------------------------\n The Wheel is Spinning...\n Congratulations, you won!\n Roulette:🔷\n You Played:${userdata2}**`)
                  .setTitle(`**${message.author.tag} |  You Win ${userdata*3}!\n-------------------------------------**`)
                return msg.edit(embed)
@@ -76,7 +76,7 @@ exports.execute = async (client, message, args) => {
            {
                if(amount4=="1")
                {
-                    let data2= client.eco.addMoney(message.author.id, parseInt(userdata)*2);
+                    let data2= client.eco.addMoney(message.author.id, parseInt(userdata));
                  embed.setDescription(`**🟢 |Luck 42,5 , Earning:2X\n🔴 |Luck 42,5 , Earning:2X\n🔷 |Luck 15,0 , Earning:3X \n------------------------------------------\n The Wheel is Spinning...\n Congratulations, you won!\n Roulette:🔴\n You Played:${userdata2}**`)
                  .setTitle(`**${message.author.tag} |  You Win ${userdata*2}!\n-------------------------------------**`)
                return msg.edit(embed)
@@ -93,7 +93,7 @@ exports.execute = async (client, message, args) => {
            {
              if(amount4=="0")
                {
-                    let data2= client.eco.addMoney(message.author.id, parseInt(userdata*2));
+                    let data2= client.eco.addMoney(message.author.id, parseInt(userdata));
                  embed.setDescription(`**🟢 |Luck 42,5 , Earning:2X\n🔴 |Luck 42,5 , Earning:2X\n🔷 |Luck 15,0 , Earning:3X \n------------------------------------------\n The Wheel is Spinning...\n Congratulations, you won!\n Roulette:🟢\n You Played:${userdata2}**`)
                  .setTitle(`**${message.author.tag} |  You Win ${userdata*2}!\n-------------------------------------**`)
               return msg.edit(embed)
@@ -113,30 +113,7 @@ exports.execute = async (client, message, args) => {
 
   }
 };
-const { MessageButton,MessageActionRow } = require('discord.js');
 
-module.exports = {
-    description: 'Yardım Menüsü',
-    run: async (client, interaction) => {
-        const embed = new MessageEmbed()
-        .setTitle('Gweep Creative Çekiliş Botu Yardım Menüsü')
-        .setDescription(`Botta (Slash) komutlar mevcuttur. Bu komutlar üzrinden işlemleirini yapabilirsiniz.`)
-        .addField('`/başlat`','Çekiliş Başlatır',false)
-        .addField('`/bitir`','Var olan çekilişi bitirir',false)
-        .addField('`/drop`','drop çekiliş başlatır',false)
-        .addField('`/yenile`','Sonlanmış çekilişin kazananını yeniden belirler',false)
-        .addField('`/durdur`','Devam eden çekilişi durdurur',false)
-        .addField('`/devam`','Durmuş çekilişi başlatır',false)
-        .setFooter(`Developed by Gweep Creative 💖`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
-    }
-};
 exports.help = {
     name: "spin",
     aliases: ["SPIN","roulette"],

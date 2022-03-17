@@ -56,24 +56,23 @@ namescardslistd=""
   let agr1u=argString2[0]
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
-            .setFooter({
-            text: "Game In Progress"
-              })
-            .setTitle(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
+             .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
+            .setFooter(`Game in progress`)
+            .setTitle(`${user1.username}`)
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
             .setColor("#7289DA")
             .setTimestamp();
-              return message.channel.send({ embeds: [embed] }).then(async msg => {
+              return message.channel.send(embed).then(async msg => {
 	  msg.react("👊")
         //  msg.react("")  
           msg.react("🛑")
   const filter = (reaction, user) => {
 	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
 };
-const collector = msg.createReactionCollector({ filter, time: 15000 });
+const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
 collector.on("collect", (reaction, user) => {
    if (reaction.emoji.name === '👊') {
@@ -130,52 +129,40 @@ startbj()
 	)
    if(userpoint>21 && dealerpoint>21)
      {
-       //embed.setAuthor(`You Lose`) 
-       embed.setFooter({
-            text: `You lose ${amount3}`
-              })
-          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+      embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
-        //embed.setAuthor(`You Win!`) 
-          embed.setFooter({
-            text: `You win ${amount3}`
-              })
-          let data2= client.eco.addMoney(messageid, parseInt(amount3));
+        embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
             {
               if(userpoint>dealerpoint)
         {
-         //embed.setAuthor(`You Win!`) 
-          embed.setFooter({
-            text: `You win ${amount3}`
-              })
+         embed.setAuthor(`You Win!`) 
+          embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter({
-            text: `You both bust!`
-              })
+          embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
         }
       else
         {
           if(dealerpoint>21)
             {
-             // embed.setAuthor(`You Win!`) 
-              embed.setFooter({
-            text: `You win ${amount3}`
-              })
+              embed.setAuthor(`You Win!`) 
+              embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-         //  embed.setAuthor(`You Lose`) 
-              embed.setFooter({
-            text: `You lose ${amount3}`
-              })
+           embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
@@ -213,39 +200,46 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-   if(userpoint>dealerpoint)
+   if(userpoint>21 && dealerpoint>21)
+     {
+       embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
+     }
+    else if(userpoint>21 && dealerpoint<=21)
+      {
+        embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+      }
+          else
+            {
+              if(userpoint>dealerpoint)
         {
-        // embed.setAuthor(`You Win!`) 
-          embed.setFooter({
-            text: `You win ${amount3}`
-              })
+         embed.setAuthor(`You Win!`) 
+          embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter({
-            text: `You both bust!`
-              })
+          embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
         }
       else
         {
           if(dealerpoint>21)
             {
-          //    embed.setAuthor(`You Win!`) 
-             embed.setFooter({
-            text: `You win ${amount3}`
-              })
+              embed.setAuthor(`You Win!`) 
+              embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-          // embed.setAuthor(`You Lose`) 
-             embed.setFooter({
-            text: `You lose ${amount3}`
-              })
+           embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+            }
       return msg.edit(embed);
      
     }
@@ -286,39 +280,46 @@ else
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-   if(userpoint>dealerpoint)
+   if(userpoint>21 && dealerpoint>21)
+     {
+       embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
+     }
+    else if(userpoint>21 && dealerpoint<=21)
+      {
+        embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+      }
+          else
+            {
+              if(userpoint>dealerpoint)
         {
-        // embed.setAuthor(`You Win!`) 
-          embed.setFooter({
-            text: `You win ${amount3}`
-              })
+         embed.setAuthor(`You Win!`) 
+          embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-       embed.setFooter({
-            text: `You both bust`
-              })
+          embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
         }
       else
         {
           if(dealerpoint>21)
             {
-          //    embed.setAuthor(`You Win!`) 
-              embed.setFooter({
-            text: `You win ${amount3}`
-              })
+              embed.setAuthor(`You Win!`) 
+              embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-          // embed.setAuthor(`You Lose`) 
-           embed.setFooter({
-            text: `You lose ${amount3}`
-              })
+           embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+            }
       return msg.edit(embed);
      
     }
@@ -380,39 +381,46 @@ function stopbj(){
     { name: `Dealer \`${dpoint}\``, value: dcard, inline: true },
     { name: `${user1.username} \`${upoint}\``, value: ucard, inline: true },
 	)
-   if(userpoint>dealerpoint)
+   if(userpoint>21 && dealerpoint>21)
+     {
+       embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
+     }
+    else if(userpoint>21 && dealerpoint<=21)
+      {
+        embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
+          let data2= client.eco.removeMoney(messageid, parseInt(amount3));
+      }
+          else
+            {
+              if(userpoint>dealerpoint)
         {
-       //  embed.setAuthor(`You Win!`) 
-         embed.setFooter({
-            text: `You win ${amount3}`
-              })
+         embed.setAuthor(`You Win!`) 
+          embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-       embed.setFooter({
-            text: `You both bust`
-              })
+          embed.setFooter(`You both bust!`)
+          embed.setFooter(`You both bust!`)
         }
       else
         {
           if(dealerpoint>21)
             {
-           //   embed.setAuthor(`You Win!`) 
-            embed.setFooter({
-            text: `You win ${amount3}`
-              })
+              embed.setAuthor(`You Win!`) 
+              embed.setFooter(`You win ${amount3}`)
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-           //embed.setAuthor(`You Lose`) 
-            embed.setFooter({
-            text: `You lose ${amount3}`
-              })
+           embed.setAuthor(`You Lose`) 
+              embed.setFooter(`You lose ${amount3}`)
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
+            }
      }
  
     
@@ -424,7 +432,6 @@ function stopbj(){
     } 
 
 function drawCard(who) {
-  console.log("t")
   let count = Math.floor(Math.random() * 10);
   if(randomcounter<2)
     {
@@ -439,6 +446,15 @@ function drawCard(who) {
   
   if(who=="d")
     {
+      if(randomcounter==2)
+        {
+        if(count<userpoint)
+    {
+     count=userpoint 
+      randomcounter++
+    }  
+        }
+      randomcounter++
     namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
     dealerpoint+=count
       return [` [${dealerpoint}+?] \`${namescardslistd}\``];
@@ -452,30 +468,7 @@ function drawCard(who) {
     
 }
 };
-const { MessageButton,MessageActionRow } = require('discord.js');
 
-module.exports = {
-    description: 'Yardım Menüsü',
-    run: async (client, interaction) => {
-        const embed = new MessageEmbed()
-        .setTitle('Gweep Creative Çekiliş Botu Yardım Menüsü')
-        .setDescription(`Botta (Slash) komutlar mevcuttur. Bu komutlar üzrinden işlemleirini yapabilirsiniz.`)
-        .addField('`/başlat`','Çekiliş Başlatır',false)
-        .addField('`/bitir`','Var olan çekilişi bitirir',false)
-        .addField('`/drop`','drop çekiliş başlatır',false)
-        .addField('`/yenile`','Sonlanmış çekilişin kazananını yeniden belirler',false)
-        .addField('`/durdur`','Devam eden çekilişi durdurur',false)
-        .addField('`/devam`','Durmuş çekilişi başlatır',false)
-        .setFooter(`Developed by Gweep Creative 💖`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
-    }
-};
 exports.help = {
     name: "bj",
     aliases: ["blackjack","BLACKJACK"],

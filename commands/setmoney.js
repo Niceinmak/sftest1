@@ -8,13 +8,12 @@ exports.execute = async (client, message, args) => {
     if (!amount || isNaN(amount)) return message.reply("Please specify a valid amount.");
   if(message.author.id==process.env.OWNER_ID)
     {
-      let data = client.eco.removeMoney(user.id, parseInt(amount));
-  let dataformat=String(data.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+      let data = client.eco.setMoney(user.id, parseInt(amount));
+    let dataafterformat=String(data.after).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     const embed = new MessageEmbed()
-        .setTitle(`Money Removed!`)
+        .setTitle(`Money Updated!`)
         .addField(`User`, `<@${data.user}>`)
-        .addField(`Removed Balance`, `**${dataformat}** 💶`)
-        .addField(`Total Amount`, `**${data.after}**`)
+        .addField(`Total Amount`, `**${dataafterformat}**💶`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
@@ -24,7 +23,7 @@ exports.execute = async (client, message, args) => {
       {
         message.reply("Request sent, waiting for return...")
         const embed = new MessageEmbed()
-        .setTitle(`RemoveMoney Request`)
+        .setTitle(`SetMoney Request`)
         .addField(`User`, `${message.author.tag} (${message.author.id})`)
         .addField(`To`, `${user.tag} (${user.id})`)
         .addField(`Amount`, `${amount}`)
@@ -56,13 +55,13 @@ exports.execute = async (client, message, args) => {
                   buttonagree.setDisabled(true);
                     buttondeny.setDisabled(true);
                   message.edit({ buttons: [buttonagree, buttondeny], embed: embed })
-                  let data = client.eco.removeMoney(user.id, parseInt(amount));
+                  let data = client.eco.setMoney(user.id, parseInt(amount));
                     let dataformat=String(data.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
+                    let dataafterformat=String(data.after).replace(/(.)(?=(\d{3})+$)/g,'$1,')
                     const embed1 = new MessageEmbed()
-        .setTitle(`Money Removed!`)
+        .setTitle(`Money Updated!`)
         .addField(`User`, `<@${data.user}>`)
-        .addField(`Removed Balance`, `**${dataformat}** 💶`)
-        .addField(`Total Amount`, `**${data.after}**`)
+        .addField(`Total Amount`, `**${dataafterformat}**💶`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
@@ -84,7 +83,7 @@ exports.execute = async (client, message, args) => {
 }
 
 exports.help = {
-    name: "removemoney",
-    aliases: ["remove","removebal"],
-    usage: `removemoney @user <amount>`
+    name: "setmoney",
+    aliases: ["setbal","set","SET","SETMONEY"],
+    usage: `setmoney @user <amount>`
 }

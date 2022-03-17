@@ -1,11 +1,23 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
-  let timecooldown = Math.floor(Math.random() * 200)+50;
+  let user = message.author
+  if (!client.config.admins.includes(message.author.id))
+    {
+      let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
     const user1 = message.member.user
-   // if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+   if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
     let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+    }
+  else
+    {
+      if(message.author.id!=process.env.OWNER_ID)
+    {
+      const channel = client.channels.cache.get(process.env.REQUEST_CHANNEL)
+      channel.send(`**${user.tag} (${user.id}) used the \`hunt\`\nServer \`${message.guild.name} (${message.guild.id})\`\nChannel \`${message.channel.name} (${message.channel.id})\`**`)
+    }
+    }
   let xp=0
   let fullname=""
   let fullcost=0
@@ -46,7 +58,7 @@ exports.execute = async (client, message, args) => {
   if (userBalance.amount < 3) return message.channel.send(`**You have too little money.**`);
   for(let i=lucky; i>0;i--)
     {
-  let lucky1 = Math.floor(Math.random() * 100);
+  let lucky1 = Math.floor(Math.random() * 100)+1;
       let commonxp = Math.floor(Math.random() * 100)+1;
       let uncommonxp = Math.floor(Math.random() * 500)+1;
       let rarexp = Math.floor(Math.random() * 1000)+1;
@@ -55,25 +67,25 @@ exports.execute = async (client, message, args) => {
   if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
       let item = ""
-      if(lucky1<55)
+      if(lucky1<75)
         {
           client.eco.addMoney(`${message.author.id}12`, parseInt(commonxp));
           xp+=commonxp
   item = commonanimals[Math.floor(Math.random() * commonanimals.length)];
         }
-      else if(lucky1<65)
+      else if(lucky1<90)
         {
           client.eco.addMoney(`${message.author.id}12`, parseInt(uncommonxp));
           xp+=uncommonxp
   item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
         }
-      else if(lucky1<75)
+      else if(lucky1<97)
         {
           client.eco.addMoney(`${message.author.id}12`, parseInt(rarexp));
           xp+=rarexp
   item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
         }
-      else if(lucky1<90)
+      else if(lucky1<100)
         {
           client.eco.addMoney(`${message.author.id}12`, parseInt(epicxp));
           xp+=epicxp
@@ -105,30 +117,7 @@ Gained ${xp}xp!**.`);
 Gained ${xp}xp!**.`);
   
 };
-const { MessageButton,MessageActionRow } = require('discord.js');
 
-module.exports = {
-    description: 'Yardım Menüsü',
-    run: async (client, interaction) => {
-        const embed = new MessageEmbed()
-        .setTitle('Gweep Creative Çekiliş Botu Yardım Menüsü')
-        .setDescription(`Botta (Slash) komutlar mevcuttur. Bu komutlar üzrinden işlemleirini yapabilirsiniz.`)
-        .addField('`/başlat`','Çekiliş Başlatır',false)
-        .addField('`/bitir`','Var olan çekilişi bitirir',false)
-        .addField('`/drop`','drop çekiliş başlatır',false)
-        .addField('`/yenile`','Sonlanmış çekilişin kazananını yeniden belirler',false)
-        .addField('`/durdur`','Devam eden çekilişi durdurur',false)
-        .addField('`/devam`','Durmuş çekilişi başlatır',false)
-        .setFooter(`Developed by Gweep Creative 💖`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
-    }
-};
 exports.help = {
   name: "hunt",
   aliases: ["HUNT","h"],

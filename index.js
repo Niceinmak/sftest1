@@ -1,35 +1,27 @@
-const fs = require("fs");
-const {Routes}=require("discord-api-types/v9");
 const Discord = require("discord.js");
-const { Client, Intents } = require('discord.js'); 
-const client = new Discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
-    ]
-});
-const config = process.env;
-client.config = config;
+const client = new Discord.Client({ disableMentions: "everyone" });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
+const disbut = require("discord-buttons");
+disbut(client);
+const { MessageButton } = require('discord-buttons')
 const Eco = require("quick.eco");
-const DiscordSlash=require("discord.js-slash-command");
-const slash=new DiscordSlash.Slash(client);
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
+const DiscordSlash = require("discord.js-slash-command");
+const slash = new DiscordSlash.Slash(client);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
-  "common.case" : {
-    cost: 100
+  "common.case": {
+    cost: 10000,
   },
-  "rare.case" : {
-    cost: 1000
+  "rare.case": {
+    cost: 100000,
   },
-  "epic.case" : {
-    cost: 10000
+  "epic.case": {
+    cost: 1000000,
   },
   "<:ant:948264757000040460>" : {
     cost: 3
@@ -101,42 +93,54 @@ client.shop = {
     cost: 3
   },
 };
-
+const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
-  
-  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
+  //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
 dbl.webhook.on('vote', vote => {
-  const channel = client.channels.cache.get(process.env.POST_CHANNEL)
+  const channel = client.channels.cache.get(process.env.VOTE_POST_CHANNEL)
   const embed = new Discord.MessageEmbed()
-  .setTitle("__Thanks for votting me:-__")
-  .setDescription(`༺═──────────────────────═༻\n⭐ **Voted By:-**\n<@${vote.user}>\n\n🔗 **Vote Link:-**\n${process.env.VOTE_LINK}\n\n💖 **You can vote again in 12hour!** 💖\n༺═──────────────────────═༻`)
-  .setImage(process.env.IMAGE_LINK)
-  .setFooter("❤Your vote means a lot!❤")
+  .setTitle(`Thanks for voting!`)
+  .setDescription(`──────────────────────────
+  **:tada: Thanks for voting!
+  :sparkles: Voted By:<@${vote.user}>
+  :diamond_shape_with_a_dot_inside: Wait 12 Hours to vote again!
+  🔗You can vote by clicking the button below!**
+  ──────────────────────────`)
+  //.setImage(process.env.IMAGE_LINK)
+  .setFooter("Thanks for voting!")
   .setColor("GREEN")
-  channel.send(embed)
+  let buttonurl = new MessageButton()
+  .setStyle('url')
+    .setURL(process.env.VOTE_LINK)
+  .setLabel('Vote') 
+  let website = new MessageButton()
+  .setStyle('url')
+    .setURL("http://ecoverse.ml/")
+  .setLabel(`Go to website`) 
+  .setDisabled(false);
+  channel.send({ buttons: [buttonurl, website], embed: embed })
 });
-
 fs.readdir("./events/", (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(f => {
-        if (!f.endsWith(".js")) return;
-        const event = require(`./events/${f}`);
-        let eventName = f.split(".")[0];
-        client.on(eventName, event.bind(null, client));
-    });
+  if (err) return console.error(err);
+  files.forEach((f) => {
+    if (!f.endsWith(".js")) return;
+    const event = require(`./events/${f}`);
+    let eventName = f.split(".")[0];
+    client.on(eventName, event.bind(null, client));
+  });
 });
 
 fs.readdir("./commands/", (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(f => {
-        if (!f.endsWith(".js")) return;
-        let command = require(`./commands/${f}`);
-        client.commands.set(command.help.name, command);
-        command.help.aliases.forEach(alias => {
-            client.aliases.set(alias, command.help.name);
-        });
+  if (err) return console.error(err);
+  files.forEach((f) => {
+    if (!f.endsWith(".js")) return;
+    let command = require(`./commands/${f}`);
+    client.commands.set(command.help.name, command);
+    command.help.aliases.forEach((alias) => {
+      client.aliases.set(alias, command.help.name);
     });
+  });
 });
-client.login(client.config.token);
+client.login(process.env.TOKEN);

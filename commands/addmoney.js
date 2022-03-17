@@ -8,12 +8,12 @@ exports.execute = async (client, message, args) => {
     if (!amount || isNaN(amount)) return message.reply("Please specify a valid amount.");
   if(message.author.id==process.env.OWNER_ID)
     {
-      let data = client.eco.removeMoney(user.id, parseInt(amount));
+      let data = client.eco.addMoney(user.id, parseInt(amount));
   let dataformat=String(data.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     const embed = new MessageEmbed()
-        .setTitle(`Money Removed!`)
+        .setTitle(`Money Added!`)
         .addField(`User`, `<@${data.user}>`)
-        .addField(`Removed Balance`, `**${dataformat}** 💶`)
+        .addField(`Balance Given`, `**${dataformat}** 💶`)
         .addField(`Total Amount`, `**${data.after}**`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
@@ -24,7 +24,7 @@ exports.execute = async (client, message, args) => {
       {
         message.reply("Request sent, waiting for return...")
         const embed = new MessageEmbed()
-        .setTitle(`RemoveMoney Request`)
+        .setTitle(`AddMoney Request`)
         .addField(`User`, `${message.author.tag} (${message.author.id})`)
         .addField(`To`, `${user.tag} (${user.id})`)
         .addField(`Amount`, `${amount}`)
@@ -56,12 +56,12 @@ exports.execute = async (client, message, args) => {
                   buttonagree.setDisabled(true);
                     buttondeny.setDisabled(true);
                   message.edit({ buttons: [buttonagree, buttondeny], embed: embed })
-                  let data = client.eco.removeMoney(user.id, parseInt(amount));
+                  let data = client.eco.addMoney(user.id, parseInt(amount));
                     let dataformat=String(data.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
                     const embed1 = new MessageEmbed()
-        .setTitle(`Money Removed!`)
+        .setTitle(`Money Added!`)
         .addField(`User`, `<@${data.user}>`)
-        .addField(`Removed Balance`, `**${dataformat}** 💶`)
+        .addField(`Balance Given`, `**${dataformat}** 💶`)
         .addField(`Total Amount`, `**${data.after}**`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
@@ -84,7 +84,7 @@ exports.execute = async (client, message, args) => {
 }
 
 exports.help = {
-    name: "removemoney",
-    aliases: ["remove","removebal"],
-    usage: `removemoney @user <amount>`
+    name: "addmoney",
+    aliases: ["addbal","add"],
+    usage: `addmoney @user <amount>`
 }

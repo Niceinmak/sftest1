@@ -31,61 +31,38 @@ exports.execute = async (client, message, args) => {
     if(amount4>authordata.amount || amount4<1)  return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
     else
     {
-               message.channel.send(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**`).then(async msg => {
+               message.channel.send(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**`).then(async msg => {
                  let randomnumber=numbers[Math.floor(Math.random() * numbers.length)]
                 setTimeout(() => {
   // embed.setAuthor(`as`)
-          msg.edit(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**\`.\``)
+          msg.edit(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**\`.\``)
                    }, 500);
                 setTimeout(() => {
        //  embed.setAuthor(`sa`)
-          msg.edit(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**\`..\``)
+          msg.edit(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**\`..\``)
               }, 1000);
             setTimeout(() => {
-             msg.edit(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**\`...\``)
+             msg.edit(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**\`...\``)
               }, 2000);
           setTimeout(() => {
-            msg.edit(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**\`${randomnumber}\``)
+            msg.edit(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**\`${randomnumber}\``)
               }, 3000);
            setTimeout(() => {
              if(amount3==randomnumber)
                 {
-                  msg.edit(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**\`${randomnumber}\`\n\`Congrulations,You Win ${amount4*3}💶!\``)
+                  msg.edit(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**\`${randomnumber}\`\n\`Congrulations,You Win ${amount4*3}💶!\``)
                   let data = client.eco.addMoney(message.author.id, parseInt(amount4*3));
                 }
              else
                {
                  let data = client.eco.removeMoney(message.author.id, parseInt(amount4));
-                 msg.edit(`**🎲 | Niceinmak *played* roll:** \`${amount3}\`\n**Number on the dice:**\`${randomnumber}\`\n\`Sorry,You Lost ${amount4}💶\``)
+                 msg.edit(`**🎲 | ${user1.username} played roll:** \`${amount3}\`\n**Number on the dice:**\`${randomnumber}\`\n\`Sorry,You Lost ${amount4}💶\``)
                }
               }, 4000);
         } );
     }
     }  };
-const { MessageButton,MessageActionRow } = require('discord.js');
 
-module.exports = {
-    description: 'Yardım Menüsü',
-    run: async (client, interaction) => {
-        const embed = new MessageEmbed()
-        .setTitle('Gweep Creative Çekiliş Botu Yardım Menüsü')
-        .setDescription(`Botta (Slash) komutlar mevcuttur. Bu komutlar üzrinden işlemleirini yapabilirsiniz.`)
-        .addField('`/başlat`','Çekiliş Başlatır',false)
-        .addField('`/bitir`','Var olan çekilişi bitirir',false)
-        .addField('`/drop`','drop çekiliş başlatır',false)
-        .addField('`/yenile`','Sonlanmış çekilişin kazananını yeniden belirler',false)
-        .addField('`/durdur`','Devam eden çekilişi durdurur',false)
-        .addField('`/devam`','Durmuş çekilişi başlatır',false)
-        .setFooter(`Developed by Gweep Creative 💖`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
-    }
-};
 exports.help = {
     name: "roll",
     aliases: ["ROLL"],
