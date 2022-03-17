@@ -1,5 +1,5 @@
 const anyLength = require('any-length');
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js12");
 exports.execute = async (client, message, args) => {
   let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
