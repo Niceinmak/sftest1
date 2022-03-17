@@ -1,7 +1,15 @@
 const Discord = require("discord.js11");
 const { Client, Intents } = require('discord.js');
-const discord = require("discord.js12");
 const client = new Discord.Client({
+    intents: [
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+    ]
+});
+const discord = require("discord.js12");
+const client2 = new discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -138,7 +146,9 @@ fs.readdir("./events/", (err, files) => {
     if (!f.endsWith(".js")) return;
     const event = require(`./events/${f}`);
     let eventName = f.split(".")[0];
+    console.log(eventName)
     client.on(eventName, event.bind(null, client));
+    client2.on(eventName, event.bind(null, client2));
   });
 });
 
@@ -153,28 +163,20 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
-const client2 = new discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
-    ]
-});
 const synchronizeSlashCommands = require('discord-sync-commands');
-client.commands = new discord.Collection();
+client2.commands = new discord.Collection();
 fs.readdir("./commands-interactions/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
         let props = require(`./commands-interactions/${file}`);
         let commandName = file.split(".")[0];
-        client.commands.set(commandName, {
+        client2.commands.set(commandName, {
             name: commandName,
             ...props
         });
         console.log(`👌 Komut Yüklendi: ${commandName}`);
     });
-    synchronizeSlashCommands(client, client.commands.map((c) => ({
+    synchronizeSlashCommands(client2, client2.commands.map((c) => ({
         name: c.name,
         description: c.description,
         options: c.options,
@@ -183,4 +185,4 @@ fs.readdir("./commands-interactions/", (_err, files) => {
         debug: true
     });
 });
-client.login(process.env.TOKEN);
+client2.login(process.env.TOKEN);
