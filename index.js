@@ -152,8 +152,8 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
-const Discord1 = require("discord.js12");
-const client2 = new Discord.Client({
+const discord = require("discord.js12");
+const client = new discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -162,19 +162,19 @@ const client2 = new Discord.Client({
     ]
 });
 const synchronizeSlashCommands = require('discord-sync-commands');
-client2.commands = new Discord.Collection();
+client.commands = new discord.Collection();
 fs.readdir("./commands-interactions/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
         let props = require(`./commands-interactions/${file}`);
         let commandName = file.split(".")[0];
-        client2.commands.set(commandName, {
+        client.commands.set(commandName, {
             name: commandName,
             ...props
         });
         console.log(`👌 Komut Yüklendi: ${commandName}`);
     });
-    synchronizeSlashCommands(client2, client2.commands.map((c) => ({
+    synchronizeSlashCommands(client, client.commands.map((c) => ({
         name: c.name,
         description: c.description,
         options: c.options,
