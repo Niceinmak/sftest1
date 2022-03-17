@@ -7,6 +7,7 @@ module.exports = async (client, message) => {
     let commandName = args.shift().toLowerCase();
     let command = client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));
     if (!command) return;
+  console.log("t")
     client.ecoAddUser = message.author.id;
     command.execute(client, message, args);
 };

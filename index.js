@@ -1,6 +1,13 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js11");
 const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Discord.Client({
+    intents: [
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+    ]
+});
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 //const disbut = require("discord-buttons");
@@ -10,8 +17,6 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
-const config = process.env;
-client.config = config;
 const synchronizeSlashCommands = require('discord-sync-commands');
 //const DiscordSlash = require("discord.js-slash-command");
 //const slash = new DiscordSlash.Slash(client);
@@ -153,7 +158,6 @@ fs.readdir("./events/", (err, files) => {
     if (!f.endsWith(".js")) return;
     const event = require(`./events/${f}`);
     let eventName = f.split(".")[0];
-    console.log("t")
     client.on(eventName, event.bind(null, client));
   });
 });
