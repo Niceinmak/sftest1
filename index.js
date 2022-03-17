@@ -1,25 +1,16 @@
-const Discord = require("discord.js11");
-const discord = require("discord.js12");
-const { Client, Intents } = require('discord.js');
-const client = new Discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
-    ]
-});
+const Discord = require("discord.js");
+const client = new Discord.Client({ disableMentions: "everyone" });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
-//const disbut = require("discord-buttons");
-//disbut(client);
-//const { MessageButton } = require('discord-buttons')
+const disbut = require("discord-buttons");
+disbut(client);
+const { MessageButton } = require('discord-buttons')
 const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
-//client.config = require("./botConfig");
-//const DiscordSlash = require("discord.js-slash-command");
-//const slash = new DiscordSlash.Slash(client);
+client.config = require("./botConfig");
+const DiscordSlash = require("discord.js-slash-command");
+const slash = new DiscordSlash.Slash(client);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
@@ -103,7 +94,7 @@ client.shop = {
   },
 };
 const fs = require("fs");
-/*const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
+const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
@@ -130,8 +121,7 @@ dbl.webhook.on('vote', vote => {
   .setLabel(`Go to website`) 
   .setDisabled(false);
   channel.send({ buttons: [buttonurl, website], embed: embed })
-});*/
-
+});
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
@@ -153,28 +143,4 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
-/*const config = process.env;
-client.config = config;
-const synchronizeSlashCommands = require('discord-sync-commands');
-client.commands = new Discord.Collection();
-fs.readdir("./commands-interactions/", (_err, files) => {
-    files.forEach((file) => {
-        if (!file.endsWith(".js")) return;
-        let props = require(`./commands-interactions/${file}`);
-        let commandName = file.split(".")[0];
-        client.commands.set(commandName, {
-            name: commandName,
-            ...props
-        });
-        console.log(`👌 Komut Yüklendi: ${commandName}`);
-    });
-    synchronizeSlashCommands(client, client.commands.map((c) => ({
-        name: c.name,
-        description: c.description,
-        options: c.options,
-        type: 'CHAT_INPUT'
-    })), {
-        debug: true
-    });
-});*/
 client.login(process.env.TOKEN);

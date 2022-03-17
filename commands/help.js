@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js11");
+const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
  /*   const embed = new MessageEmbed()
