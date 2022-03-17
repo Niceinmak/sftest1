@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
-//const { MessageButton } = require('discord-buttons')
-//const client = new Discord.Client()
+const { MessageButton } = require('discord-buttons')
+const client = new Discord.Client()
 let db = require('quick.db');
 const DBL = require("dblapi.js");
 let ms = require('ms')
-//const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
+const dbl = new DBL(process.env.TOPGG_TOKEN, + client);
 module.exports.execute = async (client, message, args) => {
   let user = message.mentions.users.first() || message.author;
     
@@ -13,7 +13,7 @@ module.exports.execute = async (client, message, args) => {
   const cooldown = await db.fetch(`cooldown_Command-Name_${message.author.id}`);
     let amount = Math.floor(Math.random() * 5000) + 300;
     let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-   /*   dbl.hasVoted(message.author.id).then(voted => {
+      dbl.hasVoted(message.author.id).then(voted => {
     if (voted){
         	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
@@ -46,7 +46,7 @@ module.exports.execute = async (client, message, args) => {
     }
       
 		
-})*/
+})
 };
 
 module.exports.help = {
