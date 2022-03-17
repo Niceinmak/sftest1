@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 //const disbut = require("discord-buttons");
@@ -125,7 +126,7 @@ dbl.webhook.on('vote', vote => {
   .setDisabled(false);
   channel.send({ buttons: [buttonurl, website], embed: embed })
 });*/
-client.commands = new Discord.Collection();
+/*client.commands = new Discord.Collection();
 fs.readdir("./commands-interactions/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
@@ -145,13 +146,14 @@ fs.readdir("./commands-interactions/", (_err, files) => {
     })), {
         debug: true
     });
-});
+});*/
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
     if (!f.endsWith(".js")) return;
     const event = require(`./events/${f}`);
     let eventName = f.split(".")[0];
+    console.log("t")
     client.on(eventName, event.bind(null, client));
   });
 });
