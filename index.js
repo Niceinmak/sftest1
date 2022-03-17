@@ -1,7 +1,7 @@
 const Discord = require("discord.js11");
 const discord = require("discord.js12");
 const { Client, Intents } = require('discord.js');
-const client = new Discord.Client({
+const client = new discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -17,7 +17,7 @@ const DBL = require('dblapi.js');
 const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
-client.config = require("./botConfig");
+//client.config = require("./botConfig");
 //const DiscordSlash = require("discord.js-slash-command");
 //const slash = new DiscordSlash.Slash(client);
 client.commands = new Discord.Collection();
@@ -130,7 +130,7 @@ dbl.webhook.on('vote', vote => {
   .setLabel(`Go to website`) 
   .setDisabled(false);
   channel.send({ buttons: [buttonurl, website], embed: embed })
-});
+});*/
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -142,7 +142,7 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-fs.readdir("./commands/", (err, files) => {
+/*fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
     if (!f.endsWith(".js")) return;
@@ -151,8 +151,9 @@ fs.readdir("./commands/", (err, files) => {
     command.help.aliases.forEach((alias) => {
       client.aliases.set(alias, command.help.name);
     });
-  });
-});*/
+  });*/
+const config = process.env;
+client.config = config;
 const synchronizeSlashCommands = require('discord-sync-commands');
 client.commands = new Discord.Collection();
 fs.readdir("./commands-interactions/", (_err, files) => {
