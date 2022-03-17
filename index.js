@@ -97,7 +97,7 @@ client.shop = {
   },
 };
 const fs = require("fs");
-const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
+/*const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
@@ -124,7 +124,7 @@ dbl.webhook.on('vote', vote => {
   .setLabel(`Go to website`) 
   .setDisabled(false);
   channel.send({ buttons: [buttonurl, website], embed: embed })
-});
+});*/
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
