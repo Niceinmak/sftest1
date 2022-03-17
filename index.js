@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const { Client, Intents } = require('discord.js');
+const Discord = require("discord.js12");
+const { Client, Intents } = require('discord.js12');
 const client = new Discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
