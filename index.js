@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({ disableMentions: "everyone" });
-const slash = require('discord-slash-commands-v12');
-slash(client);
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 const disbut = require("discord-buttons");
@@ -11,6 +9,8 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
+const DiscordSlash = require("discord.js-slash-command");
+const slash = new DiscordSlash.Slash(client);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
@@ -93,7 +93,6 @@ client.shop = {
     cost: 3
   },
 };
-
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
@@ -144,5 +143,4 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
-
 client.login(process.env.TOKEN);
