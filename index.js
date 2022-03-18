@@ -107,6 +107,7 @@ client.commands.create(ping)
 
 
 client.on('command', data => {
+  console.log(data.commandName)
 	if (data.commandName === 'ping') {
 		data.reply.send('pong!');
 	};
