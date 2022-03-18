@@ -1,10 +1,19 @@
-const Discord = require("discord.js");
-const client = new Discord.Client({ disableMentions: "everyone" });
+const Discord = require("discord.js12");
+const { Client, Intents } = require('discord.js');
+const client = new Discord.Client({
+    intents: [
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+    ]
+});
+
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
-const disbut = require("discord-buttons");
-disbut(client);
-const { MessageButton } = require('discord-buttons')
+//const disbut = require("discord-buttons");
+//disbut(client);
+//const { MessageButton } = require('discord-buttons')
 const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
@@ -95,7 +104,7 @@ client.shop = {
 };
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
-dbl.webhook.on('ready', hook => {
+/*dbl.webhook.on('ready', hook => {
   //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
 dbl.webhook.on('vote', vote => {
@@ -121,7 +130,7 @@ dbl.webhook.on('vote', vote => {
   .setLabel(`Go to website`) 
   .setDisabled(false);
   channel.send({ buttons: [buttonurl, website], embed: embed })
-});
+});*/
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
