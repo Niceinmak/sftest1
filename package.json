@@ -37,5 +37,8 @@
   },
   "repository": {
     "url": "https://github.com/ZeroDiscord/EconomyBot"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
   }
 }
