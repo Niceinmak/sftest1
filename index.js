@@ -1,6 +1,5 @@
 const Discord = require("discord.js12");
-const discord = require("discord.js13");
-const { Client, Intents } = require('discord.js');
+const { Client, Intents } = require('discord.js12');
 const client = new Discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
@@ -9,15 +8,8 @@ const client = new Discord.Client({
         Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
     ]
 });
-const client2 = new discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
-    ]
-});
 
+const slash = require('discord-slash-commands-v12');
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 //const disbut = require("discord-buttons");
@@ -29,16 +21,7 @@ client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-client2.eco = new Eco.Manager(); // quick.eco
-client2.db = Eco.db; // quick.db
-client2.config = require("./botConfig");
-client2.commands = new Discord.Collection();
-client2.aliases = new Discord.Collection();
-const config = process.env;
-client2.config = config;
-client.config = config;
-const synchronizeSlashCommands = require('discord-sync-commands');
-client2.shop = {
+client.shop = {
   "common.case": {
     cost: 10000,
   },
@@ -118,6 +101,18 @@ client2.shop = {
     cost: 3
   },
 };
+slash(client);
+const ping = {
+	name: 'ping',
+	description: 'pong!'
+};
+client.commands.create(ping);
+
+client.on('command', data => {
+	if (data.commandName === 'ping') {
+		data.reply.send('pong!');
+	};
+});
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 /*dbl.webhook.on('ready', hook => {
@@ -154,7 +149,6 @@ fs.readdir("./events/", (err, files) => {
     const event = require(`./events/${f}`);
     let eventName = f.split(".")[0];
     client.on(eventName, event.bind(null, client));
-    client2.on(eventName, event.bind(null, client2));
   });
 });
 
@@ -168,27 +162,5 @@ fs.readdir("./commands/", (err, files) => {
       client.aliases.set(alias, command.help.name);
     });
   });
-});
-
-client.commands = new Discord.Collection();
-fs.readdir("./commands/", (_err, files) => {
-    files.forEach((file) => {
-        if (!file.endsWith(".js")) return;
-        let props = require(`./commands/${file}`);
-        let commandName = file.split(".")[0];
-        client.commands.set(commandName, {
-            name: commandName,
-            ...props
-        });
-        console.log(`👌 Komut Yüklendi: ${commandName}`);
-    });
-    synchronizeSlashCommands(client, client.commands.map((c) => ({
-        name: c.name,
-        description: c.description,
-        options: c.options,
-        type: 'CHAT_INPUT'
-    })), {
-        debug: true
-    });
 });
 client.login(process.env.TOKEN);
