@@ -94,24 +94,6 @@ client.shop = {
   },
 };
 
-
-
-const ping = {
-	name: 'ping',
-	description: 'pong!'
-};
-
-client.on('ready', () => {
-client.commands.create(ping)
-}); 
-
-
-client.on('command', data => {
-  console.log(data.commandName)
-	if (data.commandName === 'ping') {
-		data.reply.send('pong!');
-	};
-});
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
