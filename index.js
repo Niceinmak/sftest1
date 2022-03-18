@@ -31,7 +31,15 @@ const DiscordSlash = require("discord.js-slash-command");
 const slash = new DiscordSlash.Slash(client);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-client.shop = {
+client2.eco = new Eco.Manager(); // quick.eco
+client2.db = Eco.db; // quick.db
+client2.config = require("./botConfig");
+client2.commands = new Discord.Collection();
+client2.aliases = new Discord.Collection();
+const config = process.env;
+client.config = config;
+const synchronizeSlashCommands = require('discord-sync-commands');
+client2.shop = {
   "common.case": {
     cost: 10000,
   },
