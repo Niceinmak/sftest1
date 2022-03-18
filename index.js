@@ -93,11 +93,18 @@ client.shop = {
     cost: 3
   },
 };
+
+
+
 const ping = {
 	name: 'ping',
 	description: 'pong!'
 };
-client.commands.create(ping);
+
+client.on('ready', () => {
+client.commands.create(ping)
+}); 
+
 
 client.on('command', data => {
 	if (data.commandName === 'ping') {
