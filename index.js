@@ -27,8 +27,6 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
-const DiscordSlash = require("discord.js-slash-command");
-const slash = new DiscordSlash.Slash(client);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client2.eco = new Eco.Manager(); // quick.eco
@@ -37,6 +35,7 @@ client2.config = require("./botConfig");
 client2.commands = new Discord.Collection();
 client2.aliases = new Discord.Collection();
 const config = process.env;
+client2.config = config;
 client.config = config;
 const synchronizeSlashCommands = require('discord-sync-commands');
 client2.shop = {
@@ -155,6 +154,7 @@ fs.readdir("./events/", (err, files) => {
     const event = require(`./events/${f}`);
     let eventName = f.split(".")[0];
     client.on(eventName, event.bind(null, client));
+    client2.on(eventName, event.bind(null, client2));
   });
 });
 
@@ -168,5 +168,27 @@ fs.readdir("./commands/", (err, files) => {
       client.aliases.set(alias, command.help.name);
     });
   });
+});
+
+client.commands = new Discord.Collection();
+fs.readdir("./commands/", (_err, files) => {
+    files.forEach((file) => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, {
+            name: commandName,
+            ...props
+        });
+        console.log(`👌 Komut Yüklendi: ${commandName}`);
+    });
+    synchronizeSlashCommands(client, client.commands.map((c) => ({
+        name: c.name,
+        description: c.description,
+        options: c.options,
+        type: 'CHAT_INPUT'
+    })), {
+        debug: true
+    });
 });
 client.login(process.env.TOKEN);
