@@ -100,6 +100,29 @@ client.shop = {
     cost: 3
   },
 };
+const { DiscordInteractions } = require("slash-commands");
+const interaction = new DiscordInteractions({
+  applicationId: "926173307068370954",
+  authToken: "OTI2MTczMzA3MDY4MzcwOTU0.Yc30Gw.u7S-Dy_alzDALqeMx40gU6jWfro",
+  publicKey: "9499e7e9e8561262f378c64b30a49cb488e6819599e34d7abcb0013e5faf7df5",
+});
+const command = {
+  name: "avatar",
+  description: "get a users avatar",
+  options: [
+    {
+      name: "big",
+      description: "should the image be big",
+      type: ApplicationCommandOptionType.BOOLEAN,
+    },
+  ],
+};
+
+// Create Guild Command
+await interaction
+  .createApplicationCommand(command, "496279654483886100")
+  .then(console.log)
+  .catch(console.error);
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 /*dbl.webhook.on('ready', hook => {
