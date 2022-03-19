@@ -24,7 +24,6 @@ module.exports = {
             let userid=""
             let user=""
       let args_user=interaction.options.getUser('user')
-      console.log(interaction)
         if(!args_user)
   {
     userid = interaction.user.id;
@@ -47,7 +46,7 @@ module.exports = {
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
   let joined=moment.utc(user.joinedAt).format('DD/MM/YY')
   let admin=``
-  if (client.config.admins.includes(user.id)=="false") admin=`No`
+  if (!client.config.admins.includes(user.id)) admin=`No`
   else admin=`Yes`
   let itemsname=``
    const x = client.db.get(`items_${user.id}`);
