@@ -18,7 +18,6 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
-client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
   "common.case": {
@@ -144,18 +143,21 @@ fs.readdir("./commands/", (err, files) => {
   files.forEach((f) => {
     if (!f.endsWith(".js")) return;
     let command = require(`./commands/${f}`);
-    client.commands.set(command.help.name, command);
+//    client.commands.set(command.help.name, command);
     command.help.aliases.forEach((alias) => {
       client.aliases.set(alias, command.help.name);
     });
   });
 });
+client.commands = new Discord.Collection();
 const slash = require('discord-slash-commands-v12');
+slash(client);
 client.on('ready', () => {
 	const ping = {
 		name: 'ping',
 		description: 'pong!'
 	};
+  console.log(client.commands)
 	client.commands.create(ping); //グローバルコマンド
 });
 
@@ -163,5 +165,5 @@ client.on('commandInteraction', data => {
 	if (data.commandName === 'ping') {
 		data.reply.send('pong!');
 	};
-}); //ContextMenuも含まれます(メッセージコマンドとユーザーコマンドのことです。)
+}); //ContextMenuも含まれます(メッセージコマンドとユーザーコマンドのことです。) 
 client.login(process.env.TOKEN);
