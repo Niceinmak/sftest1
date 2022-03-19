@@ -20,6 +20,11 @@ const collector = interaction.channel.createMessageComponentCollector({time: 150
 collector.on('collect', async i => {
 	if (i.customId === 'primary') {
 		i.deferUpdate();
+    const buton = new MessageButton().setCustomId('primary').setLabel('I Agree!').setStyle('PRIMARY').setDisabled(true);
+    const row = new MessageActionRow().addComponents(buton)
+    return interaction.editReply({
+           components:[row],
+       })
 	}
 });
     }
