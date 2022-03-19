@@ -85,13 +85,10 @@ const Embed1 = new MessageEmbed()
     { name: 'Created Account', value: created, inline: true },
     { name: 'Admin?', value: admin, inline: true },
 	)
-const embed = new MessageEmbed()
-        .setTitle('Test')
-        .setDescription(`Test Succesfuly`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
-        const row = new MessageActionRow().addComponents(buton)
-       return interaction.reply("sa")
+
+return interaction.reply({
+           embeds:[Embed1],
+       })
   });
        
     }
