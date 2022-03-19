@@ -21,12 +21,12 @@ module.exports = {
   let authorid=interaction.user.id
   let authordata = client.eco.fetchMoney(interaction.user.id) 
   if (!member) return interaction.reply('Please mention the person or give their ID') 
-  let amount = interaction.options.getUser('amount')
+  let amount = interaction.options.getInteger('amount')
   if (!amount || isNaN(amount)) return interaction.reply('Please enter a valid amount to transfer') 
   if(authordata.amount < amount) return interaction.reply('Looks like you don\'t have that much money') 
   if(interaction.user.id==member.id) return interaction.reply("You **can't** send money to yourself :D")
       await client.eco.transfer(interaction.user.id, member.id, amount) 
   let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-  return interaction.reply(`You have successfully transferred 💶**${amountformat}** to ** ${member.user.tag}**.`)
+  return interaction.reply(`You have successfully transferred 💶**${amountformat}** to ** ${member.username}**.`)
     }
 };
