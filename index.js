@@ -1,4 +1,4 @@
-const Discord = require("discord.js12");
+const Discord = require("discord.js-light");
 const discord = require("discord.js13");
 const client = new Discord.Client({
     intents: [
@@ -8,7 +8,9 @@ const client = new Discord.Client({
         Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
     ]
 });
-
+const config = process.env;
+client.config = config;
+const synchronizeSlashCommands = require('discord-sync-commands');
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 //const disbut = require("discord-buttons");
@@ -101,24 +103,28 @@ client.shop = {
 };
 
 const fs = require("fs");
-const slash = require("dsc-slash")
+client.commands = new Discord.Collection();
+fs.readdir("./commands-interactions/", (_err, files) => {
+    files.forEach((file) => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands-interactions/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, {
+            name: commandName,
+            ...props
+        });
+        console.log(`👌 Komut Yüklendi: ${commandName}`);
+    });
+    synchronizeSlashCommands(client, client.commands.map((c) => ({
+        name: c.name,
+        description: c.description,
+        options: c.options,
+        type: 'CHAT_INPUT'
+    })), {
+        debug: true
+    });
+});
 
-client.on("ready", async () => {
-    console.log("Ready!")
-    const int = new slash.Client(client, client.user.id)
-    console.log(int)
-    const command = {
-        name: "ping",
-        description: "Pong!"
-    }
-    const cmd = await int.postCommand(command) // Guild ID is optional
-    console.log(cmd)
-    client.ws.on("INTERACTION_CREATE", async interaction => {
-        const inter = await int.parseCommand(interaction)
-        if(inter.name == "ping") return inter.reply("Pong!", { ephermal: true }) // You can leave the ephermal out if you don't want it.
-    })
-})
-client.l
 client.config = require("./botConfig");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 /*dbl.webhook.on('ready', hook => {
