@@ -27,6 +27,7 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.commands = new Discord.Collection();
+client2.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
   "common.case": {
@@ -111,9 +112,9 @@ client.shop = {
 
 const fs = require("fs");
 const config = process.env;
-client.config = config;
+client2.config = config;
 const synchronizeSlashCommands = require('discord-sync-commands');
-client.commands = new Discord.Collection();
+client2.commands = new Discord.Collection();
 fs.readdir("./commands-interactions/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
@@ -125,7 +126,7 @@ fs.readdir("./commands-interactions/", (_err, files) => {
         });
         console.log(`👌 Komut Yüklendi: ${commandName}`);
     });
-    synchronizeSlashCommands(client, client.commands.map((c) => ({
+    synchronizeSlashCommands(client2, client2.commands.map((c) => ({
         name: c.name,
         description: c.description,
         options: c.options,
