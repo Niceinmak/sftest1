@@ -1,15 +1,6 @@
 const Discord = require("discord.js12");
 const discord = require("discord.js13");
-const { Client, Intents } = require('discord.js12');
 const client = new Discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
-    ]
-});
-const client2 = new discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -27,7 +18,6 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.commands = new Discord.Collection();
-client2.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
   "common.case": {
