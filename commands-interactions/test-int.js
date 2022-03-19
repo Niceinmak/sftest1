@@ -1,7 +1,7 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 
 module.exports = {
-    description: 'Yardım Menüsü',
+    description: 'Test',
     run: async (client, interaction) => {
         const embed = new MessageEmbed()
         .setTitle('Test')
