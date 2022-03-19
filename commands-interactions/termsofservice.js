@@ -1,7 +1,7 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 
 module.exports = {
-    description: "EcoVerse's terms of use",
+    description: 'EcoVerse Terms Of Service',
     run: async (client, interaction) => {
         const embed = new MessageEmbed()
         .setTitle('Test')
