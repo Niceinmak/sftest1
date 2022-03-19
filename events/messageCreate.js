@@ -1,7 +1,7 @@
 module.exports = async (client, message) => {
     if (!message.guild || message.author.bot) return;
-    if (message.channel.id === client.config.countChannel) require("../counter")(message, client);
-    client.prefix = client.db.fetch(`prefix_${message.guild.id}`) ? client.db.fetch(`prefix_${message.guild.id}`) : client.config.prefix;
+    if (message.channel.id === client.cfg.countChannel) require("../counter")(message, client);
+    client.prefix = client.db.fetch(`prefix_${message.guild.id}`) ? client.db.fetch(`prefix_${message.guild.id}`) : client.cfg.prefix;
   console.log(message.content, client.db.fetch(`prefix_${message.guild.id}`))
     if (!message.content.startsWith(client.prefix)) return;
   console.log(message.content)

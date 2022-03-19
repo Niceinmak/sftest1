@@ -46,7 +46,7 @@ module.exports = {
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
   let joined=moment.utc(user.joinedAt).format('DD/MM/YY')
   let admin=``
-  if (!client.config.admins.includes(user.id)) admin=`No`
+  if (!client.cfg.admins.includes(user.id)) admin=`No`
   else admin=`Yes`
   let itemsname=``
    const x = client.db.get(`items_${user.id}`);
@@ -75,19 +75,9 @@ const Embed1 = new MessageEmbed()
 	.setTitle(user.username)
 	.setDescription(`**Discord Tag: ${user.tag}\nNow Total Cash: ${allBalanceformat}💶\nJoined Server: ${joined}**`)
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
-	.addFields(
-    { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
-    { name: '**Bank**', value: `**User: ${user.username}\nMoney: ${bankBalanceformat}🏦\nPosition: ${bankBalance.position}**` },
-    { name: '**EcoCoin**', value: `**User: ${user.username}\nMoney: ${ecoBalanceformat}🌿\nPosition: ${ecoBalance.position}**` },
-		{ name: '**Items**', value: `${itemsname}` },
-		{ name: '\u200B', value: '\u200B' },
-		{ name: 'User ID', value: user.id, inline: true },
-    { name: 'Created Account', value: created, inline: true },
-    { name: 'Admin?', value: admin, inline: true },
-	)
 
 interaction.reply({
-           embeds:[Embed1],
+           embed:[Embed1],
        })
   });
        
