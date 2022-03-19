@@ -1,12 +1,17 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 const anyLength = require('any-length');
+let ms = require('ms')
+let db = require('quick.db');
 module.exports = {
     description: 'Look Your Zoo!',
     run: async (client, interaction) => {
- let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
-    if (playtime.onCooldown) return interaction.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`)
-    let data2= client.eco.removeMoney(interaction.user.id, parseInt(timecooldown));
+      const timeout = 5000;
+  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.reply(`**Wait ${time} to message again**`)
+	}
+  db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
   let userBalance = client.eco.fetchMoney(`${interaction.user.id}12`);
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let user =interaction.user;
