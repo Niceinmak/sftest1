@@ -1,4 +1,4 @@
-const Discord = require("discord.js13");
+const Discord = require("discord.js12");
 const { Client, Intents } = require('discord.js12');
 const client = new Discord.Client({
     intents: [
@@ -100,6 +100,21 @@ client.shop = {
     cost: 3
   },
 };
+const slash = require("dsc-slash")
+client.on("ready", async () => {
+    console.log("Ready!")
+    const int = new slash.Client(client, client.user.id)
+    const command = {
+        name: "ping",
+        description: "Pong!"
+    }
+    const cmd = await int.postCommand(command) // Guild ID is optional
+    console.log(cmd)
+    client.ws.on("INTERACTION_CREATE", async interaction => {
+        const inter = await int.parseCommand(interaction)
+        if(inter.name == "ping") return inter.reply("Pong!", { ephermal: true }) // You can leave the ephermal out if you don't want it.
+    })
+})
 const fs = require("fs");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 /*dbl.webhook.on('ready', hook => {
