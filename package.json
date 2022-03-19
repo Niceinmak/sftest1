@@ -24,6 +24,7 @@
     "discord-buttons": "^4.0.0-deprecated",
     "discord-slash-commands-v12": "^7.9.14",
     "discord.js": "^12.5.3",
+    "dsc-slash": "^2.0.3",
     "figlet": "^1.5.2",
     "moment": "^2.29.1",
     "ms": "^2.1.3",

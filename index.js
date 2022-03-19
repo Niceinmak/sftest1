@@ -92,24 +92,6 @@ client.shop = {
   },
 };
 const fs = require("fs");
-client.commands = new Discord.Collection();
-const slash = require('discord-slash-commands-v12');
-slash(client);
-client.on('ready', () => {
-	const ping = {
-		name: 'ping',
-		description: 'pong!'
-	};
-  console.log(client.commands)
-	//client.commands.set(ping);
-  console.log(ping)
-});
-client.on('commandInteraction', data => {
-  console.log(data)
-	if (data.commandName === 'ping') {
-		data.reply.send('pong!');
-	};
-});
 /*const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
@@ -160,18 +142,19 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
-/*client.commands = new Discord.Collection();
- client.on('ready', () => {
-	const ping = {
-		name: 'ping',
-		description: 'pong!'
-	};
-	client.commands.create(ping); //グローバルコマンド
-});
-
-client.on('commandInteraction', data => {
-	if (data.commandName === 'ping') {
-		data.reply.send('pong!');
-	};
-});*/
+const slash = require("dsc-slash")
+client.on("ready", async () => {
+    console.log("Ready!")
+    const int = new slash.Client(client, client.user.id)
+    const command = {
+        name: "ping",
+        description: "Pong!"
+    }
+    const cmd = await int.postCommand(command, "someGuildID") // Guild ID is optional
+    console.log(cmd)
+    client.ws.on("INTERACTION_CREATE", async interaction => {
+        const inter = await int.parseCommand(interaction)
+        if(inter.name == "ping") return inter.reply("Pong!", { ephermal: true }) // You can leave the ephermal out if you don't want it.
+    })
+})
 client.login(process.env.TOKEN);
