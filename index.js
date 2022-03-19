@@ -101,7 +101,7 @@ client.on('ready', () => {
 		description: 'pong!'
 	};
   console.log(client.commands)
-	client.commands.set(ping);
+	//client.commands.set(ping);
   console.log(ping)
 });
 client.on('commandInteraction', data => {
