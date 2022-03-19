@@ -35,7 +35,8 @@ module.exports = {
     userid = args_user.id;
     user = args_user;
   } 
-  let userguild = interaction.guild.members.fetch()
+     // console.log(interaction.user.guild)
+  //let userguild = interaction.guild.members.fetch()
   let userBalance = client.eco.fetchMoney(user.id);
   let bankBalance = client.eco.fetchMoney(`${user.id}10`);
   let ecoBalance = client.eco.fetchMoney(`${user.id}11`);
@@ -44,9 +45,9 @@ module.exports = {
   let ecoBalanceformat=String(ecoBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let items=0
   let created=moment(new Date(user.createdTimestamp)).format("DD/MM/YY")
-  let joined=moment.utc(userguild.joinedAt).format('DD/MM/YY')
+  let joined=moment.utc(user.joinedAt).format('DD/MM/YY')
   let admin=``
-  if (!client.config.admins.includes(user.id)) admin=`No`
+  if (client.config.admins.includes(user.id)=="false") admin=`No`
   else admin=`Yes`
   let itemsname=``
    const x = client.db.get(`items_${user.id}`);
