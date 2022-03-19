@@ -9,6 +9,23 @@ const client = new Discord.Client({
     ]
 });
 
+client.commands = new Discord.Collection();
+const slash = require('discord-slash-commands-v12');
+slash(client);
+client.on('ready', () => {
+	const ping = {
+		name: 'ping',
+		description: 'pong!'
+	};
+  console.log(client.commands)
+	client.commands.create(ping); //グローバルコマンド-
+});
+
+client.on('commandInteraction', data => {
+	if (data.commandName === 'ping') {
+		data.reply.send('pong!');
+	};
+}); //ContextMenuも含まれます(メッセージコマンドとユーザーコマンドのことです。) 
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 //const disbut = require("discord-buttons");
@@ -149,21 +166,4 @@ fs.readdir("./commands/", (err, files) => {
     });
   });
 });
-client.commands = new Discord.Collection();
-const slash = require('discord-slash-commands-v12');
-slash(client);
-client.on('ready', () => {
-	const ping = {
-		name: 'ping',
-		description: 'pong!'
-	};
-  console.log(client.commands)
-	client.commands.create(ping); //グローバルコマンド
-});
-
-client.on('commandInteraction', data => {
-	if (data.commandName === 'ping') {
-		data.reply.send('pong!');
-	};
-}); //ContextMenuも含まれます(メッセージコマンドとユーザーコマンドのことです。) 
 client.login(process.env.TOKEN);
