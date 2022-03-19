@@ -34,10 +34,8 @@ module.exports = {
   {
     userid = args_user.id;
     user = args_user;
-  }
-      
-        let userguild = interaction.guild.member(user)
-  
+  } 
+  let userguild = interaction.guild.members.fetch()
   let userBalance = client.eco.fetchMoney(user.id);
   let bankBalance = client.eco.fetchMoney(`${user.id}10`);
   let ecoBalance = client.eco.fetchMoney(`${user.id}11`);
