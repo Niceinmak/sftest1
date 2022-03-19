@@ -1,6 +1,15 @@
 const Discord = require("discord.js12");
+const discord = require("discord.js13");
 const { Client, Intents } = require('discord.js12');
 const client = new Discord.Client({
+    intents: [
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+    ]
+});
+const client2 = new discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -17,7 +26,6 @@ const DBL = require('dblapi.js');
 const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
-client.config = require("./botConfig");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
@@ -100,22 +108,33 @@ client.shop = {
     cost: 3
   },
 };
-const slash = require("dsc-slash")
-client.on("ready", async () => {
-    console.log("Ready!")
-    const int = new slash.Client(client, client.user.id)
-    const command = {
-        name: "ping",
-        description: "Pong!"
-    }
-    const cmd = await int.postCommand(command) // Guild ID is optional
-    console.log(cmd)
-    client.ws.on("INTERACTION_CREATE", async interaction => {
-        const inter = await int.parseCommand(interaction)
-        if(inter.name == "ping") return inter.reply("Pong!", { ephermal: true }) // You can leave the ephermal out if you don't want it.
-    })
-})
+
 const fs = require("fs");
+const config = process.env;
+client.config = config;
+const synchronizeSlashCommands = require('discord-sync-commands');
+client.commands = new Discord.Collection();
+fs.readdir("./commands-interactions/", (_err, files) => {
+    files.forEach((file) => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands-interactions/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, {
+            name: commandName,
+            ...props
+        });
+        console.log(`👌 Komut Yüklendi: ${commandName}`);
+    });
+    synchronizeSlashCommands(client, client.commands.map((c) => ({
+        name: c.name,
+        description: c.description,
+        options: c.options,
+        type: 'CHAT_INPUT'
+    })), {
+        debug: true
+    });
+});
+client.config = require("./botConfig");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 /*dbl.webhook.on('ready', hook => {
   //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);

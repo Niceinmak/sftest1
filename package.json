@@ -23,6 +23,7 @@
     "dblapi.js": "^2.4.1",
     "discord-buttons": "^4.0.0-deprecated",
     "discord-slash-commands-v12": "^3.1.8",
+    "discord-sync-commands": "^0.3.0",
     "discord.js": "^12.5.3",
     "discord.js12": "npm:discord.js@^12.5.3",
     "discord.js13": "npm:discord.js@^13.6.0",
