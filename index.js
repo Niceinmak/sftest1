@@ -111,30 +111,24 @@ client.shop = {
 };
 
 const fs = require("fs");
-const config = process.env;
-client2.config = config;
-const synchronizeSlashCommands = require('discord-sync-commands');
-client2.commands = new Discord.Collection();
-fs.readdir("./commands-interactions/", (_err, files) => {
-    files.forEach((file) => {
-        if (!file.endsWith(".js")) return;
-        let props = require(`./commands-interactions/${file}`);
-        let commandName = file.split(".")[0];
-        client.commands.set(commandName, {
-            name: commandName,
-            ...props
-        });
-        console.log(`👌 Komut Yüklendi: ${commandName}`);
-    });
-    synchronizeSlashCommands(client2, client2.commands.map((c) => ({
-        name: c.name,
-        description: c.description,
-        options: c.options,
-        type: 'CHAT_INPUT'
-    })), {
-        debug: true
-    });
-});
+const slash = require("dsc-slash")
+
+client.on("ready", async () => {
+    console.log("Ready!")
+    const int = new slash.Client(client, client.user.id)
+    console.log(int)
+    const command = {
+        name: "ping",
+        description: "Pong!"
+    }
+    const cmd = await int.postCommand(command) // Guild ID is optional
+    console.log(cmd)
+    client.ws.on("INTERACTION_CREATE", async interaction => {
+        const inter = await int.parseCommand(interaction)
+        if(inter.name == "ping") return inter.reply("Pong!", { ephermal: true }) // You can leave the ephermal out if you don't want it.
+    })
+})
+client.l
 client.config = require("./botConfig");
 const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 /*dbl.webhook.on('ready', hook => {
