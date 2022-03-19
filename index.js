@@ -100,8 +100,9 @@ client.on('ready', () => {
 		name: 'ping',
 		description: 'pong!'
 	};
-  console.log(client.commands.create)
-	client.commands.create(ping); //グローバルコマンド
+  console.log(client.commands)
+	client.commands.set(ping);
+  console.log(client.commands)
 });
 
 client.on('commandInteraction', data => {
