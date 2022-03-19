@@ -92,6 +92,7 @@ client.shop = {
   },
 };
 const fs = require("fs");
+client.commands = new Discord.Collection();
 const slash = require('discord-slash-commands-v12');
 slash(client);
 client.on('ready', () => {
@@ -99,6 +100,7 @@ client.on('ready', () => {
 		name: 'ping',
 		description: 'pong!'
 	};
+  console.log(client.commands.create)
 	client.commands.create(ping); //グローバルコマンド
 });
 
