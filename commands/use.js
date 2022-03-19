@@ -48,7 +48,7 @@ exports.execute = async (client, message, args) => {
     }
   if(agr1=="rare.case")
     {
-        randomcash = Math.floor(Math.random() * 2000000);
+        randomcash = Math.floor(Math.random() * 200000);
   let sell = client.eco.addMoney(message.author.id, randomcash*agr2);
   totalcash+=randomcash*agr2
      totalcash2+=` ${agr1},`
@@ -71,7 +71,7 @@ exports.execute = async (client, message, args) => {
     }
   if(agr3=="rare.case")
     {
-        randomcash = Math.floor(Math.random() * 2000000);
+        randomcash = Math.floor(Math.random() * 200000);
   let sell = client.eco.addMoney(message.author.id, randomcash*agr4);
   totalcash+=randomcash*agr4
     totalcash2+=` ${agr3},`
@@ -95,7 +95,7 @@ exports.execute = async (client, message, args) => {
     }
   if(agr5=="rare.case")
     {
-        randomcash = Math.floor(Math.random() * 2000000);
+        randomcash = Math.floor(Math.random() * 200000);
   let sell = client.eco.addMoney(message.author.id, randomcash*agr6);
   totalcash+=randomcash*agr6
       totalcash2+=` ${agr5},`

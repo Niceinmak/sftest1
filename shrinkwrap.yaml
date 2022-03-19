@@ -4,10 +4,8 @@ dependencies:
   btc-value: 4.0.0
   dblapi.js: 2.4.1
   discord-buttons: 4.0.0-deprecated
-  discord-slash-commands-v12: 3.1.27
+  discord-slash-commands-v12: 7.9.14
   discord.js: 12.5.3
-  discord.js12: /discord.js/12.5.3
-  discord.js13: /discord.js/13.6.0
   figlet: 1.5.2
   moment: 2.29.1
   ms: 2.1.3
@@ -15,30 +13,10 @@ dependencies:
   quick.eco: 2.0.4
   something-random-on-discord: 3.4.4
 packages:
-  /@discordjs/builders/0.11.0:
-    dependencies:
-      '@sindresorhus/is': 4.6.0
-      discord-api-types: 0.26.1
-      ts-mixer: 6.0.1
-      tslib: 2.3.1
-      zod: 3.14.2
-    dev: false
-    engines:
-      node: '>=16.0.0'
-      npm: '>=7.0.0'
-    resolution:
-      integrity: sha512-ZTB8yJdJKrKlq44dpWkNUrAtEJEq0gqpb7ASdv4vmq6/mZal5kOv312hQ56I/vxwMre+VIkoHquNUAfnTbiYtg==
   /@discordjs/collection/0.1.6:
     dev: false
     resolution:
       integrity: sha512-utRNxnd9kSS2qhyivo9lMlt5qgAUasH2gb7BEOn6p0efFh24gjGomHzWKMAPn2hEReOPQZCJaRKoURwRotKucQ==
-  /@discordjs/collection/0.4.0:
-    dev: false
-    engines:
-      node: '>=16.0.0'
-      npm: '>=7.0.0'
-    resolution:
-      integrity: sha512-zmjq+l/rV35kE6zRrwe8BHqV78JvIh2ybJeZavBi5NySjWXqN3hmmAKg7kYMMXSeiWtSsMoZ/+MQi0DiQWy2lw==
   /@discordjs/form-data/3.0.1:
     dependencies:
       asynckit: 0.4.0
@@ -49,25 +27,12 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-ZfFsbgEXW71Rw/6EtBdrP5VxBJy4dthyC0tpQKGKmYFImlmmrykO14Za+BiIVduwjte0jXEBlhSKf0MWbFp9Eg==
-  /@sapphire/async-queue/1.3.0:
-    dev: false
-    engines:
-      node: '>=v14.0.0'
-      npm: '>=7.0.0'
-    resolution:
-      integrity: sha512-z+CDw5X4UgIEpZL8KM+ThVx1i8V60HBg0l/oFewTNbQQeRDJHdVxHyJykv+SF1H+Rc8EkMS81VTWo95jVYgO/g==
   /@sindresorhus/is/0.14.0:
     dev: false
     engines:
       node: '>=6'
     resolution:
       integrity: sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
-  /@sindresorhus/is/4.6.0:
-    dev: false
-    engines:
-      node: '>=10'
-    resolution:
-      integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==
   /@szmarczak/http-timer/1.1.2:
     dependencies:
       defer-to-connect: 1.1.3
@@ -83,23 +48,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jvj3jH8BY35AXKFXkap2cJRuFMOz1yBvBvCvNq90gfvplKWDYqGPQKt+nOhT/hdYc+XcKskY/c5OOWDX0xbg2Q==
-  /@types/node-fetch/2.6.1:
-    dependencies:
-      '@types/node': 17.0.21
-      form-data: 3.0.1
-    dev: false
-    resolution:
-      integrity: sha512-oMqjURCaxoSIsHSr1E47QHzbmzNR5rK8McHuNb11BOM9cHcIK3Avy0s/b2JlXHoQGTYS3NsvWzV1M0iK7l0wbA==
-  /@types/node/17.0.21:
-    dev: false
-    resolution:
-      integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
-  /@types/ws/8.5.3:
-    dependencies:
-      '@types/node': 17.0.21
-    dev: false
-    resolution:
-      integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==
   /abort-controller/3.0.0:
     dependencies:
       event-target-shim: 5.0.1
@@ -289,23 +237,17 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==
-  /discord-api-types/0.26.1:
-    dev: false
-    engines:
-      node: '>=12'
-    resolution:
-      integrity: sha512-T5PdMQ+Y1MEECYMV5wmyi9VEYPagEDEi4S0amgsszpWY0VB9JJ/hEvM6BgLhbdnKky4gfmZEXtEEtojN8ZKJQQ==
   /discord-buttons/4.0.0-deprecated:
     deprecated: 'New lib is coming! Join our support server for more help: https://discord.gg/KUS5pjyA4J'
     dev: false
     resolution:
       integrity: sha512-9pH8YHRumOz9+VJr/MNJEdYDSMJiL0tCJ+wKPtjQQusohJHL1KTTxRtT1PH8snXYQKoevZ1c0YJ3ZWW4uTsIMA==
-  /discord-slash-commands-v12/3.1.27:
+  /discord-slash-commands-v12/7.9.14:
     dependencies:
       discord.js: 12.5.3
     dev: false
     resolution:
-      integrity: sha512-hWyqMaSHIFKM5pb0EfycdHTyaNBU6wct/iS14yrq4K/z679xPFPKeQUG4xGMGgTI9phgLQ/c5xlBktFvghaTgw==
+      integrity: sha512-C1G7+59+KqeEtdAvsqLBwseSZK89P6nRWSaEvvXCgOXykMMATRZC4jioykECOCOQbqNHQQp7TsRLdRS+KG9CyA==
   /discord.js/12.5.3:
     dependencies:
       '@discordjs/collection': 0.1.6
@@ -322,23 +264,6 @@ packages:
       node: '>=12.0.0'
     resolution:
       integrity: sha512-D3nkOa/pCkNyn6jLZnAiJApw2N9XrIsXUAdThf01i7yrEuqUmDGc7/CexVWwEcgbQR97XQ+mcnqJpmJ/92B4Aw==
-  /discord.js/13.6.0:
-    dependencies:
-      '@discordjs/builders': 0.11.0
-      '@discordjs/collection': 0.4.0
-      '@sapphire/async-queue': 1.3.0
-      '@types/node-fetch': 2.6.1
-      '@types/ws': 8.5.3
-      discord-api-types: 0.26.1
-      form-data: 4.0.0
-      node-fetch: 2.6.7
-      ws: 8.5.0
-    dev: false
-    engines:
-      node: '>=16.6.0'
-      npm: '>=7.0.0'
-    resolution:
-      integrity: sha512-tXNR8zgsEPxPBvGk3AQjJ9ljIIC6/LOPjzKwpwz8Y1Q2X66Vi3ZqFgRHYwnHKC0jC0F+l4LzxlhmOJsBZDNg9g==
   /duplexer3/0.1.4:
     dev: false
     resolution:
@@ -381,26 +306,6 @@ packages:
       node: '>=4.0'
     resolution:
       integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
-  /form-data/3.0.1:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      mime-types: 2.1.35
-    dev: false
-    engines:
-      node: '>= 6'
-    resolution:
-      integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
-  /form-data/4.0.0:
-    dependencies:
-      asynckit: 0.4.0
-      combined-stream: 1.0.8
-      mime-types: 2.1.35
-    dev: false
-    engines:
-      node: '>= 6'
-    resolution:
-      integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   /fs-constants/1.0.0:
     dev: false
     resolution:
@@ -913,14 +818,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
-  /ts-mixer/6.0.1:
-    dev: false
-    resolution:
-      integrity: sha512-hvE+ZYXuINrx6Ei6D6hz+PTim0Uf++dYbK9FFifLNwQj+RwKquhQpn868yZsCtJYiclZF1u8l6WZxxKi+vv7Rg==
-  /tslib/2.3.1:
-    dev: false
-    resolution:
-      integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
   /tunnel-agent/0.6.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -979,23 +876,10 @@ packages:
       utf-8-validate: ^5.0.2
     resolution:
       integrity: sha512-KMvVuFzpKBuiIXW3E4u3mySRO2/mCHSyZDJQM5NQ9Q9KHWHWh0NHgfbRMLLrceUK5qAL4ytALJbpRMjixFZh8A==
-  /ws/8.5.0:
-    dev: false
-    engines:
-      node: '>=10.0.0'
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: ^5.0.2
-    resolution:
-      integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
   /yallist/4.0.0:
     dev: false
     resolution:
       integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
-  /zod/3.14.2:
-    dev: false
-    resolution:
-      integrity: sha512-iF+wrtzz7fQfkmn60PG6XFxaWBhYYKzp2i+nv24WbLUWb2JjymdkHlzBwP0erpc78WotwP5g9AAu7Sk8GWVVNw==
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
@@ -1005,10 +889,8 @@ specifiers:
   btc-value: ^4.0.0
   dblapi.js: ^2.4.1
   discord-buttons: ^4.0.0-deprecated
-  discord-slash-commands-v12: ^3.1.8
+  discord-slash-commands-v12: ^7.9.14
   discord.js: ^12.5.3
-  discord.js12: 'npm:discord.js@^12.5.3'
-  discord.js13: 'npm:discord.js@^13.6.0'
   figlet: ^1.5.2
   moment: ^2.29.1
   ms: ^2.1.3
