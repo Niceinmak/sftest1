@@ -152,30 +152,5 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-const package = require('@mycool/discordjs-slashcommands');
-const builder = new package.CommandBuilder(client);
 
-client.once('ready', () => {
-    console.log('The bot is ready')
-    builder.build([
-        {
-            global: true,
-            command: {
-                type: 'CHAT_INPUT',
-                name: 'test',
-                description: 'testing the package.',
-            },
-            commandResponse: {
-                async CommandExec(interaction) {
-                    interaction.reply({
-                        content: 'test',
-                        ephemeral: true
-                    })
-                }
-            },
-        }
-    ]).then(() => {
-        builder.run();
-    });
-})
 client.login(process.env.TOKEN);
