@@ -20,7 +20,7 @@ exports.execute = async (client, message, args) => {
         .setAuthor("Commands")
         .setTitle("EcoVerse Bot Commands")
         .setURL("https://discord.com/oauth2/authorize?client_id=924311092468015116&scope=bot&permissions=0")
-        .setDescription(`Total Commands: ${client.commands.size}`)
+        .setDescription(`Total Commands: ${client.cmds.size}`)
         .setColor("BLURPLE")
         .setTimestamp()
         .setThumbnail(client.user.displayAvatarURL)
@@ -99,7 +99,7 @@ exports.execute = async (client, message, args) => {
     }); */
   if(amount3==null)
     {
-  client.commands.forEach(cmd => {
+  client.cmds.forEach(cmd => {
      //   embed.addField(`\`${client.prefix}${cmd.help.usage}\``,true);
     let count=0
     for (var i = 0; i < utilitycommands.length; i++) {

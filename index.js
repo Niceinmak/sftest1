@@ -9,7 +9,7 @@ const Eco = require("quick.eco");
 client.eco = new Eco.Manager(); // quick.eco
 client.db = Eco.db; // quick.db
 client.config = require("./botConfig");
-client.commands = new Discord.Collection();
+client.cmds = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.shop = {
   "common.case": {
@@ -92,7 +92,22 @@ client.shop = {
   },
 };
 const fs = require("fs");
-const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
+const slash = require('discord-slash-commands-v12');
+slash(client);
+client.on('ready', () => {
+	const ping = {
+		name: 'ping',
+		description: 'pong!'
+	};
+	client.commands.create(ping); //グローバルコマンド
+});
+
+client.on('commandInteraction', data => {
+	if (data.commandName === 'ping') {
+		data.reply.send('pong!');
+	};
+});
+/*const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
   //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
@@ -120,7 +135,7 @@ dbl.webhook.on('vote', vote => {
   .setLabel(`Go to website`) 
   .setDisabled(false);
   channel.send({ buttons: [buttonurl, website], embed: embed })
-});
+});*/
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
@@ -136,7 +151,7 @@ fs.readdir("./commands/", (err, files) => {
   files.forEach((f) => {
     if (!f.endsWith(".js")) return;
     let command = require(`./commands/${f}`);
-    client.commands.set(command.help.name, command);
+    client.cmds.set(command.help.name, command);
     command.help.aliases.forEach((alias) => {
       client.aliases.set(alias, command.help.name);
     });
