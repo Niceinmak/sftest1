@@ -102,10 +102,10 @@ client.on('ready', () => {
 	};
   console.log(client.commands)
 	client.commands.set(ping);
-  console.log(client.commands)
+  console.log(ping)
 });
-
 client.on('commandInteraction', data => {
+  console.log(data)
 	if (data.commandName === 'ping') {
 		data.reply.send('pong!');
 	};
