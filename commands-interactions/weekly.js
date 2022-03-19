@@ -8,15 +8,15 @@ module.exports = {
       
     if (addMoney.onCooldown) 
       {
-        return interaction.reply({
-           content:[`You have already claimed your **weekly credit**. Come back after **${addMoney.time.days}** days, **${addMoney.time.hours}**hours, **${addMoney.time.minutes}** minutes & **${addMoney.time.seconds}** seconds to claim it again.`],
-       })
+        return interaction.reply(
+          `You have already claimed your **weekly credit**. Come back after **${addMoney.time.days}** days, **${addMoney.time.hours}**hours, **${addMoney.time.minutes}** minutes & **${addMoney.time.seconds}** seconds to claim it again.`,
+       )
       }
     else 
       {
-       interaction.reply({
-          content:[`You have claimed **${addMoney.amount}** 💶 as your weekly credit & now you have **${addMoney.after}** 💶.`],
-       })
+       interaction.reply(
+          `You have claimed **${addMoney.amount}** 💶 as your weekly credit & now you have **${addMoney.after}** 💶.`,
+       )
       }
       
     }
