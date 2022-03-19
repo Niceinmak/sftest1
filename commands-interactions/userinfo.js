@@ -75,10 +75,23 @@ const Embed1 = new MessageEmbed()
 	.setTitle(user.username)
 	.setDescription(`**Discord Tag: ${user.tag}\nNow Total Cash: ${allBalanceformat}💶\nJoined Server: ${joined}**`)
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
-
-interaction.reply({
-           embed:[Embed1],
-       })
+	.addFields(
+    { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
+    { name: '**Bank**', value: `**User: ${user.username}\nMoney: ${bankBalanceformat}🏦\nPosition: ${bankBalance.position}**` },
+    { name: '**EcoCoin**', value: `**User: ${user.username}\nMoney: ${ecoBalanceformat}🌿\nPosition: ${ecoBalance.position}**` },
+		{ name: '**Items**', value: `${itemsname}` },
+		{ name: '\u200B', value: '\u200B' },
+		{ name: 'User ID', value: user.id, inline: true },
+    { name: 'Created Account', value: created, inline: true },
+    { name: 'Admin?', value: admin, inline: true },
+	)
+const embed = new MessageEmbed()
+        .setTitle('Test')
+        .setDescription(`Test Succesfuly`)
+        .setThumbnail(client.user.avatarURL());
+        const buton = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
+        const row = new MessageActionRow().addComponents(buton)
+       return interaction.reply("sa")
   });
        
     }
