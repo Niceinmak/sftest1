@@ -7,7 +7,7 @@ module.exports = {
         .setTitle('Test')
         .setDescription(`Test Succesfuly`)
         .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('Gweep Creative Youtube').setStyle('LINK').setURL('http://gweepcreative.com');
+        const buton = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
         const row = new MessageActionRow().addComponents(buton)
        interaction.reply({
            embeds:[embed],

@@ -13,13 +13,14 @@ module.exports = {
     run: async (client, interaction) => {
       let userid=""
       let args_user=interaction.options.getUser('user')
+      console.log(interaction)
         if(!args_user)
   {
-    userid = args_user.id;
+    userid = interaction.user.id;
   }
   else
   {
-    userid = interaction.member.user.id;
+    userid = args_user.id;
   }      
        console.log(userid, interaction.member.user.id)
     let userBalance = client.eco.fetchMoney(userid);
