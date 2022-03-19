@@ -7,11 +7,20 @@ module.exports = {
         .setTitle('Test')
         .setDescription(`Test Succesfuly`)
         .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('EcoVerse Website').setStyle('PRIMARY').setURL('http://ecoverse.ml');
+        const buton = new MessageButton().setCustomId('primary').setLabel('I Agree!').setStyle('PRIMARY').setDisabled(false);
         const row = new MessageActionRow().addComponents(buton)
        interaction.reply({
            embeds:[embed],
            components:[row],
        })
+   const filter = i => i.customId === 'primary' && i.user.id === interaction.user.id;
+
+const collector = interaction.channel.createMessageComponentCollector({time: 15000 });
+
+collector.on('collect', async i => {
+	if (i.customId === 'primary') {
+		i.deferUpdate();
+	}
+});
     }
 };
