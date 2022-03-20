@@ -4,7 +4,7 @@ module.exports = {
     description: 'Add animals to your team',
       options: [
        {
-            name: 'Process',
+            name: 'process',
             description: 'Select a process',
             type: 'STRING',
             required: true,
@@ -20,7 +20,7 @@ module.exports = {
 ]
         },
         {
-            name: 'Select animal',
+            name: 'select_animal',
             description: 'Select animal',
             type: 'STRING',
             required: true,
@@ -119,8 +119,8 @@ module.exports = {
        let user = interaction.user;
   let userBalance = client.eco.fetchMoney(interaction.user.id);
   let itemname=" "
-  let event = args[0];
-  let item = args[1];
+  let event = interaction.options.get("Process").value;
+  let item = interaction.options.get("Select animal").value;
   let commonanimals = [
         "<:god:948265037313757184>",
         "<:cat1:948265025850724372>",
@@ -152,8 +152,8 @@ module.exports = {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  let x = client.db.get(`animals_${message.author.id}`);
-  let x1 = client.db.get(`teamanimals_${message.author.id}`);
+  let x = client.db.get(`animals_${interaction.user.id}`);
+  let x1 = client.db.get(`teamanimals_${interaction.user.id}`);
   if(event=="add")
     {
       if(item=="god-1" || item=="god1" || item=="god") item="<:god:948265037313757184>"
@@ -216,7 +216,7 @@ module.exports = {
     }
      if(word==false)
        {
-         return message.channel.send(`**${message.author.tag} | Animals not found**`);
+         return interaction.reply(`**${interaction.user.username} | Animals not found**`);
        }
       let tempcount=0
       let tempcount2=0
@@ -243,24 +243,24 @@ module.exports = {
         }
       if(tempcount==3)
         {
-          return message.channel.send(`**No more animals can be added to the team.**`)
+          return interaction.reply(`**No more animals can be added to the team.**`)
         }
       if(animal==false)
     {
-      return message.channel.send(`**${message.author.tag} | Animals not found**`);
+      return interaction.reply(`**${interaction.user.username} | Animals not found**`);
     }
       var argString = x.toString().substring(1).split(",");
 //  console.log(arrayToObject.slice(0).join(' '))
       let hasItem = client.shop[item];
-  if (!hasItem || hasItem == undefined) return message.reply("That item doesnt exists lol");
+  if (!hasItem || hasItem == undefined) return interaction.reply("That item doesnt exists lol");
   let itemStruct = {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
   x.splice(count,1);
-  client.db.set(`animals_${message.author.id}`, x)
-  client.db.push(`teamanimals_${message.author.id}`, itemStruct);
-  return message.channel.send("The animal has been added to the team!")
+  client.db.set(`animals_${interaction.user.id}`, x)
+  client.db.push(`teamanimals_${interaction.user.id}`, itemStruct);
+  return interaction.reply("The animal has been added to the team!")
     }
   else if(event=="remove")
     {
@@ -324,10 +324,10 @@ module.exports = {
     }
       if(word==false)
        {
-         return message.channel.send(`**${message.author.tag} | Animals not found**`);
+         return interaction.reply(`**${interaction.user.username} | Animals not found**`);
        }
        if (!x1) {
-    return message.channel.send(`${message.author.tag} | Animals not found`);
+    return interaction.reply(`${interaction.user.username} | Animals not found`);
   }
       let tempcount=0
       let tempcount2=0
@@ -346,31 +346,31 @@ module.exports = {
   }, {});
       if(animal==false || tempcount==0)
     {
-      return message.channel.send(`**${message.author.tag} | Animals not found**`);
+      return interaction.reply(`**${interaction.user.username} | Animals not found**`);
     }
             let hasItem = client.shop[item];
-  if (!hasItem || hasItem == undefined) return message.reply("That item doesnt exists lol");
+  if (!hasItem || hasItem == undefined) return interaction.reply("That item doesnt exists lol");
   let itemStruct = {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
       var argString = x1.toString().substring(1).split(",");
       x1.splice(count,1);
-  client.db.set(`teamanimals_${message.author.id}`, x1)
-  client.db.push(`animals_${message.author.id}`, itemStruct);
-      return message.channel.send(`**The animal has been removed to the team!**`);
+  client.db.set(`teamanimals_${interaction.user.id}`, x1)
+  client.db.push(`animals_${interaction.user.id}`, itemStruct);
+      return interaction.reply(`**The animal has been removed to the team!**`);
     }
       if (!x) {
     const embed = new MessageEmbed()
         .setTitle(`Team No Found`)
     .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
-  return message.channel.send(embed);
+  return interaction.reply({embeds:[embed]});
   }
     if (!x1) {
     const embed = new MessageEmbed()
         .setTitle(`Team No Found`)
     .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
-  return message.channel.send(embed);
+  return interaction.reply({embeds:[embed]});
   }
   let tempcount=0
   const arrayToObject = x1.reduce((itemsobj, x1) => {
@@ -382,7 +382,7 @@ module.exports = {
     const embed = new MessageEmbed()
         .setTitle(`Team No Found`)
     .setDescription(`**Team not found\nTo add animals to the team: \`q team add\`\nTo delete animal from team: \`q team remove\`**`)
-  return message.channel.send(embed);
+  return interaction.reply({embeds:[embed]});
   }
   let name=""
   const result = Object.keys(arrayToObject).map(k =>
@@ -432,6 +432,6 @@ module.exports = {
     }
     }
   
-  return message.channel.send(embed);
+  return interaction.reply({embeds:[embed]});
     }
 };
