@@ -164,17 +164,6 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-fs.readdir("./commands/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach((f) => {
-    if (!f.endsWith(".js")) return;
-    let command = require(`./commands/${f}`);
-    client.cmds.set(command.help.name, command);
-    command.help.aliases.forEach((alias) => {
-      client.aliases.set(alias, command.help.name);
-    });
-  });
-});
 /*client.commands = new Discord.Collection();
  client.on('ready', () => {
 	const ping = {

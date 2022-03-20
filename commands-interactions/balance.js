@@ -13,7 +13,7 @@ module.exports = {
     run: async (client, interaction) => {
       let userid=""
       let args_user=interaction.options.getUser('user')
-      console.log(interaction)
+//      console.log(interaction)
         if(!args_user)
   {
     userid = interaction.user.id;
@@ -22,7 +22,7 @@ module.exports = {
   {
     userid = args_user.id;
   }      
-       console.log(userid, interaction.member.user.id)
+   //    console.log(userid, interaction.member.user.id)
     let userBalance = client.eco.fetchMoney(userid);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     const embed = new MessageEmbed()
