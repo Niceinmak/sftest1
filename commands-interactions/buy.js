@@ -52,7 +52,7 @@ module.exports = {
     return interaction.reply(`**${interaction.user.username} | Your balance is insufficient. You need ${hasitemformat}💶 to buy this item.Your current money ${userbalanceformat}💶**`);
     }
   if(count<1) return interaction.reply(`**Remember, you cannot get less than 1 item.**`);
-   interaction.reply("The cases are transferred to your account...").then(msg => {
+   interaction.reply("**Cases are being transferred...**").then(msg => {
      setTimeout(function() {
        let buy = client.eco.removeMoney(interaction.user.id, hasItem.cost*count);
   let itemStruct = {

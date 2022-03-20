@@ -8,7 +8,7 @@ module.exports = {
     .setColor("RANDOM")
     .setThumbnail()
     .setTimestamp();
-  const x = client.db.get(`items_${interaction.user.username}`);
+  const x = client.db.get(`items_${interaction.user.id}`);
   if (!x) {
     return interaction.reply(`No Items Found To Display :c`);
   }
@@ -20,6 +20,6 @@ module.exports = {
     embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
 
-  return interaction.reply(embed);
+  return interaction.reply({embeds:[embed]});
     }
 };
