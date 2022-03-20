@@ -46,19 +46,21 @@ module.exports = {
       
              const embed = new MessageEmbed()
              .setTitle(`${user1.username},Played Slots With ${amount3}💶`, user1.displayAvatarURL())
-            .setFooter(`.`)
-            .addField("Played Slots",`[ ]  [ ]  [ ]`)
+            .addField("Played Slots.",`[ ]  [ ]  [ ]`)
+            .setDescription("**Game Playing.**")
             .setColor("#7289DA")
             .setTimestamp();
              interaction.reply({embeds:[embed]}).then(async msg => {
                 setTimeout(() => {
-  // embed.setAuthor(`as`)
-          embed.setFooter(`..`)
+                  embed.fields = [];
+          embed.addField("Played Slots..",`[ ]  [ ]  [ ]`)
+          embed.setDescription("**Game Playing..**")
           interaction.editReply({embeds:[embed]});
                    }, 500);
                 setTimeout(() => {
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`...`)
+         embed.fields = [];
+          embed.addField("Played Slots...",`[ ]  [ ]  [ ]`)
+          embed.setDescription("**Game Playing...**")
          interaction.editReply({embeds:[embed]});
               }, 1000);
             setTimeout(() => {
@@ -73,8 +75,7 @@ module.exports = {
               }
               
               embed.addField("Played Slots",`[${card1}]  [ ]  [ ]`)
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Number 1`)
+              .setDescription("**Number 1**")
           interaction.editReply({embeds:[embed]});
               }, 2000);
           setTimeout(() => {
@@ -90,8 +91,7 @@ module.exports = {
               }
               
               embed.addField("Played Slots",`[${card1}]  [${card2}]  [ ]`)
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Number 2`)
+            embed.setDescription("**Number 2**")
          return interaction.editReply({embeds:[embed]});
               }, 3000);
            setTimeout(() => {
@@ -107,25 +107,22 @@ module.exports = {
               }
               
               embed.addField("Played Slots",`[${card1}]  [${card2}]  [${card3}]`)
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Number 3`)
+             .setDescription("**Number 3**")
          return interaction.editReply({embeds:[embed]});
               }, 4000);
            setTimeout(() => {
               if(card1==card2 && card1==card3 && card2==card3)
                 {
+                  embed.setDescription("")
                  client.eco.addMoney(interaction.user.id, parseInt(amount3*3));
                   embed.addField("Game Finished",`**Congrulations,you win ${amount3*3}💶**`)
                 }
               else
               {
+                embed.setDescription("")
                 client.eco.removeMoney(interaction.user.id, parseInt(amount3));
                embed.addField("Game Finished",`**Sorry,you lost ${amount3}💶**`)
               }
-              
-              
-       //  embed.setAuthor(`sa`)
-          embed.setFooter(`Game Finished`)
          return interaction.editReply({embeds:[embed]});
               }, 4000);
         } );
