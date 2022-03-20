@@ -20,11 +20,12 @@ module.exports = {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.reply(`**Wait ${time} to message again**`)
 	}
+    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       const Embed = new MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle("User Info")
-	.setDescription(`**Loading**`)
+	.setDescription(`**Loading...**`)
    interaction.reply({
            embeds:[Embed],
        }).then(msg => {
@@ -47,6 +48,8 @@ module.exports = {
   let userBalance = client.eco.fetchMoney(user.id);
   let bankBalance = client.eco.fetchMoney(`${user.id}10`);
   let ecoBalance = client.eco.fetchMoney(`${user.id}11`);
+  let zooBalance = client.eco.fetchMoney(`${interaction.user.id}12`);
+  let zooBalanceformat=String(zooBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')                   
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let bankBalanceformat=String(bankBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let ecoBalanceformat=String(ecoBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
@@ -81,7 +84,7 @@ module.exports = {
 const Embed1 = new MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle(user.username)
-	.setDescription(`**Discord Tag: ${user.tag}\nNow Total Cash: ${allBalanceformat}💶\nJoined Server: ${joined}**`)
+	.setDescription(`**Discord Tag: ${user.tag}\nNow Total Cash: ${allBalanceformat}💶\nZoo Point: ${zooBalanceformat}\nJoined Server: ${joined}**`)
 	.setThumbnail(user.displayAvatarURL({ format: 'png' }))
 	.addFields(
     { name: '**Money**', value: `**User: ${user.username}\nMoney: ${userBalanceformat}💶\nPosition: ${userBalance.position}**` },
@@ -98,7 +101,7 @@ return interaction.editReply({
            embeds:[Embed1],
        })
   }); 
-                    }, 10000);
+                    }, 1000);
                 })
 
        
