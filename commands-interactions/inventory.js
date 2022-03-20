@@ -4,13 +4,13 @@ module.exports = {
     description: 'Look Your Inventory',
     run: async (client, interaction) => {
       const embed = new MessageEmbed()
-    .setAuthor(`Inventory of ${interaction.user.username}`, message.guild.iconURL)
+    .setTitle(`Inventory of ${interaction.user.username}`)
     .setColor("RANDOM")
     .setThumbnail()
     .setTimestamp();
-  const x = client.db.get(`items_${message.author.id}`);
+  const x = client.db.get(`items_${interaction.user.username}`);
   if (!x) {
-    return message.channel.send(`No Items Found To Display :c`);
+    return interaction.reply(`No Items Found To Display :c`);
   }
   const arrayToObject = x.reduce((itemsobj, x) => {
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
@@ -20,6 +20,6 @@ module.exports = {
     embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
 
-  return message.channel.send(embed);
+  return interaction.reply(embed);
     }
 };
