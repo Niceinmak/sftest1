@@ -8,9 +8,10 @@ module.exports = {
             description: 'Select animal',
             type: 'STRING',
             required: true,
-            choices:[]
+            choices:[{ name: "secim1", value: "secim1" }, { name: "secim2", value: "secim2" }]
         },
     ],
+  
     run: async (client, interaction) => {
         const embed = new MessageEmbed()
         .setTitle('Test')
