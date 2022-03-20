@@ -9,10 +9,10 @@ module.exports = {
     const embed = new MessageEmbed()
         .setTitle(`**🏦 BANK 🏦**`)
         .addField(`Bank Balance`, `**${userBalanceformat}**💶`)
-        .addField(`Usage`,`Deposit \`${client.prefix} deposit\` \nWithdraw \`${client.prefix} withdraw\``)
+        .addField(`Usage`,`Deposit \`/deposit\` \nWithdraw \`/withdraw\``)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
-    return interaction.reply({embeds:embed});
+    return interaction.reply({embeds:[embed]});
     }
 };
