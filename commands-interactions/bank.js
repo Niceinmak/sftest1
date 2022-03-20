@@ -1,8 +1,10 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 
-exports.execute = async (client, message, args) => {
-    let user = message.mentions.users.first() || message.author;
-    let userBalance = client.eco.fetchMoney(`${message.author.id}10`);
+module.exports = {
+    description: 'Look at the money in the bank.',
+    run: async (client, interaction) => {
+        let user = interaction.user
+    let userBalance = client.eco.fetchMoney(`${interaction.user.id}10`);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     const embed = new MessageEmbed()
         .setTitle(`**🏦 BANK 🏦**`)
@@ -11,11 +13,6 @@ exports.execute = async (client, message, args) => {
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
         .setTimestamp();
-    return message.channel.send(embed);
-}
-
-exports.help = {
-    name: "bank",
-    aliases: ["BANK"],
-    usage: `bank`
-}
+    return interaction.reply({embeds:embed});
+    }
+};
