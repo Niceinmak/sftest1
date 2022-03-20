@@ -89,10 +89,71 @@ module.exports = {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Animal Commands')
-			.setDescription(`**\`/Zoo\` [Check out your own zoo.]
+			.setDescription(`**Build your zoo.
+      
+      \`/Zoo\` [Check out your own zoo.]
       \`/Sell\` [Sell your animals and earn money.]
       \`/Team\` [Build your animal team.]
       \`/Hunt\` [Hunt animals.]**`);
+		interaction.update({ embeds: [embed], components: [row] });
+	}
+    if (interaction.values[0] === 'ecocoin') {
+          const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('EcoCoin Commands')
+			.setDescription(`**Do you want to be rich?
+      
+      \`/EcoCoin\` [See the price of EcoCoin.]
+      \`/BuyEco\` [Buy EcoCoin.]
+      \`/SellEco\` [Sell EcoCoin.]
+      \`/TransferEco\` [Send EcoCoin.]
+      \`/EcoInv\` [How many EcoCoins do you have? Do you want to have a look?]**`);
+		interaction.update({ embeds: [embed], components: [row] });
+	}
+        if (interaction.values[0] === 'economy') {
+          const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Economy Commands')
+			.setDescription(`**This place is important!
+      
+      \`/Balance\` [See your money.]
+      \`/Buy\` [Buy case.]
+      \`/Help\` [Look commands.]
+      \`/Inventory\` [Look at their crates.]
+      \`/Shop\` [Look at the market.]
+      \`/Transfer\` [Transfer your money.]
+      \`/Use\` [Use your case and earn money.]
+      \`/Vote\` [Vote for EcoVerse and earn money.]**`);
+		interaction.update({ embeds: [embed], components: [row] });
+	}
+        if (interaction.values[0] === 'admins') {
+          const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Admins Commands')
+			.setDescription(`**Entrance is forbidden.
+      
+      \`/Addcase\` [Adds a case to the user.]
+      \`/Addmoney\` [Add a money to the user.]
+      \`/Botinfo\` [Show bot information.]
+      \`/Removemoney\` [Removes money from the user.]
+      \`/Setmoney\` [Set money from the user.]
+      \`/Test\` [Test EcoVerse bot.]**`);
+		interaction.update({ embeds: [embed], components: [row] });
+	}
+        if (interaction.values[0] === 'economy') {
+          const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Economy Commands')
+			.setDescription(`**I think this part is useless ^^
+      
+      \`/Ping\` [Pong.]
+      \`/SupportServer\` [Checkout EcoVerse support server.]
+      \`/TermsOfService\` [EcoVerse Terms Of Service's.]
+      \`/Uptime\` [How long has the bot been open?]
+      \`/UserInfo\` [Show user information.]
+      \`/Website\` [Transfer your money.]
+      \`/Use\` [Use your case and earn money.]
+      \`/Vote\` [Vote for EcoVerse and earn money.]**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
 });
