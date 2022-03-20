@@ -55,7 +55,6 @@ module.exports = {
 		await interaction.reply({ embeds: [embed], components: [row] });
       client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
-	console.log(interaction.values[0]);
         if (interaction.values[0] === 'games') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')

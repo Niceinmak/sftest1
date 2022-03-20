@@ -1,8 +1,10 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 
-exports.execute = async (client, message, args) => {
-    let leaderboard = client.eco.leaderboard({ limit: 15, raw: false });
-    if (!leaderboard || leaderboard.length < 1) return message.channel.send("❌ | Empty Leaderboard!");
+module.exports = {
+    description: 'Look Leaderboard!',
+    run: async (client, interaction) => {
+       let leaderboard = client.eco.leaderboard({ limit: 15, raw: false });
+    if (!leaderboard || leaderboard.length < 1) return interaction.reply("❌ | Empty Leaderboard!");
     //const embed = new MessageEmbed()
       //  .setAuthor(`${message.guild.name} ! Sunucusunun Liderler Sıralaması`, message.guild.iconURL)
     //.setAuthor(`EcoVerse Top 15 Leaderboard`, message.guild.iconURL)
@@ -16,12 +18,6 @@ exports.execute = async (client, message, args) => {
       leader+=`<Position:${u.position} | ${client.users.cache.get(u.id) ? client.users.cache.get(u.id).tag : "Unknown#0000"}>\n<Money: ${moneyformat}💶>\n---------------------\n`
     });
   leader+="\n\`\`\`"
-  return message.channel.send(leader)
-    //return message.channel.send(embed);
-}
-
-exports.help = {
-    name: "lb",
-    aliases: ["leaderboard","LB"],
-    usage: `lb`
-}
+  return interaction.reply(`${leader}`)
+    }
+};
