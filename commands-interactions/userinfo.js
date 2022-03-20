@@ -14,15 +14,22 @@ module.exports = {
         },
     ],
     run: async (client, interaction) => {
-            const timeout = 5000;
+            const timeout = 20000;
   const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.reply(`**Wait ${time} to message again**`)
 	}
       //---------------------------------------------------------------------------
-      
-            let userid=""
+      const Embed = new MessageEmbed()
+	.setColor('#0099ff')
+	.setTitle("User Info")
+	.setDescription(`**Loading**`)
+   interaction.reply({
+           embeds:[Embed],
+       }).then(msg => {
+                    setTimeout(function() {
+                                 let userid=""
             let user=""
       let args_user=interaction.options.getUser('user')
         if(!args_user)
@@ -87,10 +94,13 @@ const Embed1 = new MessageEmbed()
     { name: 'Admin?', value: admin, inline: true },
 	)
 
-return interaction.reply({
+return interaction.editReply({
            embeds:[Embed1],
        })
-  });
+  }); 
+                    }, 10000);
+                })
+
        
     }
 };
