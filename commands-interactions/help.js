@@ -55,9 +55,42 @@ module.exports = {
 		await interaction.reply({ content: 'Pong!', components: [row] });
       client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
-	console.log(interaction.value);
-        if (interaction.values === 'games') {
-		interaction.update({ content: 'Something was selected!', components: [] });
+	console.log(interaction.values[0]);
+        if (interaction.values[0] === 'games') {
+          const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Games Commands')
+			.setDescription(`**\`/Beg\` [Money makes you beg. If you're broke, you can try.]
+      \`/Blackjack\` [Blackjack game.]
+      \`/Coinflip\` [Coinflip game.]
+      \`/Daily\` [It allows you to receive your daily money.]
+      \`/Rob\` [You can steal other users' money.]
+      \`/Roll\` [Roll game.]
+      \`/Search\` [Search, maybe you will find money.]
+      \`/Slots\` [Slots game.]
+      \`/Spin\` [Roulette game.]
+      \`/Weekly\` [It allows you to receive your weekly money.]
+                      
+                      **`);
+		interaction.update({ embeds: [embed], components: [row] });
+	}
+        if (interaction.values[0] === 'bank') {
+          const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Bank Commands')
+			.setDescription(`**\`/Beg\` [Money makes you beg. If you're broke, you can try.]
+      \`/Blackjack\` [Blackjack game.]
+      \`/Coinflip\` [Coinflip game.]
+      \`/Daily\` [It allows you to receive your daily money.]
+      \`/Rob\` [You can steal other users' money.]
+      \`/Roll\` [Roll game.]
+      \`/Search\` [Search, maybe you will find money.]
+      \`/Slots\` [Slots game.]
+      \`/Spin\` [Roulette game.]
+      \`/Weekly\` [It allows you to receive your weekly money.]
+                      
+                      **`);
+		interaction.update({ embeds: [embed], components: [row] });
 	}
 });
     }
