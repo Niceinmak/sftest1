@@ -7,8 +7,8 @@ module.exports = {
             name: 'amount',
             description: 'Select animal',
             type: 'STRING',
-            choices:"asdasd",
-            required: true
+            required: true,
+            option:"asdasd"
         },
     ],
     run: async (client, interaction) => {
