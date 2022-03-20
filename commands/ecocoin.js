@@ -1,12 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const btcValue = require('btc-value');
 exports.execute = async (client, message, args) => {
-  let users = [
-        "Pocket",
-        "T-Shirt",
-        "Zero's Databse",
-        "Street"
-    ];
     let ecocoin=0
     let amount = Math.floor(Math.random() * 200)+50;
     let amount3 = args[0]
