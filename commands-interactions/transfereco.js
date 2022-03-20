@@ -25,7 +25,7 @@ module.exports = {
   if (!amount || isNaN(amount)) return interaction.reply('Please enter a valid amount to transfer') 
   if(authordata.amount < amount) return interaction.reply('Looks like you don\'t have that much money') 
   if(interaction.user.id==member.id) return interaction.reply("You **can't** send money to yourself :D")
-      await client.eco.transfer(`${interaction.user.id}11`, member.id, amount) 
+      await client.eco.transfer(`${interaction.user.id}11`, `${member.id}11`, amount) 
   let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   return interaction.reply(`You have successfully transferred 💶**${amountformat}** to ** ${member.username}**.`)
     }
