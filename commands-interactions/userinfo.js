@@ -1,7 +1,7 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
-let ms = require('ms')
 const btcValue = require('btc-value');
 const moment = require("moment");
+let ms = require('ms');
 let db = require('quick.db');
 module.exports = {
     description: 'Check User Information',
