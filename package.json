@@ -24,7 +24,6 @@
     "discord-slash-commands-v12": "^7.9.14",
     "discord-sync-commands": "^0.3.0",
     "discord.js": "^13.6.0",
-    "dsc-slash": "^2.0.3",
     "figlet": "^1.5.2",
     "moment": "^2.29.1",
     "ms": "^2.1.3",

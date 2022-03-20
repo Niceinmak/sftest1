@@ -7,7 +7,7 @@ module.exports = {
             name: 'process',
             description: 'Select a process',
             type: 'STRING',
-            required: true,
+            required: false,
          choices: [
    {
      name: "Add Animal",
@@ -23,7 +23,7 @@ module.exports = {
             name: 'select_animal',
             description: 'Select animal',
             type: 'STRING',
-            required: true,
+            required: false,
             choices: [
    {
      name: "God",
@@ -119,8 +119,24 @@ module.exports = {
        let user = interaction.user;
   let userBalance = client.eco.fetchMoney(interaction.user.id);
   let itemname=" "
-  let event = interaction.options.get("Process").value;
-  let item = interaction.options.get("Select animal").value;
+  let event=""
+  let item=""
+  if(!interaction.options.get("process"))
+    {
+    event=""
+    }
+      else
+        {
+   event = interaction.options.get("process").value;
+        }
+      if(!interaction.options.get("select_animal"))
+    {
+     item=""
+    }
+      else
+        {
+   item = interaction.options.get("select_animal").value;
+        }
   let commonanimals = [
         "<:god:948265037313757184>",
         "<:cat1:948265025850724372>",
@@ -392,7 +408,7 @@ module.exports = {
   var argString = name.substring(1).split(' ');
   const embed = new MessageEmbed()
   .setTitle(`${user.username}'s Team`)
-  .setDescription(`**For all animals: \`q zoo\`**`)
+  .setDescription(`**For all animals: \`/zoo\`**`)
   for(let l=0;l<7;l+=3)
     {
       for(let i=0;i<commonanimals.length;i++)
