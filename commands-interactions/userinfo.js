@@ -14,6 +14,7 @@ module.exports = {
         },
     ],
     run: async (client, interaction) => {
+      //--------------------------------------------------------------
             const timeout = 20000;
   const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
