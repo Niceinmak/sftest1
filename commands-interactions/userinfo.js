@@ -49,24 +49,6 @@ module.exports = {
   if (!client.cfg.admins.includes(user.id)) admin=`No`
   else admin=`Yes`
   let itemsname=``
-   const x = client.db.get(`items_${user.id}`);
-  if (!x) {
-    items=0
-    itemsname+=`None`
-  }
-  else 
-    {
-  const arrayToObject = x.reduce((itemsobj, x) => {
-    itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
-    return itemsobj;
-  }, {});
-  const result = Object.keys(arrayToObject).map(k =>
-    items++
-  );
-      const result2 = Object.keys(arrayToObject).map(k =>
-    itemsname+=`Name: **${k}** Amount: **${arrayToObject[k]}**\n`
-  );
-      }
   btcValue().then(value => {
     value=value.toString().slice(0,3);
     let allBalanceformat=String(userBalance.amount+bankBalance.amount+(ecoBalance.amount*value)).replace(/(.)(?=(\d{3})+$)/g,'$1,')
