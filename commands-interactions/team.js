@@ -6,8 +6,8 @@ module.exports = {
        {
             name: 'amount',
             description: 'Select animal',
-            type: 'OPTION',
-            choice:"asdasd",
+            type: 'STRING',
+            choices:"asdasd",
             required: true
         },
     ],
