@@ -6,6 +6,5 @@ module.exports = (client, interaction) => {
         content: `\`${interaction.commandName}\` isminde komut bulunamadı.`,
         ephemeral: true
     });
-  
     command.run(client, interaction);
 };
