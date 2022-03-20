@@ -52,7 +52,7 @@ module.exports = {
 					]),
 			);
 
-		await interaction.reply({ content: 'Pong!', components: [row] });
+		await interaction.reply({ embeds: [embed], components: [row] });
       client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
 	console.log(interaction.values[0]);
@@ -140,7 +140,7 @@ module.exports = {
       \`/Test\` [Test EcoVerse bot.]**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
-        if (interaction.values[0] === 'economy') {
+        if (interaction.values[0] === 'utility') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Economy Commands')
@@ -151,9 +151,7 @@ module.exports = {
       \`/TermsOfService\` [EcoVerse Terms Of Service's.]
       \`/Uptime\` [How long has the bot been open?]
       \`/UserInfo\` [Show user information.]
-      \`/Website\` [Transfer your money.]
-      \`/Use\` [Use your case and earn money.]
-      \`/Vote\` [Vote for EcoVerse and earn money.]**`);
+      \`/Website\` [Have you visited the EcoVerse Website?]**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
 });
