@@ -106,9 +106,9 @@ module.exports = {
       let timecooldown = Math.floor(Math.random() * 200)+50;
     let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
     const user1 = interaction.user
-   if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
-    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
-  let userBalance = client.eco.fetchMoney(message.author.id);
+   if (playtime.onCooldown) return interaction.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+    let data2= client.eco.removeMoney(interaction.user.id, parseInt(timecooldown));
+  let userBalance = client.eco.fetchMoney(interaction.user.id);
   let itemname=" "
   let item = interaction.options.get("select_animal").value;
   let commonanimals = [
