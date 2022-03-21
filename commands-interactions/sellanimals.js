@@ -1,5 +1,7 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
-
+const moment = require("moment");
+let ms = require('ms');
+let db = require('quick.db');
 module.exports = {
     description: 'Sell animal command, is so scary when you say it like that.',
   options: [
@@ -103,11 +105,15 @@ module.exports = {
         },
     ],
     run: async (client, interaction) => {
-      let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
-    const user1 = interaction.user
-   if (playtime.onCooldown) return interaction.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
-    let data2= client.eco.removeMoney(interaction.user.id, parseInt(timecooldown));
+       //--------------------------------------------------------------
+            const timeout = 10000;
+  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.reply(`**Wait ${time} to message again**`)
+	}
+    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+      //---------------------------------------------------------------------------
   let userBalance = client.eco.fetchMoney(interaction.user.id);
   let itemname=" "
   let item = interaction.options.get("select_animal").value;
@@ -167,9 +173,9 @@ module.exports = {
     {
     const embed = new MessageEmbed()
         .setTitle(`Animal Sell`)
-        .setDescription(`**Usage: \`q sellanimal <animal name>\`\nHover over the emoji to find the name of the animal.**`)
+        .setDescription(`**Usage: \`/sellanimal <animal name>\`\nHover over the emoji to find the name of the animal.**`)
   .setThumbnail("https://i.imgur.com/r8EFIV8.png")
-  return message.channel.send(embed);
+  return interaction.reply({embeds:[embed]});
     }
        let xp=0
   let earnmoney=0
@@ -188,7 +194,7 @@ module.exports = {
   let counter=0
   if(item=="all")
     {
-      let x = client.db.get(`animals_${message.author.id}`);
+      let x = client.db.get(`animals_${interaction.user.id}`);
       let items=``
         const arrayToObject = x.reduce((itemStruct, x) => {
      items+=x.name+` `
@@ -261,7 +267,7 @@ module.exports = {
     return itemStruct;
   }, {});
   x.splice(count,1);
-  client.db.set(`animals_${message.author.id}`, x)
+  client.db.set(`animals_${interaction.user.id}`, x)
     let amount = Math.floor(Math.random() * 200)+50;
         }
       item="All Animals"
@@ -313,11 +319,11 @@ module.exports = {
           earnmoney+=legendarymoney
         }
     }
-  if(xp==0) return message.channel.send(`**${message.author.tag} | Animals not found**`);
+  if(xp==0) return interaction.reply(`**${interaction.user.username} | Animals not found**`);
   let test=""
-  let x = client.db.get(`animals_${message.author.id}`);
+  let x = client.db.get(`animals_${interaction.user.id}`);
     if (!x) {
-    return message.channel.send(`${message.author.tag} | Animals not found`);
+    return interaction.reply(`${interaction.user.username} | Animals not found`);
   }
   let tempcount=0
   let count=0
@@ -333,7 +339,7 @@ module.exports = {
   }, {});
   if(animal==false)
     {
-      return message.channel.send(`**${message.author.tag} | Animals not found**`);
+      return interaction.reply(`**${interaction.user.username} | Animals not found**`);
     }
   const result = Object.keys(arrayToObject).map(k =>
        itemname+=k+" "+arrayToObject[k]+" "
@@ -343,16 +349,16 @@ module.exports = {
 //  console.log(arrayToObject.slice(0).join(' '))
   
   x.splice(count,1);
-  client.db.set(`animals_${message.author.id}`, x)
+  client.db.set(`animals_${interaction.user.id}`, x)
   var keyToDelete = '<:cat1:948265025850724372>';
     let amount = Math.floor(Math.random() * 200)+50;
-    let amount3 = args[0]
+    let amount3 = interaction.options.get("select_animal").value;
   }
   
 let userBalanceformat1=String(item).replace(/(.)(?=(\d{3})+$)/g,'$1,')
 let userBalanceformat2=String(earnmoney).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-    client.eco.addMoney(`${message.author.id}12`, parseInt(xp));
-  client.eco.addMoney(message.author.id, parseInt(earnmoney)); 
-  message.channel.send(`**The sale was successful!\nSold:${userBalanceformat1}\nMoney earned:${userBalanceformat2}\nXP earned:${xp}**`);
+    client.eco.addMoney(`${interaction.user.id}12`, parseInt(xp));
+  client.eco.addMoney(interaction.user.id, parseInt(earnmoney)); 
+  interaction.reply(`**The sale was successful!\nSold:${userBalanceformat1}\nMoney earned:${userBalanceformat2}\nXP earned:${xp}**`);
     }
 };

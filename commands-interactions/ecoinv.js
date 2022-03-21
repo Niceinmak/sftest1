@@ -12,7 +12,7 @@ module.exports = {
     const embed = new MessageEmbed()
         .setTitle(`**EcoCoin🌿**`)
         .setDescription(`**EcoCoin: \`${userBalanceformat}\`\nPrice: \`${userBalanceformat2}\`**`)
-        .addField(`Usage`,`Buy \`${client.prefix} buyeco\` \nSell\`${client.prefix} selleco\``)
+        .addField(`Usage`,`Buy \`/buyeco\` \nSell\`/selleco\``)
         .addField(`\`Note\` **This coin can only be used in-game.**`,`**Cannot be bought and sold in real life**`)
         .setColor("RANDOM")
         .setThumbnail(user.displayAvatarURL)
