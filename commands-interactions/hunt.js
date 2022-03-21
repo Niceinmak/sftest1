@@ -1,29 +1,26 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const moment = require("moment");
+let ms = require('ms');
+let db = require('quick.db');
+module.exports = {
+    description: 'Hunt animals, but without harm ^^',
+    run: async (client, interaction) => {
+   //--------------------------------------------------------------
+            const timeout = 10000;
+  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.reply(`**Wait ${time} to message again**`)
+	}
+    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+      //---------------------------------------------------------------------------
 
-exports.execute = async (client, message, args) => {
-  let user = message.author
-  if (!client.config.admins.includes(message.author.id))
-    {
-      let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 10000});
-    const user1 = message.member.user
-   if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
-    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
-    }
-  else
-    {
-      if(message.author.id!=process.env.OWNER_ID)
-    {
-      const channel = client.channels.cache.get(process.env.REQUEST_CHANNEL)
-      channel.send(`**${user.tag} (${user.id}) used the \`hunt\`\nServer \`${message.guild.name} (${message.guild.id})\`\nChannel \`${message.channel.name} (${message.channel.id})\`**`)
-    }
-    }
+       let user = interaction.user
   let xp=0
   let fullname=""
   let fullcost=0
-  let lucky = Math.floor(Math.random() * 5);
-      let userBalance = client.eco.fetchMoney(message.author.id);
-  if(lucky==0) lucky=1
+  let lucky = Math.floor(Math.random() * 6)+1;
+      let userBalance = client.eco.fetchMoney(interaction.user.id);
   let commonanimals = [
         "<:god:948265037313757184>",
         "<:cat1:948265025850724372>",
@@ -55,7 +52,7 @@ exports.execute = async (client, message, args) => {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  if (userBalance.amount < 3) return message.channel.send(`**You have too little money.**`);
+  if (userBalance.amount < 3) return interaction.reply(`**You have too little money.**`);
   for(let i=lucky; i>0;i--)
     {
   let lucky1 = Math.floor(Math.random() * 100)+1;
@@ -64,62 +61,56 @@ exports.execute = async (client, message, args) => {
       let rarexp = Math.floor(Math.random() * 1000)+1;
       let epicxp = Math.floor(Math.random() * 5000)+1;
       let legendaryxp = Math.floor(Math.random() * 10000)+1;
-  if (userBalance.amount < 3) return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶
+  if (userBalance.amount < 3) return interaction.reply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
       let item = ""
       if(lucky1<75)
         {
-          client.eco.addMoney(`${message.author.id}12`, parseInt(commonxp));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(commonxp));
           xp+=commonxp
   item = commonanimals[Math.floor(Math.random() * commonanimals.length)];
         }
       else if(lucky1<90)
         {
-          client.eco.addMoney(`${message.author.id}12`, parseInt(uncommonxp));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(uncommonxp));
           xp+=uncommonxp
   item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
         }
       else if(lucky1<97)
         {
-          client.eco.addMoney(`${message.author.id}12`, parseInt(rarexp));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(rarexp));
           xp+=rarexp
   item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
         }
       else if(lucky1<100)
         {
-          client.eco.addMoney(`${message.author.id}12`, parseInt(epicxp));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(epicxp));
           xp+=epicxp
   item = epicanimals[Math.floor(Math.random() * epicanimals.length)];
         }
       else
         {
-          client.eco.addMoney(`${message.author.id}12`, parseInt(legendaryxp));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(legendaryxp));
           xp+=legendaryxp
          item = legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]; 
         }
-  if (!item) return message.channel.send("What are you trying to buy?");
+  if (!item) return interaction.reply("What are you trying to buy?");
   let hasItem = client.shop[item];
-  if (!hasItem || hasItem == undefined) return message.reply("That item doesnt exists lol");
+  if (!hasItem || hasItem == undefined) return interaction.reply("That item doesnt exists lol");
   let isBalanceEnough = (userBalance.amount >= hasItem.cost);
-  if (!isBalanceEnough) return message.reply("Your balance is insufficient. You need :dollar: "+hasItem.cost+" to buy this item.");
-  let buy = client.eco.removeMoney(message.author.id, hasItem.cost);
+  if (!isBalanceEnough) return interaction.reply("Your balance is insufficient. You need :dollar: "+hasItem.cost+" to buy this item.");
+  let buy = client.eco.removeMoney(interaction.user.id, hasItem.cost);
   
   let itemStruct = {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
   
-  client.db.push(`animals_${message.author.id}`, itemStruct);
+  client.db.push(`animals_${interaction.user.id}`, itemStruct);
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
-  return message.channel.send(`You found: **${fullname}** for ** ${fullcost}💶
+  return interaction.reply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
-  
-};
-
-exports.help = {
-  name: "hunt",
-  aliases: ["HUNT","h"],
-  usage: `hunt`
+    }
 };
