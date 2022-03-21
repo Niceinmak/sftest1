@@ -6,7 +6,7 @@ module.exports = {
     btcValue().then(value => {
     value=value.toString().slice(0,3);
     let user = interaction.user
-    let userBalance = client.eco.fetchMoney(`${interaction.uesr.id}11`);
+    let userBalance = client.eco.fetchMoney(`${interaction.user.id}11`);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     let userBalanceformat2=String(userBalance.amount*value).replace(/(.)(?=(\d{3})+$)/g,'$1,')
     const embed = new MessageEmbed()
