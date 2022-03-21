@@ -21,7 +21,7 @@ module.exports = {
   ],
     run: async (client, interaction) => {
          //--------------------------------------------------------------
-            const timeout = 10000;
+            const timeout = 20000;
   const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
@@ -37,7 +37,6 @@ module.exports = {
   let count2=1;
   if(count==null) count=1;
   if(item!="epic.case" && item!="rare.case" && item!="common.case" ) return interaction.reply(`**${interaction.user.username} | What are you trying to buy?**`);
- if (count>100) return interaction.reply(`**\`${interaction.user.username}\` | You cannot get more than 100 crates at a time.**`);
   if (!item) return interaction.reply(`**${interaction.user.username} | What are you trying to buy?**`);
   let hasItem = client.shop[item];
   if (!hasItem || hasItem == undefined)
