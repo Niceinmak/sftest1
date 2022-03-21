@@ -1,4 +1,7 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const moment = require("moment");
+let ms = require('ms');
+let db = require('quick.db');
 const btcValue = require('btc-value');
 module.exports = {
     description: 'Have you tried EcoCoin?',
@@ -11,10 +14,15 @@ module.exports = {
         },
     ],
     run: async (client, interaction) => {
-     let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.beg(client.ecoAddUser, timecooldown,{cooldown: 5000});
-    if (playtime.onCooldown) return interaction.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
-   let data2= client.eco.removeMoney(interaction.user.id, parseInt(timecooldown));
+     //--------------------------------------------------------------
+            const timeout = 10000;
+  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.reply(`**Wait ${time} to message again**`)
+	}
+    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+      //---------------------------------------------------------------------------
   btcValue().then(value => {
 value = value.toString().slice(0,3);
   let authordata = client.eco.fetchMoney(interaction.user.id) 
