@@ -37,6 +37,7 @@ module.exports = {
   let count2=1;
   if(count==null) count=1;
   if(item!="epic.case" && item!="rare.case" && item!="common.case" ) return interaction.reply(`**${interaction.user.username} | What are you trying to buy?**`);
+ if (count>500) return interaction.reply(`**\`${interaction.user.username}\` | You cannot get more than 500 crates at a time.**`);
   if (!item) return interaction.reply(`**${interaction.user.username} | What are you trying to buy?**`);
   let hasItem = client.shop[item];
   if (!hasItem || hasItem == undefined)
