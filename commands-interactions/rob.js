@@ -11,6 +11,8 @@ module.exports = {
         },
     ],
     run: async (client, interaction) => {
+       interaction.reply("**Checking user money...**").then(msg => {
+     setTimeout(function() {
      let target = interaction.options.getUser('user')
   let authordata = client.eco.fetchMoney(interaction.user.id) 
   let targetname=target.username
@@ -28,14 +30,16 @@ module.exports = {
   if(targetBalance.amount<="10") return interaction.reply(`**The person you're stealing has very little money**`);
     let rob = client.eco.beg(interaction.user.id, amount, { canLose: true });
     if (rob.onCooldown) return interaction.reply(`**You have recently attempted to rob someone try again after ${rob.time.seconds} seconds.**`);
-  
-    if (rob.lost) return interaction.reply(messages[Math.floor(Math.random() * messages.length)]);
+        if (rob.lost) return interaction.reply(messages[Math.floor(Math.random() * messages.length)]);
     else { 
      // client.eco.removeMoney(target.id, parseInt(amount));
       let x = client.eco.fetchMoney(target.id).amount - amount 
      //client.eco.addMoney(message.author.id, parseInt(amount));
      client.eco.setMoney(target.id,parseInt(x))
-      return interaction.reply(`**You robbed ${target}** for **${rob.amount}** 💶. Now you have **${rob.after}** 💶.`);
+      return interaction.editReply(`**You robbed ${target}** for **${rob.amount}** 💶. Now you have **${rob.after}** 💶.`);
     }
+         }, 1000);
+   })
+   
     }
 };

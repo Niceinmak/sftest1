@@ -29,6 +29,8 @@ module.exports = {
 	}
     db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
+         interaction.reply("**Checking cases...**").then(msg => {
+     setTimeout(function() {
     let userBalance = client.eco.fetchMoney(interaction.user.id);
   if (userBalance.amount < 1)
     return interaction.reply(`**${interaction.user.username} | You don't have enough money :c.**`);
@@ -52,8 +54,6 @@ module.exports = {
     return interaction.reply(`**${interaction.user.username} | Your balance is insufficient. You need ${hasitemformat}💶 to buy this item.Your current money ${userbalanceformat}💶**`);
     }
   if(count<1) return interaction.reply(`**Remember, you cannot get less than 1 item.**`);
-   interaction.reply("**Cases are being transferred...**").then(msg => {
-     setTimeout(function() {
        let buy = client.eco.removeMoney(interaction.user.id, hasItem.cost*count);
   let itemStruct = {
     name: item.toLowerCase(),
