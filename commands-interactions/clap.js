@@ -3,6 +3,14 @@ let ms = require('ms')
 let db = require('quick.db');
 module.exports = {
     description: 'Puts a clap emoji in the spaces in the message.',
+   options: [
+        {
+            name: 'text',
+            description: 'Write a text',
+            type: 'STRING',
+            required: true
+        },
+    ],
     run: async (client, interaction) => {
       
      //--------------------------------------------------------------
@@ -14,15 +22,6 @@ module.exports = {
 	}
     db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
-        const embed = new MessageEmbed()
-        .setTitle('Test')
-        .setDescription(`Test Succesfuly`)
-        .setThumbnail(client.user.avatarURL());
-        const buton = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
-        const row = new MessageActionRow().addComponents(buton)
-       interaction.reply({
-           embeds:[embed],
-           components:[row],
-       })
+       return interaction.reply(interaction.options.getString('text').replace(/ /g, " 👏 "));
     }
 };
