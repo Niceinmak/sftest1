@@ -86,11 +86,17 @@ namescardslistd=""
             message.react("👊")
         //  msg.react("")  
           message.react("🛑")
-      const filter = message => message.content.includes('discord');
-const collector = interaction.channel.createMessageCollector({ filter, time: 15000 });
+      const filter = (reaction, user) => {
+	return reaction.emoji.name === '👊' && user.id === interaction.user.id;
+};
 
-collector.on('collect', m => {
-	console.log(`Collected ${m.content}`);
+const collector = message.createReactionCollector({ filter, time: 15000 });
+
+collector.on('collect', (reaction, user) => {
+	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+  if (reaction.emoji.name === '👊') {
+        reaction.users.remove(user.id);
+       }
 });
 
 collector.on('end', collected => {
