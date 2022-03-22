@@ -91,7 +91,7 @@ module.exports = {
 			.setDescription(`**Build your zoo.
       
       \`/Zoo\` [Check out your own zoo.]
-      \`/Sell\` [Sell your animals and earn money.]
+      \`/SellAnimals\` [Sell your animals and earn money.]
       \`/Team\` [Build your animal team.]
       \`/Hunt\` [Hunt animals.]**`);
 		interaction.update({ embeds: [embed], components: [row] });
