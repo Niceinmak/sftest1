@@ -81,7 +81,11 @@ namescardslistd=""
 	)
             .setColor("#7289DA")
             .setTimestamp();
-            let message=interaction.reply({embeds:[embed]})
+            interaction.reply({embeds:[embed]})
+      const message = await interaction.fetchReply();
+            message.react("👊")
+        //  msg.react("")  
+          message.react("🛑")
     }
     
     } 
