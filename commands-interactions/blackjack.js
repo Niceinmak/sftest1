@@ -72,8 +72,6 @@ namescardslistd=""
   let agr1u=argString2[0]
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
-             .setAuthor(`${user1.username}, Played Blackjack With ${amount3}💶`, user1.displayAvatarURL())
-            .setFooter(`Game in progress`)
             .setTitle(`${user1.username}`)
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
@@ -104,7 +102,7 @@ startbj()
    if (reaction.emoji.name === '🛑') {
       if(temp==0)
         {
-          
+          temp=1;
       drawCard("d")
        reaction.users.remove(user.id);
       let points=`${stopbj()}`
@@ -121,46 +119,46 @@ startbj()
 	)
    if(userpoint>21 && dealerpoint>21)
      {
-      embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+       temp=1;
+      embed.setTitle(`You both bust!`)
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
-        embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+        temp=1;
+        embed.setTitle(`You lose ${amount3}`) 
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
             {
               if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+          temp=1;
+         embed.setTitle(`You win ${amount3}`) 
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+          temp=1;
+          embed.setTitle(`You both bust!`)
         }
       else
         {
           if(dealerpoint>21)
             {
-              embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
+              temp=1;
+              embed.setTitle(`You win ${amount3}`) 
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-           embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+              temp=1;
+           embed.setTitle(`You lose ${amount3}`)
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
             }
    
-      return msg.edit(embed);
+      return interaction.editReply({embeds:[embed]})
      
     }
         }
@@ -222,40 +220,40 @@ function stopbj(){
 	)
    if(userpoint>21 && dealerpoint>21)
      {
-       embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+       temp=1;
+       embed.setTitle(`You both bust!`)
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
-        embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+        temp=1;
+        embed.setTitle(`You lose ${amount3}`) 
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
             {
               if(userpoint>dealerpoint)
         {
-         embed.setAuthor(`You Win!`) 
-          embed.setFooter(`You win ${amount3}`)
+          temp=1;
+         embed.setTitle(`You win ${amount3}`) 
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
-          embed.setFooter(`You both bust!`)
-          embed.setFooter(`You both bust!`)
+          temp=1;
+          embed.setTitle(`You both bust!`)
         }
       else
         {
           if(dealerpoint>21)
             {
-              embed.setAuthor(`You Win!`) 
-              embed.setFooter(`You win ${amount3}`)
+              temp=1;
+              embed.setTitle(`You win ${amount3}`) 
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
-           embed.setAuthor(`You Lose`) 
-              embed.setFooter(`You lose ${amount3}`)
+              temp=1;
+           embed.setTitle(`You lose ${amount3}`) 
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
