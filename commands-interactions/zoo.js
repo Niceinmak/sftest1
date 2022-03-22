@@ -6,12 +6,12 @@ module.exports = {
     description: 'Look Your Zoo!',
     run: async (client, interaction) => {
       const timeout = 5000;
-  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+  const cooldown = await db.fetch(`cooldown_zoo_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.reply(`**Wait ${time} to message again**`)
 	}
-  db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+  db.set(`cooldown_zoo_${interaction.user.id}`, Date.now());
   let userBalance = client.eco.fetchMoney(`${interaction.user.id}12`);
   let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let user =interaction.user;

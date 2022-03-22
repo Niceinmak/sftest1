@@ -27,12 +27,12 @@ module.exports = {
     let authordata = client.eco.fetchMoney(interaction.user.id) 
      //--------------------------------------------------------------
             const timeout = 10000;
-  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+  const cooldown = await db.fetch(`cooldown_slots_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.reply(`**Wait ${time} to message again**`)
 	}
-    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+    db.set(`cooldown_slots_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
   //--------------------------------------------
   if(amount3=="all") amount3=authordata.amount;
