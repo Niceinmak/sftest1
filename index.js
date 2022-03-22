@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 const { Client, Intents } = require('discord.js');
 const client = new Discord.Client({
     intents: [
@@ -125,9 +126,9 @@ fs.readdir("./commands-interactions/", (_err, files) => {
     });
 });
 
-/*const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
+const dbl = new DBL(process.env.TOPGG_TOKEN, { webhookPort: 3000, webhookAuth: process.env.TOPGG_AUTH });
 dbl.webhook.on('ready', hook => {
-  //console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
+  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
 dbl.webhook.on('vote', vote => {
   console.log("r")
@@ -143,17 +144,11 @@ dbl.webhook.on('vote', vote => {
   //.setImage(process.env.IMAGE_LINK)
   .setFooter("Thanks for voting!")
   .setColor("GREEN")
-  let buttonurl = new MessageButton()
-  .setStyle('url')
-    .setURL(process.env.VOTE_LINK)
-  .setLabel('Vote') 
-  let website = new MessageButton()
-  .setStyle('url')
-    .setURL("http://ecoverse.ml/")
-  .setLabel(`Go to website`) 
-  .setDisabled(false);
-  channel.send({ buttons: [buttonurl, website], embed: embed })
-});*/
+        const buton2 = new MessageButton().setLabel('Vote').setStyle('LINK').setURL('https://top.gg/bot/924311092468015116/vote');
+        const buton3 = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
+        const row = new MessageActionRow().addComponents(buton2).addComponents(buton3)
+  channel.send({components:[row], embed: [embed] })
+});
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((f) => {
