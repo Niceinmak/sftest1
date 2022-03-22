@@ -18,7 +18,7 @@ module.exports = {
          let user = interaction.user
     
   const timeout = 43200000;
-  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+  const cooldown = await db.fetch(`cooldown_vote_${interaction.user.id}`);
     let amount = Math.floor(Math.random() * 5000) + 300;
     let amountformat=String(amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
       dbl.hasVoted(interaction.user.id).then(voted => {
@@ -31,7 +31,7 @@ module.exports = {
       let userBalance = client.eco.fetchMoney(user.id);
     let userBalanceformat=String(userBalance.amount).replace(/(.)(?=(\d{3})+$)/g,'$1,')
        interaction.reply(`**You have won ${amountformat}💶 by voting!**`);
-      db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+      db.set(`cooldown_vote_${interaction.user.id}`, Date.now());
     }
     else if (!voted){
          const embed = new MessageEmbed()

@@ -16,12 +16,12 @@ module.exports = {
     run: async (client, interaction) => {
      //--------------------------------------------------------------
             const timeout = 10000;
-  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+  const cooldown = await db.fetch(`cooldown_buyeco_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.reply(`**Wait ${time} to message again**`)
 	}
-    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+    db.set(`cooldown_buyeco_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
   btcValue().then(value => {
 value = value.toString().slice(0,3);

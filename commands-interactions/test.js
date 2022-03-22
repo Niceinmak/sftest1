@@ -3,6 +3,7 @@ const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 module.exports = {
     description: 'Test',
     run: async (client, interaction) => {
+      if (!client.cfg.admins.includes(interaction.user.id)) return interaction.reply("**Only bot administrators are authorized to send and set money.**"); // return if author isn't bot owner
         const embed = new MessageEmbed()
         .setTitle('Test')
         .setDescription(`Test Succesfuly`)

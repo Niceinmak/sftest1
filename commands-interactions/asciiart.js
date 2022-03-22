@@ -17,12 +17,12 @@ module.exports = {
     run: async (client, interaction) => {
             //--------------------------------------------------------------
             const timeout = 20000;
-  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+  const cooldown = await db.fetch(`cooldown_asciiart_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.reply(`**Wait ${time} to message again**`)
 	}
-    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+    db.set(`cooldown_asciiart_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
         let text = interaction.options.getString('text')
    if (!text) {

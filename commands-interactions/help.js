@@ -142,7 +142,7 @@ module.exports = {
         if (interaction.values[0] === 'utility') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
-			.setTitle('Economy Commands')
+			.setTitle('Utility Commands')
 			.setDescription(`**I think this part is useless ^^
       
       \`/Ping\` [Pong.]
@@ -150,7 +150,9 @@ module.exports = {
       \`/TermsOfService\` [EcoVerse Terms Of Service's.]
       \`/Uptime\` [How long has the bot been open?]
       \`/UserInfo\` [Show user information.]
-      \`/Website\` [Have you visited the EcoVerse Website?]**`);
+      \`/Website\` [Have you visited the EcoVerse Website?]**
+      \`/Ticket\` [Need help? Please send us a ticket!]**
+      \`/Clap\` [The message puts applause between them.]**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
 });
