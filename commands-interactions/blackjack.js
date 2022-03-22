@@ -72,7 +72,7 @@ namescardslistd=""
   let agr1u=argString2[0]
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
-            .setTitle(`${user1.username}`)
+            .setTitle(`${user1.username}, Played Blackjack With ${amount3}💶`)
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
@@ -85,7 +85,7 @@ namescardslistd=""
         //  msg.react("")  
           message.react("🛑")
       const filter = (reaction, user) => {
-	return reaction.emoji.name === '👊' && user.id === interaction.user.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === interaction.user.id;
 };
 
 const collector = message.createReactionCollector({ filter, time: 15000 });
