@@ -1,7 +1,19 @@
-
-const { MessageEmbed } = require("discord.js");
-exports.execute = async (client, message, args) => {
-  let namescardslistd=""
+const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const discord = require("discord.js")
+let ms = require('ms')
+let db = require('quick.db');
+module.exports = {
+    description: 'Blackjack...It was hard to make but it was worth it',
+  options: [
+       {
+      name: "amount",
+      description: "Select amount",
+      type: 'INTEGER',
+      required: true,
+    }
+  ],
+    run: async (client, interaction) => {
+       let namescardslistd=""
   let temp=0;
      let namescards = [
         "hf",
@@ -25,24 +37,27 @@ namescardslistd=""
     let amount = Math.floor(Math.random() * 200)+50;
     let amount2 = Math.floor(Math.random() * 2);
     let amount4 = Math.floor(Math.random() * 200)/100;
-    let amount3 = args[0]
-    let amount5 = args[1]
+    let amount3 = interaction.options.getInteger('amount')
     let yazitura= ""
-    let authordata = client.eco.fetchMoney(message.author.id) 
-    let timecooldown = Math.floor(Math.random() * 200)+50;
-    let playtime = await client.eco.work(client.ecoAddUser, timecooldown,{cooldown: 5000});
-    const user1 = message.member.user
-    if (playtime.onCooldown) return message.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
-    let data2= client.eco.removeMoney(message.author.id, parseInt(timecooldown));
+    let authordata = client.eco.fetchMoney(interaction.user.id) 
+            //--------------------------------------------------------------
+            const timeout = 15000;
+  const cooldown = await db.fetch(`cooldown_Command-Name_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.reply(`**Wait ${time} to message again**`)
+	}
+    db.set(`cooldown_Command-Name_${interaction.user.id}`, Date.now());
+      //---------------------------------------------------------------------------
   //--------------------------------------------
   if(amount3=="all") amount3=authordata.amount;
   if(amount3=="half") amount3=authordata.amount/2;
-    if (!amount3 || isNaN(amount3)) return message.channel.send(`** ⛔${message.author.tag} | ** Please specify a valid amount.`);
+    if (!amount3 || isNaN(amount3)) return interaction.reply(`** ⛔${interaction.user.username} | ** Please specify a valid amount.`);
   else{
-    if(amount3>authordata.amount || amount3<1) return message.channel.send(`** ⛔${message.author.tag} | ** You don't have enough money`);
+    if(amount3>authordata.amount || amount3<1) return interaction.reply(`** ⛔${interaction.user.username} | ** You don't have enough money`);
     else
     {
-      let messageid=message.author.id
+      let messageid=interaction.user.id
       if(amount3>50000)amount3=50000
       drawCard("u")
       let dealerd=`${drawCard("d")}`
@@ -65,12 +80,12 @@ namescardslistd=""
 	)
             .setColor("#7289DA")
             .setTimestamp();
-              return message.channel.send(embed).then(async msg => {
+              return interaction.reply({embeds:[embed]}).then(async msg => {
 	  msg.react("👊")
         //  msg.react("")  
           msg.react("🛑")
   const filter = (reaction, user) => {
-	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === interaction.user.id;
 };
 const collector = msg.createReactionCollector(filter, {max:1, time: 15000});
 
@@ -83,7 +98,7 @@ startbj()
        }
      
                   const filter2 = (reaction, user) => {
-	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === interaction.user.id;
 };
 const collector2 = msg.createReactionCollector(filter2, {max:1, time: 15000});
 
@@ -95,7 +110,7 @@ collector2.on("collect", (reaction, user) => {
 startbj() 
        }
        const filter3 = (reaction, user) => {
-	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === message.author.id;
+	return (reaction.emoji.name === '👊' || reaction.emoji.name === '🛑') && user.id === interaction.user.id;
 };
 const collector3 = msg.createReactionCollector(filter3, {max:1, time: 15000});
 
@@ -320,7 +335,7 @@ else
             }
         }
             }
-      return msg.edit(embed);
+      return interaction.editReply({embeds:[embed]})
      
     }
         }
@@ -424,7 +439,7 @@ function stopbj(){
      }
  
     
-          return msg.edit(embed);
+          return interaction.editReply({embeds:[embed]});
 }
        } );
     }
@@ -467,11 +482,5 @@ function drawCard(who) {
     }
     
 }
+    }
 };
-
-exports.help = {
-    name: "bj",
-    aliases: ["blackjack","BLACKJACK"],
-    usage: "bj <amount>"
-}
-

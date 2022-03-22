@@ -7,7 +7,7 @@ module.exports = {
     options: [
     {
       name: "item",
-      description: "Select color",
+      description: "Select item",
       type: 'STRING',
       required: true,
       choices: [{ name: "Epic Case", value: "epic.case" }, { name: "Rare Case", value: "rare.case" }, { name: "Common Case", value: "common.case" }]
