@@ -1,13 +1,32 @@
 const { MessageEmbed,MessageButton,MessageActionRow,MessageSelectMenu } = require('discord.js');
-
+const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Need help? Just click!',
     run: async (client, interaction) => {
+      await interaction.deferReply();
+		await wait(10);
       const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Help Commands')
 			.setURL('https://ecoverse.ml/')
-			.setDescription('**Need help?\nPlease choose menu!**');
+			.setDescription(`**Need help?\nPlease choose menu!**
+      
+      
+      [**Games💵**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>EcoVerse games...
+     [**Bank🏦**](https://http://ecoverse.ml//)
+      Do you have saved money, store it!
+      [**Animals🐍**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Zoos are beautiful, but EcoVerse is even more beautiful.
+      [**EcoCoin🌿**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>The easiest way to become rich!
+      [**Economy💰**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Main commands, may be needed ^^
+      [**Only Admins 🚫**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Special commands for admins.
+      [**Utility🔧**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Fun and different commands.
+                      `);
        const row = new MessageActionRow()
 			.addComponents(
 				new MessageSelectMenu()
@@ -15,44 +34,44 @@ module.exports = {
 					.setPlaceholder('Nothing selected')
 					.addOptions([
 						{
-							label: 'Games',
+							label: 'Games💵',
 							description: 'Want to look at gambling games?',
 							value: 'games',
 						},
 						{
-							label: 'Bank',
+							label: 'Bank🏦',
 							description: 'You can store your money in the bank!',
 							value: 'bank',
 						},
             {
-							label: 'Animals',
+							label: 'Animals🐍',
 							description: 'Do you want to have an animal?',
 							value: 'animal',
 						},
             {
-							label: 'EcoCoin',
+							label: 'EcoCoin🌿',
 							description: 'The fastest way to get rich.',
 							value: 'ecocoin',
 						},
             {
-							label: 'Economy',
+							label: 'Economy💰',
 							description: 'Economy commands, you may need them.',
 							value: 'economy',
 						},
             {
-							label: 'Only Admins',
+							label: 'Only Admins 🚫',
 							description: 'Commands that admins can access.',
 							value: 'admins',
 						},
             {
-							label: 'Utility',
+							label: 'Utility🔧',
 							description: 'Commands about the bot.',
 							value: 'utility',
 						},
 					]),
 			);
 
-		await interaction.reply({ embeds: [embed], components: [row] });
+		await interaction.editReply({ embeds: [embed], components: [row] });
       client.on('interactionCreate', interaction => {
 	if (!interaction.isSelectMenu()) return;
         if (interaction.values[0] === 'games') {
