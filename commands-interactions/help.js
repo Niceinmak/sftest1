@@ -78,9 +78,10 @@ module.exports = {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Games Commands')
-			.setDescription(`**Nice place to play games.
+			.setDescription(`**Nice place to play games.**
       
-      \`/Beg\` [Money makes you beg. If you're broke, you can try.]
+      [**/Beg**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Money makes you beg. If you're broke, you can try.
       \`/Blackjack\` [Blackjack game.]
       \`/Coinflip\` [Coinflip game.]
       \`/Daily\` [It allows you to receive your daily money.]
@@ -89,7 +90,7 @@ module.exports = {
       \`/Search\` [Search, maybe you will find money.]
       \`/Slots\` [Slots game.]
       \`/Spin\` [Roulette game.]
-      \`/Weekly\` [It allows you to receive your weekly money.]**`);
+      \`/Weekly\` [It allows you to receive your weekly money.]`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'bank') {
