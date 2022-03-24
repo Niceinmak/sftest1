@@ -69,7 +69,7 @@ module.exports = {
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   let useranimals=""
-  let botanimals=""
+  let botanimals="  "
   var argString = name.substring(1).split(' ');
           const embed = new MessageEmbed()
   .setTitle(`${interaction.user.username} VS Bot`)
@@ -82,7 +82,10 @@ module.exports = {
           for(let i=0;i<argString[l+1];i++)
             {
           useranimals+=`<:common:949006743428542545> ${argString[l]} | ` 
-           if(botanimalcount==0)
+          let lucky = Math.floor(Math.random() * 2);
+            if(lucky==0)
+              {
+                if(botanimalcount==0)
             {
               botanimal1=commonanimals[Math.floor(Math.random() * commonanimals.length)]
               botanimals+=`<:common:949006743428542545> ${botanimal1} | ` 
@@ -100,6 +103,31 @@ module.exports = {
               botanimals+=`<:common:949006743428542545> ${botanimal3} | ` 
               botanimalcount++
             }
+              }
+              else
+                {
+                  if(lucky==0)
+              {
+                if(botanimalcount==0)
+            {
+              botanimal1=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+              botanimals+=`<:common:949006743428542545> ${botanimal1} | ` 
+              botanimalcount++
+            }
+          else if(botanimalcount==1)
+            {
+              botanimal2=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+              botanimals+=`<:common:949006743428542545> ${botanimal2} | ` 
+              botanimalcount++
+            }
+         else if(botanimalcount==2)
+            {
+              botanimal3=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+              botanimals+=`<:uncommon:949006765696098345> ${botanimal3} | ` 
+              botanimalcount++
+            }
+                }
+           
             }
           //embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
          
@@ -226,7 +254,7 @@ module.exports = {
     }
     }
           console.log(botanimal1,botanimal2,botanimal3)
-  embed.setDescription(`**Your team:${useranimals} \nB o t team: ${botanimals}**`)
+  embed.setDescription(`**Your team:${useranimals} \nBot team: ${botanimals}**`)
           //embed.setTitle(`${useranimals}`)
   //embed.setTitle(`${botanimal1},${botanimal2},${botanimal3}`)
   return interaction.editReply({embeds:[embed]});
