@@ -68,30 +68,38 @@ module.exports = {
     name+=` ${k} ${arrayToObject[k]} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
+  let useranimals=""
+  let botanimals=""
   var argString = name.substring(1).split(' ');
           const embed = new MessageEmbed()
-  .setTitle(`${interaction.user.username}'s Team`)
-  .setDescription(`**For all animals: \`/zoo\`**`)
+  .setTitle(`${interaction.user.username} VS Bot`)
   for(let l=0;l<7;l+=3)
     {
       for(let i=0;i<commonanimals.length;i++)
     {
       if(argString[l]==commonanimals[i])
         {
-          embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`<:common:949006743428542545> ${argString[l]} | ` 
+            }
+          //embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
           if(botanimalcount==0)
             {
               botanimal1=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+              botanimals+=`<:common:949006743428542545> ${botanimal1} | ` 
               botanimalcount++
             }
           else if(botanimalcount==1)
             {
               botanimal2=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+              botanimals+=`<:common:949006743428542545> ${botanimal2} | ` 
               botanimalcount++
             }
          else if(botanimalcount==2)
             {
               botanimal3=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+              botanimals+=`<:common:949006743428542545> ${botanimal3} | ` 
               botanimalcount++
             }
         }
@@ -100,20 +108,27 @@ module.exports = {
     {
       if(argString[l]==uncommonanimals[i])
         {
-          embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`<:uncommon:949006765696098345> ${argString[l]} | ` 
+            }
+          //embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
           if(botanimalcount==0)
             {
               botanimal1=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+              botanimals+=`<:uncommon:949006765696098345> ${botanimal1} | ` 
               botanimalcount++
             }
           else if(botanimalcount==1)
             {
               botanimal2=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+              botanimals+=`<:uncommon:949006765696098345> ${botanimal2} | ` 
               botanimalcount++
             }
          else if(botanimalcount==2)
             {
               botanimal3=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+              botanimals+=`<:uncommon:949006765696098345> ${botanimal3} | ` 
               botanimalcount++
             }
         }
@@ -122,20 +137,27 @@ module.exports = {
     {
       if(argString[l]==rareanimals[i])
         {
-         embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`<:rare:949006777519837225> ${argString[l]} | ` 
+            }
+         //embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
           if(botanimalcount==0)
             {
               botanimal1=rareanimals[Math.floor(Math.random() * rareanimals.length)]
+              botanimals+=`<:rare:949006777519837225> ${botanimal1} | ` 
               botanimalcount++
             }
           else if(botanimalcount==1)
             {
               botanimal2=rareanimals[Math.floor(Math.random() * rareanimals.length)]
+              botanimals+=`<:rare:949006777519837225> ${botanimal2} | ` 
               botanimalcount++
             }
          else if(botanimalcount==2)
             {
               botanimal3=rareanimals[Math.floor(Math.random() * rareanimals.length)]
+              botanimals+=`<:rare:949006777519837225> ${botanimal3} | ` 
               botanimalcount++
             }
         }
@@ -144,7 +166,11 @@ module.exports = {
     {
       if(argString[l]==epicanimals[i])
         {
-         embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`<:epic:949006791201652827> ${argString[l]} | ` 
+            }
+         //embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
           if(botanimalcount==0)
             {
               botanimal1=commonanimals[Math.floor(Math.random() * commonanimals.length)]
@@ -166,7 +192,11 @@ module.exports = {
     {
       if(argString[l]==legendaryanimals[i])
         {
-         embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`<:legendary:949006805646864404> ${argString[l]} | ` 
+            }
+         //embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
           if(botanimalcount==0)
             {
               botanimal1=legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]
@@ -186,7 +216,9 @@ module.exports = {
     }
     }
           console.log(botanimal1,botanimal2,botanimal3)
-  embed.setTitle(`sd${botanimal1},${botanimal2},${botanimal3}`)
+  .setDescription(`**For all animals: \`/zoo\`**`)
+          //embed.setTitle(`${useranimals}`)
+  //embed.setTitle(`${botanimal1},${botanimal2},${botanimal3}`)
   return interaction.editReply({embeds:[embed]});
         }
       else
