@@ -55,6 +55,10 @@ module.exports = {
       if(animalcount!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
       if(!args_user)
         {
+        let botanimal1=""
+        let botanimal2=""
+        let botanimal3=""
+        let botanimalcount=0
  const arrayToObject = x.reduce((itemsobj, x) => {
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
@@ -75,6 +79,18 @@ module.exports = {
       if(argString[l]==commonanimals[i])
         {
           embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          if(botanimalcount==0)
+            {
+              botanimal1=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+            }
+          else if(botanimalcount==1)
+            {
+              botanimal2=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+            }
+         else if(botanimalcount==3)
+            {
+              botanimal3=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+            }
         }
     }
   for(let i=0;i<uncommonanimals.length;i++)
@@ -82,6 +98,18 @@ module.exports = {
       if(argString[l]==uncommonanimals[i])
         {
           embed.addField(`Rarities: <:uncommon:949006765696098345>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          if(botanimalcount==0)
+            {
+              botanimal1=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+            }
+          else if(botanimalcount==1)
+            {
+              botanimal2=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+            }
+         else if(botanimalcount==3)
+            {
+              botanimal3=uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)]
+            }
         }
     }
   for(let i=0;i<rareanimals.length;i++)
@@ -89,6 +117,18 @@ module.exports = {
       if(argString[l]==rareanimals[i])
         {
          embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          if(botanimalcount==0)
+            {
+              botanimal1=rareanimals[Math.floor(Math.random() * rareanimals.length)]
+            }
+          else if(botanimalcount==1)
+            {
+              botanimal2=rareanimals[Math.floor(Math.random() * rareanimals.length)]
+            }
+         else if(botanimalcount==3)
+            {
+              botanimal3=rareanimals[Math.floor(Math.random() * rareanimals.length)]
+            }
         }
     }
   for(let i=0;i<epicanimals.length;i++)
@@ -96,6 +136,18 @@ module.exports = {
       if(argString[l]==epicanimals[i])
         {
          embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          if(botanimalcount==0)
+            {
+              botanimal1=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+            }
+          else if(botanimalcount==1)
+            {
+              botanimal2=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+            }
+         else if(botanimalcount==3)
+            {
+              botanimal3=commonanimals[Math.floor(Math.random() * commonanimals.length)]
+            }
         }
     }
   for(let i=0;i<legendaryanimals.length;i++)
