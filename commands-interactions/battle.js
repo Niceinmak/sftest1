@@ -55,13 +55,15 @@ module.exports = {
       if(animalcount!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
       if(!args_user)
         {
-      console.log(animalcount,args_user)
-          let name=""
- const arrayToObject = x.reduce((itemsobj, x1) => {
-    itemsobj[x1.name] = (itemsobj[x1.name] || 0) + 1;
+ const arrayToObject = x.reduce((itemsobj, x) => {
+    itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
   }, {});
-          console.log(name)
+  let name=""
+  const result = Object.keys(arrayToObject).map(k =>
+    name+=` ${k} ${arrayToObject[k]} `
+    //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
+  );
   var argString = name.substring(1).split(' ');
           const embed = new MessageEmbed()
   .setTitle(`${interaction.user.username}'s Team`)
@@ -70,7 +72,6 @@ module.exports = {
     {
       for(let i=0;i<commonanimals.length;i++)
     {
-      console.log(argString[l])
       if(argString[l]==commonanimals[i])
         {
           embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
