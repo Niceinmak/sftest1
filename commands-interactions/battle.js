@@ -75,6 +75,7 @@ module.exports = {
   var argString = name.substring(1).split(' ');
           const embed = new MessageEmbed()
   .setTitle(`${interaction.user.username} VS Bot`)
+           .setColor("GREEN")
   for(let l=0;l<7;l+=3)
     {
       for(let i=0;i<commonanimals.length;i++)
