@@ -2,14 +2,17 @@ const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 const anyLength = require('any-length');
 let ms = require('ms')
 let db = require('quick.db');
+const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Look Your Zoo!',
     run: async (client, interaction) => {
+     await interaction.deferReply();
+		await wait(10);
       const timeout = 5000;
   const cooldown = await db.fetch(`cooldown_zoo_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
-          return interaction.reply(`**Wait ${time} to message again**`)
+          return interaction.editReply(`**Wait ${time} to message again**`)
 	}
   db.set(`cooldown_zoo_${interaction.user.id}`, Date.now());
   let userBalance = client.eco.fetchMoney(`${interaction.user.id}12`);
@@ -58,9 +61,10 @@ module.exports = {
     ];
   let all=``
   const x = client.db.get(`animals_${interaction.user.id}`);
-  if (!x) {
-    return interaction.reply(`**Take it slow,wait ${playtime.time.seconds} more seconds**`);
+  if (!x || !x.toString()) {
+    return interaction.editReply(`**There are no animals in your zoo :(**`);
   }
+      console.log(x.toString())
   const arrayToObject = x.reduce((itemsobj, x) => {
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
@@ -668,7 +672,7 @@ module.exports = {
   let userBalanceformat2=String(zoopoint).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   //common=common.substr(4)
 //embed.setDescription(`<:common:949006743428542545>${common},${commonname},${argslenght},${t}`)
-       interaction.reply(`**🌿 🌱${user.username}'s Zoo🌿 🌱
+       interaction.editReply(`**🌿 🌱${user.username}'s Zoo🌿 🌱
 <:common:949006743428542545> ${commonname}
 <:uncommon:949006765696098345> ${uncommonname}
 <:rare:949006777519837225> ${rarename}
