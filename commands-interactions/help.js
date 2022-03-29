@@ -82,9 +82,12 @@ module.exports = {
       
       [**/Beg**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>Money makes you beg. If you're broke, you can try.
-      \`/Blackjack\` [Blackjack game.]
-      \`/Coinflip\` [Coinflip game.]
-      \`/Daily\` [It allows you to receive your daily money.]
+      [**/Blackjack**](https://http://ecoverse.ml//)
+       <:reply:956274844004139018>Blackjack game.
+       [**/Coinflip**](https://http://ecoverse.ml//)
+       <:reply:956274844004139018>Coinflip game.
+       [**/Daily**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>It allows you to receive your daily money.
       \`/Rob\` [You can steal other users' money.]
       \`/Roll\` [Roll game.]
       \`/Search\` [Search, maybe you will find money.]
