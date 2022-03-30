@@ -30,14 +30,22 @@ const background = await Canvas.loadImage('https://i.imgur.com/cBORedX.png');
 	context.drawImage(background, 0, 0, canvas.width, canvas.height);
 context.strokeRect(0, 0, canvas.width, canvas.height);
       //-----------------------TEXT-------------------
-context.font = '50px sans-serif';
+context.font = '30px sans-serif';
 	context.fillStyle = '#ffffff';
 	context.fillText('Balance', canvas.width / 2.8, canvas.height / 9);
 
 	// Add an exclamation point here and below
 	context.font = applyText(canvas, `${interaction.member.displayName}!`);
 	context.fillStyle = '#ffffff';
-	context.fillText(`${interaction.member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
+	context.fillText(`${interaction.member.displayName}`, canvas.width / 2.8, canvas.height / 6);
+      
+      context.font = '35px sans-serif';
+	context.fillStyle = '#ffffff';
+	context.fillText('Balance:', canvas.width / 15, canvas.height / 2.7);
+
+      context.font = '60px sans-serif';
+	context.fillStyle = '#ffffff';
+	context.fillText('Balance:', canvas.width / 15, canvas.height / 2.2);
 //---------------------AVATAR--------------------------------
 	const avatar = await Canvas.loadImage(interaction.user.displayAvatarURL({ format: 'jpg' }));
 context.beginPath();
