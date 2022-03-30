@@ -105,21 +105,21 @@ module.exports = {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Bank Commands')
-			.setDescription(`**Do you know what the bank is for?
+			.setDescription(`**Do you know what the bank is for?**
       
       [**/Bank**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>Shows its own bank account.
       [**/Deposit**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>Deposit into bank account.
       [**/Withdraw**](https://http://ecoverse.ml//)
-     <:reply:956274844004139018>Withdraw into bank account.**`);
+     <:reply:956274844004139018>Withdraw into bank account.`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
             if (interaction.values[0] === 'animal') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Animal Commands')
-			.setDescription(`**Build your zoo.
+			.setDescription(`**Build your zoo.**
       
       [**/Zoo**](https://http://ecoverse.ml//)
      <:reply:956274844004139018>Check out your own zoo.
@@ -128,14 +128,14 @@ module.exports = {
      [**/Team**](https://http://ecoverse.ml//)
      <:reply:956274844004139018>Build your animal team.
      [**/Hunt**](https://http://ecoverse.ml//)
-    <:reply:956274844004139018>Hunt animals.**`);
+    <:reply:956274844004139018>Hunt animals.`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
     if (interaction.values[0] === 'ecocoin') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('EcoCoin Commands')
-			.setDescription(`**Do you want to be rich?
+			.setDescription(`**Do you want to be rich?**
       
        [**/EcoCoin**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>See the price of EcoCoin.
@@ -143,17 +143,17 @@ module.exports = {
       <:reply:956274844004139018>Buy EcoCoin.
       [**/SellEco**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>Sell EcoCoin.
-      [**/Transfer**](https://http://ecoverse.ml//)
+      [**/TransferEco**](https://http://ecoverse.ml//)
      <:reply:956274844004139018>Send EcoCoin.
       [**/EcoInv**](https://http://ecoverse.ml//)
-     <:reply:956274844004139018>How many EcoCoins do you have? Do you want to have a look?**`);
+     <:reply:956274844004139018>How many EcoCoins do you have? Do you want to have a look?`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'economy') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Economy Commands')
-			.setDescription(`**This place is important!
+			.setDescription(`**This place is important!**
       
       [**/Balance**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>See your money.
@@ -170,37 +170,51 @@ module.exports = {
       [**/Use**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>Use your case and earn money.
       [**/Vote**](https://http://ecoverse.ml//)
-      <:reply:956274844004139018>Vote for EcoVerse and earn money.**`);
+      <:reply:956274844004139018>Vote for EcoVerse and earn money.`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'admins') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Admins Commands')
-			.setDescription(`**Entrance is forbidden.
+			.setDescription(`**Entrance is forbidden.**
       
-      <:reply:956274844004139018>Adds a case to the user.
-     <:reply:956274844004139018>Add a money to the user.]
-     <:reply:956274844004139018>Show bot information.]
-     <:reply:956274844004139018>Removes money from the user.]
-     <:reply:956274844004139018>Set money from the user.]
-    <:reply:956274844004139018>Test EcoVerse bot.]**`);
+      [**/AddCase**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Add a case to the user.
+      [**/AddMoney**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Add a money to the user.
+     [**/BotInfo**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Show bot information.
+     [**/RemoveMoney**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Removes money from the user.
+     [**/SetMoney**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Set money from the user.
+     [**/Test**](https://http://ecoverse.ml//)
+    <:reply:956274844004139018>Test EcoVerse bot.`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'utility') {
           const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Utility Commands')
-			.setDescription(`**I think this part is useless ^^
+			.setDescription(`**I think this part is useless ^^**
       
-      \`/Ping\` [Pong.]
-      \`/SupportServer\` [Checkout EcoVerse support server.]
-      \`/TermsOfService\` [EcoVerse Terms Of Service's.]
-      \`/Uptime\` [How long has the bot been open?]
-      \`/UserInfo\` [Show user information.]
-      \`/Website\` [Have you visited the EcoVerse Website?]**
-      \`/Ticket\` [Need help? Please send us a ticket!]**
-      \`/Clap\` [The message puts applause between them.]**`);
+       [**/Ping**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Pong.
+       [**/SupportServer**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Checkout EcoVerse support server.
+       [**/TermsOfService**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>EcoVerse Terms Of Service's.
+      [**/Uptime**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>How long has the bot been open?
+      [**/UserInfo**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Show user information.
+      [**/Website**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Have you visited the EcoVerse Website?
+      [**/Ticket**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Need help? Please send us a ticket!
+      [**/Clap**](https://http://ecoverse.ml//)
+    <:reply:956274844004139018>The message puts applause between them.`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
 });
