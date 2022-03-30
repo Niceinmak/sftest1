@@ -107,9 +107,12 @@ module.exports = {
 			.setTitle('Bank Commands')
 			.setDescription(`**Do you know what the bank is for?
       
-      \`/Bank\` [Shows its own bank account.]
-      \`/Deposit\` [Deposit into bank account.]
-      \`/Withdraw\` [Withdraw into bank account.]**`);
+      [**/Bank**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Shows its own bank account.
+      [**/Deposit**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Deposit into bank account.
+      [**/Withdraw**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Withdraw into bank account.**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
             if (interaction.values[0] === 'animal') {
@@ -118,10 +121,14 @@ module.exports = {
 			.setTitle('Animal Commands')
 			.setDescription(`**Build your zoo.
       
-      \`/Zoo\` [Check out your own zoo.]
-      \`/SellAnimals\` [Sell your animals and earn money.]
-      \`/Team\` [Build your animal team.]
-      \`/Hunt\` [Hunt animals.]**`);
+      [**/Zoo**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Check out your own zoo.
+     [**/SellAnimals**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Sell your animals and earn money.
+     [**/Team**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Build your animal team.
+     [**/Hunt**](https://http://ecoverse.ml//)
+    <:reply:956274844004139018>Hunt animals.**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
     if (interaction.values[0] === 'ecocoin') {
@@ -130,11 +137,16 @@ module.exports = {
 			.setTitle('EcoCoin Commands')
 			.setDescription(`**Do you want to be rich?
       
-      \`/EcoCoin\` [See the price of EcoCoin.]
-      \`/BuyEco\` [Buy EcoCoin.]
-      \`/SellEco\` [Sell EcoCoin.]
-      \`/TransferEco\` [Send EcoCoin.]
-      \`/EcoInv\` [How many EcoCoins do you have? Do you want to have a look?]**`);
+       [**/EcoCoin**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>See the price of EcoCoin.
+      [**/BuyEco**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Buy EcoCoin.
+      [**/SellEco**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Sell EcoCoin.
+      [**/Transfer**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Send EcoCoin.
+      [**/EcoInv**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>How many EcoCoins do you have? Do you want to have a look?**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'economy') {
@@ -143,14 +155,22 @@ module.exports = {
 			.setTitle('Economy Commands')
 			.setDescription(`**This place is important!
       
-      \`/Balance\` [See your money.]
-      \`/Buy\` [Buy case.]
-      \`/Help\` [Look commands.]
-      \`/Inventory\` [Look at their crates.]
-      \`/Shop\` [Look at the market.]
-      \`/Transfer\` [Transfer your money.]
-      \`/Use\` [Use your case and earn money.]
-      \`/Vote\` [Vote for EcoVerse and earn money.]**`);
+      [**/Balance**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>See your money.
+      [**/Buy**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Buy case.
+      [**/Help**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Look commands.
+      [**/Inventory**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Look at their crates.
+      [**/Shop**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Look at the market.
+      [**/Transfer**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Transfer your money.
+      [**/Use**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Use your case and earn money.
+      [**/Vote**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Vote for EcoVerse and earn money.**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'admins') {
@@ -159,12 +179,12 @@ module.exports = {
 			.setTitle('Admins Commands')
 			.setDescription(`**Entrance is forbidden.
       
-      \`/Addcase\` [Adds a case to the user.]
-      \`/Addmoney\` [Add a money to the user.]
-      \`/Botinfo\` [Show bot information.]
-      \`/Removemoney\` [Removes money from the user.]
-      \`/Setmoney\` [Set money from the user.]
-      \`/Test\` [Test EcoVerse bot.]**`);
+      <:reply:956274844004139018>Adds a case to the user.
+     <:reply:956274844004139018>Add a money to the user.]
+     <:reply:956274844004139018>Show bot information.]
+     <:reply:956274844004139018>Removes money from the user.]
+     <:reply:956274844004139018>Set money from the user.]
+    <:reply:956274844004139018>Test EcoVerse bot.]**`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'utility') {
