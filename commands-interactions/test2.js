@@ -22,36 +22,30 @@ module.exports = {
 	return context.font;
 };
       
-      const canvas = Canvas.createCanvas(700, 250);
+      const canvas = Canvas.createCanvas(694, 880);
 		const context = canvas.getContext('2d');
-const background = await Canvas.loadImage('https://i.imgur.com/SpcEOfc.jpg');
+const background = await Canvas.loadImage('https://i.imgur.com/cBORedX.png');
 
 	// This uses the canvas dimensions to stretch the image onto the entire canvas
 	context.drawImage(background, 0, 0, canvas.width, canvas.height);
 context.strokeRect(0, 0, canvas.width, canvas.height);
+      //-----------------------TEXT-------------------
+context.font = '50px sans-serif';
+	context.fillStyle = '#ffffff';
+	context.fillText('Balance', canvas.width / 2.8, canvas.height / 9);
 
+	// Add an exclamation point here and below
+	context.font = applyText(canvas, `${interaction.member.displayName}!`);
+	context.fillStyle = '#ffffff';
+	context.fillText(`${interaction.member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
+//---------------------AVATAR--------------------------------
 	const avatar = await Canvas.loadImage(interaction.user.displayAvatarURL({ format: 'jpg' }));
 context.beginPath();
-
-	// Start the arc to form a circle
 	context.arc(125, 125, 100, 0, Math.PI * 2, true);
-
-	// Put the pen down
 	context.closePath();
-
-	// Clip off the region you drew on
 	context.clip();
-      
-	// Draw a shape onto the main canvas
 	context.drawImage(avatar, 25, 25, 200, 200);
-      context.font = '60px sans-serif';
-
-	// Select the style that will be used to fill the text in
-	context.fillStyle = '#ffffff';
-
-	// Actually fill the text with a solid color
-	context.fillText(interaction.member.displayName, canvas.width / 2.5, canvas.height / 1.8);
-	// Use the helpful Attachment class structure to process the file for you
+  //---------------------AVATAR--------------------------------
 	const attachment = new MessageAttachment(canvas.toBuffer(), 'profile-image.png');
 
 	interaction.editReply({ files: [attachment] });
