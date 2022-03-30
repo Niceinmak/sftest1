@@ -11,7 +11,6 @@ module.exports = {
 			.setURL('https://ecoverse.ml/')
 			.setDescription(`**Need help?\nPlease choose menu!**
       
-      
       [**Games💵**](https://http://ecoverse.ml//)
      <:reply:956274844004139018>EcoVerse games...
      [**Bank🏦**](https://http://ecoverse.ml//)
@@ -88,12 +87,18 @@ module.exports = {
        <:reply:956274844004139018>Coinflip game.
        [**/Daily**](https://http://ecoverse.ml//)
       <:reply:956274844004139018>It allows you to receive your daily money.
-      \`/Rob\` [You can steal other users' money.]
-      \`/Roll\` [Roll game.]
-      \`/Search\` [Search, maybe you will find money.]
-      \`/Slots\` [Slots game.]
-      \`/Spin\` [Roulette game.]
-      \`/Weekly\` [It allows you to receive your weekly money.]`);
+      [**/Rob**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>You can steal other users' money.
+      [**/Roll**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Roll game.
+     [**/Search**](https://http://ecoverse.ml//)
+      <:reply:956274844004139018>Search, maybe you will find money.
+      [**/Slots**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Slots game.
+     [**/Spin**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>Roulette game.
+     [**/Weekly**](https://http://ecoverse.ml//)
+     <:reply:956274844004139018>It allows you to receive your weekly money.`);
 		interaction.update({ embeds: [embed], components: [row] });
 	}
         if (interaction.values[0] === 'bank') {
