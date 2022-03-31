@@ -84,7 +84,7 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`<:common:949006743428542545> ${argString[l]} | ` 
+          useranimals+=`Common ${argString[l]}\n\`50 HP\`\n` 
           battlexpuser+=50
           let lucky = Math.floor(Math.random() * 2);
             if(lucky==0)
@@ -107,7 +107,7 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`<:uncommon:949006765696098345> ${argString[l]} | ` 
+          useranimals+=`Uncommon ${argString[l]}\n\`50 HP\`\n` 
           battlexpuser+=100
             }
           let lucky = Math.floor(Math.random() * 3);
@@ -133,7 +133,7 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`<:rare:949006777519837225> ${argString[l]} | `
+          useranimals+=`Rare ${argString[l]}\n\`50 HP\`\n` 
           battlexpuser+=150
           let lucky = Math.floor(Math.random() * 3);
               if(lucky==0)
@@ -160,7 +160,7 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`<:epic:949006791201652827> ${argString[l]} | `
+          useranimals+=`Epic ${argString[l]}\n\`50 HP\`\n` 
           battlexpuser+=200
           let lucky = Math.floor(Math.random() * 3);
               if(lucky==0)
@@ -187,7 +187,7 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`<:legendary:949006805646864404> ${argString[l]} | `
+          useranimals+=`Legendary ${argString[l]}\n\`50 HP\`\n` 
           battlexpuser+=250
           let lucky = Math.floor(Math.random() * 2);
               if(lucky==0)
@@ -206,7 +206,10 @@ module.exports = {
     }
     }
           console.log(botanimal1,botanimal2,botanimal3)
-  embed.setDescription(`**Your team:${useranimals} \nBot team: ${botanimals}\n${battlexpuser},${battlexpbot}**`)
+          embed.addFields(
+		{ name: 'Player Team', value: `${useranimals}`, inline: true },
+    { name: 'Enemy Team', value: `${botanimals}`, inline: true }
+	)
           //embed.setTitle(`${useranimals}`)
   //embed.setTitle(`${botanimal1},${botanimal2},${botanimal3}`)
   return interaction.editReply({embeds:[embed]});

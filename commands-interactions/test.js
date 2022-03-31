@@ -13,11 +13,8 @@ module.exports = {
 	.setDescription('Some description here')
 	.setThumbnail('https://i.imgur.com/AfFp7pu.png')
 	.addFields(
-		{ name: 'Regular field title', value: 'Some value here' },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
 	)
-      .addFields(
-		{ name: 'Regular field title', value: 'Some value here' },
-	)  
 	.setImage('https://i.imgur.com/AfFp7pu.png')
 	.setTimestamp()
 	.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
