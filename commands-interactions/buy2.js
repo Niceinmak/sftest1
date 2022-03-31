@@ -43,7 +43,7 @@ module.exports = {
   let count2=1;
   if(count==null) count=1;
   if(item!="epic.case" && item!="rare.case" && item!="common.case" ) return interaction.editReply(`**${interaction.user.username} | What are you trying to buy?**`);
- if (count>100) return interaction.editReply(`**\`${interaction.user.username}\` | You cannot get more than 100 crates at a time.**`);
+// if (count>100) return interaction.editReply(`**\`${interaction.user.username}\` | You cannot get more than 100 crates at a time.**`);
   if (!item) return interaction.editReply(`**${interaction.user.username} | What are you trying to buy?**`);
   let hasItem = client.shop[item];
   if (!hasItem || hasItem == undefined)
