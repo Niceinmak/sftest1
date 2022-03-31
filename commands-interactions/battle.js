@@ -217,24 +217,40 @@ module.exports = {
       let uwin=0
       let bwin=0
       let uwincount=``
-    for(let i=0;i<5;i++)
+      let bwincount=``
+    for(let i=1;i<=5;i++)
       {
 		await wait(2000);
     let lucky = Math.floor(Math.random() * 2);
         if(lucky==0)
           {
             uwin++
-            uwincount=``
-            embeddesc+=`\nRound Win!\nRound ${i} Playing...`
+            uwincount+=`${i} W | `
+            bwincount+=`${i} L | `
+            embeddesc=`\nRound Win!\nNew Round Playing...`
           }
          else
            {
             bwin++
-            embeddesc+=`\nRound Lose :(\nRound ${i} Playing...` 
+             uwincount+=`${i} L | `
+            bwincount+=`${i} W | `
+            embeddesc=`\nRound Lose :(\nNew Round Playing...`
            }
-          embed.setDescription(`${embeddesc}`)
+          embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
    interaction.editReply({embeds:[embed]});
       }
+		await wait(1000);
+          if(uwin>bwin)
+            {
+              embeddesc=`You won the battle!\nYou:\`${uwin}\` Enemy:\`${bwin}\``
+           embed.setColor("GREEN")
+            }
+          else
+            {
+              embeddesc=`You lost the battle :o\nYou:\`${uwin}\` Enemy:\`${bwin}\``
+           embed.setColor("GREEN")
+            }
+    embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
           function commoncard()
           {
                    if(botanimalcount==0)
