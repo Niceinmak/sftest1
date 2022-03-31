@@ -45,6 +45,9 @@ module.exports = {
         "<:ant:948264757000040460>",
     ];
   let x = client.db.get(`teamanimals_${interaction.user.id}`);
+   if (!x || !x.toString()) {
+    return interaction.editReply(`**There are no animals in your team :(**`);
+  }
       let animalcount=0
       let args_user=interaction.options.getUser('user')
       const arrayToObject1 = x.reduce((itemStruct, x1) => {
@@ -246,12 +249,14 @@ module.exports = {
           if(uwin>bwin)
             {
               embeddesc=`You won the battle!\nYou:\`${uwin}\` Enemy:\`${bwin}\``
+	embed.setFooter({ text: 'a', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
            embed.setColor("GREEN")
             }
           else
             {
               embeddesc=`You lost the battle :o\nYou:\`${uwin}\` Enemy:\`${bwin}\``
-           embed.setColor("GREEN")
+	embed.setFooter({ text: 'You ' });
+           embed.setColor("RED")
             }
     embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
    interaction.editReply({embeds:[embed]});
@@ -357,21 +362,21 @@ module.exports = {
             {
               botanimal1=legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]
               battlexpbot+=250
-              botanimals+=`Legendary ${botanimal1}\n\`250 HP\` \`l\`\n` 
+              botanimals+=`Legendary ${botanimal1}\n\`250 HP\` \`L\`\n` 
               botanimalcount++
             }
           else if(botanimalcount==1)
             {
               botanimal2=legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]
               battlexpbot+=250
-              botanimals+=`Legendary ${botanimal2}\n\`250 HP\` \`l\`\n` 
+              botanimals+=`Legendary ${botanimal2}\n\`250 HP\` \`L\`\n` 
               botanimalcount++
             }
          else if(botanimalcount==2)
             {
               botanimal3=legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]
               battlexpbot+=250
-              botanimals+=`Legendary ${botanimal3}\n\`250 HP\` \`l\`\n` 
+              botanimals+=`Legendary ${botanimal3}\n\`250 HP\` \`L\`\n` 
               botanimalcount++
             }
           }
