@@ -203,16 +203,19 @@ module.exports = {
         }
     }
     }
-          
+          let losewin=""
            embed.setColor("GREY")
           console.log(botanimal1,botanimal2,botanimal3)
           embed.addFields(
 		{ name: 'Player Team', value: `${useranimals}`, inline: true },
-    { name: 'Enemy Team', value: `${botanimals}`, inline: true }
+    { name: 'Enemy Team', value: `${botanimals}`, inline: true },
+		{ name: '\u200B', value: '\u200B' }
 	)
    embed.setAuthor({ name: 'Niceinmak goes into battle!', iconURL:interaction.user.displayAvatarURL()})
           //embed.setTitle(`${useranimals}`)
   //embed.setTitle(`${botanimal1},${botanimal2},${botanimal3}`)
+          
+	.addField('1.Round', 'Playing...', true)
    interaction.editReply({embeds:[embed]});
           function commoncard()
           {
