@@ -44,6 +44,8 @@ module.exports = {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
+  let userBalance = client.eco.fetchMoney(interaction.user.id);
+  if (userBalance.amount < 10000) return interaction.editReply(`**Your money must be at least 10000.**`);
   let x = client.db.get(`teamanimals_${interaction.user.id}`);
    if (!x || !x.toString()) {
     return interaction.editReply(`**There are no animals in your team :(**`);
@@ -206,7 +208,8 @@ module.exports = {
         }
     }
     }
-        let money = Math.floor(Math.random() * 10000)+500;
+        let money = Math.floor(Math.random() * 10000);
+          if(money==10000) money=9999
         let xpu = Math.floor(Math.random() * 5000)+500;
           let losewin=""
           let embeddesc="Round 1 Playing..."
@@ -235,14 +238,14 @@ module.exports = {
             uwin++
             uwincount+=`${i} W | `
             bwincount+=`${i} L | `
-            embeddesc=`\nRound Win!\nNew Round Playing...`
+            embeddesc=`Round Win!\nNew Round Playing...`
           }
          else
            {
             bwin++
              uwincount+=`${i} L | `
             bwincount+=`${i} W | `
-            embeddesc=`\nRound Lose :(\nNew Round Playing...`
+            embeddesc=`Round Lose :(\nNew Round Playing...`
            }
           embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
    interaction.editReply({embeds:[embed]});
