@@ -204,19 +204,37 @@ module.exports = {
     }
     }
           let losewin=""
+          let embeddesc="Round 1 Playing..."
+          embed.setDescription(`${embeddesc}`)
            embed.setColor("GREY")
           console.log(botanimal1,botanimal2,botanimal3)
           embed.addFields(
 		{ name: 'Player Team', value: `${useranimals}`, inline: true },
     { name: 'Enemy Team', value: `${botanimals}`, inline: true },
-		{ name: '\u200B', value: '\u200B' }
 	)
    embed.setAuthor({ name: 'Niceinmak goes into battle!', iconURL:interaction.user.displayAvatarURL()})
-          //embed.setTitle(`${useranimals}`)
-  //embed.setTitle(`${botanimal1},${botanimal2},${botanimal3}`)
-          
-	.addField('1.Round', 'Playing...', true)
    interaction.editReply({embeds:[embed]});
+      let uwin=0
+      let bwin=0
+      let uwincount=``
+    for(let i=0;i<5;i++)
+      {
+		await wait(2000);
+    let lucky = Math.floor(Math.random() * 2);
+        if(lucky==0)
+          {
+            uwin++
+            uwincount=``
+            embeddesc+=`\nRound Win!\nRound ${i} Playing...`
+          }
+         else
+           {
+            bwin++
+            embeddesc+=`\nRound Lose :(\nRound ${i} Playing...` 
+           }
+          embed.setDescription(`${embeddesc}`)
+   interaction.editReply({embeds:[embed]});
+      }
           function commoncard()
           {
                    if(botanimalcount==0)
