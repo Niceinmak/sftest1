@@ -221,8 +221,11 @@ module.exports = {
     for(let i=1;i<=5;i++)
       {
 		await wait(2000);
-    let lucky = Math.floor(Math.random() * 2);
-        if(lucky==0)
+        let lucky =0
+        if(battlexpuser>battlexpbot)lucky = Math.floor(Math.random() * 120);
+        else if(battlexpuser==battlexpbot) lucky = Math.floor(Math.random() * 120);
+        else lucky = Math.floor(Math.random() * 80);
+        if(lucky>50)
           {
             uwin++
             uwincount+=`${i} W | `
@@ -251,6 +254,7 @@ module.exports = {
            embed.setColor("GREEN")
             }
     embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
+   interaction.editReply({embeds:[embed]});
           function commoncard()
           {
                    if(botanimalcount==0)
