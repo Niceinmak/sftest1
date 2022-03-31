@@ -206,6 +206,8 @@ module.exports = {
         }
     }
     }
+        let money = Math.floor(Math.random() * 10000)+500;
+        let xpu = Math.floor(Math.random() * 5000)+500;
           let losewin=""
           let embeddesc="Round 1 Playing..."
           embed.setDescription(`${embeddesc}`)
@@ -248,14 +250,16 @@ module.exports = {
 		await wait(1000);
           if(uwin>bwin)
             {
+            client.eco.addMoney(interaction.user.id, parseInt(money));
               embeddesc=`You won the battle!\nYou:\`${uwin}\` Enemy:\`${bwin}\``
-	embed.setFooter({ text: 'a', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+	embed.setFooter({ text: `XP ${xpu}+ | Money :${money}+` });
            embed.setColor("GREEN")
             }
           else
             {
+          client.eco.removeMoney(interaction.user.id, parseInt(money));
               embeddesc=`You lost the battle :o\nYou:\`${uwin}\` Enemy:\`${bwin}\``
-	embed.setFooter({ text: 'You ' });
+	embed.setFooter({ text: `XP ${xpu}+ | Money:${money}-` });
            embed.setColor("RED")
             }
     embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
