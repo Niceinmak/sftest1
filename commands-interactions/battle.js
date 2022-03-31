@@ -1,4 +1,7 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const moment = require("moment");
+let ms = require('ms');
+let db = require('quick.db');
 const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Battle with other animals',
@@ -13,6 +16,15 @@ module.exports = {
     run: async (client, interaction) => {
       await interaction.deferReply();
 		await wait(10);
+      //--------------------------------------------------------------
+            const timeout = 60000;
+  const cooldown = await db.fetch(`cooldown_battle_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.editReply(`**Wait ${time} to message again**`)
+	}
+    db.set(`cooldown_battle_${interaction.user.id}`, Date.now());
+      //---------------------------------------------------------------------------
       let commonanimals = [
         "<:god:948265037313757184>",
         "<:cat1:948265025850724372>",
