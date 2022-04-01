@@ -510,7 +510,7 @@ module.exports = {
     }
           name=""
           const result2 = Object.keys(arrayToObject2).map(k =>
-    name+=` ${k} ${arrayToObject[k]} `
+    name+=` ${k} ${arrayToObject2[k]} `
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   var argString = name.substring(1).split(' ');
@@ -560,7 +560,6 @@ module.exports = {
     {
       if(argString[l]==epicanimals[i])
         {
-          console.log("a",argString[l+1])
           for(let i=0;i<argString[l+1];i++)
             {
               console.log("b")
@@ -587,7 +586,6 @@ module.exports = {
         }
     }
     }
-        console.log(argsuseranimals)
         let money = Math.floor(Math.random() * 10000);
           if(money==10000) money=9999
         let xpu = Math.floor(Math.random() * 5000)+500;
@@ -597,7 +595,7 @@ module.exports = {
            embed.setColor("GREY")
           embed.addFields(
 		{ name: `${interaction.user.username} Team`, value: `${useranimals}`, inline: true },  
-		//{ name: `${args_user.username} Team`, value: `${argsuseranimals}`, inline: true }  
+		{ name: `${args_user.username} Team`, value: `${argsuseranimals}`, inline: true }  
 	)
    embed.setAuthor({ name: 'Niceinmak goes into battle!', iconURL:interaction.user.displayAvatarURL()})
    interaction.editReply({embeds:[embed]});
