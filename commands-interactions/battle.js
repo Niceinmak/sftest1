@@ -229,7 +229,6 @@ module.exports = {
           let embeddesc="Round 1 Playing..."
           embed.setDescription(`${embeddesc}`)
            embed.setColor("GREY")
-          console.log(botanimal1,botanimal2,botanimal3)
           embed.addFields(
 		{ name: 'Player Team', value: `${useranimals}`, inline: true },
     { name: 'Enemy Team', value: `${botanimals}`, inline: true },
@@ -433,7 +432,7 @@ module.exports = {
     //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
   let useranimals=""
-  let botanimals="  "
+  let argsuseranimals=""
   let battlexpuser=0
   let battlexpargsuser=0
   var argString = name.substring(1).split(' ');
@@ -509,6 +508,12 @@ module.exports = {
         }
     }
     }
+          name=""
+          const result2 = Object.keys(arrayToObject2).map(k =>
+    name+=` ${k} ${arrayToObject[k]} `
+    //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
+  );
+  var argString = name.substring(1).split(' ');
            for(let l=0;l<7;l+=3)
     {
       for(let i=0;i<commonanimals.length;i++)
@@ -517,8 +522,8 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`Common ${argString[l]}\n\`50 HP\` \`C\`\n` 
-          battlexpuser+=50
+          argsuseranimals+=`Common ${argString[l]}\n\`50 HP\` \`C\`\n` 
+          battlexpargsuser+=50
            
             }
           //embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
@@ -531,8 +536,8 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`Uncommon ${argString[l]}\n\`100 HP\` \`U\`\n` 
-          battlexpuser+=100
+          argsuseranimals+=`Uncommon ${argString[l]}\n\`100 HP\` \`U\`\n` 
+          battlexpargsuser+=100
             }
           
         }
@@ -543,8 +548,8 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`Rare ${argString[l]}\n\`150 HP\` \`R\`\n` 
-          battlexpuser+=150
+          argsuseranimals+=`Rare ${argString[l]}\n\`150 HP\` \`R\`\n` 
+          battlexpargsuser+=150
            
             }
          //embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
@@ -555,10 +560,12 @@ module.exports = {
     {
       if(argString[l]==epicanimals[i])
         {
+          console.log("a",argString[l+1])
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`Epic ${argString[l]}\n\`200 HP\` \`E\`\n` 
-          battlexpuser+=200
+              console.log("b")
+          argsuseranimals+=`Epic ${argString[l]}\n\`200 HP\` \`E\`\n` 
+          battlexpargsuser+=200
           
             }
          //embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
@@ -571,8 +578,8 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-          useranimals+=`Legendary ${argString[l]}\n\`250 HP\` \`L\`\n` 
-          battlexpuser+=250
+          argsuseranimals+=`Legendary ${argString[l]}\n\`250 HP\` \`L\`\n` 
+          battlexpargsuser+=250
           
             }
          //embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
@@ -580,6 +587,7 @@ module.exports = {
         }
     }
     }
+        console.log(argsuseranimals)
         let money = Math.floor(Math.random() * 10000);
           if(money==10000) money=9999
         let xpu = Math.floor(Math.random() * 5000)+500;
@@ -587,9 +595,9 @@ module.exports = {
           let embeddesc="Round 1 Playing..."
           embed.setDescription(`${embeddesc}`)
            embed.setColor("GREY")
-          console.log(botanimal1,botanimal2,botanimal3)
           embed.addFields(
-		{ name: 'Player Team', value: `${useranimals}`, inline: true },  
+		{ name: `${interaction.user.username} Team`, value: `${useranimals}`, inline: true },  
+		//{ name: `${args_user.username} Team`, value: `${argsuseranimals}`, inline: true }  
 	)
    embed.setAuthor({ name: 'Niceinmak goes into battle!', iconURL:interaction.user.displayAvatarURL()})
    interaction.editReply({embeds:[embed]});
