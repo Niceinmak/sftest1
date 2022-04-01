@@ -23,7 +23,7 @@ module.exports = {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.editReply(`**Wait ${time} to message again**`)
 	}
-    db.set(`cooldown_battle_${interaction.user.id}`, Date.now());
+    //db.set(`cooldown_battle_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let commonanimals = [
         "<:god:948265037313757184>",
@@ -62,8 +62,10 @@ module.exports = {
    if (!x || !x.toString()) {
     return interaction.editReply(`**There are no animals in your team :(**`);
   }
-      let animalcount=0
       let args_user=interaction.options.getUser('user')
+      if(!args_user)
+        {
+      let animalcount=0
       const arrayToObject1 = x.reduce((itemStruct, x1) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     animalcount++
@@ -399,6 +401,122 @@ module.exports = {
               botanimalcount++
             }
           }
+        }
+          }
+      else
+        {
+           let animalcount=0
+      const arrayToObject1 = x.reduce((itemStruct, x1) => {
+    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    animalcount++
+    return itemStruct;
+  }, {});
+      if(animalcount!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
+        let botanimal1=""
+        let botanimal2=""
+        let botanimal3=""
+        let botanimalcount=0
+ const arrayToObject = x.reduce((itemsobj, x) => {
+    itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
+    return itemsobj;
+  }, {});
+  let name=""
+  const result = Object.keys(arrayToObject).map(k =>
+    name+=` ${k} ${arrayToObject[k]} `
+    //embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
+  );
+  let useranimals=""
+  let botanimals="  "
+  let battlexpbot=0
+  let battlexpuser=0
+  var argString = name.substring(1).split(' ');
+          const embed = new MessageEmbed()
+  for(let l=0;l<7;l+=3)
+    {
+      for(let i=0;i<commonanimals.length;i++)
+    {
+      if(argString[l]==commonanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Common ${argString[l]}\n\`50 HP\` \`C\`\n` 
+          battlexpuser+=50
+           
+            }
+          //embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+         
+        }
+    }
+  for(let i=0;i<uncommonanimals.length;i++)
+    {
+      if(argString[l]==uncommonanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Uncommon ${argString[l]}\n\`100 HP\` \`U\`\n` 
+          battlexpuser+=100
+            }
+          
+        }
+    }
+  for(let i=0;i<rareanimals.length;i++)
+    {
+      if(argString[l]==rareanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Rare ${argString[l]}\n\`150 HP\` \`R\`\n` 
+          battlexpuser+=150
+           
+            }
+         //embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+         
+        }
+    }
+  for(let i=0;i<epicanimals.length;i++)
+    {
+      if(argString[l]==epicanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Epic ${argString[l]}\n\`200 HP\` \`E\`\n` 
+          battlexpuser+=200
+          
+            }
+         //embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          
+        }
+    }
+  for(let i=0;i<legendaryanimals.length;i++)
+    {
+      if(argString[l]==legendaryanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Legendary ${argString[l]}\n\`250 HP\` \`L\`\n` 
+          battlexpuser+=250
+          
+            }
+         //embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+         
+        }
+    }
+    }
+        let money = Math.floor(Math.random() * 10000);
+          if(money==10000) money=9999
+        let xpu = Math.floor(Math.random() * 5000)+500;
+          let losewin=""
+          let embeddesc="Round 1 Playing..."
+          embed.setDescription(`${embeddesc}`)
+           embed.setColor("GREY")
+          console.log(botanimal1,botanimal2,botanimal3)
+          embed.addFields(
+		{ name: 'Player Team', value: `${useranimals}`, inline: true },  
+	)
+   embed.setAuthor({ name: 'Niceinmak goes into battle!', iconURL:interaction.user.displayAvatarURL()})
+   interaction.editReply({embeds:[embed]});
+          
+          
         }
     }
 };

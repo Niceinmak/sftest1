@@ -4,8 +4,8 @@ module.exports = {
     description: 'Test',
     run: async (client, interaction) => {
       if (!client.cfg.admins.includes(interaction.user.id)) return interaction.reply("**Only bot administrators are authorized to send and set money.**"); // return if author isn't bot owner
-      const x=client.db.all(`items`);
-      console.log(x)
+      //const x=client.db.all(`items`);
+      //console.log(x)
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Some title')
