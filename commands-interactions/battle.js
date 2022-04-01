@@ -412,10 +412,17 @@ module.exports = {
     return itemStruct;
   }, {});
       if(animalcount!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
-        let botanimal1=""
-        let botanimal2=""
-        let botanimal3=""
-        let botanimalcount=0
+  let x1=client.db.get(`teamanimals_${args_user.id}`);
+   if (!x1 || !x1.toString()) {
+    return interaction.editReply(`**User has no animals (${args_user.username})**`);
+  }
+    let animalcountuser=0
+      const arrayToObject2 = x1.reduce((itemStruct, x1) => {
+    itemStruct[x1.name] = (itemStruct[x1.name] || 0) + 1;
+    animalcountuser++
+    return itemStruct;
+  }, {});
+      if(animalcountuser!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
  const arrayToObject = x.reduce((itemsobj, x) => {
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
@@ -427,11 +434,82 @@ module.exports = {
   );
   let useranimals=""
   let botanimals="  "
-  let battlexpbot=0
   let battlexpuser=0
+  let battlexpargsuser=0
   var argString = name.substring(1).split(' ');
           const embed = new MessageEmbed()
   for(let l=0;l<7;l+=3)
+    {
+      for(let i=0;i<commonanimals.length;i++)
+    {
+      if(argString[l]==commonanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Common ${argString[l]}\n\`50 HP\` \`C\`\n` 
+          battlexpuser+=50
+           
+            }
+          //embed.addField(`Rarities: <:common:949006743428542545>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+         
+        }
+    }
+  for(let i=0;i<uncommonanimals.length;i++)
+    {
+      if(argString[l]==uncommonanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Uncommon ${argString[l]}\n\`100 HP\` \`U\`\n` 
+          battlexpuser+=100
+            }
+          
+        }
+    }
+  for(let i=0;i<rareanimals.length;i++)
+    {
+      if(argString[l]==rareanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Rare ${argString[l]}\n\`150 HP\` \`R\`\n` 
+          battlexpuser+=150
+           
+            }
+         //embed.addField(`Rarities: <:rare:949006777519837225>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+         
+        }
+    }
+  for(let i=0;i<epicanimals.length;i++)
+    {
+      if(argString[l]==epicanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Epic ${argString[l]}\n\`200 HP\` \`E\`\n` 
+          battlexpuser+=200
+          
+            }
+         //embed.addField(`Rarities: <:epic:949006791201652827>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+          
+        }
+    }
+  for(let i=0;i<legendaryanimals.length;i++)
+    {
+      if(argString[l]==legendaryanimals[i])
+        {
+          for(let i=0;i<argString[l+1];i++)
+            {
+          useranimals+=`Legendary ${argString[l]}\n\`250 HP\` \`L\`\n` 
+          battlexpuser+=250
+          
+            }
+         //embed.addField(`Rarities: <:legendary:949006805646864404>`, `Name: ${argString[l]} Quantity:\` ${argString[l+1]}\` `, false)
+         
+        }
+    }
+    }
+           for(let l=0;l<7;l+=3)
     {
       for(let i=0;i<commonanimals.length;i++)
     {
