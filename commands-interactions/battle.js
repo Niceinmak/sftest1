@@ -590,14 +590,17 @@ module.exports = {
           if(money==10000) money=9999
         let xpu = Math.floor(Math.random() * 5000)+500;
           let losewin=""
-          let embeddesc="Round 1 Playing..."
+          let embeddesc="**Player waiting...**"
           embed.setDescription(`${embeddesc}`)
            embed.setColor("GREY")
           embed.addFields(
 		{ name: `${interaction.user.username} Team`, value: `${useranimals}`, inline: true },  
 		{ name: `${args_user.username} Team`, value: `${argsuseranimals}`, inline: true }  
 	)
-   embed.setAuthor({ name: 'Niceinmak goes into battle!', iconURL:interaction.user.displayAvatarURL()})
+   embed.setAuthor({ name: `${args_user.username},${interaction.user.username} wants to battle you!`, iconURL:interaction.user.displayAvatarURL()})
+  const buton = new MessageButton().setCustomId('primary').setLabel('Accept').setStyle('PRIMARY').setDisabled(false);
+  const buton2 = new MessageButton().setCustomId('primary').setLabel('Decline').setStyle('DANGER').setDisabled(false);
+  const row = new MessageActionRow().addComponents(buton).addComponents(buton2)
    interaction.editReply({embeds:[embed]});
           
           
