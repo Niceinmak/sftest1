@@ -167,8 +167,20 @@ client.on('modalSubmit', async (modal) => {
   if(modal.customId === 'ticket'){
     const title = modal.getTextInputValue('title')
     console.log(modal.user)
+    const embed = new MessageEmbed()
+        .setTitle(`${modal.getTextInputValue('title')}`)
+        .setDescription(`${modal.getTextInputValue('title')}\n**Links: ${modal.getTextInputValue('link')}**`)
+        .setThumbnail(modal.user.avatarURL())
+        .addFields(
+    { name: 'User Name:', value: `\`${modal.user.username}#${modal.user.discriminator}\`` },
+    { name: 'User ID:', value: `\`${modal.user.id}\`` },
+	)
+        const channel = client.channels.cache.get(process.env.SUPPORT_CHANNEL)
+       channel.send({
+           embeds:[embed],
+       })
     await modal.deferReply({ ephemeral: true })
-    modal.followUp({ content: 'Thanks! \nYour ticket has been sent to our support team, well get back to you as soon as possible!'})
+    modal.followUp({ content: '**Thanks! \nYour ticket has been sent to our support team, well get back to you as soon as possible!**'})
   }  
 });
 /*client.commands = new Discord.Collection();

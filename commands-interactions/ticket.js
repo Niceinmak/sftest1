@@ -18,6 +18,23 @@ module.exports = {
 	}
     //db.set(`cooldown_ticket_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
+      const embed = new MessageEmbed()
+        .setTitle('EcoVerse Ticket')
+        .setDescription(`As EcoVerse, we care about user experience, if you have encountered a bug or a problem, please send us a ticket!`)
+        .setThumbnail(client.user.avatarURL());
+        const buton = new MessageButton().setCustomId('primary').setLabel(':lock: Send Ticket').setStyle('PRIMARY').setDisabled(false);
+        const row = new MessageActionRow().addComponents(buton)
+       interaction.editReply({
+           embeds:[embed],
+           components:[row],
+       })
+   const filter = i => i.customId === 'primary';
+
+const collector = interaction.channel.createMessageComponentCollector({filter,time: 15000 });
+
+collector.on('collect', async i => {
+	if (i.customId === 'primary') {
+		i.deferUpdate();
       const modal = new Modal() // We create a Modal
 .setCustomId('ticket')
 .setTitle('Submit a ticket to EcoVerse!')
@@ -49,5 +66,7 @@ module.exports = {
       client: client, // Client to show the Modal through the Discord API.
       interaction: interaction // Show the modal with interaction data.
     })
+	}
+});
     }
 };
