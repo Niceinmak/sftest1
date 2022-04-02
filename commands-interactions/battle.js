@@ -562,7 +562,6 @@ module.exports = {
         {
           for(let i=0;i<argString[l+1];i++)
             {
-              console.log("b")
           argsuseranimals+=`Epic ${argString[l]}\n\`200 HP\` \`E\`\n` 
           battlexpargsuser+=200
           
@@ -590,7 +589,7 @@ module.exports = {
           if(money==10000) money=9999
         let xpu = Math.floor(Math.random() * 5000)+500;
           let losewin=""
-          let embeddesc="**Player waiting...**"
+          let embeddesc=`**Player waiting... (<@${args_user.id}>)**`
           embed.setDescription(`${embeddesc}`)
            embed.setColor("GREY")
           embed.addFields(
@@ -599,9 +598,32 @@ module.exports = {
 	)
    embed.setAuthor({ name: `${args_user.username},${interaction.user.username} wants to battle you!`, iconURL:interaction.user.displayAvatarURL()})
   const buton = new MessageButton().setCustomId('primary').setLabel('Accept').setStyle('PRIMARY').setDisabled(false);
-  const buton2 = new MessageButton().setCustomId('primary').setLabel('Decline').setStyle('DANGER').setDisabled(false);
+  const buton2 = new MessageButton().setCustomId('danger').setLabel('Decline').setStyle('DANGER').setDisabled(false);
   const row = new MessageActionRow().addComponents(buton).addComponents(buton2)
-   interaction.editReply({embeds:[embed]});
+   interaction.editReply({embeds:[embed],components:[row]});
+   const filter = i => (i.customId === 'primary' || i.customId==='danger') && i.user.id === args_user.id;
+
+const collector = interaction.channel.createMessageComponentCollector({filter,time: 15000 });
+
+collector.on('collect', async i => {
+		i.deferUpdate();
+	if (i.customId === 'primary') {
+    embed.setTitle('EcoVerse Terms Of Service & Privacy Policy')
+        embed.setDescription(`**You have accepted the Terms Of Use & Privacy Policy!**`)
+    interaction.editReply({
+           embeds:[embed],
+       })
+	}
+  else
+    {
+      const embed2 = new MessageEmbed()
+        	.setColor('#0099ff')
+	.setTitle('The user fled the war!')
+    return interaction.editReply({
+           embeds:[embed2],
+       })
+    }
+});
           
           
         }
