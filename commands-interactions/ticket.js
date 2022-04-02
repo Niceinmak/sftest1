@@ -8,7 +8,6 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Have a question? Submit a request to the support team!',
     run: async (client, interaction) => {
-    //await interaction.deferReply();
 		//await wait(10);
        //--------------------------------------------------------------
             const timeout = 100;
