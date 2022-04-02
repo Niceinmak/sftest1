@@ -1,47 +1,40 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
 const moment = require("moment");
 let ms = require('ms');
 let db = require('quick.db');
+const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Have a question? Submit a request to the support team!',
-  options: [
-        {
-            name: 'title',
-            description: 'Write a title',
-            type: 'STRING',
-            required: true
-        },
-    {
-            name: 'description',
-            description: 'Write a description',
-            type: 'STRING',
-            required: true
-        },
-    ],
     run: async (client, interaction) => {
+    await interaction.deferReply();
+		await wait(10);
        //--------------------------------------------------------------
-            const timeout = 7200000;
+            const timeout = 100;
   const cooldown = await db.fetch(`cooldown_ticket_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
-          return interaction.reply(`**Wait ${time} to message again**`)
+          return interaction.editReply(`**Wait ${time} to message again**`)
 	}
-    db.set(`ooldown_ticket_${interaction.user.id}`, Date.now());
+    //db.set(`cooldown_ticket_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
-        const embed = new MessageEmbed()
-        .setTitle(`${interaction.options.getString('title')}`)
-        .setDescription(`${interaction.options.getString('description')}`)
-        .setThumbnail(interaction.user.avatarURL())
-        .addFields(
-		{ name: 'Guild Name:', value: `\`${interaction.guild.name}\`` },
-    { name: 'Channel Name:', value: `\`${interaction.channel.name}\`` },
-    { name: 'User Name:', value: `\`${interaction.user.username}#${interaction.user.discriminator}\`` },
-    { name: 'User ID:', value: `\`${interaction.user.id}\`` },
-	)
-        const channel = client.channels.cache.get(process.env.SUPPORT_CHANNEL)
-       channel.send({
-           embeds:[embed],
-       })
-      interaction.reply(`**Your \`ticket\` has been taken! You can be sure that we will get back to you as soon as possible!**`)
+      const modal = new Modal() // We create a Modal
+.setCustomId('modal-customid')
+.setTitle('Test of Discord-Modals!')
+.addComponents(
+  new TextInputComponent() // We create a Text Input Component
+  .setCustomId('textinput-customid')
+  .setLabel('Some text Here')
+  .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setMinLength(4)
+  .setMaxLength(10)
+  .setPlaceholder('Write a text here')
+  .setRequired(true) // If it's required or not
+);
+         showModal(modal, {
+      client: client, // Client to show the Modal through the Discord API.
+      interaction: interaction // Show the modal with interaction data.
+    })
+  
     }
 };

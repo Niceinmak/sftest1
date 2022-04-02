@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 const Canvas = require('canvas');
+const discordModals = require('discord-modals') // Define the discord-modals package!
 const { Client, Intents, MessageAttachment } = require('discord.js');
 const client = new Discord.Client({
     intents: [
