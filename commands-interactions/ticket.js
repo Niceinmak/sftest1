@@ -1,5 +1,6 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
 const { Modal, TextInputComponent, showModal } = require('discord-modals') // Now we extract the showModal method
+const { Formatters } = require('discord.js');
 const moment = require("moment");
 let ms = require('ms');
 let db = require('quick.db');
@@ -49,6 +50,13 @@ module.exports = {
       client: client, // Client to show the Modal through the Discord API.
       interaction: interaction // Show the modal with interaction data.
     })
-  
+  client.on('modalSubmit', async (modal) => {
+  console.log(modal.customId)
+  if(modal.customId === 'modal-customid'){
+    const firstResponse = modal.getTextInputValue('textinput-customid')
+    await modal.deferReply({ ephemeral: true })
+    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
+  }  
+});
     }
 };
