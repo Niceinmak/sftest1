@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const { Formatters } = require('discord.js');
 const Canvas = require('canvas');
 const discordModals = require('discord-modals') // Define the discord-modals package!
 const { Client, Intents, MessageAttachment } = require('discord.js');
@@ -161,6 +162,14 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
+client.on('modalSubmit', async (modal) => {
+  console.log(modal.customId)
+  if(modal.customId === 'modal-customid'){
+    const firstResponse = modal.getTextInputValue('textinput-customid')
+    await modal.deferReply({ ephemeral: true })
+    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
+  }  
+});
 /*client.commands = new Discord.Collection();
  client.on('ready', () => {
 	const ping = {
