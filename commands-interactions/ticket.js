@@ -19,7 +19,7 @@ module.exports = {
     //db.set(`cooldown_ticket_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       const modal = new Modal() // We create a Modal
-.setCustomId('modal-customid')
+.setCustomId('ticket')
 .setTitle('Submit a ticket to EcoVerse!')
 .addComponents(
   new TextInputComponent() // We create a Text Input Component
@@ -49,13 +49,5 @@ module.exports = {
       client: client, // Client to show the Modal through the Discord API.
       interaction: interaction // Show the modal with interaction data.
     })
-  client.on('modalSubmit', async (modal) => {
-  console.log(modal.customId)
-  if(modal.customId === 'modal-customid'){
-    const firstResponse = modal.getTextInputValue('textinput-customid')
-    await modal.deferReply({ ephemeral: true })
-    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
-  }  
-});
     }
 };

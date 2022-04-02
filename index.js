@@ -12,6 +12,7 @@ const client = new Discord.Client({
         Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
     ]
 });
+discordModals(client); // discord-modals needs your client in order to interact with modals
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
 //const disbut = require("discord-buttons");
@@ -163,11 +164,11 @@ fs.readdir("./events/", (err, files) => {
 });
 
 client.on('modalSubmit', async (modal) => {
-  console.log(modal.customId)
-  if(modal.customId === 'modal-customid'){
-    const firstResponse = modal.getTextInputValue('textinput-customid')
+  if(modal.customId === 'ticket'){
+    const title = modal.getTextInputValue('title')
+    console.log(modal.user)
     await modal.deferReply({ ephemeral: true })
-    modal.followUp({ content: 'Congrats! Powered by discord-modals.' + Formatters.codeBlock('markdown', firstResponse), ephemeral: true })
+    modal.followUp({ content: 'Thanks! \nYour ticket has been sent to our support team, well get back to you as soon as possible!'})
   }  
 });
 /*client.commands = new Discord.Collection();
