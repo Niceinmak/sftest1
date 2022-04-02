@@ -71,7 +71,7 @@ module.exports = {
     animalcount++
     return itemStruct;
   }, {});
-      if(animalcount!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
+      if(animalcount!=3) return interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
       if(!args_user)
         {
         let botanimal1=""
@@ -266,6 +266,7 @@ module.exports = {
 		await wait(1000);
           if(uwin>bwin)
             {
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(xpu));
             client.eco.addMoney(interaction.user.id, parseInt(money));
               embeddesc=`You won the battle!\nYou:\`${uwin}\` Enemy:\`${bwin}\``
 	embed.setFooter({ text: `XP ${xpu}+ | Money :${money}+` });
@@ -406,14 +407,14 @@ module.exports = {
         {
           
   let userBalance2 = client.eco.fetchMoney(args_user.id);
-  if (userBalance2.amount < 10000) return interaction.editReply(`**Your opponent must have at least 10000 casb**`);
+  if (userBalance2.amount < 10000) return interaction.editReply(`**Your friend must have at least 10000 cash**`);
            let animalcount=0
       const arrayToObject1 = x.reduce((itemStruct, x1) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     animalcount++
     return itemStruct;
   }, {});
-      if(animalcount!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
+      if(animalcount!=3) return interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
   let x1=client.db.get(`teamanimals_${args_user.id}`);
    if (!x1 || !x1.toString()) {
     return interaction.editReply(`**User has no animals (${args_user.username})**`);
@@ -424,7 +425,7 @@ module.exports = {
     animalcountuser++
     return itemStruct;
   }, {});
-      if(animalcountuser!=3) interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
+      if(animalcountuser!=3) return interaction.editReply(`**You must have 3 animals in the team to be able to battle.**`)
  const arrayToObject = x.reduce((itemsobj, x) => {
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
@@ -610,6 +611,10 @@ module.exports = {
 const collector = interaction.channel.createMessageComponentCollector({filter,time: 15000 });
 
 collector.on('collect', async i => {
+  const buton = new MessageButton().setCustomId('primary').setLabel('Accept').setStyle('PRIMARY').setDisabled(true);
+  const buton2 = new MessageButton().setCustomId('danger').setLabel('Decline').setStyle('DANGER').setDisabled(true);
+  const row = new MessageActionRow().addComponents(buton).addComponents(buton2)
+   interaction.editReply({embeds:[embed],components:[row]});
 		i.deferUpdate();
 	if (i.customId === 'primary') {
     let uwin=0
@@ -644,29 +649,35 @@ collector.on('collect', async i => {
           if(uwin>argwin)
             {
           client.eco.removeMoney(args_user.id, parseInt(money));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(xpu));
             client.eco.addMoney(interaction.user.id, parseInt(money));
-              embeddesc=`${interaction.user.username} Won The Battle!\n${interaction.user.id}:\`${uwin}\` ${args_user.id}:\`${argwin}\``
+              embeddesc=`${interaction.user.username} Won The Battle!\n${interaction.user.username}:\`${uwin}\` ${args_user.username}:\`${argwin}\``
 	embed.setFooter({ text: `XP ${xpu}+ | Money :${money}+` });
            embed.setColor("GREEN")
             }
           else
             {
           client.eco.removeMoney(interaction.user.id, parseInt(money));
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(epicxp));
             client.eco.addMoney(args_user.id, parseInt(money));
-              embeddesc=`${args_user.username} Won The Battle!\n${interaction.user.id}:\`${uwin}\` ${args_user.id}:\`${argwin}\``
+              embeddesc=`${args_user.username} Won The Battle!\n${interaction.user.username}:\`${uwin}\` ${args_user.username}:\`${argwin}\``
 	embed.setFooter({ text: `XP ${xpu}+ | Money:${money}-` });
            embed.setColor("RED")
             }
     embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${argwincount}\``)
-   interaction.editReply({embeds:[embed]});
+   return interaction.editReply({embeds:[embed]});
 	}
   else
     {
       const embed2 = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('The user fled the war!')
+  const buton = new MessageButton().setCustomId('primary').setLabel('Accept').setStyle('PRIMARY').setDisabled(true);
+  const buton2 = new MessageButton().setCustomId('danger').setLabel('Decline').setStyle('DANGER').setDisabled(true);
+  const row = new MessageActionRow().addComponents(buton).addComponents(buton2)
     return interaction.editReply({
            embeds:[embed2],
+           components:[row]
        })
     }
 });
