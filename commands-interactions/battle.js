@@ -279,7 +279,7 @@ module.exports = {
            embed.setColor("RED")
             }
     embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${bwincount}\``)
-   interaction.editReply({embeds:[embed]});
+   return interaction.editReply({embeds:[embed]});
           function commoncard()
           {
                    if(botanimalcount==0)
@@ -404,6 +404,9 @@ module.exports = {
           }
       else
         {
+          
+  let userBalance2 = client.eco.fetchMoney(args_user.id);
+  if (userBalance2.amount < 10000) return interaction.editReply(`**Your opponent must have at least 10000 casb**`);
            let animalcount=0
       const arrayToObject1 = x.reduce((itemStruct, x1) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
@@ -585,11 +588,12 @@ module.exports = {
         }
     }
     }
+          interaction.editReply(`<@${args_user.id}>`)
         let money = Math.floor(Math.random() * 10000);
           if(money==10000) money=9999
         let xpu = Math.floor(Math.random() * 5000)+500;
           let losewin=""
-          let embeddesc=`**Player waiting... (<@${args_user.id}>)**`
+          let embeddesc=`**Player waiting...**`
           embed.setDescription(`${embeddesc}`)
            embed.setColor("GREY")
           embed.addFields(
@@ -608,11 +612,53 @@ const collector = interaction.channel.createMessageComponentCollector({filter,ti
 collector.on('collect', async i => {
 		i.deferUpdate();
 	if (i.customId === 'primary') {
-    embed.setTitle('EcoVerse Terms Of Service & Privacy Policy')
-        embed.setDescription(`**You have accepted the Terms Of Use & Privacy Policy!**`)
-    interaction.editReply({
-           embeds:[embed],
-       })
+    let uwin=0
+      let argwin=0
+      let uwincount=``
+      let argwincount=``
+    for(let i=1;i<=5;i++)
+      {
+		await wait(2000);
+        let lucky =0
+        if(battlexpuser>battlexpargsuser)lucky = Math.floor(Math.random() * 120);
+        else if(battlexpuser==battlexpargsuser) lucky = Math.floor(Math.random() * 120);
+        else lucky = Math.floor(Math.random() * 80);
+        if(lucky>50)
+          {
+            uwin++
+            uwincount+=`${i} W | `
+            argwincount+=`${i} L | `
+            embeddesc=`${interaction.user.username} Won The Round!\nNew Round Playing...`
+          }
+         else
+           {
+            argwin++
+             uwincount+=`${i} L | `
+            argwincount+=`${i} W | `
+            embeddesc=`${args_user.username} Won The Round!\nNew Round Playing...`
+           }
+          embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${argwincount}\``)
+   interaction.editReply({embeds:[embed]});
+      }
+		await wait(1000);
+          if(uwin>argwin)
+            {
+          client.eco.removeMoney(args_user.id, parseInt(money));
+            client.eco.addMoney(interaction.user.id, parseInt(money));
+              embeddesc=`${interaction.user.username} Won The Battle!\n${interaction.user.id}:\`${uwin}\` ${args_user.id}:\`${argwin}\``
+	embed.setFooter({ text: `XP ${xpu}+ | Money :${money}+` });
+           embed.setColor("GREEN")
+            }
+          else
+            {
+          client.eco.removeMoney(interaction.user.id, parseInt(money));
+            client.eco.addMoney(args_user.id, parseInt(money));
+              embeddesc=`${args_user.username} Won The Battle!\n${interaction.user.id}:\`${uwin}\` ${args_user.id}:\`${argwin}\``
+	embed.setFooter({ text: `XP ${xpu}+ | Money:${money}-` });
+           embed.setColor("RED")
+            }
+    embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${argwincount}\``)
+   interaction.editReply({embeds:[embed]});
 	}
   else
     {
