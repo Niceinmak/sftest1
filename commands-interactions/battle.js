@@ -23,7 +23,7 @@ module.exports = {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.editReply(`**Wait ${time} to message again**`)
 	}
-    //db.set(`cooldown_battle_${interaction.user.id}`, Date.now());
+    db.set(`cooldown_battle_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let commonanimals = [
         "<:god:948265037313757184>",
@@ -658,11 +658,11 @@ collector.on('collect', async i => {
           else
             {
           client.eco.removeMoney(interaction.user.id, parseInt(money));
-          client.eco.addMoney(`${interaction.user.id}12`, parseInt(epicxp));
+          client.eco.addMoney(`${args_user.id}12`, parseInt(xpu));
             client.eco.addMoney(args_user.id, parseInt(money));
               embeddesc=`${args_user.username} Won The Battle!\n${interaction.user.username}:\`${uwin}\` ${args_user.username}:\`${argwin}\``
 	embed.setFooter({ text: `XP ${xpu}+ | Money:${money}-` });
-           embed.setColor("RED")
+           embed.setColor("GREEN")
             }
     embed.setDescription(`**${embeddesc}**\n\`${uwincount}\`\n\`${argwincount}\``)
    return interaction.editReply({embeds:[embed]});
