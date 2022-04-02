@@ -33,7 +33,7 @@ module.exports = {
 );
          showModal(modal, {
       client: client, // Client to show the Modal through the Discord API.
-      interaction: interaction // Show the modal with interaction data.
+      interaction: interaction.editReply // Show the modal with interaction data.
     })
   
     }
