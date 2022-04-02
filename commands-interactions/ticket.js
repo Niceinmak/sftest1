@@ -7,8 +7,8 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Have a question? Submit a request to the support team!',
     run: async (client, interaction) => {
-    await interaction.deferReply();
-		await wait(10);
+    //await interaction.deferReply();
+		//await wait(10);
        //--------------------------------------------------------------
             const timeout = 100;
   const cooldown = await db.fetch(`cooldown_ticket_${interaction.user.id}`);
@@ -20,20 +20,34 @@ module.exports = {
       //---------------------------------------------------------------------------
       const modal = new Modal() // We create a Modal
 .setCustomId('modal-customid')
-.setTitle('Test of Discord-Modals!')
+.setTitle('Submit a ticket to EcoVerse!')
 .addComponents(
   new TextInputComponent() // We create a Text Input Component
-  .setCustomId('textinput-customid')
-  .setLabel('Some text Here')
+  .setCustomId('title')
+  .setLabel('Title')
   .setStyle('SHORT') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
-  .setMinLength(4)
-  .setMaxLength(10)
-  .setPlaceholder('Write a text here')
-  .setRequired(true) // If it's required or not
+  .setMinLength(2)
+  .setMaxLength(30)
+  .setPlaceholder('Eg. bug ,command not working...')
+  .setRequired(true), // If it's required or not
+  new TextInputComponent() // We create a Text Input Component
+  .setCustomId('description')
+  .setLabel('Description')
+  .setStyle('LONG') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setMinLength(10)
+  .setPlaceholder('Can I have your question?')
+  .setRequired(true), // If it's required or not+
+  new TextInputComponent() // We create a Text Input Component
+  .setCustomId('link')
+  .setLabel('Attachment link (Not required)')
+  .setStyle('LONG') //IMPORTANT: Text Input Component Style can be 'SHORT' or 'LONG'
+  .setPlaceholder('Want to add a screenshot?')
+  .setRequired(false) // If it's required or not+
 );
+      
          showModal(modal, {
       client: client, // Client to show the Modal through the Discord API.
-      interaction: interaction.editReply // Show the modal with interaction data.
+      interaction: interaction // Show the modal with interaction data.
     })
   
     }
