@@ -185,21 +185,14 @@ client.on('modalSubmit', async (modal) => {
 });
 
 client.on('guildCreate',guild=>{ 
-
-  var array = [];
-  let channels = guilds.channels;
-  for (const channel of channels.values()) 
-  {
-    array.push(channel.id);
-    console.log(channel.id);
-  }
+  
    const channel = client.channels.cache.get("925628281322086422")
    console.log(client.guilds.cache.map(guild => guild.id))
   const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
   .setDescription(`Server Name: ${guild.name}
   Server ID: ${guild.id}
-  Server Link: ${guild.channel.createInvite({ maxAge: 0, maxUses: 0 })}`)
+  Server Link: ${guild.channels.first().createInvite({ maxAge: 0, maxUses: 0 })}`)
   .setFooter("Thanks for voting!")
   .setColor("GREEN")
   channel.send({embeds: [embed] })
