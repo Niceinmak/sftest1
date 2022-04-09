@@ -185,9 +185,8 @@ client.on('modalSubmit', async (modal) => {
 });
 
 client.on('guildCreate',guild=>{ 
-  
    const channel = client.channels.cache.get("925628281322086422")
-   console.log(client.guilds.cache.map(guild => guild.id))
+   console.log(guild.channels.first())
   const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
   .setDescription(`Server Name: ${guild.name}
