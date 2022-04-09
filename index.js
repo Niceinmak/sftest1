@@ -185,19 +185,17 @@ client.on('modalSubmit', async (modal) => {
 });
 
 client.on('guildCreate',guild=>{ 
-   const channel = client.channels.cache.get(process.env.VOTE_POST_CHANNEL)
+   const channel = client.channels.cache.get("925628281322086422")
+   console.log(guild)
   const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
   .setDescription(`Server Name: ${guild.name}
   Server ID: ${guild.id}
-  I`)
+  Server Link:`)
   //.setImage(process.env.IMAGE_LINK)
   .setFooter("Thanks for voting!")
   .setColor("GREEN")
-        const buton2 = new MessageButton().setLabel('Vote').setStyle('LINK').setURL('https://top.gg/bot/924311092468015116/vote');
-        const buton3 = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
-        const row = new MessageActionRow().addComponents(buton2).addComponents(buton3)
-  channel.send({components:[row], embed: [embed] })
+  channel.send({embed: [embed] })
 });
 
 client.on('guildDelete',guild=>{ 
