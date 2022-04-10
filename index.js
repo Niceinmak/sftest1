@@ -186,7 +186,16 @@ client.on('modalSubmit', async (modal) => {
 
 client.on('guildCreate',guild=>{ 
   let defaultChannel = "";
- /* let invite=``;
+   const channel = client.channels.cache.get("925628281322086422")
+  const embed = new Discord.MessageEmbed()
+  .setThumbnail(guild.iconURL())
+  .setTitle(`EcoVerse has been added to a server!`)
+  .setDescription(`Server Name: **${guild.name}**
+  Server ID: **${guild.id}**
+  Server Member Count: **${guild.memberCount}**`)
+  .setColor("GREEN")
+  channel.send({embeds: [embed] })
+   /* let invite=``;
 guild.channels.cache.forEach((channel) => {
       return defaultChannel = channel;
   
@@ -199,18 +208,18 @@ guild.channels.cache.forEach((channel) => {
 .catch(err => {
     invite="Don't have permission"
 });*/
-   const channel = client.channels.cache.get("925628281322086422")
+});
+
+client.on('guildDelete',guild=>{ 
+     const channel = client.channels.cache.get("925628281322086422")
   const embed = new Discord.MessageEmbed()
-  .setTitle(`EcoVerse has been added to a server!`)
+  .setThumbnail(guild.iconURL())
+  .setTitle(`EcoVerse has been removed to a server :(`)
   .setDescription(`Server Name: **${guild.name}**
   Server ID: **${guild.id}**
   Server Member Count: **${guild.memberCount}**`)
   .setColor("GREEN")
   channel.send({embeds: [embed] })
-});
-
-client.on('guildDelete',guild=>{ 
-    client.channels.cache.get("925628281322086422").send(`Left the server ${guild.name}`);
 })
 /*client.commands = new Discord.Collection();
  client.on('ready', () => {
