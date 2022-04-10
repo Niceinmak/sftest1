@@ -191,15 +191,18 @@ guild.channels.cache.forEach((channel) => {
       return defaultChannel = channel;
   
 })
-  const embed = new Discord.MessageEmbed()
   defaultChannel.createInvite()
 .then(inv => {
-    embed.setURL(`${inv.url}`)
+ const invite=`${inv.url}`;
+    console.log(invite,"şu")
 })
 .catch(err => {
- //
+   const invite="Don't have permission"
 });
+   
+    console.log(invite,"bu")
    const channel = client.channels.cache.get("925628281322086422")
+  const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
   .setDescription(`Server Name: ${guild.name}
   Server ID: ${guild.id}
