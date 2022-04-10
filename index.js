@@ -185,8 +185,14 @@ client.on('modalSubmit', async (modal) => {
 });
 
 client.on('guildCreate',guild=>{ 
+const randomChannel = (guild) => {
+    guild.channels.random().then(channel => {
+        if (channel.type === 'text') return channel;
+        else return randomChannel(guild);
+    }
+)}
+console.log(randomChannel)
    const channel = client.channels.cache.get("925628281322086422")
-   console.log(guild.channels.first())
   const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
   .setDescription(`Server Name: ${guild.name}
