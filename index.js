@@ -186,7 +186,7 @@ client.on('modalSubmit', async (modal) => {
 
 client.on('guildCreate',guild=>{ 
   let defaultChannel = "";
-  let invite=``;
+ /* let invite=``;
 guild.channels.cache.forEach((channel) => {
       return defaultChannel = channel;
   
@@ -198,15 +198,13 @@ guild.channels.cache.forEach((channel) => {
 })
 .catch(err => {
     invite="Don't have permission"
-});
-   
-    console.log(invite,"bu")
+});*/
    const channel = client.channels.cache.get("925628281322086422")
   const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
-  .setDescription(`Server Name: ${guild.name}
-  Server ID: ${guild.id}
-  Server Link: ${invite}`)
+  .setDescription(`Server Name: **${guild.name}**
+  Server ID: **${guild.id}**
+  Server Member Count: **${guild.memberCount}**`)
   .setColor("GREEN")
   channel.send({embeds: [embed] })
 });
