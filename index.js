@@ -193,11 +193,11 @@ guild.channels.cache.forEach((channel) => {
 })
   defaultChannel.createInvite()
 .then(inv => {
- const invite=`${inv.url}`;
+ invite=`${inv.url}`;
     console.log(invite,"şu")
 })
 .catch(err => {
-   const invite="Don't have permission"
+    invite="Don't have permission"
 });
    
     console.log(invite,"bu")
