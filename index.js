@@ -186,29 +186,24 @@ client.on('modalSubmit', async (modal) => {
 
 client.on('guildCreate',guild=>{ 
   let defaultChannel = "";
+  let invite=``;
 guild.channels.cache.forEach((channel) => {
       return defaultChannel = channel;
   
 })
-  console.log(defaultChannel)
+  const embed = new Discord.MessageEmbed()
   defaultChannel.createInvite()
 .then(inv => {
-  //guild.name will only work if you used the first method
-  console.log(`${guild.name} | ${inv.url}`);
-  console.log(`${guild.name} | ${inv.url}`);
+    embed.setURL(`${inv.url}`)
 })
 .catch(err => {
-    console.error(err);
-    console.log("Don't have permission");
+ //
 });
-
    const channel = client.channels.cache.get("925628281322086422")
-  const embed = new Discord.MessageEmbed()
   .setTitle(`EcoVerse has been added to a server!`)
   .setDescription(`Server Name: ${guild.name}
   Server ID: ${guild.id}
-  Server Link: ${defaultChannel.createInvite({ maxAge: 0, maxUses: 0 })}`)
-  .setFooter("Thanks for voting!")
+  Server Link: ${invite}`)
   .setColor("GREEN")
   channel.send({embeds: [embed] })
 });
