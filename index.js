@@ -259,5 +259,7 @@ console.log("Rolü verdim.")
   }  
   }
   })
-
+client.on('raw',event=>{
+  console.log(event.t)
+})
 client.login(process.env.TOKEN);
