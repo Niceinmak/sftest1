@@ -245,7 +245,6 @@ client.on('commandInteraction', data => {
 	};
 });*/
   client.on('messageReactionAdd', (reaction, user) => {
-    console.log(reaction.message.id)
 
   })
 client.on('raw',event=>{
@@ -255,14 +254,13 @@ client.on('raw',event=>{
       {
         if(data.emoji.name==='👊')
           {
-        console.log("t")
   let guildID = client.guilds.cache.get(event.d.guild_id);
-    console.log(guildID.members)
-guildID.members.cache.get(event.d.user_id)
+    console.log(guildID.id,event.d.user_id)
+   let kullanici=guildID.members.cache.get(event.d.user_id)
    console.log(kullanici)
-kullanici.roles.add("964559669219700756").then(a=> {
+/*kullanici.roles.add("964559669219700756").then(a=> {
 console.log("Rolü verdim.")
-}).catch(err => console.log("Rolü veremedim."))
+}).catch(err => console.log("Rolü veremedim."))*/
   }
    }
      }
