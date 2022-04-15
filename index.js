@@ -4,14 +4,7 @@ const { Formatters } = require('discord.js');
 const Canvas = require('canvas');
 const discordModals = require('discord-modals') // Define the discord-modals package!
 const { Client, Intents, MessageAttachment } = require('discord.js');
-const client = new Discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
-    ]
-});
+const client = new Discord.Client({intents: 32767});
 discordModals(client); // discord-modals needs your client in order to interact with modals
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
@@ -247,31 +240,5 @@ client.on('commandInteraction', data => {
   client.on('messageReactionAdd', (reaction, user) => {
 
   })
-client.on('raw',async(event)=>{
-     if (event.t === 'MESSAGE_REACTION_ADD'){
-  const { d: data } = event;
-           if(event.d.message_id=="964560742714060850")
-      {
-        if(data.emoji.name==='👊')
-          {
-            let guild = client.guilds.cache.get(event.d.guild_id);
-             try {
-                let member = await guild.members.fetch(event.d.user_id);
-                let role = await guild.roles.cache.find(role => role.name === 'deneme');
-               console.log(member)
-                member.roles.add(role);
-            } catch (error) {
-                console.log(error);
-            }
-  /*let guild = client.guilds.cache.get(event.d.guild_id);
-   let kullanici=guild.members.fetch(event.d.user_id);
-  let role = guild.roles.cache.find(role => role.name === 'deneme');
-   console.log(kullanici,kullanici.roles,role)
-kullanici.roles.add("964559669219700756").then(a=> {
-console.log("Rolü verdim.")
-}).catch(err => console.log("Rolü veremedim."))*/
-  }
-   }
-     }
-})
+
 client.login(process.env.TOKEN);
