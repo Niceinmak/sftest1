@@ -247,18 +247,27 @@ client.on('commandInteraction', data => {
   client.on('messageReactionAdd', (reaction, user) => {
 
   })
-client.on('raw',event=>{
+client.on('raw',async(event)=>{
      if (event.t === 'MESSAGE_REACTION_ADD'){
   const { d: data } = event;
            if(event.d.message_id=="964560742714060850")
       {
         if(data.emoji.name==='👊')
           {
-  let guild = client.guilds.cache.get(event.d.guild_id);
-    console.log(event.d.guild)
+            let guild = client.guilds.cache.get(event.d.guild_id);
+             try {
+                let member = await guild.members.fetch(event.d.user_id);
+                let role = await guild.roles.cache.find(role => role.name === 'deneme');
+               console.log(member)
+                member.roles.add(role);
+            } catch (error) {
+                console.log(error);
+            }
+  /*let guild = client.guilds.cache.get(event.d.guild_id);
    let kullanici=guild.members.fetch(event.d.user_id);
-   console.log(kullanici)
-/*kullanici.roles.add("964559669219700756").then(a=> {
+  let role = guild.roles.cache.find(role => role.name === 'deneme');
+   console.log(kullanici,kullanici.roles,role)
+kullanici.roles.add("964559669219700756").then(a=> {
 console.log("Rolü verdim.")
 }).catch(err => console.log("Rolü veremedim."))*/
   }
