@@ -1,16 +1,19 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 const moment = require("moment");
 let ms = require('ms');
 let db = require('quick.db');
 module.exports = {
     description: 'Hunt animals, but without harm ^^',
     run: async (client, interaction) => {
+      await interaction.deferReply();
+		await wait(10);
    //--------------------------------------------------------------
             const timeout = 10000;
   const cooldown = await db.fetch(`cooldown_hunt_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
-          return interaction.reply(`**Wait ${time} to message again**`)
+          return interaction.editReply(`**Wait ${time} to message again**`)
 	}
     db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
@@ -52,7 +55,7 @@ module.exports = {
         "<:trex1:948264765866786907>",
         "<:ant:948264757000040460>",
     ];
-  if (userBalance.amount < 3) return interaction.reply(`**You have too little money.**`);
+  if (userBalance.amount < 3) return interaction.editReply(`**You have too little money.**`);
   for(let i=lucky; i>0;i--)
     {
   let lucky1 = Math.floor(Math.random() * 100)+1;
@@ -61,7 +64,7 @@ module.exports = {
       let rarexp = Math.floor(Math.random() * 1000)+1;
       let epicxp = Math.floor(Math.random() * 5000)+1;
       let legendaryxp = Math.floor(Math.random() * 10000)+1;
-  if (userBalance.amount < 3) return interaction.reply(`You found: **${fullname}** for ** ${fullcost}💶
+  if (userBalance.amount < 3) return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
       let item = ""
       if(lucky1<75)
@@ -94,11 +97,11 @@ Gained ${xp}xp!**.`);
           xp+=legendaryxp
          item = legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]; 
         }
-  if (!item) return interaction.reply("What are you trying to buy?");
+  if (!item) return interaction.editReply("What are you trying to buy?");
   let hasItem = client.shop[item];
-  if (!hasItem || hasItem == undefined) return interaction.reply("That item doesnt exists lol");
+  if (!hasItem || hasItem == undefined) return interaction.editReply("That item doesnt exists lol");
   let isBalanceEnough = (userBalance.amount >= hasItem.cost);
-  if (!isBalanceEnough) return interaction.reply("Your balance is insufficient. You need :dollar: "+hasItem.cost+" to buy this item.");
+  if (!isBalanceEnough) return interaction.editReply("Your balance is insufficient. You need :dollar: "+hasItem.cost+" to buy this item.");
   let buy = client.eco.removeMoney(interaction.user.id, hasItem.cost);
   
   let itemStruct = {
@@ -110,7 +113,7 @@ Gained ${xp}xp!**.`);
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
-  return interaction.reply(`You found: **${fullname}** for ** ${fullcost}💶
+  return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
     }
 };
