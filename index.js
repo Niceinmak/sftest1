@@ -244,16 +244,6 @@ client.on('commandInteraction', data => {
 		data.reply.send('pong!');
 	};
 });*/
-  client.on('messageReactionAdd', (reaction, user) => {
-    console.log(reaction.channel.id)
-if(reaction.emoji.name === 'emojiyi buraya yapıştır'){
-  const rol = reaction.guild.roles.cache.get("rolün idsi");
-if (!rol) return console.log("Rol etiketlenmedi.")
-   let kullanici=reaction.guild.members.cache.get(reaction.message.id)
-kullanici.roles.add(rol.id).then(a=> {
-console.log("Rolü verdim.")
-}).catch(err => console.log("Rolü veremedim."))
-  }  
-  })
+
 
 client.login(process.env.TOKEN);
