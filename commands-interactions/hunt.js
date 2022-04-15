@@ -114,7 +114,7 @@ Gained ${xp}xp!**.`);
   fullcost+=hasItem.cost
     }
       let egglucky=Math.floor(Math.random()* 100)+1;
-      if(egglucky>1)
+      if(egglucky>70)
         {
           let egglucky1=Math.floor(Math.random()* 100)+1;
           let egg=""
