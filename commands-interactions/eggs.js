@@ -12,7 +12,12 @@ module.exports = {
   if (!x) {
     return interaction.reply(`**No Eggs Found To Display :c**`);
   }
+  let eggs=""
   const arrayToObject = x.reduce((itemsobj, x) => {
+    if(x.name=="<:eggrare:964448940248428604>")
+      {
+    eggs+=`${x.name} ` 
+      }
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
   }, {});
