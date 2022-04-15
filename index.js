@@ -254,9 +254,9 @@ client.on('raw',event=>{
       {
         if(data.emoji.name==='👊')
           {
-  let guildID = client.guilds.cache.get(event.d.guild_id);
-    console.log(guildID.id,event.d.user_id)
-   let kullanici=guildID.members.cache.get(event.d.user_id)
+  let guild = client.guilds.cache.get(event.d.guild_id);
+    console.log(event.d.guild)
+   let kullanici=guild.members.fetch(event.d.user_id);
    console.log(kullanici)
 /*kullanici.roles.add("964559669219700756").then(a=> {
 console.log("Rolü verdim.")
