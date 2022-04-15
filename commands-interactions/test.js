@@ -17,5 +17,9 @@ module.exports = {
            embeds:[embed],
            components:[row],
        })
+      const message = await interaction.fetchReply();
+            message.react("👊")
+        //  msg.react("")  
+          message.react("🛑")
     }
 };

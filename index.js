@@ -244,6 +244,20 @@ client.on('commandInteraction', data => {
 		data.reply.send('pong!');
 	};
 });*/
-
+  client.on('messageReactionAdd', (reaction, user) => {
+    console.log(reaction.message.id)
+    if(reaction.message.id=="964559922203336724")
+      {
+        console.log("t")
+if(reaction.emoji.name === '👊'){
+  const rol = reaction.guild.roles.cache.get("964559669219700756");
+if (!rol) return console.log("Rol etiketlenmedi.")
+   let kullanici=reaction.guild.members.cache.get(reaction.message.id)
+kullanici.roles.add(rol.id).then(a=> {
+console.log("Rolü verdim.")
+}).catch(err => console.log("Rolü veremedim."))
+  }  
+  }
+  })
 
 client.login(process.env.TOKEN);
