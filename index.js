@@ -251,18 +251,20 @@ client.on('commandInteraction', data => {
 client.on('raw',event=>{
      if (event.t === 'MESSAGE_REACTION_ADD'){
   const { d: data } = event;
-  console.log(data,)
-           if(event.d.message_id=="964559922203336724")
+           if(event.d.message_id=="964560742714060850")
       {
-        if
+        if(data.emoji.name==='👊')
+          {
         console.log("t")
-  const rol = event.d.guild.roles.cache.get("964559669219700756");
-if (!rol) return console.log("Rol etiketlenmedi.")
-   let kullanici=event.d.guild.members.cache.get(event.d.message_id)
-kullanici.roles.add(rol.id).then(a=> {
+  let guildID = client.guilds.cache.get(event.d.guild_id);
+    console.log(guildID.members)
+guildID.members.cache.get(event.d.user_id)
+   console.log(kullanici)
+kullanici.roles.add("964559669219700756").then(a=> {
 console.log("Rolü verdim.")
 }).catch(err => console.log("Rolü veremedim."))
   }
+   }
      }
 })
 client.login(process.env.TOKEN);
