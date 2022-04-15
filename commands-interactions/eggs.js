@@ -14,9 +14,17 @@ module.exports = {
   }
   let eggs=""
   const arrayToObject = x.reduce((itemsobj, x) => {
-    if(x.name=="<:eggrare:964448940248428604>")
+    if(x.name=="<:eggepic:964448950281183242>")
       {
-    eggs+=`${x.name} ` 
+    eggs+=`\`E\`${x.name} ` 
+      }
+    else if(x.name=="<:eggrare:964448940248428604>")
+      {
+      eggs+=`\`R\`${x.name} ` 
+      }
+    else
+      {
+        eggs+=`\`C\`${x.name} ` 
       }
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
@@ -24,7 +32,8 @@ module.exports = {
   const result = Object.keys(arrayToObject).map(k =>
     embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-
-  return interaction.reply({embeds:[embed]});
+console.log(eggs)
+  return interaction.reply(`**=== Niceinmak's Eggs ===**
+  ${eggs}`);
     }
 };
