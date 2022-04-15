@@ -113,6 +113,26 @@ Gained ${xp}xp!**.`);
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
+      let egglucky=Math.floor(Math.random()* 100)+1;
+      if(egglucky>70)
+        {
+          let egglucky1=Math.floor(Math.random()* 100)+1;
+          let egg=""
+          if(egglucky1>90)
+            {
+          egg="<:eggepic:964448950281183242>"; 
+            }
+          else if(egglucky1>65)
+            {
+            egg="<:eggrare:964448940248428604>"; 
+            }
+          else
+            {
+            egg="<:eggcommon:964448926671454239>"; 
+            }
+          let hasegg = client.shop[egg];
+          
+        }
   return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
     }
