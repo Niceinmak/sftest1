@@ -130,8 +130,14 @@ Gained ${xp}xp!**.`);
             {
             egg="<:eggcommon:964448926671454239>"; 
             }
-          let hasegg = client.shop[egg];
-          
+          let hasEgg = client.shop[egg];
+          let eggStruct = {
+    name: egg.toLowerCase(),
+    prize: hasEgg.cost
+  };
+          client.db.push(`eggs_${interaction.user.id}`, eggStruct);
+          return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
+Gained ${xp}xp!\nYou are lucky! You have won one egg:${egg}**.`);
         }
   return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
