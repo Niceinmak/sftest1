@@ -7,11 +7,11 @@ module.exports = {
     description: 'Hunt animals, but without harm ^^',
     options: [
     {
-      name: "select_open",
-      description: "Select color",
+      name: "select_egg",
+      description: "Select a egg",
       type: 'STRING',
       required: true,
-      choices: [{ name: "Common Egg", value: "eggcommon" }, { name: "Rare Egg", value: "eggrare" }, { name: "Epic Egg", value: "eggepic" }, { name: "All Eggs", value: "alleggs" }]
+      choices: [{ name: "Common Egg", value: "<:eggcommon:964448926671454239>" }, { name: "Rare Egg", value: "<:eggrare:964448940248428604>" }, { name: "Epic Egg", value: "<:eggepic:964448950281183242>" }, { name: "All Eggs", value: "alleggs" }]
     },
     ],
     run: async (client, interaction) => {
@@ -26,7 +26,26 @@ module.exports = {
 	}
     db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
-
+      let x = client.db.get(`eggs_${interaction.user.id}`);
+      let item = interaction.options.get("select_egg").value;
+      var animal = new Boolean(false)
+      let count=0
+      let tempcount=0
+const arrayToObject = x.reduce((itemStruct, x) => {
+    if(x.name==item)
+      {
+        count=tempcount
+      animal=true
+      }
+  tempcount++
+    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
+    return itemStruct;
+  }, {});
+      if(animal==false)
+    {
+      return interaction.editReply(`**${interaction.user.username} | This egg was not found in your inventory**`);
+    }
+      x.splice(count,1);
        let user = interaction.user
   let xp=0
   let fullname=""

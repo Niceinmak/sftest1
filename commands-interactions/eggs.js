@@ -11,7 +11,7 @@ module.exports = {
     .setThumbnail()
     .setTimestamp();
   const x = client.db.get(`eggs_${interaction.user.id}`);
-  if (!x) {
+  if (!x || !x.toString()) {
     return interaction.editReply(`**No Eggs Found To Display :c**`);
   }
   let eggs=""
