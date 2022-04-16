@@ -92,7 +92,9 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       let epicxp = Math.floor(Math.random() * 5000)+1;
       let legendaryxp = Math.floor(Math.random() * 10000)+1;
       let item = ""
-      if(lucky1>50)
+      if(item=="<:eggcommon:964448926671454239>")
+        {
+          if(lucky1>50)
         {
           client.eco.addMoney(`${interaction.user.id}12`, parseInt(commonxp));
           xp+=commonxp
@@ -103,6 +105,37 @@ const arrayToObject = x.reduce((itemStruct, x) => {
           client.eco.addMoney(`${interaction.user.id}12`, parseInt(uncommonxp));
           xp+=uncommonxp
          item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
+        }
+        }
+      else if(item=="<:eggrare:964448940248428604>")
+        {
+           if(lucky1>50)
+        {
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(uncommonxp));
+          xp+=uncommonxp
+  item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
+        }
+      else
+        {
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(rarexp));
+          xp+=rarexp
+         item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
+        } 
+        }
+      else
+        {
+             if(lucky1>50)
+        {
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(epicxp));
+          xp+=epicxp
+  item = epicanimals[Math.floor(Math.random() * epicanimals.length)];
+        }
+      else
+        {
+          client.eco.addMoney(`${interaction.user.id}12`, parseInt(legendaryxp));
+          xp+=legendaryxp
+         item = legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)];
+        } 
         }
   let hasItem = client.shop[item];
   
@@ -115,7 +148,7 @@ const arrayToObject = x.reduce((itemStruct, x) => {
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
-  return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
+  return interaction.editReply(`Egg Opened!\nYou found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
     }
 };
