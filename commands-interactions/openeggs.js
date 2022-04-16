@@ -291,7 +291,15 @@ const arrayToObject = x.reduce((itemStruct, x) => {
   fullname+=`${item},`
     }
         }
+          let fullnamelenght=(anyLength(fullname))
+          if(fullnamelenght>1500)
+            {
+  return interaction.editReply(`**=== Eggs Opened ===\nYou found: Too Many Eggs!\nGained ${xp}xp!**.`);  
+            }
+          else
+            {
   return interaction.editReply(`**=== Eggs Opened ===\nYou found: ${fullname} Eggs!\nGained ${xp}xp!**.`);  
+            }
         }
     }
 };

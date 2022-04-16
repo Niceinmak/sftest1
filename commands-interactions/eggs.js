@@ -18,7 +18,10 @@ module.exports = {
   let eggcount=0
   let eggcount1=0
   let break1=0
+  let counter1=0
+  let counter2=0
   const arrayToObject = x.reduce((itemsobj, x) => {
+    counter1++
     if(break1==0)
       {
     if(eggcount==5)
@@ -30,9 +33,10 @@ module.exports = {
         if(eggcount1>7)
       {
         break1=1
-         return interaction.editReply(`**=== Niceinmak's Eggs ===**
-${eggs}**...**`); 
+        counter2=counter1
       }
+        if(break1==0)
+          {
     if(x.name=="<:eggepic:964448950281183242>")
       {
     eggs+=`\`E\`${x.name} ` 
@@ -45,15 +49,22 @@ ${eggs}**...**`);
       {
         eggs+=`\`C\`${x.name} ` 
       }
+          }
     eggcount++
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
       }
   }, {});
-  const result = Object.keys(arrayToObject).map(k =>
-    embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
-  );
+      if(break1==1)
+        {
+          
+         return interaction.editReply(`**=== Niceinmak's Eggs ===**
+${eggs}**More ${counter1-counter2} items...**`); 
+        }
+      else
+        {
   return interaction.editReply(`**=== Niceinmak's Eggs ===**
 ${eggs}`);
+        }
     }
 };
