@@ -162,13 +162,12 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       let items=``
         const arrayToObject = x.reduce((itemStruct, x) => {
      items+=x.name+` `
+          console.log(x.name+` `)
      counter++
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
-          console.log(items)
           let itemslenght=(anyLength(items))-1
-      items="<"+items
       var argString = items.slice(0,itemslenght).substring(1).split(' ');
           for(let i=0;i<counter;i++)
         {
