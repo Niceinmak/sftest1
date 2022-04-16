@@ -9,19 +9,19 @@ module.exports = {
   let apilatency=Math.round(client.ws.ping)
   let discordJSVersion = require("discord.js").version
   let totalchannel=String(client.channels.cache.size).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-  let developer = client.users.fetch('405247101442719764');
-      console.log(developer)
+  let developer = client.users.fetch(process.env.OWNER_ID);
+      console.log(developer,developer.id,developer.username,developer.user.username,developer.member.username,developer.users.uesrname)
 const embed = new MessageEmbed()
 .addFields(
-		{ name: 'Status', value: 'Online', inline: true },
-		{ name: '🌠 Latency', value: `${latency}`, inline: true },
-		{ name: '⭐ Api Latency', value: `${apilatency}`, inline: true },
-		{ name: '🌀 Discord.js Version', value: `${discordJSVersion}`, inline: true },
-		{ name: '🔰 Total Guild', value: `${serverformat}`, inline: true },
-		{ name: '💠 Total User', value: `${userformat}`, inline: true },
-		{ name: '💥 Total Channel', value: `${totalchannel}`, inline: true },
+		{ name: 'Status', value: '**Online**', inline: true },
+		{ name: '🌠 Latency', value: `**${latency}**`, inline: true },
+		{ name: '⭐ Api Latency', value: `**${apilatency}**`, inline: true },
+		{ name: '🌀 Discord.js Version', value: `**${discordJSVersion}**`, inline: true },
+		{ name: '🔰 Total Guild', value: `**${serverformat}**`, inline: true },
+		{ name: '💠 Total User', value: `**${userformat}**`, inline: true },
+		{ name: '💥 Total Channel', value: `**${totalchannel}**`, inline: true },
 		{ name: '☄️ Location', value: `**Turkey [TR]**`, inline: true },
-		{ name: '✨ Developer', value: `**Turkey [TR]**`, inline: true },
+		{ name: '✨ Developer', value: `**${developer.username}#${developer.User.discriminator}**`, inline: true },
 	)
 let servernames=""
   return interaction.reply({embeds:[embed]});
