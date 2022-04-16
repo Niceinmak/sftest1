@@ -41,7 +41,6 @@ module.exports = {
   const result = Object.keys(arrayToObject).map(k =>
     embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
-console.log(eggs)
   return interaction.editReply(`**=== Niceinmak's Eggs ===**
 ${eggs}`);
     }

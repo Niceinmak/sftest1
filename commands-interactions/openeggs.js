@@ -19,12 +19,12 @@ module.exports = {
 		await wait(10);
    //--------------------------------------------------------------
             const timeout = 10000;
-  const cooldown = await db.fetch(`cooldown_hunt_${interaction.user.id}`);
+  const cooldown = await db.fetch(`cooldown_openeggs_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.editReply(`**Wait ${time} to message again**`)
 	}
-    db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
+    db.set(`cooldown_openeggs_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let x = client.db.get(`eggs_${interaction.user.id}`);
       let item = interaction.options.get("select_egg").value;
@@ -46,6 +46,7 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       return interaction.editReply(`**${interaction.user.username} | This egg was not found in your inventory**`);
     }
       x.splice(count,1);
+  client.db.set(`eggs_${interaction.user.id}`, x)
        let user = interaction.user
   let xp=0
   let fullname=""
@@ -91,37 +92,18 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       let epicxp = Math.floor(Math.random() * 5000)+1;
       let legendaryxp = Math.floor(Math.random() * 10000)+1;
       let item = ""
-      if(lucky1<75)
+      if(lucky1>50)
         {
           client.eco.addMoney(`${interaction.user.id}12`, parseInt(commonxp));
           xp+=commonxp
   item = commonanimals[Math.floor(Math.random() * commonanimals.length)];
         }
-      else if(lucky1<90)
+      else
         {
           client.eco.addMoney(`${interaction.user.id}12`, parseInt(uncommonxp));
           xp+=uncommonxp
-  item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
+         item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
         }
-      else if(lucky1<97)
-        {
-          client.eco.addMoney(`${interaction.user.id}12`, parseInt(rarexp));
-          xp+=rarexp
-  item = rareanimals[Math.floor(Math.random() * rareanimals.length)];
-        }
-      else if(lucky1<100)
-        {
-          client.eco.addMoney(`${interaction.user.id}12`, parseInt(epicxp));
-          xp+=epicxp
-  item = epicanimals[Math.floor(Math.random() * epicanimals.length)];
-        }
-      else
-        {
-          client.eco.addMoney(`${interaction.user.id}12`, parseInt(legendaryxp));
-          xp+=legendaryxp
-         item = legendaryanimals[Math.floor(Math.random() * legendaryanimals.length)]; 
-        }
-  if (!item) return interaction.editReply("What are you trying to buy?");
   let hasItem = client.shop[item];
   
   let itemStruct = {
