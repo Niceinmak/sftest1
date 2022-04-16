@@ -113,7 +113,15 @@ Gained ${xp}xp!**.`);
   fullname+=`${item},`
   fullcost+=hasItem.cost
     }
+      let x1 = client.db.get(`eggs_${interaction.user.id}`);
       let egglucky=Math.floor(Math.random()* 100)+1;
+      let counter=0
+      const arrayToObject = x1.reduce((itemStruct, x1) => {
+  counter++
+    return itemStruct;
+  }, {});
+      if(counter<21)
+        {
       if(egglucky>70)
         {
           let egglucky1=Math.floor(Math.random()* 100)+1;
@@ -138,6 +146,7 @@ Gained ${xp}xp!**.`);
           client.db.push(`eggs_${interaction.user.id}`, eggStruct);
           return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!\nYou are lucky! You have won one egg:${egg}**.`);
+        }
         }
   return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!**.`);
