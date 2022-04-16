@@ -162,11 +162,10 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       let items=``
         const arrayToObject = x.reduce((itemStruct, x) => {
      items+=x.name+` `
-          console.log(x.name+` `)
      counter++
-    itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
+          items=` `+items
           let itemslenght=(anyLength(items))-1
       var argString = items.slice(0,itemslenght).substring(1).split(' ');
           for(let i=0;i<counter;i++)
@@ -185,9 +184,9 @@ const arrayToObject = x.reduce((itemStruct, x) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
-          console.log(egg)
       if(animal==false)
     {
+          console.log(egg,i)
       return interaction.editReply(`**${interaction.user.username} | This egg was not found in your inventory**`);
     }
       x.splice(count,1);
