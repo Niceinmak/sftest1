@@ -27,12 +27,14 @@ module.exports = {
     db.set(`cooldown_openeggs_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let x = client.db.get(`eggs_${interaction.user.id}`);
-      let item = interaction.options.get("select_egg").value;
-      var animal = new Boolean(false)
+      let egg = interaction.options.get("select_egg").value;
+      if(egg!="alleggs")
+        {
+                var animal = new Boolean(false)
       let count=0
       let tempcount=0
 const arrayToObject = x.reduce((itemStruct, x) => {
-    if(x.name==item)
+    if(x.name==egg)
       {
         count=tempcount
       animal=true
@@ -51,7 +53,8 @@ const arrayToObject = x.reduce((itemStruct, x) => {
   let xp=0
   let fullname=""
   let fullcost=0
-  let lucky = Math.floor(Math.random() * 13)+1;
+  let lucky = Math.floor(Math.random() * 13);
+  if(lucky<7) lucky=7;
   let commonanimals = [
         "<:god:948265037313757184>",
         "<:cat1:948265025850724372>",
@@ -92,7 +95,8 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       let epicxp = Math.floor(Math.random() * 5000)+1;
       let legendaryxp = Math.floor(Math.random() * 10000)+1;
       let item = ""
-      if(item=="<:eggcommon:964448926671454239>")
+      console.log(egg)
+      if(egg=="<:eggcommon:964448926671454239>")
         {
           if(lucky1>50)
         {
@@ -107,7 +111,7 @@ const arrayToObject = x.reduce((itemStruct, x) => {
          item = uncommonanimals[Math.floor(Math.random() * uncommonanimals.length)];
         }
         }
-      else if(item=="<:eggrare:964448940248428604>")
+      else if(egg=="<:eggrare:964448940248428604>")
         {
            if(lucky1>50)
         {
@@ -146,9 +150,12 @@ const arrayToObject = x.reduce((itemStruct, x) => {
   
   client.db.push(`animals_${interaction.user.id}`, itemStruct);
   fullname+=`${item},`
-  fullcost+=hasItem.cost
     }
-  return interaction.editReply(`Egg Opened!\nYou found: **${fullname}** for ** ${fullcost}💶
-Gained ${xp}xp!**.`);
+  return interaction.editReply(`**=== Egg Opened ===\nYou found: ${fullname} Eggs!\nGained ${xp}xp!**.`);
+        }
+      else
+        {
+          
+        }
     }
 };
