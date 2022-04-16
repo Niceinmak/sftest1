@@ -10,8 +10,9 @@ module.exports = {
   let discordJSVersion = require("discord.js").version
   let totalchannel=String(client.channels.cache.size).replace(/(.)(?=(\d{3})+$)/g,'$1,')
   let developer = client.users.fetch(process.env.OWNER_ID);
-      console.log(developer,developer.id,developer.username,developer.user.username,developer.member.username,developer.users.uesrname)
+      console.log(developer,developer.user)
 const embed = new MessageEmbed()
+.setTitle("EcoVerse Statistics")
 .addFields(
 		{ name: 'Status', value: '**Online**', inline: true },
 		{ name: '🌠 Latency', value: `**${latency}**`, inline: true },
@@ -21,7 +22,7 @@ const embed = new MessageEmbed()
 		{ name: '💠 Total User', value: `**${userformat}**`, inline: true },
 		{ name: '💥 Total Channel', value: `**${totalchannel}**`, inline: true },
 		{ name: '☄️ Location', value: `**Turkey [TR]**`, inline: true },
-		{ name: '✨ Developer', value: `**${developer.username}#${developer.User.discriminator}**`, inline: true },
+		{ name: '✨ Developer', value: `**${developer.username}#${developer.discriminator}**`, inline: true },
 	)
 let servernames=""
   return interaction.reply({embeds:[embed]});
