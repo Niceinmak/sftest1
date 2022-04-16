@@ -15,7 +15,7 @@ module.exports = {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.editReply(`**Wait ${time} to message again**`)
 	}
-    db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
+   db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
 
        let user = interaction.user

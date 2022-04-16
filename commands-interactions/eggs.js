@@ -13,7 +13,13 @@ module.exports = {
     return interaction.reply(`**No Eggs Found To Display :c**`);
   }
   let eggs=""
+  let eggcount=0
   const arrayToObject = x.reduce((itemsobj, x) => {
+    if(eggcount==5)
+      {
+        eggs+="\n"
+        eggcount=0
+      }
     if(x.name=="<:eggepic:964448950281183242>")
       {
     eggs+=`\`E\`${x.name} ` 
@@ -26,6 +32,7 @@ module.exports = {
       {
         eggs+=`\`C\`${x.name} ` 
       }
+    eggcount++
     itemsobj[x.name] = (itemsobj[x.name] || 0) + 1;
     return itemsobj;
   }, {});
@@ -34,6 +41,6 @@ module.exports = {
   );
 console.log(eggs)
   return interaction.reply(`**=== Niceinmak's Eggs ===**
-  ${eggs}`);
+${eggs}`);
     }
 };
