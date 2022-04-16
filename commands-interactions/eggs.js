@@ -1,8 +1,10 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
-
+const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     description: 'Look Your Eggs',
     run: async (client, interaction) => {
+       await interaction.deferReply();
+		await wait(10);
       const embed = new MessageEmbed()
     .setTitle(`${interaction.user.username}'s Eggs!`)
     .setColor("RANDOM")
@@ -10,7 +12,7 @@ module.exports = {
     .setTimestamp();
   const x = client.db.get(`eggs_${interaction.user.id}`);
   if (!x) {
-    return interaction.reply(`**No Eggs Found To Display :c**`);
+    return interaction.editReply(`**No Eggs Found To Display :c**`);
   }
   let eggs=""
   let eggcount=0
@@ -40,7 +42,7 @@ module.exports = {
     embed.addField(`Name: ${k}`, `Quantity:**${arrayToObject[k]}**`, false)
   );
 console.log(eggs)
-  return interaction.reply(`**=== Niceinmak's Eggs ===**
+  return interaction.editReply(`**=== Niceinmak's Eggs ===**
 ${eggs}`);
     }
 };
