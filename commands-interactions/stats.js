@@ -9,8 +9,7 @@ module.exports = {
   let apilatency=Math.round(client.ws.ping)
   let discordJSVersion = require("discord.js").version
   let totalchannel=String(client.channels.cache.size).replace(/(.)(?=(\d{3})+$)/g,'$1,')
-  let developer = client.users.fetch(process.env.OWNER_ID);
-      console.log(developer,developer.user)
+  let developer = await client.users.fetch(process.env.OWNER_ID);
 const embed = new MessageEmbed()
 .setTitle("EcoVerse Statistics")
 .addFields(
@@ -24,7 +23,6 @@ const embed = new MessageEmbed()
 		{ name: '☄️ Location', value: `**Turkey [TR]**`, inline: true },
 		{ name: '✨ Developer', value: `**${developer.username}#${developer.discriminator}**`, inline: true },
 	)
-let servernames=""
   return interaction.reply({embeds:[embed]});
     }
 };
