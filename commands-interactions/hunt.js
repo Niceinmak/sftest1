@@ -15,7 +15,7 @@ module.exports = {
 		const time = ms(timeout - (Date.now() - cooldown));
           return interaction.editReply(`**Wait ${time} to message again**`)
 	}
-   db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
+    db.set(`cooldown_hunt_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
 
        let user = interaction.user
@@ -114,10 +114,13 @@ Gained ${xp}xp!**.`);
   fullcost+=hasItem.cost
     }
       let egglucky=Math.floor(Math.random()* 100)+1;
-      if(egglucky>70)
+      if(egglucky>1)
         {
+          
           let egglucky1=Math.floor(Math.random()* 100)+1;
           let egg=""
+          for(let i=0;i<99;i++)
+            {
           if(egglucky1>90)
             {
           egg="<:eggepic:964448950281183242>"; 
@@ -136,6 +139,7 @@ Gained ${xp}xp!**.`);
     prize: hasEgg.cost
   };
           client.db.push(`eggs_${interaction.user.id}`, eggStruct);
+            }
           return interaction.editReply(`You found: **${fullname}** for ** ${fullcost}💶
 Gained ${xp}xp!\nYou are lucky! You have won one egg:${egg}**.`);
         }

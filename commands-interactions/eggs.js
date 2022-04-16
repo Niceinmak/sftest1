@@ -16,11 +16,22 @@ module.exports = {
   }
   let eggs=""
   let eggcount=0
+  let eggcount1=0
+  let break1=0
   const arrayToObject = x.reduce((itemsobj, x) => {
+    if(9)
     if(eggcount==5)
       {
         eggs+="\n"
         eggcount=0
+        eggcount1++
+      }
+        if(eggcount1>5)
+      {
+         return interaction.editReply(`**=== Niceinmak's Eggs ===**
+${eggs}
+**...**`); 
+        break1=1
       }
     if(x.name=="<:eggepic:964448950281183242>")
       {

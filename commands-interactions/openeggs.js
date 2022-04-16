@@ -155,6 +155,8 @@ const arrayToObject = x.reduce((itemStruct, x) => {
         }
       else
         {
+  let xp=0
+  let fullname=""
           let x = client.db.get(`eggs_${interaction.user.id}`);
           let counter=0
       let items=``
@@ -164,6 +166,7 @@ const arrayToObject = x.reduce((itemStruct, x) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
+          console.log(items)
           let itemslenght=(anyLength(items))-1
       items="<"+items
       var argString = items.slice(0,itemslenght).substring(1).split(' ');
@@ -183,6 +186,7 @@ const arrayToObject = x.reduce((itemStruct, x) => {
     itemStruct[x.name] = (itemStruct[x.name] || 0) + 1;
     return itemStruct;
   }, {});
+          console.log(egg)
       if(animal==false)
     {
       return interaction.editReply(`**${interaction.user.username} | This egg was not found in your inventory**`);
@@ -190,8 +194,6 @@ const arrayToObject = x.reduce((itemStruct, x) => {
       x.splice(count,1);
   client.db.set(`eggs_${interaction.user.id}`, x)
        let user = interaction.user
-  let xp=0
-  let fullname=""
   let fullcost=0
   let lucky = Math.floor(Math.random() * 13);
   if(lucky<7) lucky=7;
@@ -291,7 +293,7 @@ const arrayToObject = x.reduce((itemStruct, x) => {
   fullname+=`${item},`
     }
         }
-  return interaction.editReply(`**=== Egg Opened ===\nYou found: ${fullname} Eggs!\nGained ${xp}xp!**.`);  
+  return interaction.editReply(`**=== Eggs Opened ===\nYou found: ${fullname} Eggs!\nGained ${xp}xp!**.`);  
         }
     }
 };
