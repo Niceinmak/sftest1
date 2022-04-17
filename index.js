@@ -237,8 +237,7 @@ client.on('commandInteraction', data => {
 		data.reply.send('pong!');
 	};
 });*/
-  client.on('messageReactionAdd', (reaction, user) => {
 
-  })
+
 
 client.login(process.env.TOKEN);
