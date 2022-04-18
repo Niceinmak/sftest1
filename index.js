@@ -111,6 +111,7 @@ const config = process.env;
 client.config = config;
 const synchronizeSlashCommands = require('discord-sync-commands');
 client.commands = new Discord.Collection();
+let commandcount=0
 fs.readdir("./commands-interactions/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
@@ -120,8 +121,10 @@ fs.readdir("./commands-interactions/", (_err, files) => {
             name: commandName,
             ...props
         });
-        console.log(`👌 Komut Yüklendi: ${commandName}`);
+      commandcount++
+        //console.log(`👌 Komut Yüklendi: ${commandName}`);
     });
+        console.log(`👌${commandcount} Command Ejected`);
     synchronizeSlashCommands(client, client.commands.map((c) => ({
         name: c.name,
         description: c.description,
