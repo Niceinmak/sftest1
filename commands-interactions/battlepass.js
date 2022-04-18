@@ -22,14 +22,14 @@ module.exports = {
         {
           levels.push(i)
         }
-      console.log(levels)
+      let mainlevel=selectLevel(1)
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('EcoVerse Battle Pass')
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `**Prize**;\n***10,000:euro: Cash***` },
+		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -42,8 +42,9 @@ module.exports = {
        })
       function selectLevel(level){
         let returnlevel=""
-        for(let i=0;i<levels.lenght;i++)
+        for(let i=0;i<levels.length;i++)
           {
+            if(i)
             if(i==level)
               {
                 returnlevel+=`\`${levels[i]}\` `
@@ -53,6 +54,7 @@ module.exports = {
           returnlevel+=`**${levels[i]}** ` 
               }
           }
+        return returnlevel
       }
     }
 };
