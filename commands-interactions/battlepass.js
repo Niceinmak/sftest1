@@ -41,10 +41,13 @@ module.exports = {
            components:[row],
        })
       function selectLevel(level){
-        let returnlevel=""
-        for(let i=0;i<levels.length;i++)
+        let returnlevel="\n"
+        for(let i=1;i<levels.length;i++)
           {
-            if(i)
+            if(i==11)
+              {
+                returnlevel+=`\n`
+              }
             if(i==level)
               {
                 returnlevel+=`\`${levels[i]}\` `
