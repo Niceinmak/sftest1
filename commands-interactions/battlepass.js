@@ -58,7 +58,7 @@ collector.on('collect', async i => {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
+		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `${value}\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -83,7 +83,7 @@ collector.on('collect', async i => {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
+		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `${value}\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -119,26 +119,26 @@ collector.on('collect', async i => {
       }
             function levelName(level){
         let returnlevel="" 
-       if(level==1) returnlevel=`**Prize**;\n***1,000:euro: Cash***\n${mainlevel}`
-      else if(level==2) returnlevel=`**Prize**;\n***5,000:euro: Cash***\n${mainlevel}`
-      else if(level==3) returnlevel=`**Prize**;\n***1 Common Case***\n${mainlevel}`
-      else if(level==4) returnlevel=`**Prize**;\n***10 Rare Egg***\n${mainlevel}`
-      else if(level==5) returnlevel=`**Prize**;\n***25,000:euro: Cash***\n${mainlevel}`
-      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: Cash***\n${mainlevel}`
-      else if(level==7) returnlevel=`**Prize**;\n***5 Common Case***\n${mainlevel}`
-      else if(level==8) returnlevel=`**Prize**;\n***5 Epic Egg***\n${mainlevel}`
-      else if(level==9) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==10) returnlevel=`**Prize**;\n***30,000:euro: Cash***\n${mainlevel}`
-      else if(level==11) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==12) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==13) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==14) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==15) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==16) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==17) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==18) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==19) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
-      else if(level==20) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+       if(level==1) returnlevel=`**Prize**;\n***1,000:euro: Cash***`
+      else if(level==2) returnlevel=`**Prize**;\n***5,000:euro: Cash***`
+      else if(level==3) returnlevel=`**Prize**;\n***1 Common Case***`
+      else if(level==4) returnlevel=`**Prize**;\n***10 Rare Egg***`
+      else if(level==5) returnlevel=`**Prize**;\n***25,000:euro: Cash***`
+      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: Cash***`
+      else if(level==7) returnlevel=`**Prize**;\n***5 Common Case***`
+      else if(level==8) returnlevel=`**Prize**;\n***5 Epic Egg***`
+      else if(level==9) returnlevel=`**Prize**;\n***1 Rare Case***`
+      else if(level==10) returnlevel=`**Prize**;\n***120,000:euro: Cash***`
+      else if(level==11) returnlevel=`**Prize**;\n***1 Rare Cash + 2 Common Case***`
+      else if(level==12) returnlevel=`**Prize**;\n***400 EcoCoin***`
+      else if(level==13) returnlevel=`**Prize**;\n***500 EcoCoin***`
+      else if(level==14) returnlevel=`**Prize**;\n***220,000:euro: Cash***`
+      else if(level==15) returnlevel=`**Prize**;\n***3 Rare Case***`
+      else if(level==16) returnlevel=`**Prize**;\n***450,000:euro: Cash***`
+      else if(level==17) returnlevel=`**Prize**;\n***20 Epic Egg***`
+      else if(level==18) returnlevel=`**Prize**;\n***650,000:euro: Cash***`
+      else if(level==19) returnlevel=`**Prize**;\n***1000 EcoCoin***`
+      else if(level==20) returnlevel=`**Prize**;\n***100,000,000:euro: Cash***`
         return returnlevel
       }
     }
