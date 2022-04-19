@@ -18,7 +18,7 @@ module.exports = {
     db.set(`cooldown_openeggs_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let levels = []
-      let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,270]
+      let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,1900,2200,2500,3000,3500,4000]
       for(let i=0;i<=20;i++)
         {
           levels.push(i)
@@ -31,7 +31,7 @@ module.exports = {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
+		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -58,7 +58,7 @@ collector.on('collect', async i => {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `${value}` },
+		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -83,7 +83,7 @@ collector.on('collect', async i => {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `${value}` },
+		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -124,9 +124,21 @@ collector.on('collect', async i => {
       else if(level==3) returnlevel=`**Prize**;\n***1 Common Case***\n${mainlevel}`
       else if(level==4) returnlevel=`**Prize**;\n***10 Rare Egg***\n${mainlevel}`
       else if(level==5) returnlevel=`**Prize**;\n***25,000:euro: Cash***\n${mainlevel}`
-      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: ***\n${mainlevel}`
+      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: Cash***\n${mainlevel}`
       else if(level==7) returnlevel=`**Prize**;\n***5 Common Case***\n${mainlevel}`
-      else if(level==8) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==8) returnlevel=`**Prize**;\n***5 Epic Egg***\n${mainlevel}`
+      else if(level==9) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==10) returnlevel=`**Prize**;\n***30,000:euro: Cash***\n${mainlevel}`
+      else if(level==11) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==12) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==13) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==14) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==15) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==16) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==17) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==18) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==19) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+      else if(level==20) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
         return returnlevel
       }
     }
