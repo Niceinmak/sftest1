@@ -18,6 +18,7 @@ module.exports = {
     db.set(`cooldown_openeggs_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let levels = []
+      let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,270]
       for(let i=0;i<=20;i++)
         {
           levels.push(i)
@@ -49,6 +50,7 @@ collector.on('collect', async i => {
 	if (i.customId === 'primary1') {
     levelcount--
       let mainlevel=selectLevel(levelcount)
+      let value=levelName(levelcount)
 		i.deferUpdate();
     embed.fields = [];
     embed.setColor('#0099ff')
@@ -56,7 +58,7 @@ collector.on('collect', async i => {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
+		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `${value}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -73,6 +75,7 @@ collector.on('collect', async i => {
 	if (i.customId === 'primary2') {
     levelcount++
       let mainlevel=selectLevel(levelcount)
+      let value=levelName(levelcount)
 		i.deferUpdate();
     embed.fields = [];
     embed.setColor('#0099ff')
@@ -80,7 +83,7 @@ collector.on('collect', async i => {
         .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
+		{ name: 'Level 1 [10]<:ticket:965658088885583892>', value: `${value}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -114,14 +117,14 @@ collector.on('collect', async i => {
           }
         return returnlevel
       }
-            function selectLevel(level){
+            function levelName(level){
         let returnlevel="" 
        if(level==1) returnlevel=`**Prize**;\n***1,000:euro: Cash***\n${mainlevel}`
       else if(level==2) returnlevel=`**Prize**;\n***5,000:euro: Cash***\n${mainlevel}`
       else if(level==3) returnlevel=`**Prize**;\n***1 Common Case***\n${mainlevel}`
-      else if(level==4) returnlevel=`**Prize**;\n***10 Rare Egg Cash***\n${mainlevel}`
+      else if(level==4) returnlevel=`**Prize**;\n***10 Rare Egg***\n${mainlevel}`
       else if(level==5) returnlevel=`**Prize**;\n***25,000:euro: Cash***\n${mainlevel}`
-      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: Cash***\n${mainlevel}`
+      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: ***\n${mainlevel}`
       else if(level==7) returnlevel=`**Prize**;\n***5 Common Case***\n${mainlevel}`
       else if(level==8) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
         return returnlevel
