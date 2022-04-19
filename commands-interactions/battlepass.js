@@ -114,5 +114,17 @@ collector.on('collect', async i => {
           }
         return returnlevel
       }
+            function selectLevel(level){
+        let returnlevel="" 
+       if(level==1) returnlevel=`**Prize**;\n***1,000:euro: Cash***\n${mainlevel}`
+      else if(level==2) returnlevel=`**Prize**;\n***5,000:euro: Cash***\n${mainlevel}`
+      else if(level==3) returnlevel=`**Prize**;\n***1 Common Case***\n${mainlevel}`
+      else if(level==4) returnlevel=`**Prize**;\n***10 Rare Egg Cash***\n${mainlevel}`
+      else if(level==5) returnlevel=`**Prize**;\n***25,000:euro: Cash***\n${mainlevel}`
+      else if(level==6) returnlevel=`**Prize**;\n***30,000:euro: Cash***\n${mainlevel}`
+      else if(level==7) returnlevel=`**Prize**;\n***5 Common Case***\n${mainlevel}`
+      else if(level==8) returnlevel=`**Prize**;\n***1 Rare Case***\n${mainlevel}`
+        return returnlevel
+      }
     }
 };
