@@ -270,8 +270,8 @@ function stopbj(){
     {
                 embed.fields = [];
   embed.addFields(
-    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
-    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
+    { name: `Dealer ${agr1d}`, value: agr2d, inline: true },
+    { name: `${user1.username} ${agr1u}`, value: agr2u, inline: true },
 	)
     }
      else
@@ -367,15 +367,34 @@ function drawCard(who) {
     }  
         }
       randomcounter++
-    namescardslistd+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
+      if(count==1) namescardslistd+=`${cards1[Math.floor(Math.random() * cards1.length)]},`
+      else if(count==2) namescardslistd+=`${cards2[Math.floor(Math.random() * cards2.length)]},`
+      else if(count==3) namescardslistd+=`${cards3[Math.floor(Math.random() * cards3.length)]},`
+      else if(count==4) namescardslistd+=`${cards4[Math.floor(Math.random() * cards4.length)]},`
+      else if(count==5) namescardslistd+=`${cards5[Math.floor(Math.random() * cards5.length)]},`
+      else if(count==6) namescardslistd+=`${cards6[Math.floor(Math.random() * cards6.length)]},`
+      else if(count==7) namescardslistd+=`${cards7[Math.floor(Math.random() * cards7.length)]},`
+      else if(count==8) namescardslistd+=`${cards8[Math.floor(Math.random() * cards8.length)]},`
+      else if(count==9) namescardslistd+=`${cards9[Math.floor(Math.random() * cards9.length)]},`
+      else namescardslistd+=`${cards10[Math.floor(Math.random() * cards10.length)]},`
+    
     dealerpoint+=count
-      return [` [${dealerpoint}+?] \`${namescardslistd}\``];
+      return [` [${dealerpoint}+?] ${namescardslistd}`];
     }
   if(who=="u")
     {
-    namescardslistu+=`${count}${namescards[Math.floor(Math.random() * namescards.length)]},`
-    userpoint+=count
-      return [` [${userpoint}] \`${namescardslistu}\``];
+      if(count==1) namescardslistu+=`${cards1[Math.floor(Math.random() * cards1.length)]},`
+      else if(count==2) namescardslistu+=`${cards2[Math.floor(Math.random() * cards2.length)]},`
+      else if(count==3) namescardslistu+=`${cards3[Math.floor(Math.random() * cards3.length)]},`
+      else if(count==4) namescardslistu+=`${cards4[Math.floor(Math.random() * cards4.length)]},`
+      else if(count==5) namescardslistu+=`${cards5[Math.floor(Math.random() * cards5.length)]},`
+      else if(count==6) namescardslistu+=`${cards6[Math.floor(Math.random() * cards6.length)]},`
+      else if(count==7) namescardslistu+=`${cards7[Math.floor(Math.random() * cards7.length)]},`
+      else if(count==8) namescardslistu+=`${cards8[Math.floor(Math.random() * cards8.length)]},`
+      else if(count==9) namescardslistu+=`${cards9[Math.floor(Math.random() * cards9.length)]},`
+      else namescardslistu+=`${cards10[Math.floor(Math.random() * cards10.length)]},`
+        userpoint+=count
+      return [` [${userpoint}] ${namescardslistu}`];
     }
     
 }
