@@ -35,44 +35,7 @@ let namescardslistu=""
 namescardslistu=""
 namescardslistd=""
     let user1=interaction.user
-    let amount = Math.floor(Math.random() * 200)+50;
-    let amount2 = Math.floor(Math.random() * 2);
-    let amount4 = Math.floor(Math.random() * 200)/100;
-    let amount3 = interaction.options.getInteger('amount')
-    let yazitura= ""
-    let authordata = client.eco.fetchMoney(interaction.user.id) 
-            //--------------------------------------------------------------
-            const timeout = 15000;
-  const cooldown = await db.fetch(`cooldown_blackjack_${interaction.user.id}`);
-      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
-		const time = ms(timeout - (Date.now() - cooldown));
-          return interaction.reply(`**Wait ${time} to message again**`)
-	}
-    db.set(`cooldown_blackjack_${interaction.user.id}`, Date.now());
-      //---------------------------------------------------------------------------
-  //--------------------------------------------
-  if(amount3=="all") amount3=authordata.amount;
-  if(amount3=="half") amount3=authordata.amount/2;
-    if (!amount3 || isNaN(amount3)) return interaction.reply(`** ⛔${interaction.user.username} | ** Please specify a valid amount.`);
-  else{
-    if(amount3>authordata.amount || amount3<1) return interaction.reply(`** ⛔${interaction.user.username} | ** You don't have enough money`);
-    else
-    {
-      let messageid=interaction.user.id
-      if(amount3>50000)amount3=50000
-      drawCard("u")
-      let dealerd=`${drawCard("d")}`
-      var argString = dealerd.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1d=argString[0]
-  let agr2d=argString[1]
-  let dealeru=`${drawCard("u")}`
-  var argString2 = dealeru.substring(1).split(' ');
- // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
-  let agr1u=argString2[0]
-  let agr2u=argString2[1]
-             const embed = new MessageEmbed()
-            .setTitle(`${user1.username}, Played Blackjack With ${amount3}💶`)
+
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
@@ -174,7 +137,7 @@ function stopbj(){
       for(; ;)
         {
           drawCard("d")
-         if(dealerpoint>=17)
+      (dealerpoint>=17)
            {
              break
            }
