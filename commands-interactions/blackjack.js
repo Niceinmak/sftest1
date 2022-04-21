@@ -270,7 +270,7 @@ function stopbj(){
     {
                 embed.fields = [];
   embed.addFields(
-    { name: `Dealer ${agr1d}`, value: agr2d, inline: true },
+    { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
     }
@@ -379,7 +379,7 @@ function drawCard(who) {
       else namescardslistd+=`${cards10[Math.floor(Math.random() * cards10.length)]},`
     
     dealerpoint+=count
-      return [` [${dealerpoint}+?] ${namescardslistd}`];
+      return [` \`[${dealerpoint}+?]\` ${namescardslistd}`];
     }
   if(who=="u")
     {
