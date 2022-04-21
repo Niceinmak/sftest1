@@ -28,6 +28,9 @@ const guild = client.guilds.cache.get(interaction.guild.id);
         "h",
         "c",
     ];
+      let cards1=[
+        
+      ]
   let randomcounter=0
  var dealerpoint=""
  var dealerpointtemp=""
