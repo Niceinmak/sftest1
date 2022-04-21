@@ -14,11 +14,7 @@ module.exports = {
     }
   ],
     run: async (client, interaction) => {
-      if(interaction.guild.me.hasPermission("ADMINISTRATOR")) {
-	console.log("I have the Permission Administrator");
-}else {
-	console.log("I don't have Permission Administrator");
-}
+const guild = client.guilds.cache.get(interaction.guild.id);
        await interaction.deferReply();
 		await wait(10);
        let namescardslistd=""
@@ -80,12 +76,12 @@ namescardslistd=""
   let agr1u=argString2[0]
   let agr2u=argString2[1]
              const embed = new MessageEmbed()
-            .setTitle(`${user1.username}, Played Blackjack With ${amount3}💶`)
+         .setAuthor({ name: `${user1.username}, Played Blackjack With ${amount3}💶`, iconURL: interaction.user.displayAvatarURL({ format: 'png' })})
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
-            .setColor("#7289DA")
+            .setColor("AQUA")
             .setTimestamp();
             interaction.editReply({embeds:[embed]})
       const message = await interaction.fetchReply();
@@ -103,7 +99,7 @@ collector.on('collect', (reaction, user) => {
   if (reaction.emoji.name === '👊') {
     if(temp==0)
        {
-        reaction.users.remove(user.id);
+         if(guild.me.permissions.has("MANAGE_MESSAGES")) reaction.users.remove(user.id);
 startbj() 
        }
        }
@@ -112,7 +108,7 @@ startbj()
         {
           temp=1;
       drawCard("d")
-       reaction.users.remove(user.id);
+      if(guild.me.permissions.has("MANAGE_MESSAGES")) reaction.users.remove(user.id);
       let points=`${stopbj()}`
       var argString = points.substring(1).split(' ');
  // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
@@ -129,6 +125,7 @@ startbj()
      {
        temp=1;
        embed.setFooter({ text: `You both bust!`});
+       embed.setColor("GRAY")
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
@@ -148,6 +145,7 @@ startbj()
         {
           temp=1;
        embed.setFooter({ text: `You both bust!`});
+       embed.setColor("GRAY")
         }
       else
         {
