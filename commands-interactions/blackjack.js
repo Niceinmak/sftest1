@@ -1,4 +1,5 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 const discord = require("discord.js")
 let ms = require('ms')
 let db = require('quick.db');
@@ -13,6 +14,13 @@ module.exports = {
     }
   ],
     run: async (client, interaction) => {
+      if(interaction.guild.me.hasPermission("ADMINISTRATOR")) {
+	console.log("I have the Permission Administrator");
+}else {
+	console.log("I don't have Permission Administrator");
+}
+       await interaction.deferReply();
+		await wait(10);
        let namescardslistd=""
   let temp=0;
      let namescards = [
@@ -35,14 +43,51 @@ let namescardslistu=""
 namescardslistu=""
 namescardslistd=""
     let user1=interaction.user
-
+    let amount = Math.floor(Math.random() * 200)+50;
+    let amount2 = Math.floor(Math.random() * 2);
+    let amount4 = Math.floor(Math.random() * 200)/100;
+    let amount3 = interaction.options.getInteger('amount')
+    let yazitura= ""
+    let authordata = client.eco.fetchMoney(interaction.user.id) 
+            //--------------------------------------------------------------
+            const timeout = 15000;
+  const cooldown = await db.fetch(`cooldown_blackjack_${interaction.user.id}`);
+      	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
+		const time = ms(timeout - (Date.now() - cooldown));
+          return interaction.editReply(`**Wait ${time} to message again**`)
+	}
+    db.set(`cooldown_blackjack_${interaction.user.id}`, Date.now());
+      //---------------------------------------------------------------------------
+  //--------------------------------------------
+  if(amount3=="all") amount3=authordata.amount;
+  if(amount3=="half") amount3=authordata.amount/2;
+    if (!amount3 || isNaN(amount3)) return interaction.editReply(`** ⛔${interaction.user.username} | ** Please specify a valid amount.`);
+  else{
+    if(amount3>authordata.amount || amount3<1) return interaction.editReply(`** ⛔${interaction.user.username} | ** You don't have enough money`);
+    else
+    {
+      let messageid=interaction.user.id
+      if(amount3>50000)amount3=50000
+      drawCard("u")
+      let dealerd=`${drawCard("d")}`
+      var argString = dealerd.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1d=argString[0]
+  let agr2d=argString[1]
+  let dealeru=`${drawCard("u")}`
+  var argString2 = dealeru.substring(1).split(' ');
+ // let argString = itemname.substr( itemname.indexOf(' ') + 1 );
+  let agr1u=argString2[0]
+  let agr2u=argString2[1]
+             const embed = new MessageEmbed()
+            .setTitle(`${user1.username}, Played Blackjack With ${amount3}💶`)
             .addFields(
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
             .setColor("#7289DA")
             .setTimestamp();
-            interaction.reply({embeds:[embed]})
+            interaction.editReply({embeds:[embed]})
       const message = await interaction.fetchReply();
             message.react("👊")
         //  msg.react("")  
@@ -54,7 +99,7 @@ namescardslistd=""
 const collector = message.createReactionCollector({ filter, time: 15000 });
 
 collector.on('collect', (reaction, user) => {
-	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+//	console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
   if (reaction.emoji.name === '👊') {
     if(temp==0)
        {
@@ -83,12 +128,12 @@ startbj()
    if(userpoint>21 && dealerpoint>21)
      {
        temp=1;
-      embed.setTitle(`You both bust!`)
+       embed.setFooter({ text: `You both bust!`});
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
         temp=1;
-        embed.setTitle(`You lose ${amount3}`) 
+       embed.setFooter({ text: `You lose ${amount3}`});
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
@@ -96,26 +141,26 @@ startbj()
               if(userpoint>dealerpoint)
         {
           temp=1;
-         embed.setTitle(`You win ${amount3}`) 
+       embed.setFooter({ text: `You win ${amount3}`});
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
           temp=1;
-          embed.setTitle(`You both bust!`)
+       embed.setFooter({ text: `You both bust!`});
         }
       else
         {
           if(dealerpoint>21)
             {
               temp=1;
-              embed.setTitle(`You win ${amount3}`) 
+       embed.setFooter({ text: `You win ${amount3}`});
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
               temp=1;
-           embed.setTitle(`You lose ${amount3}`)
+       embed.setFooter({ text: `You lose ${amount3}`});
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
@@ -128,7 +173,7 @@ startbj()
 });
 
 collector.on('end', collected => {
-	console.log(`Collected ${collected.size} items`);
+//	console.log(`Collected ${collected.size} items`);
 });
                   
 function stopbj(){
@@ -137,7 +182,7 @@ function stopbj(){
       for(; ;)
         {
           drawCard("d")
-      (dealerpoint>=17)
+         if(dealerpoint>=17)
            {
              break
            }
@@ -184,12 +229,12 @@ function stopbj(){
    if(userpoint>21 && dealerpoint>21)
      {
        temp=1;
-       embed.setTitle(`You both bust!`)
+       embed.setFooter({ text: `You both bust!`});
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
         temp=1;
-        embed.setTitle(`You lose ${amount3}`) 
+       embed.setFooter({ text: `You lose ${amount3}`});
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
@@ -197,26 +242,26 @@ function stopbj(){
               if(userpoint>dealerpoint)
         {
           temp=1;
-         embed.setTitle(`You win ${amount3}`) 
+       embed.setFooter({ text: `You win ${amount3}`});
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
           temp=1;
-          embed.setTitle(`You both bust!`)
+       embed.setFooter({ text: `You both bust!`});
         }
       else
         {
           if(dealerpoint>21)
             {
               temp=1;
-              embed.setTitle(`You win ${amount3}`) 
+       embed.setFooter({ text: `You win ${amount3}`});
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
               temp=1;
-           embed.setTitle(`You lose ${amount3}`) 
+       embed.setFooter({ text: `You lose ${amount3}`});
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
