@@ -251,7 +251,7 @@ function stopbj(){
         }
       
     }
-  return [` ${dealerpoint} ${userpoint} \`${namescardslistd}\` \`${namescardslistu}\``]
+  return [` ${dealerpoint} ${userpoint} ${namescardslistd} ${namescardslistu}`]
 }
      
       
@@ -271,7 +271,7 @@ function stopbj(){
                 embed.fields = [];
   embed.addFields(
     { name: `Dealer ${agr1d}`, value: agr2d, inline: true },
-    { name: `${user1.username} ${agr1u}`, value: agr2u, inline: true },
+    { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
     }
      else
