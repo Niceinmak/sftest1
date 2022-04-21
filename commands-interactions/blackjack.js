@@ -81,7 +81,7 @@ namescardslistd=""
     { name: `Dealer \`${agr1d}\``, value: agr2d, inline: true },
     { name: `${user1.username} \`${agr1u}\``, value: agr2u, inline: true },
 	)
-            .setColor("AQUA")
+            .setColor("#7cbaeb")
             .setTimestamp();
             interaction.editReply({embeds:[embed]})
       const message = await interaction.fetchReply();
@@ -125,12 +125,13 @@ startbj()
      {
        temp=1;
        embed.setFooter({ text: `You both bust!`});
-       embed.setColor("GRAY")
+       embed.setColor("GREY")
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
         temp=1;
        embed.setFooter({ text: `You lose ${amount3}`});
+       embed.setColor("RED")
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
@@ -139,13 +140,14 @@ startbj()
         {
           temp=1;
        embed.setFooter({ text: `You win ${amount3}`});
+       embed.setColor("GREEN")
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
           temp=1;
        embed.setFooter({ text: `You both bust!`});
-       embed.setColor("GRAY")
+       embed.setColor("GREY")
         }
       else
         {
@@ -153,12 +155,14 @@ startbj()
             {
               temp=1;
        embed.setFooter({ text: `You win ${amount3}`});
+       embed.setColor("GREEN")
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
               temp=1;
        embed.setFooter({ text: `You lose ${amount3}`});
+       embed.setColor("RED")
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
@@ -228,11 +232,13 @@ function stopbj(){
      {
        temp=1;
        embed.setFooter({ text: `You both bust!`});
+       embed.setColor("GREY")
      }
     else if(userpoint>21 && dealerpoint<=21)
       {
         temp=1;
        embed.setFooter({ text: `You lose ${amount3}`});
+       embed.setColor("RED")
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
       }
           else
@@ -241,12 +247,14 @@ function stopbj(){
         {
           temp=1;
        embed.setFooter({ text: `You win ${amount3}`});
+       embed.setColor("GREEN")
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
         }
       else if(userpoint==dealerpoint)
         {
           temp=1;
        embed.setFooter({ text: `You both bust!`});
+       embed.setColor("GREY")
         }
       else
         {
@@ -254,12 +262,14 @@ function stopbj(){
             {
               temp=1;
        embed.setFooter({ text: `You win ${amount3}`});
+       embed.setColor("GREEN")
           let data2= client.eco.addMoney(messageid, parseInt(amount3));
             }
           else
             {
               temp=1;
        embed.setFooter({ text: `You lose ${amount3}`});
+       embed.setColor("RED")
           let data2= client.eco.removeMoney(messageid, parseInt(amount3));
             }
         }
