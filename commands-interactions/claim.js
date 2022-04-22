@@ -47,21 +47,28 @@ module.exports = {
         }
       if(prize==true)
         {
+          client.db.set(`battlepass_${interaction.user.id}`, { point: ticket })
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Congrulations!')
         .setDescription(`${prizesname}`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
-	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
-      const buton = new MessageButton().setCustomId('primary1').setEmoji('<:leftarrow:965666012794069003>').setStyle('PRIMARY').setDisabled(true);
-      const buton2 = new MessageButton().setCustomId('primary2').setEmoji('<:rightarrow:965666012911521841>').setStyle('PRIMARY').setDisabled(false);
-        const row = new MessageActionRow().addComponents(buton).addComponents(buton2)
        interaction.editReply({
            embeds:[embed],
-           components:[row],
        })
          }
+      else
+        {
+      const embed = new MessageEmbed()
+        	.setColor('#0099ff')
+	.setTitle('Sorry :(')
+        .setDescription(`${interaction.user.username} You didn't win anything dude, please play more games and try again, I believe you can win.`)
+	.setFooter({ text: `${interaction.user.username}`});
+       interaction.editReply({
+           embeds:[embed],
+       }) 
+        }
 
             function levelName(level){
       console.log(level)
@@ -70,7 +77,7 @@ module.exports = {
         let hasItem;
        if(level==1) addMoney(1000),returnleveltext=`***You Won:1,000:euro: Cash***\n`
       else if(level==2) addMoney(5000),returnleveltext=`***You Won:5,000:euro: Cash***\n`
-      else if(level==3) console.log("t"),addCase("common.case",1),returnleveltext=`***You Won:1 Common Case***\n`
+      else if(level==3) addCase("common.case",1),returnleveltext=`***You Won:1 Common Case***\n`
       else if(level==4) addCase("<:eggrare:964448940248428604>",10),returnleveltext=`***You Won:10 Rare Egg***\n`
       else if(level==5) addMoney(25000),returnleveltext=`***You Won:25,000:euro: Cash***\n`
       else if(level==6) addMoney(30000),returnleveltext=`***You Won:30,000:euro: Cash***\n`
@@ -106,8 +113,7 @@ module.exports = {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
-  for (let i=0;i<=item;i++) {
-    console.log("pushed")
+  for (let i=0;i<count;i++) {
   client.db.push(`items_${interaction.user.id}`, itemStruct);
 }
       }
