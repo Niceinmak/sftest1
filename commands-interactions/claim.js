@@ -27,9 +27,20 @@ module.exports = {
       let mainlevel=selectLevel(levelcount)
       var prize = new Boolean(false)
       let ticket=client.db.get(`battlepass_${interaction.user.id}.point`)
-      for(let i=0;i<=prizes.length;i++)
+      let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
+      if(!point) point=0;
+      //point++
+      //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
+      for(let i=point;i<=ticket;i++)
         {
-        for(let j=0;j<=)
+        for(let j=0;j<=prizes.length;j++)
+          {
+            console.log(i,prizes[j])
+            if(i==prizes[j])
+              {
+                console.log("t")
+              }
+          }
         }
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
