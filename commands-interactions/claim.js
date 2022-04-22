@@ -36,12 +36,13 @@ module.exports = {
         {
         for(let j=0;j<prizes.length;j++)
           {
-            console.log(i,prizes[j])
             if(i==prizes[j])
               {
-                console.log(j+1)
+      console.log(client.db.get(`battlepass_${interaction.user.id}.lastpoint`))
+              client.db.set(`battlepass_${interaction.user.id}`, { lastpoint: ticket })  
                prizesname+=levelName(j+1)
                 prize=true
+      console.log(client.db.get(`battlepass_${interaction.user.id}.lastpoint`))
               }
           }
         }
@@ -71,7 +72,6 @@ module.exports = {
         }
 
             function levelName(level){
-      console.log(level)
         let returnleveltext="" 
         let t=""
         let hasItem;
