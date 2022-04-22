@@ -4,7 +4,14 @@ const { Formatters } = require('discord.js');
 const Canvas = require('canvas');
 const discordModals = require('discord-modals') // Define the discord-modals package!
 const { Client, Intents, MessageAttachment } = require('discord.js');
-const client = new Discord.Client({intents: 32767});
+const client = new Discord.Client({ partials: ["CHANNEL"], intents: [
+    Discord.Intents.FLAGS.DIRECT_MESSAGES, 
+    Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+    Discord.Intents.FLAGS.GUILDS,
+    Discord.Intents.FLAGS.GUILD_MESSAGES,
+    Discord.Intents.FLAGS.GUILD_MEMBERS,
+    Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS
+]})
 discordModals(client); // discord-modals needs your client in order to interact with modals
 const btcValue = require('btc-value');
 const DBL = require('dblapi.js');
@@ -239,8 +246,14 @@ client.on('commandInteraction', data => {
 	if (data.commandName === 'ping') {
 		data.reply.send('pong!');
 	};
-});*/
+});
 
-
+client.on('messageCreate', (msg) => {
+let channel = client.channels.cache.get("955897329209192488")
+   if (msg.channel.type == 'DM') {
+channel.send({content: msg.content})
+   }
+});
+*/
 
 client.login(process.env.TOKEN);
