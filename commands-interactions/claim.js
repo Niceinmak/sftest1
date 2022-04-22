@@ -39,8 +39,8 @@ module.exports = {
             console.log(i,prizes[j])
             if(i==prizes[j])
               {
-                console.log(j)
-               prizesname+=levelName(j)
+                console.log(j+1)
+               prizesname+=levelName(j+1)
                 prize=true
               }
           }
@@ -64,29 +64,30 @@ module.exports = {
          }
 
             function levelName(level){
+      console.log(level)
         let returnleveltext="" 
         let t=""
         let hasItem;
-       if(level==1) addMoney(1000),returnleveltext=`***You Won:1,000:euro: Cash\n***`
-      else if(level==2) addMoney(5000),`***You Won:5,000:euro: Cash\n***`
-      else if(level==3) addCase("common.case",1),returnleveltext=`***You Won:1 Common Case\n***`
-      else if(level==4) addCase("<:eggrare:964448940248428604>",10),returnleveltext=`***You Won:10 Rare Egg\n***`
-      else if(level==5) addMoney(25000),returnleveltext=`***You Won:25,000:euro: Cash\n***`
-      else if(level==6) addMoney(30000),returnleveltext=`***You Won:30,000:euro: Cash\n***`
-      else if(level==7) addCase("common.case",5),returnleveltext=`***You Won:5 Common Case\n***`
-      else if(level==8) addCase("<:eggepic:964448950281183242>",5),returnleveltext=`***You Won:5 Epic Egg\n***`
-      else if(level==9) addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case\n***`
-      else if(level==10) addMoney(120000),returnleveltext=`***You Won:120,000:euro: Cash\n***`
-      else if(level==11) addCase("common.case",2),addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case + 2 Common Case\n***`
-      else if(level==12) addEcocoin(400),returnleveltext=`***You Won:400 EcoCoin\n***`
-      else if(level==13) addEcocoin(500),returnleveltext=`***You Won:500 EcoCoin\n***`
-      else if(level==14) addMoney(220000),returnleveltext=`***You Won:220,000:euro: Cash\n***`
-      else if(level==15) addCase("rare.case",3),returnleveltext=`***You Won:3 Rare Case\n***`
-      else if(level==16) addMoney(450000),returnleveltext=`***You Won:450,000:euro: Cash\n***`
-      else if(level==17) addCase("<:eggepic:964448950281183242>",20),returnleveltext=`***You Won:20 Epic Egg\n***`
-      else if(level==18) addMoney(650000),returnleveltext=`***You Won:650,000:euro: Cash\n***`
-      else if(level==19) addEcocoin(1000),returnleveltext=`***You Won:1000 EcoCoin\n***`
-      else if(level==20) addMoney(100000000),returnleveltext=`***You Won:100,000,000:euro: Cash\n***`
+       if(level==1) addMoney(1000),returnleveltext=`***You Won:1,000:euro: Cash***\n`
+      else if(level==2) addMoney(5000),returnleveltext=`***You Won:5,000:euro: Cash***\n`
+      else if(level==3) console.log("t"),addCase("common.case",1),returnleveltext=`***You Won:1 Common Case***\n`
+      else if(level==4) addCase("<:eggrare:964448940248428604>",10),returnleveltext=`***You Won:10 Rare Egg***\n`
+      else if(level==5) addMoney(25000),returnleveltext=`***You Won:25,000:euro: Cash***\n`
+      else if(level==6) addMoney(30000),returnleveltext=`***You Won:30,000:euro: Cash***\n`
+      else if(level==7) addCase("common.case",5),returnleveltext=`***You Won:5 Common Case***\n`
+      else if(level==8) addCase("<:eggepic:964448950281183242>",5),returnleveltext=`***You Won:5 Epic Egg***\n`
+      else if(level==9) addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case***\n`
+      else if(level==10) addMoney(120000),returnleveltext=`***You Won:120,000:euro: Cash***\n`
+      else if(level==11) addCase("common.case",2),addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case + 2 Common Case***\n`
+      else if(level==12) addEcocoin(400),returnleveltext=`***You Won:400 EcoCoin***\n`
+      else if(level==13) addEcocoin(500),returnleveltext=`***You Won:500 EcoCoin***\n`
+      else if(level==14) addMoney(220000),returnleveltext=`***You Won:220,000:euro: Cash***\n`
+      else if(level==15) addCase("rare.case",3),returnleveltext=`***You Won:3 Rare Case***\n`
+      else if(level==16) addMoney(450000),returnleveltext=`***You Won:450,000:euro: Cash***\n`
+      else if(level==17) addCase("<:eggepic:964448950281183242>",20),returnleveltext=`***You Won:20 Epic Egg***\n`
+      else if(level==18) addMoney(650000),returnleveltext=`***You Won:650,000:euro: Cash***\n`
+      else if(level==19) addEcocoin(1000),returnleveltext=`***You Won:1000 EcoCoin***\n`
+      else if(level==20) addMoney(100000000),returnleveltext=`***You Won:100,000,000:euro: Cash***\n`
       return returnleveltext
       }
       function addMoney(money)
@@ -105,7 +106,8 @@ module.exports = {
     name: item.toLowerCase(),
     prize: hasItem.cost
   };
-  for (let i=0;i<item;i++) {
+  for (let i=0;i<=item;i++) {
+    console.log("pushed")
   client.db.push(`items_${interaction.user.id}`, itemStruct);
 }
       }
