@@ -60,28 +60,44 @@ module.exports = {
             function levelName(level){
         let returnleveltext="" 
         let t=""
-        let commonitem="common.case"
-       if(level==1) client.eco.addMoney(interaction.user.id, parseInt(1000)),returnleveltext=`**Prize**;\n***1,000:euro: Cash\n***`
-      else if(level==2) returnleveltext=client.eco.addMoney(interaction.user.id, parseInt(5000)),`**Prize**;\n***5,000:euro: Cash\n***`
-      else if(level==3) let hasItem = client.shop[item];,returnleveltext=`**Prize**;\n***1 Common Case\n***`
-      else if(level==4) returnleveltext=`**Prize**;\n***10 Rare Egg\n***`
-      else if(level==5) returnleveltext=`**Prize**;\n***25,000:euro: Cash\n***`
-      else if(level==6) returnleveltext=`**Prize**;\n***30,000:euro: Cash\n***`
-      else if(level==7) returnleveltext=`**Prize**;\n***5 Common Case\n***`
-      else if(level==8) returnleveltext=`**Prize**;\n***5 Epic Egg\n***`
-      else if(level==9) returnleveltext=`**Prize**;\n***1 Rare Case\n***`
-      else if(level==10) returnleveltext=`**Prize**;\n***120,000:euro: Cash\n***`
-      else if(level==11) returnleveltext=`**Prize**;\n***1 Rare Cash + 2 Common Case\n***`
-      else if(level==12) returnleveltext=`**Prize**;\n***400 EcoCoin\n***`
-      else if(level==13) returnleveltext=`**Prize**;\n***500 EcoCoin\n***`
-      else if(level==14) returnleveltext=`**Prize**;\n***220,000:euro: Cash\n***`
-      else if(level==15) returnleveltext=`**Prize**;\n***3 Rare Case\n***`
-      else if(level==16) returnleveltext=`**Prize**;\n***450,000:euro: Cash\n***`
-      else if(level==17) returnleveltext=`**Prize**;\n***20 Epic Egg\n***`
-      else if(level==18) returnleveltext=`**Prize**;\n***650,000:euro: Cash\n***`
-      else if(level==19) returnleveltext=`**Prize**;\n***1000 EcoCoin\n***`
-      else if(level==20) returnleveltext=`**Prize**;\n***100,000,000:euro: Cash\n***`
+        let hasItem;
+       if(level==1) addMoney(1000),returnleveltext=`***You Won:1,000:euro: Cash\n***`
+      else if(level==2) addMoney(5000),`***You Won:5,000:euro: Cash\n***`
+      else if(level==3) addCase("common.case",1),returnleveltext=`***You Won:1 Common Case\n***`
+      else if(level==4) addCase("<:eggrare:964448940248428604>",10),returnleveltext=`***You Won:10 Rare Egg\n***`
+      else if(level==5) addMoney(25000),returnleveltext=`***You Won:25,000:euro: Cash\n***`
+      else if(level==6) addMoney(30000),returnleveltext=`***You Won:30,000:euro: Cash\n***`
+      else if(level==7) addCase("common.case",5),returnleveltext=`***You Won:5 Common Case\n***`
+      else if(level==8) addCase("<:eggepic:964448950281183242>",5),returnleveltext=`***You Won:5 Epic Egg\n***`
+      else if(level==9) addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case\n***`
+      else if(level==10) returnleveltext=`***You Won:120,000:euro: Cash\n***`
+      else if(level==11) returnleveltext=`***You Won:1 Rare Cash + 2 Common Case\n***`
+      else if(level==12) returnleveltext=`***You Won:400 EcoCoin\n***`
+      else if(level==13) returnleveltext=`***You Won:500 EcoCoin\n***`
+      else if(level==14) returnleveltext=`***You Won:220,000:euro: Cash\n***`
+      else if(level==15) returnleveltext=`***You Won:3 Rare Case\n***`
+      else if(level==16) returnleveltext=`***You Won:450,000:euro: Cash\n***`
+      else if(level==17) returnleveltext=`***You Won:20 Epic Egg\n***`
+      else if(level==18) returnleveltext=`***You Won:650,000:euro: Cash\n***`
+      else if(level==19) returnleveltext=`***You Won:1000 EcoCoin\n***`
+      else if(level==20) returnleveltext=`***You Won:100,000,000:euro: Cash\n***`
       return returnleveltext
+      }
+      function addMoney(money)
+      {
+        client.eco.addMoney(interaction.user.id, parseInt(money))
+      }
+      function addCase(item,count)
+      {
+        let commonitem=item
+        let hasItem = client.shop[item];
+          let itemStruct = {
+    name: item.toLowerCase(),
+    prize: hasItem.cost
+  };
+  for (let i=0;i<item;i++) {
+  client.db.push(`items_${interaction.user.id}`, itemStruct);
+}
       }
     }
 };
