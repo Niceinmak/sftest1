@@ -129,7 +129,7 @@ collector.on('collect', async i => {
       else if(level==8) returnlevel=`**Prize**;\n***5 Epic Egg***`
       else if(level==9) returnlevel=`**Prize**;\n***1 Rare Case***`
       else if(level==10) returnlevel=`**Prize**;\n***120,000:euro: Cash***`
-      else if(level==11) returnlevel=`**Prize**;\n***1 Rare Cash + 2 Common Case***`
+      else if(level==11) returnlevel=`**Prize**;\n***1 Rare Case + 2 Common Case***`
       else if(level==12) returnlevel=`**Prize**;\n***400 EcoCoin***`
       else if(level==13) returnlevel=`**Prize**;\n***500 EcoCoin***`
       else if(level==14) returnlevel=`**Prize**;\n***220,000:euro: Cash***`

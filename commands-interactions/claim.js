@@ -18,7 +18,8 @@ module.exports = {
     db.set(`cooldown_claim_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let levels = []
-      let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,1900,2200,2500,3000,3500,4000]
+      let prizes=[1,2,3,4,5,6]
+      //let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,1900,2200,2500,3000,3500,4000]
       for(let i=0;i<=20;i++)
         {
           levels.push(i)
@@ -30,6 +31,7 @@ module.exports = {
       if(!point) point=0;
       //point++
       //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
+      let prizesname=``
       for(let i=point;i<=ticket;i++)
         {
         for(let j=0;j<prizes.length;j++)
@@ -37,15 +39,18 @@ module.exports = {
             console.log(i,prizes[j])
             if(i==prizes[j])
               {
-                console.log("t")
+                console.log(j)
+               prizesname+=levelName(j)
+                prize=true
               }
           }
         }
-      console.log(levelName(1))
-        const embed = new MessageEmbed()
+      if(prize==true)
+        {
+                 const embed = new MessageEmbed()
         	.setColor('#0099ff')
-	.setTitle('EcoVerse Battle Pass')
-        .setDescription(`***Your point:<:ticket:965658088885583892>***`)
+	.setTitle('Congrulations!')
+        .setDescription(`${prizesname}`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
@@ -56,6 +61,7 @@ module.exports = {
            embeds:[embed],
            components:[row],
        })
+         }
 
             function levelName(level){
         let returnleveltext="" 
@@ -70,22 +76,26 @@ module.exports = {
       else if(level==7) addCase("common.case",5),returnleveltext=`***You Won:5 Common Case\n***`
       else if(level==8) addCase("<:eggepic:964448950281183242>",5),returnleveltext=`***You Won:5 Epic Egg\n***`
       else if(level==9) addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case\n***`
-      else if(level==10) returnleveltext=`***You Won:120,000:euro: Cash\n***`
-      else if(level==11) returnleveltext=`***You Won:1 Rare Cash + 2 Common Case\n***`
-      else if(level==12) returnleveltext=`***You Won:400 EcoCoin\n***`
-      else if(level==13) returnleveltext=`***You Won:500 EcoCoin\n***`
-      else if(level==14) returnleveltext=`***You Won:220,000:euro: Cash\n***`
-      else if(level==15) returnleveltext=`***You Won:3 Rare Case\n***`
-      else if(level==16) returnleveltext=`***You Won:450,000:euro: Cash\n***`
-      else if(level==17) returnleveltext=`***You Won:20 Epic Egg\n***`
-      else if(level==18) returnleveltext=`***You Won:650,000:euro: Cash\n***`
-      else if(level==19) returnleveltext=`***You Won:1000 EcoCoin\n***`
-      else if(level==20) returnleveltext=`***You Won:100,000,000:euro: Cash\n***`
+      else if(level==10) addMoney(120000),returnleveltext=`***You Won:120,000:euro: Cash\n***`
+      else if(level==11) addCase("common.case",2),addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case + 2 Common Case\n***`
+      else if(level==12) addEcocoin(400),returnleveltext=`***You Won:400 EcoCoin\n***`
+      else if(level==13) addEcocoin(500),returnleveltext=`***You Won:500 EcoCoin\n***`
+      else if(level==14) addMoney(220000),returnleveltext=`***You Won:220,000:euro: Cash\n***`
+      else if(level==15) addCase("rare.case",3),returnleveltext=`***You Won:3 Rare Case\n***`
+      else if(level==16) addMoney(450000),returnleveltext=`***You Won:450,000:euro: Cash\n***`
+      else if(level==17) addCase("<:eggepic:964448950281183242>",20),returnleveltext=`***You Won:20 Epic Egg\n***`
+      else if(level==18) addMoney(650000),returnleveltext=`***You Won:650,000:euro: Cash\n***`
+      else if(level==19) addEcocoin(1000),returnleveltext=`***You Won:1000 EcoCoin\n***`
+      else if(level==20) addMoney(100000000),returnleveltext=`***You Won:100,000,000:euro: Cash\n***`
       return returnleveltext
       }
       function addMoney(money)
       {
         client.eco.addMoney(interaction.user.id, parseInt(money))
+      }
+      function addEcocoin(money)
+      {
+        client.eco.addMoney(`${interaction.user.id}11`, parseInt(money))
       }
       function addCase(item,count)
       {
