@@ -40,21 +40,25 @@ module.exports = {
           {
             if(i==prizes[j])
               {
-              client.db.set(`battlepass_${interaction.user.id}`, { lastpoint: parseInt(ticket) })  
+              client.db.set(`battlepass_${interaction.user.id}`, { point:point,lastpoint: parseInt(ticket),history:`${history}` })  
                prizesname+=levelName(j+1)
                 prize=true
                 if(ticket==prizes[prizes.length-1])
                   {
                     console.log("runned",ticket,prizes[prizes.length-1])
-                   client.db.set(`battlepass_${interaction.user.id}`, { point: 0 })   
-                   client.db.set(`battlepass_${interaction.user.id}`, { lastpoint: 0 })   
+                   client.db.set(`battlepass_${interaction.user.id}`, { point: 0,lastpoint:0,history:`` })   
                   }
               }
           }
         }
       if(prize==true)
         {
-          client.db.set(`battlepass_${interaction.user.id}`, { history: `${history}\n${prizesname}` })
+                let history=client.db.get(`battlepass_${interaction.user.id}.history`)
+      if(!history) history=``
+      let ticket=client.db.get(`battlepass_${interaction.user.id}.point`)
+      let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
+      console.log(ticket,point)
+          client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n${prizesname}` })
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Congrulations!')
