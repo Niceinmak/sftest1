@@ -38,11 +38,10 @@ module.exports = {
           {
             if(i==prizes[j])
               {
-      console.log(client.db.get(`battlepass_${interaction.user.id}.lastpoint`))
+                console.log(ticket)
               client.db.set(`battlepass_${interaction.user.id}`, { lastpoint: ticket })  
                prizesname+=levelName(j+1)
                 prize=true
-      console.log(client.db.get(`battlepass_${interaction.user.id}.lastpoint`))
               }
           }
         }
