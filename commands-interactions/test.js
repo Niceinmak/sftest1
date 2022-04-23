@@ -8,7 +8,7 @@ module.exports = {
       //console.log(x)
       //client.db.delete(`eggs_${interaction.user.id}`);
       let point=client.db.get(`battlepass_${interaction.user.id}.point`)
-      if(!)
+      if(!point) point=0
       point++
       client.db.set(`battlepass_${interaction.user.id}`, { point: point })
         const embed = new MessageEmbed()
