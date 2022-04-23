@@ -7,6 +7,9 @@ module.exports = {
       //const x=client.db.all(`items`);
       //console.log(x)
       //client.db.delete(`eggs_${interaction.user.id}`);
+      let name="1.2034023500235"
+      var argString = name.toString().substring(0).split(".");
+      console.log(argString[0])
       let point=client.db.get(`battlepass_${interaction.user.id}.point`)
       if(!point) point=0
       point++
