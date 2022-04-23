@@ -40,11 +40,13 @@ module.exports = {
               {
                 console.log(ticket)
               client.db.set(`battlepass_${interaction.user.id}`, { lastpoint: ticket })  
+                console.log(client.db.get(`battlepass_${interaction.user.id}.lastpoint`))
                prizesname+=levelName(j+1)
                 prize=true
               }
           }
         }
+                console.log(client.db.get(`battlepass_${interaction.user.id}.lastpoint`))
       if(prize==true)
         {
           client.db.set(`battlepass_${interaction.user.id}`, { point: ticket })
