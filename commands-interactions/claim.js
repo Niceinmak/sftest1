@@ -4,7 +4,7 @@ let ms = require('ms');
 let db = require('quick.db');
 const wait = require('node:timers/promises').setTimeout;
 module.exports = {
-    description: 'battlepass command',
+    description: 'EcoVerse Battle Pass',
     run: async (client, interaction) => {
       await interaction.deferReply();
 		await wait(10);
