@@ -41,6 +41,11 @@ module.exports = {
         	.setColor('#0099ff')
 	.setTitle('Sorry :(')
         .setDescription(`**${interaction.user.username}** You didn't win anything dude, please play more games and try again, I believe you can win.`)
+                if(ticket>=prizes[prizes.length-1])
+                  {
+                    console.log("runned",ticket,prizes[prizes.length-1])
+                   client.db.set(`battlepass_${interaction.user.id}`, { point: 0,lastpoint:0,history:`` })   
+                  }
        return interaction.editReply({
            embeds:[embed],
        })  
@@ -55,7 +60,7 @@ module.exports = {
               client.db.set(`battlepass_${interaction.user.id}`, { point:ticket,lastpoint: parseInt(ticket),history:`${history}` })  
                prizesname+=levelName(j+1)
                 prize=true
-                if(ticket==prizes[prizes.length-1])
+                if(ticket>=prizes[prizes.length-1])
                   {
                     console.log("runned",ticket,prizes[prizes.length-1])
                    client.db.set(`battlepass_${interaction.user.id}`, { point: 0,lastpoint:0,history:`` })   
