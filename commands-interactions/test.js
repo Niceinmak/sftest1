@@ -7,9 +7,10 @@ module.exports = {
       //const x=client.db.all(`items`);
       //console.log(x)
       //client.db.delete(`eggs_${interaction.user.id}`);
-      let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
-      //point++
-      //client.db.set(`battlepass_${interaction.user.id}`, { point: 3 })
+      let point=client.db.get(`battlepass_${interaction.user.id}.point`)
+      if(!)
+      point++
+      client.db.set(`battlepass_${interaction.user.id}`, { point: point })
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Some title')
