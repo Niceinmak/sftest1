@@ -34,13 +34,25 @@ module.exports = {
       //point++
       //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
       let prizesname=``
+      console.log(point,ticket,"t")
+      if(point==ticket)
+        {
+               const embed = new MessageEmbed()
+        	.setColor('#0099ff')
+	.setTitle('Sorry :(')
+        .setDescription(`**${interaction.user.username}** You didn't win anything dude, please play more games and try again, I believe you can win.`)
+       return interaction.editReply({
+           embeds:[embed],
+       })  
+        }
       for(let i=point;i<=ticket;i++)
         {
         for(let j=0;j<prizes.length;j++)
           {
             if(i==prizes[j])
               {
-              client.db.set(`battlepass_${interaction.user.id}`, { point:point,lastpoint: parseInt(ticket),history:`${history}` })  
+                console.log(point,ticket)
+              client.db.set(`battlepass_${interaction.user.id}`, { point:ticket,lastpoint: parseInt(ticket),history:`${history}` })  
                prizesname+=levelName(j+1)
                 prize=true
                 if(ticket==prizes[prizes.length-1])
@@ -65,7 +77,7 @@ module.exports = {
         .setDescription(`${prizesname}`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.setFooter({ text: `${interaction.user.username}`});
-       interaction.editReply({
+       return interaction.editReply({
            embeds:[embed],
        })
          }
@@ -75,7 +87,7 @@ module.exports = {
         	.setColor('#0099ff')
 	.setTitle('Sorry :(')
         .setDescription(`**${interaction.user.username}** You didn't win anything dude, please play more games and try again, I believe you can win.`)
-       interaction.editReply({
+       return interaction.editReply({
            embeds:[embed],
        }) 
         }
