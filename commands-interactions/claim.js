@@ -26,13 +26,14 @@ module.exports = {
         }
       let levelcount=1
       var prize = new Boolean(false)
+      let history=client.db.get(`battlepass_${interaction.user.id}.history`)
+      if(!history) history=``
       let ticket=client.db.get(`battlepass_${interaction.user.id}.point`)
       let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
       if(!point || point=="undefined") point=0;
       //point++
       //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
       let prizesname=``
-       console.log(prizes[prizes.length-1])
       for(let i=point;i<=ticket;i++)
         {
         for(let j=0;j<prizes.length;j++)
@@ -52,6 +53,7 @@ module.exports = {
         }
       if(prize==true)
         {
+          client.db.set(`battlepass_${interaction.user.id}`, { history: `${history}\n${prizesname}` })
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Congrulations!')
