@@ -28,7 +28,9 @@ module.exports = {
       var prize = new Boolean(false)
       let ticket=client.db.get(`battlepass_${interaction.user.id}.point`)
       let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
-      if(!point) point=0;
+      console.log(point)
+      if(!point || point=="undefined") point=0;
+      console.log(point)
       //point++
       //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
       let prizesname=``

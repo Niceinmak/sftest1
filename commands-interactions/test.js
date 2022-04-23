@@ -7,12 +7,13 @@ module.exports = {
       //const x=client.db.all(`items`);
       //console.log(x)
       //client.db.delete(`eggs_${interaction.user.id}`);
-      let point=client.db.get(`battlepass_${interaction.user.id}.point`)
-      point++
-      client.db.set(`battlepass_${interaction.user.id}`, { point: point })
+      let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
+      //point++
+      //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Some title')
+  .setDescription(`${point}`)
 	.setURL('https://discord.js.org/')
 	.setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
         const buton = new MessageButton().setLabel('EcoVerse Website').setStyle('LINK').setURL('http://ecoverse.ml');
