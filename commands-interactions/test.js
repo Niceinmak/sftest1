@@ -7,11 +7,12 @@ module.exports = {
       //const x=client.db.all(`items`);
       //console.log(x)
       //client.db.delete(`eggs_${interaction.user.id}`);
-      
+      console.log(client.db.get(`battlepass_${interaction.user.id}.history`))
       let point=client.db.get(`battlepass_${interaction.user.id}.point`)
       if(!point) point=0
       point++
       client.db.set(`battlepass_${interaction.user.id}`, { point: point })
+      console.log(client.db.get(`battlepass_${interaction.user.id}.history`))
       
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
