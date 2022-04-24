@@ -87,8 +87,8 @@ module.exports = {
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Battle Pass Claim')
-  .setDescription(`***Congrulations!:tada:\n***Rewards\n${prizesname}\nNext reward\n<:reply:956274844004139018>**${nextReward(endprize+1)}**`)
-  .setFooter({ text: `You won ${prizecount} rewarc`})
+  .setDescription(`***Congrulations!:tada:\n***Rewards\n${prizesname}\nNext reward\n<:reply:956274844004139018>**${nextReward(endprize+1)}\n(Need ${prizes[endprize+1]-ticket}<:ticket:965658088885583892>)**`)
+  .setFooter({ text: `You won ${prizecount} reward`})
        return interaction.editReply({
            embeds:[embed],
        })
