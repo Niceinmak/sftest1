@@ -4,7 +4,7 @@ let ms = require('ms');
 let db = require('quick.db');
 const wait = require('node:timers/promises').setTimeout;
 module.exports = {
-    description: 'EcoVerse Battle Pass',
+    description: 'Get the Battle Pass reward!',
     run: async (client, interaction) => {
       await interaction.deferReply();
 		await wait(10);
@@ -18,8 +18,7 @@ module.exports = {
     db.set(`cooldown_claim_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
       let levels = []
-      let prizes=[1,2,3,4,5,6]
-      //let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,1900,2200,2500,3000,3500,4000]
+      let prizes=[30,50,100,150,200,250,350,500,650,800,1000,1200,1450,1600,1900,2200,2500,3000,3500,4000]
       for(let i=0;i<=20;i++)
         {
           levels.push(i)
@@ -36,7 +35,6 @@ module.exports = {
       let prizesname=``
       let prizecount=0
       let endprize=0
-      console.log(point,ticket,"t")
       if(point==ticket)
         {
                const embed = new MessageEmbed()
@@ -45,7 +43,6 @@ module.exports = {
         .setDescription(`**${interaction.user.username}** You didn't win anything dude, please play more games and try again, I believe you can win.`)
                 if(ticket>=prizes[prizes.length-1])
                   {
-                    console.log("runned",ticket,prizes[prizes.length-1])
                    client.db.set(`battlepass_${interaction.user.id}`, { point: 0,lastpoint:0,history:`` })   
                   }
        return interaction.editReply({
@@ -59,17 +56,13 @@ module.exports = {
             if(i==prizes[j])
               {
               endprize=j
-            console.log(i,prizes[j],"prizes")
-                console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"f")
               client.db.set(`battlepass_${interaction.user.id}`, { point:ticket,lastpoint: parseInt(ticket),history:`${history}` })  
                prizesname+=levelName(j+1)
                 prize=true
                 prizecount++
-                console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"t")
                 if(ticket>=prizes[prizes.length-1])
                   {
                     endprize=-1
-                    console.log("runned",ticket,prizes[prizes.length-1])
                    client.db.set(`battlepass_${interaction.user.id}`, { point: 0,lastpoint:0,history:`` })   
                   }
               }
@@ -83,7 +76,7 @@ module.exports = {
       let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
       let time = moment(Date.now()).format('DD/MM/YY');
       if(!ticket || ticket==0) client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `` })
-      else client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n[${time }] ${prizesname}` })
+      else client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n\`[${time }]\`\n${prizesname}` })
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Battle Pass Claim')
