@@ -68,6 +68,7 @@ module.exports = {
                 console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"t")
                 if(ticket>=prizes[prizes.length-1])
                   {
+                    endprize=-1
                     console.log("runned",ticket,prizes[prizes.length-1])
                    client.db.set(`battlepass_${interaction.user.id}`, { point: 0,lastpoint:0,history:`` })   
                   }
@@ -148,6 +149,30 @@ module.exports = {
   for (let i=0;i<count;i++) {
   client.db.push(`items_${interaction.user.id}`, itemStruct);
 }
+      }
+        function nextReward(level){
+        let returnlevel="" 
+       if(level==1) returnlevel=`1,000:euro: Cash`
+      else if(level==2) returnlevel=`5,000:euro: Cash`
+      else if(level==3) returnlevel=`1 Common Case`
+      else if(level==4) returnlevel=`10 Rare Egg`
+      else if(level==5) returnlevel=`25,000:euro: Cash`
+      else if(level==6) returnlevel=`30,000:euro: Cash`
+      else if(level==7) returnlevel=`5 Common Case`
+      else if(level==8) returnlevel=`5 Epic Egg`
+      else if(level==9) returnlevel=`1 Rare Case`
+      else if(level==10) returnlevel=`120,000:euro: Cash`
+      else if(level==11) returnlevel=`1 Rare Case + 2 Common Case`
+      else if(level==12) returnlevel=`400 EcoCoin`
+      else if(level==13) returnlevel=`500 EcoCoin`
+      else if(level==14) returnlevel=`220,000:euro: Cash`
+      else if(level==15) returnlevel=`3 Rare Case`
+      else if(level==16) returnlevel=`450,000:euro: Cash`
+      else if(level==17) returnlevel=`20 Epic Egg`
+      else if(level==18) returnlevel=`650,000:euro: Cash`
+      else if(level==19) returnlevel=`1000 EcoCoin`
+      else if(level==20) returnlevel=`100,000,000:euro: Cash`
+        return returnlevel
       }
     }
 };
