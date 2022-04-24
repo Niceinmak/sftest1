@@ -34,6 +34,7 @@ module.exports = {
       //point++
       //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
       let prizesname=``
+      let prizesco
       console.log(point,ticket,"t")
       if(point==ticket)
         {
@@ -76,12 +77,14 @@ module.exports = {
       if(!history) history=``
       let ticket=client.db.get(`battlepass_${interaction.user.id}.point`)
       let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
+      let time = moment(Date.now()).format('DD/MM/YY');
       if(!ticket || ticket==0) client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `` })
-      else client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n${prizesname}` })
+      else client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n[${time }] ${prizesname}` })
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
-	.setTitle('Congrulations!')
-        .setDescription(`${prizesname}`)
+	.setTitle('Battle Pass Claim')
+  .setDescription(`Congrulations!\n${prizesname}`)
+  .setFooter({ text: `You won 3 prize`})
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.setFooter({ text: `${interaction.user.username}`});
        return interaction.editReply({
