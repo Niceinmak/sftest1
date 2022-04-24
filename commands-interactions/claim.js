@@ -34,7 +34,8 @@ module.exports = {
       //point++
       //client.db.set(`battlepass_${interaction.user.id}`, { point: point })
       let prizesname=``
-      let prizesco
+      let prizecount=0
+      let endprize=0
       console.log(point,ticket,"t")
       if(point==ticket)
         {
@@ -57,11 +58,13 @@ module.exports = {
           {
             if(i==prizes[j])
               {
+              endprize=j
             console.log(i,prizes[j],"prizes")
                 console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"f")
               client.db.set(`battlepass_${interaction.user.id}`, { point:ticket,lastpoint: parseInt(ticket),history:`${history}` })  
                prizesname+=levelName(j+1)
                 prize=true
+                prizecount++
                 console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"t")
                 if(ticket>=prizes[prizes.length-1])
                   {
@@ -83,10 +86,8 @@ module.exports = {
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Battle Pass Claim')
-  .setDescription(`Congrulations!\n${prizesname}`)
-  .setFooter({ text: `You won 3 prize`})
-	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
-	.setFooter({ text: `${interaction.user.username}`});
+  .setDescription(`Congrulations!\nNext reward:${prizes[endprize+1]}\n${prizesname}`)
+  .setFooter({ text: `You won ${prizecount} rewarc`})
        return interaction.editReply({
            embeds:[embed],
        })

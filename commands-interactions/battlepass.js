@@ -25,13 +25,15 @@ module.exports = {
         }
       let levelcount=1
       let mainlevel=selectLevel(levelcount)
+      let point=client.db.get(`battlepass_${interaction.user.id}.point`)
+      if(!point || point=="undefined") point=0
         const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('EcoVerse Battle Pass')
-        .setDescription(`***Your point:${client.db.get(`battlepass_${interaction.user.id}.point`)}<:ticket:965658088885583892>***`)
+        .setDescription(`***Your point:${point}<:ticket:965658088885583892>***`)
 	.setThumbnail(interaction.user.displayAvatarURL({ format: 'png' }))
 	.addFields(
-		{ name: `Level ${levelcount} [${prizes[levelcount-1]}]<:ticket:965658088885583892>`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
+		{ name: `Level ${levelcount} [${prizes[levelcount-1]}<:ticket:965658088885583892>]`, value: `**Prize**;\n***10,000:euro: Cash***\n${mainlevel}` },
 	)
 	.setTimestamp()
 	.setFooter({ text: `${interaction.user.username}`});
