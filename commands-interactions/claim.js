@@ -56,10 +56,12 @@ module.exports = {
           {
             if(i==prizes[j])
               {
-                console.log(point,ticket)
+            console.log(i,prizes[j],"prizes")
+                console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"f")
               client.db.set(`battlepass_${interaction.user.id}`, { point:ticket,lastpoint: parseInt(ticket),history:`${history}` })  
                prizesname+=levelName(j+1)
                 prize=true
+                console.log(client.db.get(`battlepass_${interaction.user.id}.point`),client.db.get(`battlepass_${interaction.user.id}.lastpoint`),"t")
                 if(ticket>=prizes[prizes.length-1])
                   {
                     console.log("runned",ticket,prizes[prizes.length-1])
