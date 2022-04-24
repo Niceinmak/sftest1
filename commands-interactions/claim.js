@@ -87,7 +87,7 @@ module.exports = {
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Battle Pass Claim')
-  .setDescription(`Congrulations!\nNext reward:${prizes[endprize+1]}\n${prizesname}`)
+  .setDescription(`***Congrulations!:tada:\n***Rewards\n${prizesname}\nNext reward\n<:reply:956274844004139018>**${nextReward(endprize+1)}**`)
   .setFooter({ text: `You won ${prizecount} rewarc`})
        return interaction.editReply({
            embeds:[embed],
@@ -108,26 +108,26 @@ module.exports = {
         let returnleveltext="" 
         let t=""
         let hasItem;
-       if(level==1) addMoney(1000),returnleveltext=`***You Won:1,000:euro: Cash***\n`
-      else if(level==2) addMoney(5000),returnleveltext=`***You Won:5,000:euro: Cash***\n`
-      else if(level==3) addCase("common.case",1),returnleveltext=`***You Won:1 Common Case***\n`
-      else if(level==4) addCase("<:eggrare:964448940248428604>",10),returnleveltext=`***You Won:10 Rare Egg***\n`
-      else if(level==5) addMoney(25000),returnleveltext=`***You Won:25,000:euro: Cash***\n`
-      else if(level==6) addMoney(30000),returnleveltext=`***You Won:30,000:euro: Cash***\n`
-      else if(level==7) addCase("common.case",5),returnleveltext=`***You Won:5 Common Case***\n`
-      else if(level==8) addCase("<:eggepic:964448950281183242>",5),returnleveltext=`***You Won:5 Epic Egg***\n`
-      else if(level==9) addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case***\n`
-      else if(level==10) addMoney(120000),returnleveltext=`***You Won:120,000:euro: Cash***\n`
-      else if(level==11) addCase("common.case",2),addCase("rare.case",1),returnleveltext=`***You Won:1 Rare Case + 2 Common Case***\n`
-      else if(level==12) addEcocoin(400),returnleveltext=`***You Won:400 EcoCoin***\n`
-      else if(level==13) addEcocoin(500),returnleveltext=`***You Won:500 EcoCoin***\n`
-      else if(level==14) addMoney(220000),returnleveltext=`***You Won:220,000:euro: Cash***\n`
-      else if(level==15) addCase("rare.case",3),returnleveltext=`***You Won:3 Rare Case***\n`
-      else if(level==16) addMoney(450000),returnleveltext=`***You Won:450,000:euro: Cash***\n`
-      else if(level==17) addCase("<:eggepic:964448950281183242>",20),returnleveltext=`***You Won:20 Epic Egg***\n`
-      else if(level==18) addMoney(650000),returnleveltext=`***You Won:650,000:euro: Cash***\n`
-      else if(level==19) addEcocoin(1000),returnleveltext=`***You Won:1000 EcoCoin***\n`
-      else if(level==20) addMoney(100000000),returnleveltext=`***You Won:100,000,000:euro: Cash***\n`
+       if(level==1) addMoney(1000),returnleveltext=`<:reply:956274844004139018>***You Won:1,000:euro: Cash***\n`
+      else if(level==2) addMoney(5000),returnleveltext=`<:reply:956274844004139018>***You Won:5,000:euro: Cash***\n`
+      else if(level==3) addCase("common.case",1),returnleveltext=`<:reply:956274844004139018>***You Won:1 Common Case***\n`
+      else if(level==4) addCase("<:eggrare:964448940248428604>",10),returnleveltext=`<:reply:956274844004139018>***You Won:10 Rare Egg***\n`
+      else if(level==5) addMoney(25000),returnleveltext=`<:reply:956274844004139018>***You Won:25,000:euro: Cash***\n`
+      else if(level==6) addMoney(30000),returnleveltext=`<:reply:956274844004139018>***You Won:30,000:euro: Cash***\n`
+      else if(level==7) addCase("common.case",5),returnleveltext=`<:reply:956274844004139018>***You Won:5 Common Case***\n`
+      else if(level==8) addCase("<:eggepic:964448950281183242>",5),returnleveltext=`<:reply:956274844004139018>***You Won:5 Epic Egg***\n`
+      else if(level==9) addCase("rare.case",1),returnleveltext=`<:reply:956274844004139018>***You Won:1 Rare Case***\n`
+      else if(level==10) addMoney(120000),returnleveltext=`<:reply:956274844004139018>***You Won:120,000:euro: Cash***\n`
+      else if(level==11) addCase("common.case",2),addCase("rare.case",1),returnleveltext=`<:reply:956274844004139018>***You Won:1 Rare Case + 2 Common Case***\n`
+      else if(level==12) addEcocoin(400),returnleveltext=`<:reply:956274844004139018>***You Won:400 EcoCoin***\n`
+      else if(level==13) addEcocoin(500),returnleveltext=`<:reply:956274844004139018>***You Won:500 EcoCoin***\n`
+      else if(level==14) addMoney(220000),returnleveltext=`<:reply:956274844004139018>***You Won:220,000:euro: Cash***\n`
+      else if(level==15) addCase("rare.case",3),returnleveltext=`<:reply:956274844004139018>***You Won:3 Rare Case***\n`
+      else if(level==16) addMoney(450000),returnleveltext=`<:reply:956274844004139018>***You Won:450,000:euro: Cash***\n`
+      else if(level==17) addCase("<:eggepic:964448950281183242>",20),returnleveltext=`<:reply:956274844004139018>***You Won:20 Epic Egg***\n`
+      else if(level==18) addMoney(650000),returnleveltext=`<:reply:956274844004139018>***You Won:650,000:euro: Cash***\n`
+      else if(level==19) addEcocoin(1000),returnleveltext=`<:reply:956274844004139018>***You Won:1000 EcoCoin***\n`
+      else if(level==20) addMoney(100000000),returnleveltext=`<:reply:956274844004139018>***You Won:100,000,000:euro: Cash***\n`
       return returnleveltext
       }
       function addMoney(money)
@@ -152,26 +152,26 @@ module.exports = {
       }
         function nextReward(level){
         let returnlevel="" 
-       if(level==1) returnlevel=`1,000:euro: Cash`
-      else if(level==2) returnlevel=`5,000:euro: Cash`
-      else if(level==3) returnlevel=`1 Common Case`
-      else if(level==4) returnlevel=`10 Rare Egg`
-      else if(level==5) returnlevel=`25,000:euro: Cash`
-      else if(level==6) returnlevel=`30,000:euro: Cash`
-      else if(level==7) returnlevel=`5 Common Case`
-      else if(level==8) returnlevel=`5 Epic Egg`
-      else if(level==9) returnlevel=`1 Rare Case`
-      else if(level==10) returnlevel=`120,000:euro: Cash`
-      else if(level==11) returnlevel=`1 Rare Case + 2 Common Case`
-      else if(level==12) returnlevel=`400 EcoCoin`
-      else if(level==13) returnlevel=`500 EcoCoin`
-      else if(level==14) returnlevel=`220,000:euro: Cash`
-      else if(level==15) returnlevel=`3 Rare Case`
-      else if(level==16) returnlevel=`450,000:euro: Cash`
-      else if(level==17) returnlevel=`20 Epic Egg`
-      else if(level==18) returnlevel=`650,000:euro: Cash`
-      else if(level==19) returnlevel=`1000 EcoCoin`
-      else if(level==20) returnlevel=`100,000,000:euro: Cash`
+       if(level==0) returnlevel=`1,000:euro: Cash`
+      else if(level==1) returnlevel=`5,000:euro: Cash`
+      else if(level==2) returnlevel=`1 Common Case`
+      else if(level==3) returnlevel=`10 Rare Egg`
+      else if(level==4) returnlevel=`25,000:euro: Cash`
+      else if(level==5) returnlevel=`30,000:euro: Cash`
+      else if(level==6) returnlevel=`5 Common Case`
+      else if(level==7) returnlevel=`5 Epic Egg`
+      else if(level==8) returnlevel=`1 Rare Case`
+      else if(level==9) returnlevel=`120,000:euro: Cash`
+      else if(level==10) returnlevel=`1 Rare Case + 2 Common Case`
+      else if(level==11) returnlevel=`400 EcoCoin`
+      else if(level==12) returnlevel=`500 EcoCoin`
+      else if(level==13) returnlevel=`220,000:euro: Cash`
+      else if(level==14) returnlevel=`3 Rare Case`
+      else if(level==15) returnlevel=`450,000:euro: Cash`
+      else if(level==16) returnlevel=`20 Epic Egg`
+      else if(level==17) returnlevel=`650,000:euro: Cash`
+      else if(level==18) returnlevel=`1000 EcoCoin`
+      else if(level==19) returnlevel=`100,000,000:euro: Cash`
         return returnlevel
       }
     }
