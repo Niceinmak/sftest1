@@ -50,7 +50,7 @@ module.exports = {
            embeds:[embed],
        })  
         }
-      for(let i=point;i<=ticket;i++)
+      for(let i=point+1;i<=ticket;i++)
         {
         for(let j=0;j<prizes.length;j++)
           {
@@ -76,8 +76,8 @@ module.exports = {
       if(!history) history=``
       let ticket=client.db.get(`battlepass_${interaction.user.id}.point`)
       let point=client.db.get(`battlepass_${interaction.user.id}.lastpoint`)
-      console.log(ticket,point)
-          client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n${prizesname}` })
+      if(!ticket || ticket==0) client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `` })
+      else client.db.set(`battlepass_${interaction.user.id}`, { point:ticket, lastpoint:point,history: `${history}\n${prizesname}` })
                  const embed = new MessageEmbed()
         	.setColor('#0099ff')
 	.setTitle('Congrulations!')
