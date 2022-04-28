@@ -1,4 +1,5 @@
 const { MessageEmbed,MessageButton,MessageActionRow } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 const moment = require("moment");
 let ms = require('ms');
 let db = require('quick.db');
@@ -21,11 +22,13 @@ module.exports = {
   ],
     run: async (client, interaction) => {
       //--------------------------------------------------------------
-            const timeout = 20000;
+            const timeout = 10000;
   const cooldown = await db.fetch(`cooldown_coinflip_${interaction.user.id}`);
       	if (cooldown !== null && timeout - (Date.now() - cooldown) > 0) {
 		const time = ms(timeout - (Date.now() - cooldown));
-          return interaction.reply(`**Wait ${time} to message again**`)
+         interaction.reply(`**Wait ${time} to message again**`)
+          await wait(timeout - (Date.now() - cooldown));
+          return interaction.deleteReply()
 	}
     db.set(`cooldown_coinflip_${interaction.user.id}`, Date.now());
       //---------------------------------------------------------------------------
